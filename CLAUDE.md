@@ -65,10 +65,10 @@ A portfolio project demonstrating an end-to-end data pipeline: record real motio
    - Cycle 3 — **Occlusion:** rotate the wrist during HOLD so the object hides the fingertips for ~1 s. Tests handling of low-confidence frames.
 
 **Ground-truth capture during recording**
-- Tap the table once, firmly, at the start of every take (audio + visual sync point).
-- Say each phase label aloud as it starts ("reach," "grab," "hold," "drop," "back," "rest"). The audio track becomes an approximate ground-truth timeline. Voice leads/lags motion slightly — record the scoring tolerance used.
+- Tap the table once, firmly, at the start of every take (visual sync point).
+- Ground truth is read off the video frames (the overlay's `t=` stamp); audio cues are not used. Record the scoring tolerance used.
 - Immediately after Take 5, write down exactly what happened in each cycle and the intended correct labels. This file is the ground truth for the NOTES.md limitation analysis.
-- Save per-take ground truth to `ground_truth/take_N.csv` with columns: `take, cycle, label, start_s, end_s, source` (`source` = `audio` or `manual`).
+- Save per-take ground truth to `ground_truth/take_N.csv` with columns: `take, cycle, label, start_s, end_s, source` (`source` = `manual`: read off the video frames).
 
 **Before tearing down the setup:** run MediaPipe Hands on Take 1 and review the keypoint overlay. If fingers drop out during the grasp, fix angle/lighting and re-shoot immediately.
 
@@ -96,7 +96,7 @@ A portfolio project demonstrating an end-to-end data pipeline: record real motio
    - **A simple HMM/sequence model**, if leaning on RL/sequence-modeling background is preferred.
 2. Derive a two-channel signal from the raw keypoints: **wrist speed** (frame-to-frame displacement magnitude of the wrist landmark, smoothed) and **hand aperture** (thumb-tip to index-tip distance, normalized by hand size, e.g. wrist-to-middle-MCP distance). Speed separates moving vs. still phases; aperture separates GRASP/HOLD from REACH/RELEASE. Segmenting raw 21-landmark data directly is harder and less interpretable.
 3. Run segmentation on each take's derived signal to produce boundaries, then assign one of the six labels to each segment (rule-based on speed/aperture levels is acceptable and more explainable than a learned classifier at this data size).
-4. Refine the ground truth captured during recording (`ground_truth/take_N.csv`) for at least Takes 1 and 2 by checking the audio-derived timestamps against the video frames. Takes 4 and 5 must also have ground truth, since they are the stress tests.
+4. Refine the ground truth captured during recording (`ground_truth/take_N.csv`) for at least Takes 1 and 2 by checking the labelled timestamps against the video frames. Takes 4 and 5 must also have ground truth, since they are the stress tests.
 
 **Testing & verification requirements (strict):**
 - Score detected segments against ground truth for every take that has it. Report at minimum: boundary timing error (mean absolute error in seconds), boundary recall within the stated tolerance, and per-label accuracy (fraction of frames given the correct label). Report clean takes, the Fast take, and the Hard-case take **separately** — never average them into one flattering number.

@@ -1,15 +1,15 @@
 {
   "take": "vid3",
-  "frames_extracted": 1071,
-  "frames_ffmpeg": 1071,
-  "nominal_fps": 29.99439880507842,
-  "last_timestamp_s": 35.673,
-  "mean_fps_from_timestamps": 29.994673842962463,
+  "frames_extracted": 775,
+  "frames_ffmpeg": 775,
+  "nominal_fps": 29.99419467199897,
+  "last_timestamp_s": 25.805,
+  "mean_fps_from_timestamps": 29.994187173028482,
   "timestamps_bumped_for_monotonicity": 0,
-  "frames_not_detected": 23,
-  "fraction_not_detected": 0.021475256769374416,
+  "frames_not_detected": 21,
+  "fraction_not_detected": 0.027096774193548386,
   "handedness_counts": {
-    "Right": 1047,
+    "Right": 753,
     "Left": 1
   }
 }

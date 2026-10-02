@@ -1,0 +1,22 @@
+# Dedicated Postgres for this project (landing zone for raw_keypoints).
+# Separate from the Research Digest Agent's DB on purpose: that container is tied to
+# that project's compose stack and lifecycle, and already owns port 5432.
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: motion
+      POSTGRES_PASSWORD: motion_pass
+      POSTGRES_DB: motion
+    ports:
+      - "5433:5432"
+    volumes:
+      - motion_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U motion -d motion"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  motion_pg_data:

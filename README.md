@@ -8,15 +8,47 @@ iPhone video → MediaPipe Hands → Postgres (raw) → Segmentation → Databri
 
 ## Status
 
-**Planning stage. No pipeline stage has been built or verified yet.** This README describes the intended design and the tests each stage must pass. Each section below should be updated to reflect reality as stages are completed, and no metric should be added here unless a saved test or output produced it.
+Phase 1 is complete (extraction, Postgres landing table, ground truth, overlay review, tests). Phases 2–5 are not started. No segmentation, accuracy, or timing metric exists yet.
 
 | Phase | Stage | Status |
 |---|---|---|
-| 1 | Capture & keypoint extraction | Not started |
+| 1 | Capture & keypoint extraction | **Complete.** 5 videos extracted, Postgres landing table loaded (row counts match), ground truth labelled for all 5 takes, overlays reviewed, 71 pytest checks pass. Known limitations in `NOTES.md` |
 | 2 | Segmentation | Not started |
 | 3 | Databricks processing | Not started |
 | 4 | Snowflake | Not started |
 | 5 | Tableau dashboard | Not started |
+
+### Phase 1: what exists (verified by `pytest`, run against real output)
+
+- Five recordings in `vids/vid1–5.mov`, converted to H.264 (`scripts/convert_videos.py`) and run through MediaPipe Hand Landmarker (`src/extract.py`, `scripts/extract_take.py`). Output: `data/raw/vidN_keypoints.csv` (one row per frame × 21 landmarks) and `vidN_meta.json`. Real per-frame timestamps are used (iPhone video is variable frame rate); undetected frames are kept as explicit NaN rows.
+- Fraction of frames with no hand detected (`data/raw/detection_report.csv`):
+
+| video | frames | not detected | sustained dropouts (s) |
+|---|---|---|---|
+| vid1 | 976 | 0.1% | none |
+| vid2 | 1015 | 3.0% | none |
+| vid3 | 775 | 2.7% | none |
+| vid4 | 281 | 5.7% | none |
+| vid5 | 913 | 6.4% | 9.34–9.80, 17.10–17.24 |
+
+- **Trimmed takes (data decision):** `vid3` and `vid4` originally ran longer and ended with footage that should not be in the dataset. `vid4.mov` was cropped by hand; `vid3.mov` was cut at the end only, to 25.805 s (775 frames, re-encoded HEVC 10-bit with the HLG colour tags kept, every frame timestamp identical to the original; checked). Neither was trimmed at the start, so timestamps still begin at 0. Untrimmed originals are kept locally in `vids_original/` (gitignored; the committed pre-trim versions are in git history). Their detection numbers changed (vid3 2.2%→2.7%, vid4 9.7%→5.7%, and the sustained dropouts previously listed for both are gone). For vid4 the old dropouts at 10.40 s and 14.77 s are past the new end; for vid3 the old 0.53–0.67 s dropout is inside the kept range and no longer appears after re-encoding. That vid3 change is **not yet explained** (likely the re-encode altering what the tracker sees on that frame range); worth a look at the overlay.
+- Local Postgres landing table `raw_keypoints` (`docker-compose.yml`, `sql/001_raw_keypoints.sql`, `src/db.py`, `scripts/load_postgres.py`). Row counts match the CSVs exactly for all five takes (20496 / 21315 / 16275 / 5901 / 19173). The loader is idempotent (replaces a take in one transaction) and the table's CHECK constraint enforces that detected frames have coordinates and undetected frames have none.
+- Overlay clips and contact sheets in `evidence/`. **Human review result:** vid1, vid2 and vid4 track well throughout; vid3 loses the hand on and off in the opening REST position; vid5 loses the hand at 9.335–9.835 s and 17.103–17.270 s because the hand is raised above the frame (physical absence, declared in `data/raw/out_of_frame_intervals.csv`, verified by `tests/test_data_gaps.py`). Details and consequences in `NOTES.md`.
+- Ground truth: `ground_truth/take_1–5.csv`, hand-labelled from the video frames (no audio cues), scoring tolerance 0.2 s. vid5 has four cycles. Mapping: vid1–3 clean, vid4 Fast, vid5 Hard case.
+- `Left` handedness on 49 of 3,834 detected frames (1.3%) of a right hand is a MediaPipe quirk (low-confidence, isolated frames in moving phases). Handedness is never used to filter frames. See `NOTES.md`.
+
+Run it:
+
+```
+docker-compose up -d db            # Postgres 16 on localhost:5433 (separate from other projects' DBs)
+python scripts/load_postgres.py    # init schema, load all takes, verify row counts
+pytest                             # needs the DB loaded; Postgres tests fail (not skip) if it is down
+```
+
+### Phase 1: remaining caveats
+
+- The confidence signal is per-frame `detected` / `handedness_score`; the Hand Landmarker gives no per-landmark visibility score.
+- The vid3 sustained dropout previously reported at 0.53–0.67 s disappeared after re-encoding; the reason is unexplained (`NOTES.md`).
 
 ## Goals
 
@@ -77,10 +109,10 @@ Aperture = distance between thumb-tip and index-fingertip keypoints. One cycle =
 
 **Ground truth capture**
 
-- Tap the table once at the start of every take (audio + visual sync point).
-- Say each phase aloud as it starts ("reach," "grab," "hold," "drop," "back," "rest"). The audio track is an approximate timeline; record the scoring tolerance used, since voice leads/lags motion.
+- Tap the table once at the start of every take (visual sync point).
+- Ground truth is read off the video frames (the overlay's `t=` stamp); audio cues are not used. The scoring tolerance is 0.2 s.
 - Right after Take 5, write down what happened in each cycle and the intended correct labels.
-- Save per-take ground truth to `ground_truth/take_N.csv` with columns `take, cycle, label, start_s, end_s, source` (`source` = `audio` or `manual`).
+- Save per-take ground truth to `ground_truth/take_N.csv` with columns `take, cycle, label, start_s, end_s, source` (`source` = `manual`: read off the video frames).
 - Before tearing down the setup, run MediaPipe on Take 1 and review the overlay. If fingers drop out during the grasp, fix angle/lighting and re-shoot immediately.
 
 **Processing steps**
@@ -107,7 +139,7 @@ Aperture = distance between thumb-tip and index-fingertip keypoints. One cycle =
    - **Wrist speed:** frame-to-frame wrist displacement, smoothed.
    - **Hand aperture:** thumb-tip to index-tip distance, normalized by hand size (wrist to middle-MCP).
 3. Segment each take, then assign labels with rule-based logic on speed/aperture levels (more explainable than a learned classifier at this data size).
-4. Refine `ground_truth/take_N.csv` for at least Takes 1 and 2 by checking audio-derived timestamps against video frames. Takes 4 and 5 also need ground truth, since they are the stress tests.
+4. Refine `ground_truth/take_N.csv` for at least Takes 1 and 2 by checking the labelled timestamps against video frames. Takes 4 and 5 also need ground truth, since they are the stress tests.
 
 **Required testing & verification**
 
@@ -168,21 +200,27 @@ Aperture = distance between thumb-tip and index-fingertip keypoints. One cycle =
 
 - [ ] Full pipeline runs end to end on at least one video, from raw footage to Tableau-ready export, without manual patching of intermediate files
 - [ ] Every number used in resume bullets or conversation has a test or saved output that produced it
-- [ ] `NOTES.md` documents at least one real limitation or failure mode
+- [x] `NOTES.md` documents at least one real limitation or failure mode (Phase 1 ones so far; extend after Phase 2)
 - [ ] This README matches what is actually built (no planned features described as done)
 
-## Planned Repository Layout
+## Repository Layout
 
-Not yet created; subject to change.
+Exists today:
 
 ```
-ground_truth/     per-take labels (take_N.csv)
-NOTES.md          limitations and failure analysis
-queries.sql       Snowflake analytical queries
+vids/             original iPhone recordings
+src/              extract.py, landmarks.py (MediaPipe), db.py (Postgres loader)
+scripts/          convert, extract, detection report, overlay/contact sheets, load_postgres
+sql/              Postgres DDL
+data/raw/         per-take keypoint CSVs, meta JSON, detection_report.csv
+evidence/         overlay clips and screenshots
+ground_truth/     take_N.csv hand-labelled phase boundaries
+NOTES.md          limitations and failure modes
 tests/            pytest suites
-README.md
-CLAUDE.md         project instructions for AI assistants
+docker-compose.yml
 ```
+
+`NOTES.md` holds limitations found so far. Not yet created: `queries.sql` (Snowflake), Phase 2–5 code.
 
 ## Ground Rules for AI Assistants
 
