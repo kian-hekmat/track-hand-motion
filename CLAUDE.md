@@ -2,11 +2,11 @@
 
 ## Project Overview
 
-A portfolio project demonstrating an end-to-end data pipeline: record real motion video → extract pose keypoints via computer vision → segment the resulting time series into discrete "intent" events → process the pipeline in Databricks → store structured results in Snowflake → visualize in Tableau.
+An end-to-end data pipeline: record real motion video → extract pose keypoints via computer vision → segment the resulting time series into discrete "intent" events → process the pipeline in Databricks → store structured results in Snowflake → visualize in Tableau.
 
-**Purpose:** Built for a specific job application (Intuitive Surgical, data team). The team's actual work: convert high-frequency robot-arm motion (position + time, tens of thousands of points over seconds) into discrete user-intent events, store/query the results, visualize in Tableau. This project mirrors that problem using recorded human motion video as a stand-in for robot-arm telemetry.
+**Purpose:** Convert high-frequency motion data (position + time, many points over seconds) into discrete intent events, store/query the results, and visualize them in Tableau. Recorded human motion video is the data source (keypoints extracted by computer vision rather than sensor telemetry).
 
-**Non-negotiable constraint:** every claim on the eventual resume/conversation must be true. Do not report a metric, an accuracy number, or a completed step that hasn't actually been verified by a test or a human look at the output. If a stage's output looks wrong, stop and say so — do not adjust it to "look better" without fixing the actual cause.
+**Non-negotiable constraint:** every claim made about the project must be true. Do not report a metric, an accuracy number, or a completed step that hasn't actually been verified by a test or a human look at the output. If a stage's output looks wrong, stop and say so — do not adjust it to "look better" without fixing the actual cause.
 
 ---
 
@@ -117,7 +117,7 @@ A portfolio project demonstrating an end-to-end data pipeline: record real motio
 
 **Testing & verification requirements (strict):**
 - Confirm row counts match between the pandas-based pipeline output (Phase 2) and the PySpark-based output for the same input video — if they diverge, find out why before proceeding; do not assume the Spark version is correct just because it ran without error.
-- Keep a note of one Spark-specific concept actually used and why (e.g., "used a window function partitioned by video_id, ordered by timestamp, to compute frame-to-frame deltas") — this becomes a real, specific talking point rather than "I used Databricks."
+- Keep a note of one Spark-specific concept actually used and why (e.g., "used a window function partitioned by video_id, ordered by timestamp, to compute frame-to-frame deltas") — a specific, true description of what was done rather than just "used Databricks."
 
 ---
 
@@ -151,15 +151,15 @@ A portfolio project demonstrating an end-to-end data pipeline: record real motio
 3. Combine into one dashboard with a short title/caption a non-technical stakeholder could understand without explanation.
 
 **Testing & verification requirements (strict):**
-- Show the dashboard to at least one person who hasn't seen the project before and ask them to describe what it shows, in their own words, without your explanation. If they can't, the dashboard isn't done — revise it. This is the actual bar he implied ("bringing it to Tableau for visualizations" is a communication task, not just a chart-rendering task).
+- Show the dashboard to at least one person who hasn't seen the project before and ask them to describe what it shows, in their own words, without your explanation. If they can't, the dashboard isn't done — revise it. Visualization is a communication task, not just a chart-rendering task.
 
 ---
 
 ## Final Integration Check (before calling the project "done")
 
 - [ ] Full pipeline runs end-to-end on at least one video from raw footage to final Tableau-ready export, without manual patching of intermediate files
-- [ ] Every metric or number used in resume bullets or conversation has a corresponding test or saved output that produced it — no number should exist only in memory
-- [ ] NOTES.md documents at least one real limitation or failure mode encountered (e.g., tracking confidence dropping during fast motion, or segmentation struggling on the hard-case video) — an honest limitation is a stronger interview story than a polished absence of problems
+- [ ] Every metric or number reported about the project has a corresponding test or saved output that produced it — no number should exist only in memory
+- [ ] NOTES.md documents at least one real limitation or failure mode encountered (e.g., tracking confidence dropping during fast motion, or segmentation struggling on the hard-case video) — an honest limitation is better than a polished absence of problems
 - [ ] README.md written describing the pipeline stages, matching what's actually built — no aspirational/planned features described as done
 
 ## Ground Rules for Any AI Assistant Working on This Project

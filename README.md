@@ -52,9 +52,9 @@ pytest                             # needs the DB loaded; Postgres tests fail (n
 
 ## Goals
 
-Portfolio project built for a data-team role at Intuitive Surgical. The team's real problem: convert high-frequency robot-arm motion (position + time, tens of thousands of points over a few seconds) into discrete user-intent events, then store, query, and visualize them. This project mirrors that problem, using recorded human hand motion as a stand-in for robot-arm telemetry.
+Convert high-frequency motion data (position + time, many points over a few seconds) into discrete intent events, then store, query, and visualize them. Recorded human hand motion serves as the data source.
 
-**Design choice to note:** self-recorded video of a hand is a deliberate substitute for real robot telemetry, which is not available.
+**Design choice to note:** the motion data comes from self-recorded video of a hand (keypoints extracted by computer vision), not from motion-sensor telemetry.
 
 **Non-negotiable constraint:** every claim made about this project must be true. No metric, accuracy number, or completed step is reported unless a test or a human review of the output verified it. If a stage's output looks wrong, the cause gets fixed (or documented), not tuned away.
 
@@ -199,7 +199,7 @@ Aperture = distance between thumb-tip and index-fingertip keypoints. One cycle =
 ## Final Integration Checklist
 
 - [ ] Full pipeline runs end to end on at least one video, from raw footage to Tableau-ready export, without manual patching of intermediate files
-- [ ] Every number used in resume bullets or conversation has a test or saved output that produced it
+- [ ] Every number reported about the project has a test or saved output that produced it
 - [x] `NOTES.md` documents at least one real limitation or failure mode (Phase 1 ones so far; extend after Phase 2)
 - [ ] This README matches what is actually built (no planned features described as done)
 

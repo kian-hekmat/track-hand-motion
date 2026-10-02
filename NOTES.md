@@ -72,4 +72,4 @@ the handedness label.
 - vid3 and vid4 were trimmed to remove unwanted footage at the end (see README). vid3: cut at
   25.805 s, frame timestamps identical to the original. vid4: cropped by hand before processing.
 - Hand Landmarker has no per-landmark confidence; "confidence" is the per-frame `detected` flag.
-- Mediapipe stands in for real robot telemetry (a deliberate substitution).
+- The motion data is extracted from video with MediaPipe rather than recorded by motion sensors (a deliberate choice).
