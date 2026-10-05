@@ -4,3 +4,6 @@ __pycache__/
 .DS_Store
 data/converted/
 vids_original/
+spark-warehouse/
+metastore_db/
+derby.log

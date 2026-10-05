@@ -312,3 +312,40 @@ rows equal the source CSVs and the Postgres count; manifest hashes match the fil
 Sanity check of the events against the recordings: the clean takes each yield exactly 19 events with the expected
 durations (HOLD ~2.7 s, GRASP ~1.7 s, REACH ~1.4 s, RETRACT ~0.9 s); the fast take yields 16 events with no
 RELEASE (known miss); vid5 yields 28 events vs 25 in the ground truth (includes the spurious 0.37 s REST).
+
+
+# Phase 3: Spark (Databricks)
+
+Status: **complete.** Verified on local Spark 3.5.5 (Java 11) and **run on Databricks** (Free Edition workspace, serverless
+compute, inputs in a Unity Catalog Volume): all 20 cells finished without error, all 12 checks passed. Evidence:
+`evidence/databricks_phase3.html`, parsed and asserted by `tests/test_databricks_evidence.py` (checks text, 101-row events table
+identical to the pandas events, correlation table, notebook code identical to the repo notebook). The Databricks runtime
+version was not captured in the export (compute type only). Run steps: `databricks/README.md`.
+
+## Scope decision (flagged)
+
+Reimplemented in PySpark: (A) signal derivation from raw keypoints (wrist speed, hand aperture) and (B) event
+construction and per-event aggregation. Not reimplemented: the gradient-boosting classifier and `ruptures` (no sensible
+Spark equivalent); the frozen model's per-frame labels are an input table. So the events are *built* in Spark from
+labels produced in Python; the segmentation itself is not run in Spark.
+
+## Spark concepts actually used (all present in `databricks/spark_transforms.py`)
+
+Window functions partitioned by take and ordered by frame (`lag`/`lead` central-difference velocity with the real,
+variable frame timestamps; `avg` over `rowsBetween(-2, 2)` smoothing); `groupBy/agg` with an exact `percentile`
+(per-take hand size) and a broadcast join; conditional aggregation to pivot 21 landmark rows into one row per frame;
+gaps-and-islands (`lag` + cumulative-sum window + `groupBy/agg` + `lead`) for events; a range join for per-event stats.
+
+## Local verification (`tests/test_spark.py`, notebook executed end to end)
+
+- Row counts: raw 83,160 = 21 x 3,960 frames; Spark frames and signals = pandas frames = `takes.n_frames` for every take.
+- Spark events = pandas events: 101 / 101, identical label, start and end for every event; `n_frames` identical; the events
+  cover every frame exactly once.
+- Undetected frames (vid1 1, vid2 30, vid3 21, vid4 16, vid5 58) are NULL in every signal column.
+- **A bug was caught by these checks:** central differences skip the centre frame, so an undetected frame initially got a
+  speed from its neighbours (silent interpolation), and the moving average did the same. Fixed by masking undetected frames.
+- Spark and pandas signals agree on the same motion but are **not identical** (different methods: central difference + 5-frame
+  moving average on native frames vs 30 Hz grid + Savitzky-Golay). Pearson r, speed / aperture: vid1 0.988 / 0.994, vid2
+  0.988 / 0.996, vid3 0.994 / 0.994, vid4 0.989 / **0.874**, vid5 0.981 / 0.993. The lower vid4 aperture value is the fast
+  take, where phases last only a few frames and a +/-2-frame moving average blurs them (a likely cause, not tested).
+- Spark hand size for vid1 (282.28344492244173 px) equals the pandas value (282.28344492244184 px) to 13 digits.

@@ -8,13 +8,13 @@ iPhone video → MediaPipe Hands → Postgres (raw) → Segmentation → Databri
 
 ## Status
 
-Phase 1 is complete (extraction, Postgres landing table, ground truth, overlay review, tests). Phase 2 is built, scored and improved (v2) but not yet signed off. Phases 3–5 are not started.
+Phase 1 is complete (extraction, Postgres landing table, ground truth, overlay review, tests). Phases 2 and 3 are complete. Phases 4–5 are not started.
 
 | Phase | Stage | Status |
 |---|---|---|
-| 1 | Capture & keypoint extraction | **Complete.** 5 videos extracted, Postgres landing table loaded (row counts match), ground truth labelled for all 5 takes, overlays reviewed, 180 pytest checks pass. Known limitations in `NOTES.md` |
-| 2 | Segmentation | **Built, scored, improved (v2); awaiting human review of `evidence/phase2_v2/` plots.** 180 pytest checks pass. Frame accuracy 0.84–0.97 under leave-one-take-out CV (v1: 0.45–0.78); caveats in `NOTES.md` |
-| 3 | Databricks processing | Not started |
+| 1 | Capture & keypoint extraction | **Complete.** 5 videos extracted, Postgres landing table loaded (row counts match), ground truth labelled for all 5 takes, overlays reviewed, 191 pytest checks pass. Known limitations in `NOTES.md` |
+| 2 | Segmentation | **Complete (v2); plots in `evidence/phase2_v2/` reviewed.** 191 pytest checks pass. Frame accuracy 0.84–0.97 under leave-one-take-out CV (v1: 0.45–0.78); caveats in `NOTES.md` |
+| 3 | Databricks processing | **Complete.** PySpark signal derivation + event construction; 12/12 checks passed locally and on Databricks (evidence saved); Spark events identical to pandas events (101/101). See `databricks/README.md`, `NOTES.md` |
 | 4 | Snowflake | Not started |
 | 5 | Tableau dashboard | Not started |
 
@@ -237,6 +237,7 @@ src/              extract.py, landmarks.py (MediaPipe), db.py (Postgres loader),
 scripts/          convert, extract, detection report, overlay/contact sheets, load_postgres
 sql/              Postgres DDL
 data/raw/         per-take keypoint CSVs, meta JSON, detection_report.csv
+databricks/       PySpark transforms, generated Databricks notebook, run instructions
 models/           frozen segmenter (joblib + json metadata)
 data/export/      tables for Databricks / Snowflake / Tableau + manifest.json
 data/segments/    Phase 2: v1 events + params.json; v2_pelt/v2_grammar/v2_argmax (cross-validated); history.csv (run log); cv_selection.json
@@ -248,7 +249,7 @@ tests/            pytest suites
 docker-compose.yml
 ```
 
-`NOTES.md` holds limitations found so far. Not yet created: `queries.sql` (Snowflake), Phase 3–5 code.
+`NOTES.md` holds limitations found so far. Not yet created: `queries.sql` (Snowflake), Phase 4–5 code.
 
 ## Ground Rules for AI Assistants
 
