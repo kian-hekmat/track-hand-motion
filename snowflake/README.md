@@ -12,6 +12,7 @@ a credential from me; do not send me passwords or keys.
 | `02_load.sql` | `COPY INTO` from the stage for each table (generated) |
 | `03_verify.sql` | 46 row-count and integrity checks; every row must say `PASS` (generated from the export manifest) |
 | `04_fingerprint.sql` | **optional** value-level check (180 sums and counts, per table and take) that catches wrong values that row counts miss |
+| `sanity_check_checklist.md` | the human sanity check of query results against the videos: exact timestamps to scrub to, with fill-in columns (generated) |
 | `../queries.sql` | the 5 analytical queries (includes `LAG` and `LEAD` window functions) |
 | `expected_results/` | what each script/query should return, produced locally from the same data |
 | `actual_results/` | where you save what Snowflake returns |

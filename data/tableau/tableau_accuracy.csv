@@ -1,0 +1,6 @@
+take,take_label,take_group,percent_frames_matching_human_labels
+vid1,Take 1 (clean),clean,94.9
+vid2,Take 2 (clean),clean,96.6
+vid3,Take 3 (clean),clean,96.6
+vid4,Take 4 (fast),fast,91.1
+vid5,Take 5 (hard),hard,84.1

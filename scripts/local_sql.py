@@ -21,6 +21,12 @@ def connect() -> duckdb.DuckDBPyConnection:
     return con
 
 
+def create_tableau_views(con) -> None:
+    sql = (SF / "05_tableau_views.sql").read_text()
+    for stmt in re.findall(r"CREATE OR REPLACE VIEW .*?;", sql, flags=re.S):
+        con.execute(stmt)
+
+
 def run_file(con, path: Path):
     """Execute the single (last) SELECT in a script, ignoring USE statements."""
     sql = "\n".join(l for l in path.read_text().splitlines() if not l.strip().upper().startswith("USE "))

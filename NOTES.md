@@ -407,5 +407,24 @@ never detected, so the events table cannot show that ambiguity. The query measur
 - The first load attempt left six of seven tables empty (only `takes` appears in `COPY_HISTORY`). The cause was not recorded. In the
   diagnostic script only statements 3 and 5 have run on Snowflake.
 - Snowflake edition, region and warehouse size actually used were not captured.
-- The spec asks for a human sanity check of query output against the videos. The assistant checked results against the known
-  recording facts above; confirmation by the person who watched the videos is the remaining human step.
+- Human sanity check against the videos (spec requirement): done using `snowflake/sanity_check_checklist.md` (specific timestamps per
+  query, generated from the data). The person who watched the videos reported in chat that everything matches the expected results,
+  including the known explanations (missing fast-take RELEASE, vid5 occlusion-cycle flips, vid5 early GRASP). The filled-in
+  checklist itself was not saved, so this is a recorded verbal sign-off, not a document.
+
+
+# Phase 5: Tableau
+
+Status: **data prepared and tested; the dashboard has not been built yet.** Steps: `tableau/README.md`.
+
+- Tableau Public (the free edition) cannot connect to Snowflake, to the author's knowledge (not verified). The Tableau-ready tables are therefore CSVs produced
+  by the SQL views in `snowflake/05_tableau_views.sql`, run locally in DuckDB (`scripts/make_tableau_tables.py`). The same views can be run in Snowflake and the
+  exports compared with `scripts/compare_snowflake_results.py` (optional; not run yet).
+- Tables: `tableau_phases.csv` (202 rows: 101 detected + 101 hand-labelled segments), `tableau_signals.csv` (3,960 samples), `tableau_accuracy.csv` (5).
+  Plain-language phase names (At rest, Reaching, Grasping, Holding, Releasing, Returning), a fixed phase order and take labels (Take 1 (clean) ... Take 5 (hard)) are
+  in the data. `tests/test_tableau_tables.py` checks: segments contiguous and covering each take for both sources, row counts equal the sources, name mapping complete,
+  accuracy equals the scored frame accuracy, speed empty exactly where the hand was out of view, and the CSVs are not stale.
+- `tableau/target_dashboard.png` was drawn with matplotlib from the same tables, as a visual target. It is not a Tableau output.
+- Known data features to expect on the dashboard: a short speed spike in the first 0.1 s of takes 1 and 4 (cause not investigated: the table tap or a smoothing-filter
+  edge effect), and two gaps in take 5's speed line where the hand left the frame.
+- Still required by the spec: the built dashboard and a first-time-viewer test (`tableau/user_test.md`). Neither exists yet.

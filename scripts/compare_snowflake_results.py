@@ -12,7 +12,7 @@ import pandas as pd
 
 SF = Path(__file__).resolve().parents[1] / "snowflake"
 TOLERANCE = {"fingerprint.csv": 2e-4}   # rounded sums of up to 83k floats; everything else must match to 1e-6
-OPTIONAL = {"fingerprint.csv"}          # 04_fingerprint.sql is an extra check; its absence is reported, not a failure
+OPTIONAL = {"fingerprint.csv", "tableau_phases.csv", "tableau_signals.csv", "tableau_accuracy.csv"}   # extra checks (04 fingerprint, 05 Tableau views); absence is reported, not a failure
 
 
 def normalise(df: pd.DataFrame) -> pd.DataFrame:
