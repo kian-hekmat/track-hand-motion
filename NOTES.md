@@ -279,3 +279,36 @@ vid5 per cycle (frame acc / boundaries true-pred-matched): cycle 1 hesitation 0.
 - **Boundaries still come from ruptures PELT** (committed approach), now on classifier outputs. A per-frame
   argmax without PELT (`v2_argmax`) scores about the same or slightly worse, so PELT is not carrying the result.
 - Small hyperparameter grids (2 classifier families x 5 penalties); tolerance unchanged at 0.10 s.
+
+
+# Frozen model and exported tables
+
+## Freeze (`scripts/freeze_model.py`, `models/segmenter_v2.{joblib,json}`)
+
+- **Model:** gradient boosting on the 61 features, trained on all five takes plus their 1.5x/2x/3x time-compressed
+  copies. File hash, library versions, feature columns, training takes and settings are recorded in
+  `models/segmenter_v2.json`; `tests/test_frozen_model.py` fails if the file is altered or the features change.
+- **PELT penalty = 1.0**, chosen as the best mean objective over leave-one-take-out predictions of all five takes.
+  The objective is flat there (mean 0.850-0.857 for penalties 0.5-2.0), so the choice is not sensitive.
+  Because all five takes took part in that choice, scores on them are mildly optimistic; a newly recorded take is
+  a genuine hold-out.
+- **Canonical events** (`data/segments/v2_frozen_oof/`): each take's events come from the leave-one-out model that
+  never saw that take, decoded with the frozen penalty. Scored as `v2_frozen_oof` in `history.csv`: frame accuracy
+  0.949 / 0.966 / 0.966 / 0.911 / 0.841 for vid1-5 (nested CV had 0.946 / 0.967 / 0.964 / 0.911 / 0.841).
+- **New recordings:** `src/final.py::segment_new_take(take)` runs the frozen model on any take that has been
+  converted and extracted into `data/raw/`. Nothing is retrained.
+
+## Exported tables (`scripts/export_tables.py` -> `data/export/`)
+
+`events` (101 rows), `signals` (3,960, one per 30 Hz sample, with predicted and ground-truth label), `frames`
+(3,960, one per video frame: wrist and thumb/index tip positions, detection flag, handedness), `ground_truth`
+(101), `takes` (5), `scores` (10) as CSV, and `raw_keypoints.parquet` (83,160 rows = 3,960 frames x 21 landmarks,
+read straight from the Postgres landing table). `manifest.json` has row counts and SHA-256 per file for the
+Spark and Snowflake row-count checks.
+
+Checked by `tests/test_export.py`: events partition every video frame exactly once (`n_frames` sums to the take's
+frame count), are contiguous and start at 0; `signals` labels agree with events and ground truth; raw keypoint
+rows equal the source CSVs and the Postgres count; manifest hashes match the files.
+Sanity check of the events against the recordings: the clean takes each yield exactly 19 events with the expected
+durations (HOLD ~2.7 s, GRASP ~1.7 s, REACH ~1.4 s, RETRACT ~0.9 s); the fast take yields 16 events with no
+RELEASE (known miss); vid5 yields 28 events vs 25 in the ground truth (includes the spurious 0.37 s REST).

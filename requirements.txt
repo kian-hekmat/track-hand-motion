@@ -7,3 +7,7 @@ pyarrow==25.0.1
 pytest==9.1.1
 psycopg2-binary==2.9.10
 ruptures==1.1.10
+scikit-learn==1.9.1
+scipy==1.17.1
+matplotlib==3.11.2
+joblib==1.6.0

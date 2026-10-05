@@ -12,8 +12,8 @@ Phase 1 is complete (extraction, Postgres landing table, ground truth, overlay r
 
 | Phase | Stage | Status |
 |---|---|---|
-| 1 | Capture & keypoint extraction | **Complete.** 5 videos extracted, Postgres landing table loaded (row counts match), ground truth labelled for all 5 takes, overlays reviewed, 168 pytest checks pass. Known limitations in `NOTES.md` |
-| 2 | Segmentation | **Built, scored, improved (v2); awaiting human review of `evidence/phase2_v2/` plots.** 168 pytest checks pass. Frame accuracy 0.84–0.97 under leave-one-take-out CV (v1: 0.45–0.78); caveats in `NOTES.md` |
+| 1 | Capture & keypoint extraction | **Complete.** 5 videos extracted, Postgres landing table loaded (row counts match), ground truth labelled for all 5 takes, overlays reviewed, 180 pytest checks pass. Known limitations in `NOTES.md` |
+| 2 | Segmentation | **Built, scored, improved (v2); awaiting human review of `evidence/phase2_v2/` plots.** 180 pytest checks pass. Frame accuracy 0.84–0.97 under leave-one-take-out CV (v1: 0.45–0.78); caveats in `NOTES.md` |
 | 3 | Databricks processing | Not started |
 | 4 | Snowflake | Not started |
 | 5 | Tableau dashboard | Not started |
@@ -62,6 +62,12 @@ Every take is scored by a model trained on the *other four* takes only. Toleranc
 Known problems: RELEASE in the fast take is still missed (0.13 s segments); vid5's long pause before grasping is read as GRASP early; the occlusion cycle is noisy. These numbers are optimistic: the design was informed by all five takes and vid1–3 come from one session (see `NOTES.md`). A newly recorded take would give an unbiased check.
 
 Run: `python scripts/cv_segmentation.py` (several minutes), then `python scripts/score_segmentation.py --events-dir data/segments/v2_pelt --version v2_pelt` and `python scripts/plot_segmentation.py --events-dir data/segments/v2_pelt --out-subdir phase2_v2`. v1: `scripts/run_segmentation.py`.
+
+### Phase 2: frozen model and exported tables
+
+The v2 model is frozen in `models/segmenter_v2.joblib` (+ `.json` with hash, training takes, penalty and feature columns). The canonical events are out-of-fold (each take predicted by a model that never saw it; scored as `v2_frozen_oof`: frame accuracy 0.95 / 0.97 / 0.97 / 0.91 / 0.84 for vid1–5). `data/export/` holds the tables for the next phases (`events`, `signals`, `frames`, `ground_truth`, `takes`, `scores`, `raw_keypoints.parquet`) with a `manifest.json` of row counts and hashes. New takes can be segmented with `src.final.segment_new_take(take)`; nothing is retrained. Details: `NOTES.md`.
+
+Run: `python scripts/freeze_model.py && python scripts/score_segmentation.py --events-dir data/segments/v2_frozen_oof --version v2_frozen_oof && python scripts/export_tables.py`.
 
 ### Phase 1: remaining caveats
 
@@ -231,6 +237,8 @@ src/              extract.py, landmarks.py (MediaPipe), db.py (Postgres loader),
 scripts/          convert, extract, detection report, overlay/contact sheets, load_postgres
 sql/              Postgres DDL
 data/raw/         per-take keypoint CSVs, meta JSON, detection_report.csv
+models/           frozen segmenter (joblib + json metadata)
+data/export/      tables for Databricks / Snowflake / Tableau + manifest.json
 data/segments/    Phase 2: v1 events + params.json; v2_pelt/v2_grammar/v2_argmax (cross-validated); history.csv (run log); cv_selection.json
 docs/             phase2_roadmap.md
 evidence/         overlay clips and screenshots

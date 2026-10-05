@@ -1,0 +1,152 @@
+{
+  "created": "2026-10-05",
+  "model_version": "v2_frozen_oof",
+  "model_sha256": "c1bbbe4fe90f95b4773b94acf8577b704ccac3f12c9a403893ffce11328abf8b",
+  "files": {
+    "events.csv": {
+      "rows": 101,
+      "columns": [
+        "take",
+        "group",
+        "event_idx",
+        "label",
+        "start_s",
+        "end_s",
+        "duration_s",
+        "n_frames",
+        "mean_speed",
+        "mean_aperture",
+        "mean_confidence",
+        "frac_missing",
+        "model_version"
+      ],
+      "sha256": "5ce4845dcc212804c0813fca388fbeb637f02bcfb17bdf2b4f671053e4bff711"
+    },
+    "signals.csv": {
+      "rows": 3960,
+      "columns": [
+        "take",
+        "t_s",
+        "speed",
+        "aperture",
+        "aperture_slope",
+        "progress",
+        "progress_rate",
+        "offaxis",
+        "offaxis_rate",
+        "height",
+        "vertical_velocity",
+        "missing",
+        "interpolated",
+        "predicted_label",
+        "ground_truth_label"
+      ],
+      "sha256": "d18a946bc26dedc1e886d2617b715db45a8f742bbf2b157771388f7fd791ee59"
+    },
+    "frames.csv": {
+      "rows": 3960,
+      "columns": [
+        "take",
+        "frame_idx",
+        "t_s",
+        "detected",
+        "wrist_x",
+        "wrist_y",
+        "thumb_tip_x",
+        "thumb_tip_y",
+        "index_tip_x",
+        "index_tip_y",
+        "handedness",
+        "handedness_score"
+      ],
+      "sha256": "55e89f348de6941395c1a2b7d36320985c19de1b49706ce27641809891d43b2d"
+    },
+    "ground_truth.csv": {
+      "rows": 101,
+      "columns": [
+        "take",
+        "cycle",
+        "label",
+        "start_s",
+        "end_s",
+        "source"
+      ],
+      "sha256": "3fb8db9f8f7b893c58b7da36092cce8d405ff8a188dad1d80bdc06de9c74a508"
+    },
+    "takes.csv": {
+      "rows": 5,
+      "columns": [
+        "take",
+        "group",
+        "n_frames",
+        "duration_s",
+        "mean_fps",
+        "frames_not_detected",
+        "fraction_not_detected",
+        "left_handedness_frames",
+        "n_ground_truth_segments",
+        "n_events"
+      ],
+      "sha256": "d428e73641a497263362f3cf6f1dc156e919023445424c2689a4667c0419bfe3"
+    },
+    "scores.csv": {
+      "rows": 10,
+      "columns": [
+        "take",
+        "group",
+        "tolerance_s",
+        "scope",
+        "n_true",
+        "n_pred",
+        "n_matched",
+        "recall",
+        "precision",
+        "mae_matched_s",
+        "missed",
+        "false",
+        "chance_uniform_recall",
+        "chance_uniform_precision",
+        "chance_random_recall",
+        "chance_random_precision",
+        "n_frames",
+        "n_unlabelled",
+        "frame_accuracy",
+        "acc_REST",
+        "n_REST",
+        "acc_REACH",
+        "n_REACH",
+        "acc_GRASP",
+        "n_GRASP",
+        "acc_HOLD",
+        "n_HOLD",
+        "acc_RELEASE",
+        "n_RELEASE",
+        "acc_RETRACT",
+        "n_RETRACT",
+        "balanced_accuracy",
+        "majority_baseline",
+        "tolerant_accuracy"
+      ],
+      "sha256": "ab46e88047a89e9b1b00ab35cacb88d55d96a0e57ac89d62304e682127ca8fb3"
+    },
+    "raw_keypoints.parquet": {
+      "rows": 83160,
+      "columns": [
+        "take",
+        "frame_idx",
+        "timestamp_ms",
+        "keypoint_id",
+        "x",
+        "y",
+        "z",
+        "world_x",
+        "world_y",
+        "world_z",
+        "detected",
+        "handedness",
+        "handedness_score"
+      ],
+      "sha256": "ac6e41b58650f811628bb7cbda6f85fe8ca190e5bf0ce0303e1e3fc974d21227"
+    }
+  }
+}

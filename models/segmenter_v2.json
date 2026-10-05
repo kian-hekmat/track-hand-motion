@@ -1,0 +1,181 @@
+{
+  "name": "segmenter_v2",
+  "created": "2026-10-05",
+  "git_commit_at_freeze": "235c930",
+  "classifier": "HistGradientBoostingClassifier(max_depth=3, max_iter=150, learning_rate=0.08, l2_regularization=1.0, class-balanced)",
+  "train_takes": [
+    "vid1",
+    "vid2",
+    "vid3",
+    "vid4",
+    "vid5"
+  ],
+  "augmentation_time_factors": [
+    1.0,
+    1.5,
+    2.0,
+    3.0
+  ],
+  "pelt_pen": 1.0,
+  "posterior_smooth": 5,
+  "min_size_s": 0.1,
+  "smooth_win": 5,
+  "boundary_tolerance_s": 0.1,
+  "feature_columns": [
+    "speed",
+    "speed_m3",
+    "speed_m8",
+    "speed_m20",
+    "speed_m45",
+    "aperture",
+    "aperture_m3",
+    "aperture_m8",
+    "aperture_m20",
+    "aperture_m45",
+    "aperture_slope",
+    "aperture_slope_m3",
+    "aperture_slope_m8",
+    "aperture_slope_m20",
+    "aperture_slope_m45",
+    "p",
+    "p_m3",
+    "p_m8",
+    "p_m20",
+    "p_m45",
+    "dp",
+    "dp_m3",
+    "dp_m8",
+    "dp_m20",
+    "dp_m45",
+    "q",
+    "q_m3",
+    "q_m8",
+    "q_m20",
+    "q_m45",
+    "dq",
+    "dq_m3",
+    "dq_m8",
+    "dq_m20",
+    "dq_m45",
+    "ydev",
+    "ydev_m3",
+    "ydev_m8",
+    "ydev_m20",
+    "ydev_m45",
+    "dy",
+    "dy_m3",
+    "dy_m8",
+    "dy_m20",
+    "dy_m45",
+    "aperture_trend5",
+    "aperture_trend15",
+    "aperture_trend45",
+    "ydev_trend5",
+    "ydev_trend15",
+    "ydev_trend45",
+    "p_trend5",
+    "p_trend15",
+    "p_trend45",
+    "speed_trend5",
+    "speed_trend15",
+    "speed_trend45",
+    "speed_max8",
+    "speed_std8",
+    "ap_min20",
+    "missing"
+  ],
+  "model_sha256": "c1bbbe4fe90f95b4773b94acf8577b704ccac3f12c9a403893ffce11328abf8b",
+  "pen_selection": {
+    "method": "best mean objective over LOTO predictions of all five takes",
+    "grid": {
+      "0.25": {
+        "mean": 0.8369102779750556,
+        "per_take": {
+          "vid1": 0.8051571038251366,
+          "vid2": 0.8984400656814451,
+          "vid3": 0.8359498207885305,
+          "vid4": 0.8949131253925058,
+          "vid5": 0.7500912741876598
+        }
+      },
+      "0.5": {
+        "mean": 0.8559745228023099,
+        "per_take": {
+          "vid1": 0.806181693989071,
+          "vid2": 0.9004105090311987,
+          "vid3": 0.9244444444444444,
+          "vid4": 0.9020305631149257,
+          "vid5": 0.7468054034319095
+        }
+      },
+      "1.0": {
+        "mean": 0.8568543346579132,
+        "per_take": {
+          "vid1": 0.7799408014571949,
+          "vid2": 0.9272030651340997,
+          "vid3": 0.9276702508960573,
+          "vid4": 0.8797584384772996,
+          "vid5": 0.7696991173249146
+        }
+      },
+      "1.5": {
+        "mean": 0.8504338341856794,
+        "per_take": {
+          "vid1": 0.7778916211293261,
+          "vid2": 0.9262178434592228,
+          "vid3": 0.8986021505376345,
+          "vid4": 0.8797584384772996,
+          "vid5": 0.7696991173249146
+        }
+      },
+      "2.0": {
+        "mean": 0.8520536500842413,
+        "per_take": {
+          "vid1": 0.7778916211293261,
+          "vid2": 0.9267104542966611,
+          "vid3": 0.8986021505376345,
+          "vid4": 0.8797584384772996,
+          "vid5": 0.7773055859802847
+        }
+      },
+      "3.0": {
+        "mean": 0.8493318761610904,
+        "per_take": {
+          "vid1": 0.7778916211293261,
+          "vid2": 0.9267104542966611,
+          "vid3": 0.8986021505376345,
+          "vid4": 0.8797584384772996,
+          "vid5": 0.7636967163645305
+        }
+      },
+      "4.0": {
+        "mean": 0.8479196984168367,
+        "per_take": {
+          "vid1": 0.7778916211293261,
+          "vid2": 0.9267104542966611,
+          "vid3": 0.8986021505376345,
+          "vid4": 0.8797584384772996,
+          "vid5": 0.7566358276432616
+        }
+      },
+      "8.0": {
+        "mean": 0.8329791835759728,
+        "per_take": {
+          "vid1": 0.7778916211293261,
+          "vid2": 0.9078817733990148,
+          "vid3": 0.8986021505376345,
+          "vid4": 0.8404137010676157,
+          "vid5": 0.7401066717462736
+        }
+      }
+    }
+  },
+  "libraries": {
+    "python": "3.12.14",
+    "scikit-learn": "1.9.1",
+    "ruptures": "v1.1.10",
+    "numpy": "1.26.4",
+    "pandas": "3.0.6"
+  },
+  "note": "Trained on all five takes. A take not in train_takes is a genuine hold-out. The frozen penalty was chosen using all five takes' leave-one-out predictions, so scores on those five are mildly optimistic."
+}
