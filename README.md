@@ -8,12 +8,12 @@ iPhone video → MediaPipe Hands → Postgres (raw) → Segmentation → Databri
 
 ## Status
 
-Phase 1 is complete (extraction, Postgres landing table, ground truth, overlay review, tests). Phases 2–5 are not started. No segmentation, accuracy, or timing metric exists yet.
+Phase 1 is complete (extraction, Postgres landing table, ground truth, overlay review, tests). Phase 2 is built, scored and improved (v2) but not yet signed off. Phases 3–5 are not started.
 
 | Phase | Stage | Status |
 |---|---|---|
-| 1 | Capture & keypoint extraction | **Complete.** 5 videos extracted, Postgres landing table loaded (row counts match), ground truth labelled for all 5 takes, overlays reviewed, 71 pytest checks pass. Known limitations in `NOTES.md` |
-| 2 | Segmentation | Not started |
+| 1 | Capture & keypoint extraction | **Complete.** 5 videos extracted, Postgres landing table loaded (row counts match), ground truth labelled for all 5 takes, overlays reviewed, 168 pytest checks pass. Known limitations in `NOTES.md` |
+| 2 | Segmentation | **Built, scored, improved (v2); awaiting human review of `evidence/phase2_v2/` plots.** 168 pytest checks pass. Frame accuracy 0.84–0.97 under leave-one-take-out CV (v1: 0.45–0.78); caveats in `NOTES.md` |
 | 3 | Databricks processing | Not started |
 | 4 | Snowflake | Not started |
 | 5 | Tableau dashboard | Not started |
@@ -34,7 +34,7 @@ Phase 1 is complete (extraction, Postgres landing table, ground truth, overlay r
 - **Trimmed takes (data decision):** `vid3` and `vid4` originally ran longer and ended with footage that should not be in the dataset. `vid4.mov` was cropped by hand; `vid3.mov` was cut at the end only, to 25.805 s (775 frames, re-encoded HEVC 10-bit with the HLG colour tags kept, every frame timestamp identical to the original; checked). Neither was trimmed at the start, so timestamps still begin at 0. Untrimmed originals are kept locally in `vids_original/` (gitignored; the committed pre-trim versions are in git history). Their detection numbers changed (vid3 2.2%→2.7%, vid4 9.7%→5.7%, and the sustained dropouts previously listed for both are gone). For vid4 the old dropouts at 10.40 s and 14.77 s are past the new end; for vid3 the old 0.53–0.67 s dropout is inside the kept range and no longer appears after re-encoding. That vid3 change is **not yet explained** (likely the re-encode altering what the tracker sees on that frame range); worth a look at the overlay.
 - Local Postgres landing table `raw_keypoints` (`docker-compose.yml`, `sql/001_raw_keypoints.sql`, `src/db.py`, `scripts/load_postgres.py`). Row counts match the CSVs exactly for all five takes (20496 / 21315 / 16275 / 5901 / 19173). The loader is idempotent (replaces a take in one transaction) and the table's CHECK constraint enforces that detected frames have coordinates and undetected frames have none.
 - Overlay clips and contact sheets in `evidence/`. **Human review result:** vid1, vid2 and vid4 track well throughout; vid3 loses the hand on and off in the opening REST position; vid5 loses the hand at 9.335–9.835 s and 17.103–17.270 s because the hand is raised above the frame (physical absence, declared in `data/raw/out_of_frame_intervals.csv`, verified by `tests/test_data_gaps.py`). Details and consequences in `NOTES.md`.
-- Ground truth: `ground_truth/take_1–5.csv`, hand-labelled from the video frames (no audio cues), scoring tolerance 0.2 s. vid5 has four cycles. Mapping: vid1–3 clean, vid4 Fast, vid5 Hard case.
+- Ground truth: `ground_truth/take_1–5.csv`, hand-labelled from the video frames (no audio cues), scoring tolerance 0.10 s. vid5 has four cycles. Mapping: vid1–3 clean, vid4 Fast, vid5 Hard case.
 - `Left` handedness on 49 of 3,834 detected frames (1.3%) of a right hand is a MediaPipe quirk (low-confidence, isolated frames in moving phases). Handedness is never used to filter frames. See `NOTES.md`.
 
 Run it:
@@ -44,6 +44,24 @@ docker-compose up -d db            # Postgres 16 on localhost:5433 (separate fro
 python scripts/load_postgres.py    # init schema, load all takes, verify row counts
 pytest                             # needs the DB loaded; Postgres tests fail (not skip) if it is down
 ```
+
+### Phase 2: segmentation (built, scored, improved)
+
+**v1 (rules + PELT on raw speed/aperture)** was the baseline; **v2 (learned frame classifier + PELT on phase probabilities)** replaces it as the working result. Details, protocol, failure modes and disclosures: `NOTES.md`. Code: `src/signals.py`, `src/features.py`, `src/learned.py`, `src/segment.py` (v1), `src/score.py`, `src/evaluate.py`; scripts `cv_segmentation.py` (nested leave-one-take-out CV), `score_segmentation.py`, `plot_segmentation.py`.
+
+Every take is scored by a model trained on the *other four* takes only. Tolerance 0.10 s. Reported per group, never pooled; numbers from `data/segments/history.csv` (every scored version is logged there):
+
+| take | group | frame acc v1 → v2 | balanced acc v2 | boundary recall v1 → v2 | precision v2 | MAE matched (s) v2 |
+|---|---|---|---|---|---|---|
+| vid1 | clean | 0.68 → **0.95** | 0.93 | 0.50 → 0.67 | 0.67 | 0.042 |
+| vid2 | clean | 0.78 → **0.97** | 0.96 | 0.78 → 0.83 | 0.83 | 0.048 |
+| vid3 | clean | 0.59 → **0.96** | 0.96 | 0.61 → 0.83 | 0.83 | 0.031 |
+| vid4 | fast | 0.45 → **0.91** | 0.79 | 0.33 → 0.78 | 0.93 | 0.031 |
+| vid5 | hard | 0.54 → **0.84** | 0.83 | 0.54 → 0.75 | 0.67 | 0.035 |
+
+Known problems: RELEASE in the fast take is still missed (0.13 s segments); vid5's long pause before grasping is read as GRASP early; the occlusion cycle is noisy. These numbers are optimistic: the design was informed by all five takes and vid1–3 come from one session (see `NOTES.md`). A newly recorded take would give an unbiased check.
+
+Run: `python scripts/cv_segmentation.py` (several minutes), then `python scripts/score_segmentation.py --events-dir data/segments/v2_pelt --version v2_pelt` and `python scripts/plot_segmentation.py --events-dir data/segments/v2_pelt --out-subdir phase2_v2`. v1: `scripts/run_segmentation.py`.
 
 ### Phase 1: remaining caveats
 
@@ -110,7 +128,7 @@ Aperture = distance between thumb-tip and index-fingertip keypoints. One cycle =
 **Ground truth capture**
 
 - Tap the table once at the start of every take (visual sync point).
-- Ground truth is read off the video frames (the overlay's `t=` stamp); audio cues are not used. The scoring tolerance is 0.2 s.
+- Ground truth is read off the video frames (the overlay's `t=` stamp); audio cues are not used. The scoring tolerance is 0.10 s (3 frames), chosen before any segmentation was run.
 - Right after Take 5, write down what happened in each cycle and the intended correct labels.
 - Save per-take ground truth to `ground_truth/take_N.csv` with columns `take, cycle, label, start_s, end_s, source` (`source` = `manual`: read off the video frames).
 - Before tearing down the setup, run MediaPipe on Take 1 and review the overlay. If fingers drop out during the grasp, fix angle/lighting and re-shoot immediately.
@@ -209,10 +227,12 @@ Exists today:
 
 ```
 vids/             original iPhone recordings
-src/              extract.py, landmarks.py (MediaPipe), db.py (Postgres loader)
+src/              extract.py, landmarks.py (MediaPipe), db.py (Postgres loader), signals/features/learned/segment/score/evaluate/ground_truth (Phase 2)
 scripts/          convert, extract, detection report, overlay/contact sheets, load_postgres
 sql/              Postgres DDL
 data/raw/         per-take keypoint CSVs, meta JSON, detection_report.csv
+data/segments/    Phase 2: v1 events + params.json; v2_pelt/v2_grammar/v2_argmax (cross-validated); history.csv (run log); cv_selection.json
+docs/             phase2_roadmap.md
 evidence/         overlay clips and screenshots
 ground_truth/     take_N.csv hand-labelled phase boundaries
 NOTES.md          limitations and failure modes
@@ -220,7 +240,7 @@ tests/            pytest suites
 docker-compose.yml
 ```
 
-`NOTES.md` holds limitations found so far. Not yet created: `queries.sql` (Snowflake), Phase 2–5 code.
+`NOTES.md` holds limitations found so far. Not yet created: `queries.sql` (Snowflake), Phase 3–5 code.
 
 ## Ground Rules for AI Assistants
 

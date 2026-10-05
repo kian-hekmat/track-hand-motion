@@ -1,0 +1,30 @@
+{
+  "params": {
+    "smooth_win": 5,
+    "pen": 7.1917125256386,
+    "speed_scale": 1.0,
+    "ap_scale": 0.8,
+    "min_size_s": 0.1,
+    "still_thr": 0.7686120792223263,
+    "moving_thr": 1.8474126185843054,
+    "p_home": 0.30855223367010287,
+    "p_far": 0.643912989325173,
+    "ap_closed": 0.8321638250805338,
+    "ap_delta": 0.24334939809342243,
+    "dp_min": 0.03928716354164684
+  },
+  "tuned_on": [
+    "vid1",
+    "vid2"
+  ],
+  "objective": 0.7042689827683172,
+  "per_take_objective": {
+    "vid1": 0.6304865150713908,
+    "vid2": 0.7780514504652436
+  },
+  "n_trials": 800,
+  "seed": 20251002,
+  "boundary_tolerance_s": 0.1,
+  "date": "2026-10-02",
+  "note": "vid3, vid4, vid5 were not used in any way during tuning."
+}

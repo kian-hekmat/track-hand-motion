@@ -15,3 +15,20 @@ MIN_TRACKING_CONFIDENCE = 0.5
 
 # Frame-count test tolerance (fraction of expected frames)
 FRAME_COUNT_TOLERANCE = 0.02
+
+# ---- Phase 2 (segmentation) ----
+GROUND_TRUTH_DIR = ROOT / "ground_truth"
+SEGMENTS_DIR = ROOT / "data" / "segments"
+FRAME_W, FRAME_H = 1920, 1080        # all takes verified 1920x1080 (landscape)
+GRID_HZ = 30.0                       # uniform grid for segmentation (nominal iPhone fps)
+MAX_INTERP_FRAMES = 2                # gaps <= this many frames are interpolated (flagged)
+
+# Boundary-match tolerance. Fixed BEFORE any segmentation was run. 0.10 s = 3 frames: wide enough
+# to cover frame-level human labelling error (~1-2 frames), narrow enough that it is not larger
+# than most ground-truth segments (0.2 s was larger than the vid4/vid5 RELEASE segments).
+BOUNDARY_TOLERANCE_S = 0.10
+
+# Reporting groups: never pooled.
+TAKE_GROUPS = {"vid1": "clean", "vid2": "clean", "vid3": "clean", "vid4": "fast", "vid5": "hard"}
+TUNING_TAKES = ("vid1", "vid2")      # the ONLY takes thresholds/penalty may be tuned on
+LABELS = ["REST", "REACH", "GRASP", "HOLD", "RELEASE", "RETRACT"]

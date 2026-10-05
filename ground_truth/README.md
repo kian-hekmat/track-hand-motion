@@ -35,4 +35,8 @@ and `NOTES.md`.
 
 ## Scoring tolerance
 
-Boundary tolerance: 0.2 s
+Boundary tolerance: 0.10 s (3 frames).
+
+Originally 0.2 s. Lowered before any segmentation was run, because 0.2 s is wider than the shortest
+ground-truth segments (vid4 RELEASE 0.13 s; vid5 RELEASE 0.07 s), which would inflate boundary recall by
+chance. 0.10 s still exceeds the vid5 RELEASE, so precision and chance baselines are reported next to recall.
