@@ -1,0 +1,6 @@
+take,take_group,n_events,short_events,low_confidence_events,ambiguous_events,ambiguous_share,avg_confidence,ambiguity_rank
+vid5,hard,28,5.0,2.0,6.0,0.214,0.892,1
+vid2,clean,19,1.0,0.0,1.0,0.053,0.945,2
+vid1,clean,19,0.0,0.0,0.0,0.0,0.955,3
+vid3,clean,19,0.0,0.0,0.0,0.0,0.95,3
+vid4,fast,16,0.0,0.0,0.0,0.0,0.893,3

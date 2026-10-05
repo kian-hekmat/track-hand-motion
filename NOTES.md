@@ -349,3 +349,63 @@ gaps-and-islands (`lag` + cumulative-sum window + `groupBy/agg` + `lead`) for ev
   0.988 / 0.996, vid3 0.994 / 0.994, vid4 0.989 / **0.874**, vid5 0.981 / 0.993. The lower vid4 aperture value is the fast
   take, where phases last only a few frames and a +/-2-frame moving average blurs them (a likely cause, not tested).
 - Spark hand size for vid1 (282.28344492244173 px) equals the pandas value (282.28344492244184 px) to 13 digits.
+
+
+# Phase 4: Snowflake
+
+Status: **complete.** Run on Snowflake on 2026-10-05: 46 of 46 verification checks passed and all five query results match the expected
+results exactly. Evidence: `snowflake/actual_results/` (downloads), checked by `tests/test_snowflake_evidence.py`. Run steps and the
+list of what is and is not proved: `snowflake/README.md`.
+
+## What exists
+
+- `scripts/build_snowflake_scripts.py` generates `snowflake/01_setup.sql` (database, schema, file formats, stage, 7 tables),
+  `02_load.sql` (`COPY INTO` from the stage) and `03_verify.sql` (46 checks). Table columns come from the exported files, and the
+  expected counts come from `data/export/manifest.json` and the per-take metadata, not from the loaded tables.
+- Loaded tables: `takes` (5), `events` (101), `ground_truth` (101), `signals` (3,960), `frames` (3,960; the aggregated raw
+  keypoints, one row per frame), `scores` (10), and the full `raw_keypoints` (83,160 rows, from Parquet; identical to the Postgres
+  count). Reserved words renamed: `group` -> `take_group`, `false` -> `false_boundaries`.
+- `queries.sql`: (1) average duration per event type by take kind, (2) most ambiguous takes, (3) time between consecutive REACH
+  events (`LAG`), (4) phase transitions and whether they follow the protocol order (`LEAD`), (5) prediction agreement per phase.
+
+## Local verification (`tests/test_snowflake_sql.py`, DuckDB)
+
+- All 46 verification checks pass on the real export; **six deliberate corruptions** (a deleted event, frame or keypoint row, a
+  shifted event start, a wrong frame count, a duplicated event) are each caught as `FAIL`.
+- Table definitions match the files' column order (CSV loads map by position); no reserved words used as columns.
+- The queries run and reproduce the saved expected results (`snowflake/expected_results/`), and results make sense against
+  the recordings: clean-take HOLD averages 2.65 s; the fast take has no RELEASE events (the known miss); every clean transition
+  follows the protocol order; the fast take's only off-protocol transition is HOLD to RETRACT (missing RELEASE); the hard take
+  shows the occlusion-cycle flips; cycle time is about 10 s clean, 2.5 s fast, 6 to 9 s hard.
+- Limit of this local check: DuckDB is not Snowflake. The real run is described in the next section.
+
+## Reading query 2 correctly
+
+"Ambiguous" means an event shorter than 0.3 s or detected with mean phase probability below 0.7 (thresholds fixed before looking at
+results). vid5 ranks first (6 of 28 events). The fast take scores 0 ambiguous events, but only because its real 0.13 s RELEASE was
+never detected, so the events table cannot show that ambiguity. The query measures the events as detected, not the ground truth.
+
+## Snowflake run: what the saved files show
+
+- `verify.csv` (46 rows): all `PASS`; `expected` equals `actual` everywhere; row counts equal the manifest (5, 101, 101, 3,960, 3,960, 10,
+  83,160). Counts of events, frames, raw keypoints, signals and ground-truth segments also match per take; every video frame is in exactly
+  one event; events are contiguous.
+- Queries 1 to 5: identical to the locally produced results, and identical (maximum difference 0.00) to an independent pandas
+  recomputation from the exported CSVs. Results make sense against the recordings: clean HOLD averages 2.65 s; the fast take has no
+  RELEASE events; every clean-take transition follows the protocol order; the fast take's only off-protocol transition is HOLD to
+  RETRACT; cycle time is about 10 to 12 s clean, 2.5 s fast, 6 to 9 s hard; vid5 ranks most ambiguous.
+- The files carry upper-case column names (Snowflake's output) and differ byte-for-byte from the local expected files, so they are
+  downloads, not copies.
+- The comparison script was tightened during this review: it previously inherited numpy's default relative tolerance (about 1e-5);
+  it now requires an exact match to 1e-6 absolute. All six files still match.
+
+## Snowflake run: what is not proved
+
+- Values in `raw_keypoints` and `frames` are verified only by row counts and a NULL check. `04_fingerprint.sql` (optional) adds
+  value-level sums per table and take; locally it catches single-value corruption that row counts miss
+  (`tests/test_snowflake_sql.py`), but it has not been run on Snowflake yet.
+- The first load attempt left six of seven tables empty (only `takes` appears in `COPY_HISTORY`). The cause was not recorded. In the
+  diagnostic script only statements 3 and 5 have run on Snowflake.
+- Snowflake edition, region and warehouse size actually used were not captured.
+- The spec asks for a human sanity check of query output against the videos. The assistant checked results against the known
+  recording facts above; confirmation by the person who watched the videos is the remaining human step.

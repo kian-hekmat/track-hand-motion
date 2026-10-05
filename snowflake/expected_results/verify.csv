@@ -1,0 +1,47 @@
+check_name,expected,actual,status
+NULLs in events key columns,0,0.0,PASS
+detected raw keypoints with NULL coordinates,0,0.0,PASS
+event gaps or overlaps (rows),0,0.0,PASS
+events per take: vid1,19,19.0,PASS
+events per take: vid2,19,19.0,PASS
+events per take: vid3,19,19.0,PASS
+events per take: vid4,16,16.0,PASS
+events per take: vid5,28,28.0,PASS
+frames per take: vid1,976,976.0,PASS
+frames per take: vid2,1015,1015.0,PASS
+frames per take: vid3,775,775.0,PASS
+frames per take: vid4,281,281.0,PASS
+frames per take: vid5,913,913.0,PASS
+ground-truth segments per take: vid1,19,19.0,PASS
+ground-truth segments per take: vid2,19,19.0,PASS
+ground-truth segments per take: vid3,19,19.0,PASS
+ground-truth segments per take: vid4,19,19.0,PASS
+ground-truth segments per take: vid5,25,25.0,PASS
+raw keypoint rows per take (21 x frames): vid1,20496,20496.0,PASS
+raw keypoint rows per take (21 x frames): vid2,21315,21315.0,PASS
+raw keypoint rows per take (21 x frames): vid3,16275,16275.0,PASS
+raw keypoint rows per take (21 x frames): vid4,5901,5901.0,PASS
+raw keypoint rows per take (21 x frames): vid5,19173,19173.0,PASS
+row count: events,101,101.0,PASS
+row count: frames,3960,3960.0,PASS
+row count: ground_truth,101,101.0,PASS
+row count: raw_keypoints,83160,83160.0,PASS
+row count: scores,10,10.0,PASS
+row count: signals,3960,3960.0,PASS
+row count: takes,5,5.0,PASS
+signal rows per take: vid1,976,976.0,PASS
+signal rows per take: vid2,1015,1015.0,PASS
+signal rows per take: vid3,775,775.0,PASS
+signal rows per take: vid4,281,281.0,PASS
+signal rows per take: vid5,913,913.0,PASS
+sum of event n_frames per take: vid1,976,976.0,PASS
+sum of event n_frames per take: vid2,1015,1015.0,PASS
+sum of event n_frames per take: vid3,775,775.0,PASS
+sum of event n_frames per take: vid4,281,281.0,PASS
+sum of event n_frames per take: vid5,913,913.0,PASS
+takes not starting at 0 s,0,0.0,PASS
+undetected frames per take: vid1,1,1.0,PASS
+undetected frames per take: vid2,30,30.0,PASS
+undetected frames per take: vid3,21,21.0,PASS
+undetected frames per take: vid4,16,16.0,PASS
+undetected frames per take: vid5,58,58.0,PASS
