@@ -8,15 +8,15 @@ iPhone video → MediaPipe Hands → Postgres (raw) → Segmentation → Databri
 
 ## Status
 
-Phase 1 is complete (extraction, Postgres landing table, ground truth, overlay review, tests). Phases 2 and 3 are complete. Phase 4 is complete (run on Snowflake and verified). Phase 5: dashboard built and its data verified; the first-time-viewer test is still open.
+Phase 1 is complete (extraction, Postgres landing table, ground truth, overlay review, tests). Phases 2 and 3 are complete. Phase 4 is complete (run on Snowflake and verified). Phase 5: dashboard built, published and its data verified; the first-time-viewer test is still open.
 
 | Phase | Stage | Status |
 |---|---|---|
-| 1 | Capture & keypoint extraction | **Complete.** 5 videos extracted, Postgres landing table loaded (row counts match), ground truth labelled for all 5 takes, overlays reviewed, 245 pytest checks pass (1 optional skip). Known limitations in `NOTES.md` |
-| 2 | Segmentation | **Complete (v2); plots in `evidence/phase2_v2/` reviewed.** 245 pytest checks pass (1 optional skip). Frame accuracy 0.84–0.97 under leave-one-take-out CV (v1: 0.45–0.78); caveats in `NOTES.md` |
+| 1 | Capture & keypoint extraction | **Complete.** 5 videos extracted, Postgres landing table loaded (row counts match), ground truth labelled for all 5 takes, overlays reviewed, 250 pytest checks pass (1 optional skip). Known limitations in `NOTES.md` |
+| 2 | Segmentation | **Complete (v2); plots in `evidence/phase2_v2/` reviewed.** 250 pytest checks pass (1 optional skip). Frame accuracy 0.84–0.97 under leave-one-take-out CV (v1: 0.45–0.78); caveats in `NOTES.md` |
 | 3 | Databricks processing | **Complete.** PySpark signal derivation + event construction; 12/12 checks passed locally and on Databricks (evidence saved); Spark events identical to pandas events (101/101). See `databricks/README.md`, `NOTES.md` |
 | 4 | Snowflake | **Complete.** 7 tables loaded, 46/46 verification checks passed on Snowflake, 5 queries (incl. `LAG`/`LEAD`) match expected results and an independent pandas recomputation. Optional value-level fingerprint not yet run. See `snowflake/README.md`, `NOTES.md` |
-| 5 | Tableau dashboard | **Dashboard built** (3 charts, export in `evidence/tableau_dashboard.png`); its data is verified by decoding the image against the tables. **Open:** first-time-viewer test (spec requirement), workbook not saved in the repo, not published. See `tableau/README.md` |
+| 5 | Tableau dashboard | **Built and published** (4 charts; workbook `tableau/hand-motion-phases.twbx`; export `evidence/tableau_dashboard.png`; Tableau Public link in `tableau/README.md`). Workbook and picture verified against the data. **Open:** first-time-viewer test (spec requirement). |
 
 ### Phase 1: what exists (verified by `pytest`, run against real output)
 
@@ -69,17 +69,35 @@ The v2 model is frozen in `models/segmenter_v2.joblib` (+ `.json` with hash, tra
 
 Run: `python scripts/freeze_model.py && python scripts/score_segmentation.py --events-dir data/segments/v2_frozen_oof --version v2_frozen_oof && python scripts/export_tables.py`.
 
-### Phase 5: Tableau dashboard (built; viewer test open)
+### Phase 5: Tableau dashboard (built and published; viewer test open)
 
-![Tableau dashboard: wrist speed per recording, detected phases per recording, and how often the computer matched a human labeller](evidence/tableau_dashboard.png)
+![Tableau dashboard: speed vs hand opening, detected phases per recording, wrist speed per recording, and how often the computer matched a human labeller](evidence/tableau_dashboard.png)
 
-Built by the project owner in Tableau Public from `data/tableau/*.csv` (produced by the views in `snowflake/05_tableau_views.sql`; the free edition does not connect to Snowflake, to the author's knowledge). Three charts: how fast the wrist moved in each of the 5 recordings, what the hand was doing (detected phases) in each, and how often the computer's labels matched a human labeller.
+Built by the project owner in Tableau Public from `data/tableau/*.csv` (produced by the views in `snowflake/05_tableau_views.sql`; the free edition does not connect to Snowflake, to the author's knowledge). Workbook: `tableau/hand-motion-phases.twbx`. Published: [https://public.tableau.com/app/profile/kian.hekmatnejad/viz/hand-motion-phases/Dashboard2](https://public.tableau.com/app/profile/kian.hekmatnejad/viz/hand-motion-phases/Dashboard2).
 
-**Verified from the exported picture** (`scripts/verify_dashboard_image.py`, `tests/test_tableau_dashboard_evidence.py`): the timeline bands decode to exactly the detected events (phase order and counts identical for all 5 takes: 19, 19, 19, 16, 28; band starts within 0.032 s, about one pixel); the accuracy bars decode to 94.9, 96.6, 96.6, 91.1 and 84.2 against the true 94.9, 96.6, 96.6, 91.1 and 84.1; the speed lines correlate 0.965 to 0.988 with the real speed signal at a consistent scale. Time and size scales were calibrated on one take, so the other takes are out-of-sample checks.
+Four charts: (1) wrist speed against hand opening, one point per moment, coloured by the detected phase; (2) what the hand was doing in each recording (detected phases); (3) how fast the wrist was moving, one panel per recording; (4) how often the computer's labels matched a human labeller.
 
-**Readability issues seen in the export** (recommendations; none affects the data): axis titles show raw field names ("T S", "Start S", "Take Label", legend "Phase Name"); the colours are Tableau's defaults, not the project palette, and "At rest" uses the same blue as the speed lines and accuracy bars; the legend is alphabetical, not in phase order; a stray "Percent Frames Matching.. All values" card sits under the legend; the timeline and the speed panels sit side by side with very different row heights, so a time cannot be read straight across; there is no caption explaining the picture; accuracy bars have no value labels.
+**Verified** (`scripts/verify_dashboard_image.py`, `tests/test_tableau_dashboard_evidence.py`):
 
-**Open:** the first-time-viewer test (`tableau/user_test.md`; the spec says the dashboard is not done until someone new can describe it), saving the workbook (`.twbx`) in `tableau/`, and publishing (not done; publishing is public).
+- **Workbook** (`tableau/hand-motion-phases.twbx`): it packages exactly the three tested CSVs (byte-identical to `data/tableau/`); the timeline is restricted to detected phases by a data-source filter (`source = Detected`); each sheet uses the expected fields (timeline: `start_s` sized by `duration_s`, coloured by `phase_name`; speed: `speed` over `t_s` per take; scatter: one point per sample of `speed` against `aperture`, coloured by the detected phase; accuracy: `percent_frames_matching_human_labels`).
+- **Picture** (`evidence/tableau_dashboard.png`): the timeline bands decode to exactly the detected events for all 5 takes (19, 19, 19, 16, 28 segments, same phases in the same order; starts within 0.046 s, about 1.6 pixels); the accuracy bars decode to 94.9, 96.6, 96.6, 91.1 and 84.1, equal to the scored values; the speed lines correlate 0.961 to 0.985 with the real speed signal at one consistent scale; the scatter draws all six phases and their vertical order matches the data (rank correlation 0.94). Its horizontal pixel check is weak (0.77) because overlapping circles hide the dense low-speed region, which is why its data binding is verified from the workbook. Each scale is calibrated on one take; the others are out-of-sample.
+- **Published copy**: on 2026-10-06 the Tableau Public page loaded and showed the same four charts and the same accuracy labels as the export. This is a visual check only.
+
+**Polished since the first export:** axis titles with units on the scatter ("Wrist Speed (hand lengths/second)", "Hand opening (thumb-index gap / hand length)") and "Time (seconds)" under the speed panels; value labels on the accuracy bars; legend in phase order; the stray legend card removed; the timeline stacked above the speed panels on the same 0 to 34 s axis; a new speed-vs-hand-opening scatter.
+
+**Still worth fixing** (readability; none affects the data):
+
+1. Colours are still Tableau's defaults, so "At rest" uses the same blue as the speed lines and the accuracy bars. The project palette is listed below.
+2. The phase legend appears twice and is titled "Phase Name". Keep one legend and retitle it "What the hand is doing".
+3. Row headers read "Take Label". Rename them to "Recording".
+4. The speed panels' y-axis numbers are clipped ("1." instead of 10) and have no title or unit. Widen the axis and title it "Wrist speed (hand lengths per second)".
+5. The timeline axis says "Start time (seconds)". It shows time, so "Time (seconds)" is accurate.
+6. There is no caption explaining what the picture shows.
+7. Accuracy labels show two decimals ("94.90%"), and the Take 2 and 3 labels are dark text on dark bars. Use one decimal and a light label colour, or put the labels outside the bars.
+8. The scatter does not say its colours are the *detected* phase. Add "(colour = detected phase)" to its title.
+9. Sheets are named "Sheet 1" to "Sheet 4" and the dashboard "Dashboard 2", which shows in the public URL. The accuracy table is attached twice as two data sources.
+
+**Open:** the first-time-viewer test (`tableau/user_test.md`). The spec says the dashboard is not done until someone new can describe it.
 
 ### Phase 1: remaining caveats
 
@@ -249,7 +267,7 @@ src/              extract.py, landmarks.py (MediaPipe), db.py (Postgres loader),
 scripts/          convert, extract, detection report, overlay/contact sheets, load_postgres
 sql/              Postgres DDL
 data/raw/         per-take keypoint CSVs, meta JSON, detection_report.csv
-tableau/          Phase 5: build steps, first-time-viewer test, target dashboard image (Tableau-ready tables in data/tableau/)
+tableau/          Phase 5: saved workbook (hand-motion-phases.twbx), build steps, first-time-viewer test, target image (tables in data/tableau/)
 snowflake/        generated setup / load / verify SQL, expected results, run instructions (queries.sql at the repo root)
 databricks/       PySpark transforms, generated Databricks notebook, run instructions
 models/           frozen segmenter (joblib + json metadata)
@@ -263,7 +281,7 @@ tests/            pytest suites
 docker-compose.yml
 ```
 
-`NOTES.md` holds limitations found so far. `queries.sql` and `snowflake/` hold the Phase 4 scripts, expected results and the downloaded Snowflake results. `tableau/` holds the Phase 5 instructions and target image, `data/tableau/` the Tableau-ready tables, and `evidence/tableau_dashboard.png` the exported dashboard. Not yet created: the saved Tableau workbook and the first-time-viewer test record.
+`NOTES.md` holds limitations found so far. `queries.sql` and `snowflake/` hold the Phase 4 scripts, expected results and the downloaded Snowflake results. `tableau/` holds the Phase 5 instructions and target image, `data/tableau/` the Tableau-ready tables, and `evidence/tableau_dashboard.png` the exported dashboard, and `tableau/hand-motion-phases.twbx` the saved workbook. Not yet created: the first-time-viewer test record.
 
 ## Ground Rules for AI Assistants
 

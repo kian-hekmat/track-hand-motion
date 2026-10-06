@@ -415,7 +415,7 @@ never detected, so the events table cannot show that ambiguity. The query measur
 
 # Phase 5: Tableau
 
-Status: **dashboard built by the project owner in Tableau Public; data verified from the export; first-time-viewer test still open.** Steps: `tableau/README.md`. Export: `evidence/tableau_dashboard.png`.
+Status: **dashboard built by the project owner, saved (`tableau/hand-motion-phases.twbx`) and published on Tableau Public; workbook and export verified against the data; first-time-viewer test still open.** Steps and link: `tableau/README.md`. Export: `evidence/tableau_dashboard.png`.
 
 - Tableau Public (the free edition) cannot connect to Snowflake, to the author's knowledge (not verified). The Tableau-ready tables are therefore CSVs produced
   by the SQL views in `snowflake/05_tableau_views.sql`, run locally in DuckDB (`scripts/make_tableau_tables.py`). The same views can be run in Snowflake and the
@@ -427,19 +427,31 @@ Status: **dashboard built by the project owner in Tableau Public; data verified 
 - `tableau/target_dashboard.png` was drawn with matplotlib from the same tables, as a visual target. It is not a Tableau output.
 - Known data features to expect on the dashboard: a short speed spike in the first 0.1 s of takes 1 and 4 (cause not investigated: the table tap or a smoothing-filter
   edge effect), and two gaps in take 5's speed line where the hand left the frame.
-- Still required by the spec: the first-time-viewer test (`tableau/user_test.md`); the dashboard is not done until someone new can describe it. The workbook file is not in the repo and nothing has been published.
+- Still required by the spec: the first-time-viewer test (`tableau/user_test.md`); the dashboard is not done until someone new can describe it.
 
 ## Dashboard verification (`scripts/verify_dashboard_image.py`, `tests/test_tableau_dashboard_evidence.py`)
 
-The exported picture was decoded and compared with the data rather than only looked at:
-- **Timeline:** the coloured bands of each of the five rows, matched to the legend colours, give exactly the detected events (same phases, same order, same counts: 19, 19, 19, 16 and 28). Band starts agree within 0.032 s (the pixel size is about 0.025 s). The time scale was calibrated on Take 1 only; Takes 2 to 5 are out-of-sample.
-- **Accuracy bars:** 94.9, 96.6, 96.6, 91.1 and 84.2 against the true values 94.9, 96.6, 96.6, 91.1 and 84.1 (maximum error 0.07 percentage points; scale calibrated on Take 1).
-- **Speed lines:** traced line height correlates 0.965 (Take 4) to 0.988 (Take 1) with the real speed signal (0.988, 0.983, 0.977, 0.965, 0.968 for Takes 1 to 5); about 20 pixels per speed unit in all panels (same fixed axis); the lines start at t = 0 and end at each take's duration; the gaps in Take 5 are where the hand left the frame.
-- The decoding assumes the saved export's layout; if the dashboard is re-exported differently the test fails and the script's layout constants must be updated.
+Re-done for the polished dashboard of 2026-10-06 (four charts). The first export's results are superseded.
+
+- **Workbook** (`tableau/hand-motion-phases.twbx`): it packages exactly the three tested CSVs (byte-identical to `data/tableau/`); the timeline is restricted to detected phases by a data-source filter (`source = Detected`); each sheet uses the expected fields (timeline: `start_s` sized by `duration_s`, coloured by `phase_name`; speed: `speed` over `t_s` per take; scatter: one point per sample of `speed` against `aperture`, coloured by the detected phase; accuracy: `percent_frames_matching_human_labels`).
+- **Picture** (`evidence/tableau_dashboard.png`): the timeline bands decode to exactly the detected events for all 5 takes (19, 19, 19, 16, 28 segments, same phases in the same order; starts within 0.046 s, about 1.6 pixels); the accuracy bars decode to 94.9, 96.6, 96.6, 91.1 and 84.1, equal to the scored values; the speed lines correlate 0.961 to 0.985 with the real speed signal at one consistent scale; the scatter draws all six phases and their vertical order matches the data (rank correlation 0.94). Its horizontal pixel check is weak (0.77) because overlapping circles hide the dense low-speed region, which is why its data binding is verified from the workbook. Each scale is calibrated on one take; the others are out-of-sample.
+- **Published copy**: on 2026-10-06 the Tableau Public page loaded and showed the same four charts and the same accuracy labels as the export. This is a visual check only.
+- Layout: the script finds each chart inside a box (`LAYOUT`) and reads the phase colours from the workbook. A re-export with a different arrangement needs `LAYOUT` updated; the tests then fail loudly rather than pass silently.
 
 ## Dashboard review (readability, not data)
 
-Seen in the export: axis titles are raw field names ("T S", "Start S", "Take Label", "Phase Name"); default Tableau colours (the project palette was not applied, and one blue
-is used for "At rest", the speed lines and the accuracy bars); legend sorted alphabetically; a stray "Percent Frames Matching.. All values" card; the timeline and speed
-charts are side by side with different row heights; no caption; no value labels on the accuracy bars. These are recommendations. Whether a first-time viewer can read the
-dashboard is not known until `tableau/user_test.md` is run; the raw-field-name axis titles are the most likely failure points for Q3 ("what does the line tell you").
+Polished: axis titles with units on the scatter ("Wrist Speed (hand lengths/second)", "Hand opening (thumb-index gap / hand length)") and "Time (seconds)" under the speed panels; value labels on the accuracy bars; legend in phase order; the stray legend card removed; the timeline stacked above the speed panels on the same 0 to 34 s axis; a new speed-vs-hand-opening scatter.
+
+Still worth fixing:
+
+1. Colours are still Tableau's defaults, so "At rest" uses the same blue as the speed lines and the accuracy bars. The project palette is listed below.
+2. The phase legend appears twice and is titled "Phase Name". Keep one legend and retitle it "What the hand is doing".
+3. Row headers read "Take Label". Rename them to "Recording".
+4. The speed panels' y-axis numbers are clipped ("1." instead of 10) and have no title or unit. Widen the axis and title it "Wrist speed (hand lengths per second)".
+5. The timeline axis says "Start time (seconds)". It shows time, so "Time (seconds)" is accurate.
+6. There is no caption explaining what the picture shows.
+7. Accuracy labels show two decimals ("94.90%"), and the Take 2 and 3 labels are dark text on dark bars. Use one decimal and a light label colour, or put the labels outside the bars.
+8. The scatter does not say its colours are the *detected* phase. Add "(colour = detected phase)" to its title.
+9. Sheets are named "Sheet 1" to "Sheet 4" and the dashboard "Dashboard 2", which shows in the public URL. The accuracy table is attached twice as two data sources.
+
+Whether a first-time viewer can read it is not known until `tableau/user_test.md` is run. Items 4 (speed axis with clipped numbers and no unit) and 6 (no caption) are the most likely causes of a failed answer to Q3 ("what does the line tell you").
