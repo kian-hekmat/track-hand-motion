@@ -8,15 +8,15 @@ iPhone video → MediaPipe Hands → Postgres (raw) → Segmentation → Databri
 
 ## Status
 
-Phase 1 is complete (extraction, Postgres landing table, ground truth, overlay review, tests). Phases 2 and 3 are complete. Phase 4 is complete (run on Snowflake and verified). Phase 5: data prepared, dashboard not yet built.
+Phase 1 is complete (extraction, Postgres landing table, ground truth, overlay review, tests). Phases 2 and 3 are complete. Phase 4 is complete (run on Snowflake and verified). Phase 5: dashboard built and its data verified; the first-time-viewer test is still open.
 
 | Phase | Stage | Status |
 |---|---|---|
-| 1 | Capture & keypoint extraction | **Complete.** 5 videos extracted, Postgres landing table loaded (row counts match), ground truth labelled for all 5 takes, overlays reviewed, 226 pytest checks pass (1 optional skip). Known limitations in `NOTES.md` |
-| 2 | Segmentation | **Complete (v2); plots in `evidence/phase2_v2/` reviewed.** 226 pytest checks pass (1 optional skip). Frame accuracy 0.84–0.97 under leave-one-take-out CV (v1: 0.45–0.78); caveats in `NOTES.md` |
+| 1 | Capture & keypoint extraction | **Complete.** 5 videos extracted, Postgres landing table loaded (row counts match), ground truth labelled for all 5 takes, overlays reviewed, 245 pytest checks pass (1 optional skip). Known limitations in `NOTES.md` |
+| 2 | Segmentation | **Complete (v2); plots in `evidence/phase2_v2/` reviewed.** 245 pytest checks pass (1 optional skip). Frame accuracy 0.84–0.97 under leave-one-take-out CV (v1: 0.45–0.78); caveats in `NOTES.md` |
 | 3 | Databricks processing | **Complete.** PySpark signal derivation + event construction; 12/12 checks passed locally and on Databricks (evidence saved); Spark events identical to pandas events (101/101). See `databricks/README.md`, `NOTES.md` |
 | 4 | Snowflake | **Complete.** 7 tables loaded, 46/46 verification checks passed on Snowflake, 5 queries (incl. `LAG`/`LEAD`) match expected results and an independent pandas recomputation. Optional value-level fingerprint not yet run. See `snowflake/README.md`, `NOTES.md` |
-| 5 | Tableau dashboard | **Data prepared and tested; dashboard to be built in Tableau Public.** Tableau-ready tables, colour palette, build steps, target image and first-time-viewer test script in `tableau/`; see `tableau/README.md` |
+| 5 | Tableau dashboard | **Dashboard built** (3 charts, export in `evidence/tableau_dashboard.png`); its data is verified by decoding the image against the tables. **Open:** first-time-viewer test (spec requirement), workbook not saved in the repo, not published. See `tableau/README.md` |
 
 ### Phase 1: what exists (verified by `pytest`, run against real output)
 
@@ -68,6 +68,18 @@ Run: `python scripts/cv_segmentation.py` (several minutes), then `python scripts
 The v2 model is frozen in `models/segmenter_v2.joblib` (+ `.json` with hash, training takes, penalty and feature columns). The canonical events are out-of-fold (each take predicted by a model that never saw it; scored as `v2_frozen_oof`: frame accuracy 0.95 / 0.97 / 0.97 / 0.91 / 0.84 for vid1–5). `data/export/` holds the tables for the next phases (`events`, `signals`, `frames`, `ground_truth`, `takes`, `scores`, `raw_keypoints.parquet`) with a `manifest.json` of row counts and hashes. New takes can be segmented with `src.final.segment_new_take(take)`; nothing is retrained. Details: `NOTES.md`.
 
 Run: `python scripts/freeze_model.py && python scripts/score_segmentation.py --events-dir data/segments/v2_frozen_oof --version v2_frozen_oof && python scripts/export_tables.py`.
+
+### Phase 5: Tableau dashboard (built; viewer test open)
+
+![Tableau dashboard: wrist speed per recording, detected phases per recording, and how often the computer matched a human labeller](evidence/tableau_dashboard.png)
+
+Built by the project owner in Tableau Public from `data/tableau/*.csv` (produced by the views in `snowflake/05_tableau_views.sql`; the free edition does not connect to Snowflake, to the author's knowledge). Three charts: how fast the wrist moved in each of the 5 recordings, what the hand was doing (detected phases) in each, and how often the computer's labels matched a human labeller.
+
+**Verified from the exported picture** (`scripts/verify_dashboard_image.py`, `tests/test_tableau_dashboard_evidence.py`): the timeline bands decode to exactly the detected events (phase order and counts identical for all 5 takes: 19, 19, 19, 16, 28; band starts within 0.032 s, about one pixel); the accuracy bars decode to 94.9, 96.6, 96.6, 91.1 and 84.2 against the true 94.9, 96.6, 96.6, 91.1 and 84.1; the speed lines correlate 0.965 to 0.988 with the real speed signal at a consistent scale. Time and size scales were calibrated on one take, so the other takes are out-of-sample checks.
+
+**Readability issues seen in the export** (recommendations; none affects the data): axis titles show raw field names ("T S", "Start S", "Take Label", legend "Phase Name"); the colours are Tableau's defaults, not the project palette, and "At rest" uses the same blue as the speed lines and accuracy bars; the legend is alphabetical, not in phase order; a stray "Percent Frames Matching.. All values" card sits under the legend; the timeline and the speed panels sit side by side with very different row heights, so a time cannot be read straight across; there is no caption explaining the picture; accuracy bars have no value labels.
+
+**Open:** the first-time-viewer test (`tableau/user_test.md`; the spec says the dashboard is not done until someone new can describe it), saving the workbook (`.twbx`) in `tableau/`, and publishing (not done; publishing is public).
 
 ### Phase 1: remaining caveats
 
@@ -225,7 +237,7 @@ Aperture = distance between thumb-tip and index-fingertip keypoints. One cycle =
 - [ ] Full pipeline runs end to end on at least one video, from raw footage to Tableau-ready export, without manual patching of intermediate files
 - [ ] Every number reported about the project has a test or saved output that produced it
 - [x] `NOTES.md` documents at least one real limitation or failure mode (Phase 1 ones so far; extend after Phase 2)
-- [ ] This README matches what is actually built (no planned features described as done)
+- [ ] This README matches what is actually built (no planned features described as done). Checked against the files on 2026-10-05; leave unticked until the viewer test is done and Phase 2 re-reads are complete
 
 ## Repository Layout
 
@@ -244,14 +256,14 @@ models/           frozen segmenter (joblib + json metadata)
 data/export/      tables for Databricks / Snowflake / Tableau + manifest.json
 data/segments/    Phase 2: v1 events + params.json; v2_pelt/v2_grammar/v2_argmax (cross-validated); history.csv (run log); cv_selection.json
 docs/             phase2_roadmap.md
-evidence/         overlay clips and screenshots
+evidence/         overlay clips, plots, Databricks run export, Tableau dashboard export
 ground_truth/     take_N.csv hand-labelled phase boundaries
 NOTES.md          limitations and failure modes
 tests/            pytest suites
 docker-compose.yml
 ```
 
-`NOTES.md` holds limitations found so far. `queries.sql` and `snowflake/` hold the Phase 4 scripts, expected results and the downloaded Snowflake results. `tableau/` holds the Phase 5 instructions and target image, and `data/tableau/` the Tableau-ready tables. Not yet created: the Tableau workbook and its evidence.
+`NOTES.md` holds limitations found so far. `queries.sql` and `snowflake/` hold the Phase 4 scripts, expected results and the downloaded Snowflake results. `tableau/` holds the Phase 5 instructions and target image, `data/tableau/` the Tableau-ready tables, and `evidence/tableau_dashboard.png` the exported dashboard. Not yet created: the saved Tableau workbook and the first-time-viewer test record.
 
 ## Ground Rules for AI Assistants
 

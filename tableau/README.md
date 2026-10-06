@@ -1,8 +1,23 @@
 # Phase 5: building the Tableau dashboard
 
-**Status: data prepared and tested; the dashboard itself is built by you in Tableau Public.** Target picture:
-`target_dashboard.png` (drawn with matplotlib from the same data; your Tableau version will look different in style but should
-show the same story).
+**Status: dashboard built (export saved as `../evidence/tableau_dashboard.png`); data verified; first-time-viewer test still open.**
+Target picture used while building: `target_dashboard.png` (drawn with matplotlib from the same data).
+
+![The exported Tableau dashboard](../evidence/tableau_dashboard.png)
+
+### Verified from the exported image
+`scripts/verify_dashboard_image.py` decodes the picture and `tests/test_tableau_dashboard_evidence.py` asserts the results:
+- timeline: phase order and counts identical to the detected events for all 5 takes (19, 19, 19, 16, 28 segments); band starts within 0.032 s (about 1 pixel);
+- accuracy bars: 94.9, 96.6, 96.6, 91.1, 84.2 against the true 94.9, 96.6, 96.6, 91.1, 84.1;
+- speed lines: correlation with the real signal 0.965 (Take 4) to 0.988 (Take 1) on every take, same scale in all five panels.
+
+### Improvements to consider before the viewer test
+1. Rename axis titles and the legend: "Time (seconds)" (not "T S" / "Start S"), "Recording" (not "Take Label"), "What the hand is doing" (not "Phase Name"), keep "Speed".
+2. Use the palette below. Today's defaults reuse the same blue for "At rest", the speed lines and the accuracy bars.
+3. Sort the legend by phase order (right-click `phase_name` > Sort > field `phase_order`).
+4. Remove the stray "Percent Frames Matching.. All values" card (hide that legend).
+5. Put the timeline directly above the speed panels with the same left and right edges (or give timeline rows the same height as the speed panels) so a time can be read straight across.
+6. Add the caption text from step 5 and value labels on the accuracy bars.
 
 ## Data (all in `data/tableau/`)
 
@@ -65,4 +80,5 @@ Two things to know about the data:
 
 ## Published dashboard
 https://public.tableau.com/app/profile/kian.hekmatnejad/viz/hand-motion-phases/Dashboard2#1 
-(URL, date and screenshot path to be added after you publish.)
+Not published (publishing is public and has not been requested). The Tableau workbook (`.twbx`) is not saved in the repo; save one here if you want it versioned.
+The image export is `../evidence/tableau_dashboard.png`.

@@ -415,7 +415,7 @@ never detected, so the events table cannot show that ambiguity. The query measur
 
 # Phase 5: Tableau
 
-Status: **data prepared and tested; the dashboard has not been built yet.** Steps: `tableau/README.md`.
+Status: **dashboard built by the project owner in Tableau Public; data verified from the export; first-time-viewer test still open.** Steps: `tableau/README.md`. Export: `evidence/tableau_dashboard.png`.
 
 - Tableau Public (the free edition) cannot connect to Snowflake, to the author's knowledge (not verified). The Tableau-ready tables are therefore CSVs produced
   by the SQL views in `snowflake/05_tableau_views.sql`, run locally in DuckDB (`scripts/make_tableau_tables.py`). The same views can be run in Snowflake and the
@@ -427,4 +427,19 @@ Status: **data prepared and tested; the dashboard has not been built yet.** Step
 - `tableau/target_dashboard.png` was drawn with matplotlib from the same tables, as a visual target. It is not a Tableau output.
 - Known data features to expect on the dashboard: a short speed spike in the first 0.1 s of takes 1 and 4 (cause not investigated: the table tap or a smoothing-filter
   edge effect), and two gaps in take 5's speed line where the hand left the frame.
-- Still required by the spec: the built dashboard and a first-time-viewer test (`tableau/user_test.md`). Neither exists yet.
+- Still required by the spec: the first-time-viewer test (`tableau/user_test.md`); the dashboard is not done until someone new can describe it. The workbook file is not in the repo and nothing has been published.
+
+## Dashboard verification (`scripts/verify_dashboard_image.py`, `tests/test_tableau_dashboard_evidence.py`)
+
+The exported picture was decoded and compared with the data rather than only looked at:
+- **Timeline:** the coloured bands of each of the five rows, matched to the legend colours, give exactly the detected events (same phases, same order, same counts: 19, 19, 19, 16 and 28). Band starts agree within 0.032 s (the pixel size is about 0.025 s). The time scale was calibrated on Take 1 only; Takes 2 to 5 are out-of-sample.
+- **Accuracy bars:** 94.9, 96.6, 96.6, 91.1 and 84.2 against the true values 94.9, 96.6, 96.6, 91.1 and 84.1 (maximum error 0.07 percentage points; scale calibrated on Take 1).
+- **Speed lines:** traced line height correlates 0.965 (Take 4) to 0.988 (Take 1) with the real speed signal (0.988, 0.983, 0.977, 0.965, 0.968 for Takes 1 to 5); about 20 pixels per speed unit in all panels (same fixed axis); the lines start at t = 0 and end at each take's duration; the gaps in Take 5 are where the hand left the frame.
+- The decoding assumes the saved export's layout; if the dashboard is re-exported differently the test fails and the script's layout constants must be updated.
+
+## Dashboard review (readability, not data)
+
+Seen in the export: axis titles are raw field names ("T S", "Start S", "Take Label", "Phase Name"); default Tableau colours (the project palette was not applied, and one blue
+is used for "At rest", the speed lines and the accuracy bars); legend sorted alphabetically; a stray "Percent Frames Matching.. All values" card; the timeline and speed
+charts are side by side with different row heights; no caption; no value labels on the accuracy bars. These are recommendations. Whether a first-time viewer can read the
+dashboard is not known until `tableau/user_test.md` is run; the raw-field-name axis titles are the most likely failure points for Q3 ("what does the line tell you").
