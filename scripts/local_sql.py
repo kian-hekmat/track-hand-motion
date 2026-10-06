@@ -10,14 +10,14 @@ SF, EXP = ROOT / "snowflake", ROOT / "data" / "export"
 CSV_TABLES = ["takes", "events", "ground_truth", "signals", "frames", "scores"]
 
 
-def connect() -> duckdb.DuckDBPyConnection:
+def connect(exp: Path = EXP) -> duckdb.DuckDBPyConnection:
     con = duckdb.connect(":memory:")
     setup = (SF / "01_setup.sql").read_text()
     for stmt in re.findall(r"CREATE OR REPLACE TABLE .*?\n\);", setup, flags=re.S):
         con.execute(stmt)
     for t in CSV_TABLES:   # positional mapping, header skipped: same semantics as COPY INTO with SKIP_HEADER = 1
-        con.execute(f"COPY {t} FROM '{EXP / (t + '.csv')}' (FORMAT csv, HEADER true)")
-    con.execute(f"COPY raw_keypoints FROM '{EXP / 'raw_keypoints.parquet'}' (FORMAT parquet)")
+        con.execute(f"COPY {t} FROM '{exp / (t + '.csv')}' (FORMAT csv, HEADER true)")
+    con.execute(f"COPY raw_keypoints FROM '{exp / 'raw_keypoints.parquet'}' (FORMAT parquet)")
     return con
 
 

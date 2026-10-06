@@ -12,8 +12,8 @@ Phase 1 is complete (extraction, Postgres landing table, ground truth, overlay r
 
 | Phase | Stage | Status |
 |---|---|---|
-| 1 | Capture & keypoint extraction | **Complete.** 5 videos extracted, Postgres landing table loaded (row counts match), ground truth labelled for all 5 takes, overlays reviewed, 250 pytest checks pass (1 optional skip). Known limitations in `NOTES.md` |
-| 2 | Segmentation | **Complete (v2); plots in `evidence/phase2_v2/` reviewed.** 250 pytest checks pass (1 optional skip). Frame accuracy 0.84–0.97 under leave-one-take-out CV (v1: 0.45–0.78); caveats in `NOTES.md` |
+| 1 | Capture & keypoint extraction | **Complete.** 5 videos extracted, Postgres landing table loaded (row counts match), ground truth labelled for all 5 takes, overlays reviewed, 305 pytest checks (304 pass, 1 optional skip). Known limitations in `NOTES.md` |
+| 2 | Segmentation | **Complete (v2); plots in `evidence/phase2_v2/` reviewed.** 305 pytest checks (304 pass, 1 optional skip). Frame accuracy 0.84–0.97 under leave-one-take-out CV (v1: 0.45–0.78); caveats in `NOTES.md` |
 | 3 | Databricks processing | **Complete.** PySpark signal derivation + event construction; 12/12 checks passed locally and on Databricks (evidence saved); Spark events identical to pandas events (101/101). See `databricks/README.md`, `NOTES.md` |
 | 4 | Snowflake | **Complete.** 7 tables loaded, 46/46 verification checks passed on Snowflake, 5 queries (incl. `LAG`/`LEAD`) match expected results and an independent pandas recomputation. Optional value-level fingerprint not yet run. See `snowflake/README.md`, `NOTES.md` |
 | 5 | Tableau dashboard | **Built and published** (4 charts; workbook `tableau/hand-motion-phases.twbx`; export `evidence/tableau_dashboard.png`; Tableau Public link in `tableau/README.md`). Workbook and picture verified against the data. **Open:** first-time-viewer test (spec requirement). |
@@ -98,6 +98,17 @@ Four charts: (1) wrist speed against hand opening, one point per moment, coloure
 9. Sheets are named "Sheet 1" to "Sheet 4" and the dashboard "Dashboard 2", which shows in the public URL. The accuracy table is attached twice as two data sources.
 
 **Open:** the first-time-viewer test (`tableau/user_test.md`). The spec says the dashboard is not done until someone new can describe it.
+
+### New recordings: hold-out test (done)
+
+Two new takes, vid6 (4 slow cycles) and vid7 (3 fast cycles), were labelled by the project owner, locked, then scored once by the frozen model with no retraining or tuning. These are the project's only unbiased figures:
+
+| take | kind | frames scored | frame accuracy | balanced | tolerant | boundary recall / precision | matched-boundary error (s) | majority baseline | chance recall |
+|---|---|---|---|---|---|---|---|---|---|
+| vid6 | slow, 4 cycles | 1,277 (+14 out of frame) | **0.839** | 0.825 | 0.879 | 0.50 / 0.40 | 0.042 | 0.31 | 0.13 |
+| vid7 | fast, 3 cycles | 383 (+25 out of frame) | **0.862** | 0.892 | 0.950 | 0.56 / 0.59 | 0.050 | 0.29 | 0.22 |
+
+On new data the model scores 0.84 and 0.86 frame accuracy, against 0.95-0.97 for the clean takes and 0.91 for the fast take under leave-one-take-out, so the earlier figures were optimistic, as stated. The main error is the one first seen in vid5: when the hand lingers open near the object, the model calls it a grasp (vid6 REACH 0.70). In the fast take the phases are mostly right, but REST boundaries are 0.2-0.3 s off. The run also found a real bug: the conversion forced a fixed time base, which rounded vid6's timestamps by up to 1.2 ms. It is fixed and tested, and vid6 was re-extracted before locking. Full analysis and every fix: `NOTES.md`. Steps: `docs/new_takes.md`. Outputs: `data/holdout/`, plots in `evidence/holdout/`.
 
 ### Phase 1: remaining caveats
 
@@ -252,7 +263,7 @@ Aperture = distance between thumb-tip and index-fingertip keypoints. One cycle =
 
 ## Final Integration Checklist
 
-- [ ] Full pipeline runs end to end on at least one video, from raw footage to Tableau-ready export, without manual patching of intermediate files
+- [x] Full pipeline runs end to end on at least one video, from raw footage to Tableau-ready export, without manual patching of intermediate files: vid6 and vid7 via `scripts/run_new_take.py` (2026-10-06). The run exposed one bug (time base), fixed in code before vid6 was re-run; the human inputs (label files, out-of-frame list) needed formatting fixes. See `NOTES.md`
 - [ ] Every number reported about the project has a test or saved output that produced it
 - [x] `NOTES.md` documents at least one real limitation or failure mode (Phase 1 ones so far; extend after Phase 2)
 - [ ] This README matches what is actually built (no planned features described as done). Checked against the files on 2026-10-05; leave unticked until the viewer test is done and Phase 2 re-reads are complete
@@ -272,8 +283,9 @@ snowflake/        generated setup / load / verify SQL, expected results, run ins
 databricks/       PySpark transforms, generated Databricks notebook, run instructions
 models/           frozen segmenter (joblib + json metadata)
 data/export/      tables for Databricks / Snowflake / Tableau + manifest.json
+data/holdout/     hold-out test for vid6 and vid7: lock, events, scores, run record, end-to-end export and Tableau tables
 data/segments/    Phase 2: v1 events + params.json; v2_pelt/v2_grammar/v2_argmax (cross-validated); history.csv (run log); cv_selection.json
-docs/             phase2_roadmap.md
+docs/             phase2_roadmap.md, new_takes.md (hold-out test steps)
 evidence/         overlay clips, plots, Databricks run export, Tableau dashboard export
 ground_truth/     take_N.csv hand-labelled phase boundaries
 NOTES.md          limitations and failure modes

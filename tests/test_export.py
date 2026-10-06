@@ -44,7 +44,7 @@ def test_raw_keypoints_export_matches_csvs_and_postgres_exactly():
     except Exception as e:  # noqa: BLE001
         pytest.fail(f"Postgres unreachable ({e})")
     with conn, conn.cursor() as cur:
-        cur.execute("SELECT count(*) FROM raw_keypoints")
+        cur.execute("SELECT count(*) FROM raw_keypoints WHERE take = ANY(%s)", (TAKES,))   # new takes may be loaded too
         assert cur.fetchone()[0] == len(raw)
     assert not raw.loc[raw["detected"], ["x", "y", "z"]].isna().any().any()
 

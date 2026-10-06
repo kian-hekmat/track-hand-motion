@@ -57,3 +57,14 @@ def test_timestamps_match_source_pts(take, keypoints, source_pts):
             ["timestamp_ms"].to_numpy() / 1000.0)
     pts = source_pts(take)
     assert np.abs(ts_s - pts).max() <= 0.001  # within 1 ms (integer-ms rounding)
+
+
+def test_conversion_keeps_each_source_time_base():
+    """vid6 was exported with a 90 kHz time base; forcing 600 rounded its timestamps (fixed 2026-10-06)."""
+    import sys
+    from config import ROOT, VIDS_DIR
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from convert_videos import source_timescale
+    assert source_timescale(VIDS_DIR / "vid1.mov") == 600
+    if (VIDS_DIR / "vid6.mov").exists():
+        assert source_timescale(VIDS_DIR / "vid6.mov") == 90000

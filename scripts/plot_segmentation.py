@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from config import EVIDENCE_DIR, SEGMENTS_DIR, TAKE_GROUPS
+from config import ALL_GROUPS, EVIDENCE_DIR, SEGMENTS_DIR, TAKE_GROUPS
 from src.ground_truth import load_ground_truth, out_of_frame_intervals
 
 COL = {"REST": "#bbbbbb", "REACH": "#4c78a8", "GRASP": "#f58518", "HOLD": "#54a24b",
@@ -47,7 +47,7 @@ for take in args.takes or sorted(TAKE_GROUPS):
             a.axvspan(s, e, color="yellow", alpha=0.4)
     bands(ax[0], gt, 0.93, 0.07)
     bands(ax[0], ev, 0.86, 0.07)
-    ax[0].set_title(f"{take} ({TAKE_GROUPS[take]}): top strip = ground truth, second strip = detected; "
+    ax[0].set_title(f"{take} ({ALL_GROUPS[take]}): top strip = ground truth, second strip = detected; "
                     "red solid = true boundary, blue dashed = detected; yellow = hand out of frame")
     ax[0].legend(handles=[plt.Rectangle((0, 0), 1, 1, color=c) for c in COL.values()], labels=list(COL), ncol=6, loc="upper right", fontsize=7)
     ax[-1].set_xlabel("time (s)")

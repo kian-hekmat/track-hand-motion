@@ -1,0 +1,15 @@
+{
+  "take": "vid6",
+  "frames_extracted": 1291,
+  "frames_ffmpeg": 1291,
+  "nominal_fps": 29.990003332222592,
+  "last_timestamp_s": 43.014,
+  "mean_fps_from_timestamps": 29.99023573720184,
+  "timestamps_bumped_for_monotonicity": 0,
+  "frames_not_detected": 23,
+  "fraction_not_detected": 0.017815646785437646,
+  "handedness_counts": {
+    "Right": 1223,
+    "Left": 45
+  }
+}

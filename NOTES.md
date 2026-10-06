@@ -455,3 +455,69 @@ Still worth fixing:
 9. Sheets are named "Sheet 1" to "Sheet 4" and the dashboard "Dashboard 2", which shows in the public URL. The accuracy table is attached twice as two data sources.
 
 Whether a first-time viewer can read it is not known until `tableau/user_test.md` is run. Items 4 (speed axis with clipped numbers and no unit) and 6 (no caption) are the most likely causes of a failed answer to Q3 ("what does the line tell you").
+
+
+# New recordings: hold-out test (run 2026-10-06)
+
+Two new takes, vid6 (4 slow cycles) and vid7 (3 fast cycles), scored by the frozen model (`models/segmenter_v2.joblib`, trained on vid1-5).
+No retraining, tuning or design change was made with them. Order kept and recorded: labels by the project owner, then locked
+(`data/holdout/lock.json`, 12:07:00), then scored once (`data/holdout/runs.json`). `tests/test_holdout_results.py` checks the lock still
+matches the label and model files, that scoring came after locking, and that every number is reproducible from the saved events.
+
+## Results (tolerance 0.10 s; never pooled with vid1-5)
+
+| take | kind | frames scored | frame accuracy | balanced | tolerant | boundary recall / precision | matched-boundary error (s) | majority baseline | chance recall |
+|---|---|---|---|---|---|---|---|---|---|
+| vid6 | slow, 4 cycles | 1,277 (+14 out of frame) | **0.839** | 0.825 | 0.879 | 0.50 / 0.40 | 0.042 | 0.31 | 0.13 |
+| vid7 | fast, 3 cycles | 383 (+25 out of frame) | **0.862** | 0.892 | 0.950 | 0.56 / 0.59 | 0.050 | 0.29 | 0.22 |
+
+Per cycle, frame accuracy: vid6 0.86, 0.85, 0.87, **0.72**; vid7 0.94, 0.83, **0.75**. Per phase: vid6 REST 0.99, REACH **0.70**, GRASP 0.74,
+HOLD 0.89, RELEASE 0.86, RETRACT 0.77; vid7 REST **0.70**, REACH 1.00, GRASP 0.97, HOLD 0.83, RELEASE 0.91, RETRACT 0.94.
+Frames with no hand data (scored separately): 0.43 (vid6, 14 frames) and 0.60 (vid7, 25 frames).
+
+**Against the development numbers** (leave-one-take-out on vid1-5): clean takes 0.95 to 0.97, vid4 (fast) 0.91, vid5 (hard) 0.84. On new data
+the frozen model scores 0.84 and 0.86: about 0.11 to 0.13 below the clean takes and 0.05 below vid4. Boundary recall drops from 0.61-0.89 to
+0.50-0.56. The cross-validated numbers were optimistic, as stated beforehand; these are the project's unbiased figures. Both takes remain far above
+the baselines (majority 0.29-0.31; random-boundary recall 0.13-0.22).
+
+## Why the errors happen (checked against the plots in `evidence/holdout/` and the confusion matrices)
+
+1. **A lingering approach is read as grasping (vid6).** In cycles 1 and 3 the hand reaches quickly, then waits open near the ball for 1 to 2 s; the
+   model labels the wait GRASP, so REACH is split (REACH, GRASP, REACH, GRASP). 61 of 220 REACH frames go to GRASP. This is the failure first seen in
+   vid5 cycles 2-3, now reproduced on unseen data. It matches the risk stated before scoring: slow motion is outside the training augmentation
+   (which only sped takes up).
+2. **A slow set-down is read as grasping (vid6).** In cycles 2 and 4 a false GRASP appears between HOLD and RELEASE (39 HOLD frames to GRASP).
+3. **vid6 cycle 4 is the weakest (0.72):** the GRASP-to-HOLD boundary comes 0.5 s early, around the stretch where the hand was at the top edge of the frame.
+4. **REST timing in the fast take (vid7).** Phases are mostly right (tolerant accuracy 0.95), but REST boundaries are 0.2 to 0.3 s off and the final
+   REST is read as RETRACT (21 REST frames to RETRACT, 12 to REACH). That is why boundary recall falls to 0.33 and 0.17 in cycles 2 and 3 while frame
+   accuracy stays at 0.83 and 0.75.
+5. **vid7 does not test vid4's RELEASE problem.** RELEASE is found well in vid7 (0.91) because its releases last 0.43 to 0.60 s and its cycles about 4.5 s;
+   vid4's releases lasted 0.13 s and its cycles about 2.5 s. The very-fast case remains untested on new data.
+
+## Found and fixed during the run (before locking unless stated)
+
+- **Pipeline bug: time base.** The conversion forced a 1/600 s time grid. vid1-5 and vid7 use 600, but vid6 was saved with a 90 kHz time base, so its
+  frame times were rounded by up to 1.17 ms. `tests/test_extraction.py` (timestamps within 1 ms of the source) caught it. Fix: the conversion now
+  keeps each source's own time base (`scripts/convert_videos.py`, new test). vid6 was re-extracted: same 1,291 frames, same 23 undetected frames.
+- **vid6 labels carried to the corrected times.** The owner read the labels off the old overlay. Each boundary was a real frame time, so each was moved
+  to the corrected time of the same frame: 30 of 52 times changed, by at most 1.0 ms (`data/holdout/vid6_label_time_remap.csv`, checked by a test).
+- **Label files:** a stray first line (`take_6`, `take_7`) and an empty `source` column. Timings untouched; `source` set to `manual` (read off the overlay).
+- **Out-of-frame intervals:** the file had the same stray first line. vid7's three intervals ended on the last frame without a hand; they were moved one
+  frame later to the file's convention (first frame with the hand back). vid6's 14-frame dropout (38.55 to 38.98 s) was not declared; frames 1152-1172
+  were checked (hand and ball at the top edge of the picture, partly out of view) and it was added as 38.546 to 39.013 s.
+- No intermediate pipeline file (keypoints, signals, events, exports) was edited by hand.
+
+## What this does and does not show
+
+- Two takes by the same person, object and (as far as recorded) setup. The recording notes in `docs/new_takes.md` were not filled in, so whether this
+  is a different session from vid1-5 is not documented.
+- It is a fair test of the frozen model on unseen motion; it is not a test of other people, objects or camera positions.
+- The end-to-end run (raw video to Tableau-ready tables, `data/holdout/tableau/`) worked through `scripts/run_new_take.py` with no hand edits to
+  intermediate files; the 5-take export stayed unchanged.
+
+## Framework notes
+
+`src/holdout.py`, `scripts/run_new_take.py`, steps in `docs/new_takes.md`. Changes made while building it so the new takes could not leak into verified
+results: `scripts/export_tables.py` now exports only the requested takes (it used to read every take in Postgres); `tests/test_export.py` counts only
+the exported takes; scoring and plotting use `ALL_GROUPS`. Framework tests: `tests/test_holdout_framework.py` (sandbox); run checks:
+`tests/test_holdout_results.py`.

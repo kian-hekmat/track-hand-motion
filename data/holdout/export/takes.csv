@@ -1,0 +1,3 @@
+take,group,n_frames,duration_s,mean_fps,frames_not_detected,fraction_not_detected,left_handedness_frames,n_ground_truth_segments,n_events
+vid6,holdout_slow,1291,43.014,29.99023573720184,23,0.017815646785437646,45,25,31
+vid7,holdout_fast,408,13.57,29.992630803242445,26,0.06372549019607843,55,19,18

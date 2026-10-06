@@ -1,5 +1,9 @@
 # Ground truth
 
+New recordings vid6 and vid7 (`take_6.csv`, `take_7.csv`) are the hold-out test: label them with the same rules below, **before** any model output
+exists, then lock them with `python scripts/run_new_take.py lock` (see `docs/new_takes.md`). vid6 has 4 cycles (25 rows), vid7 has 3 (19 rows). Both are locked (`data/holdout/lock.json`). vid6's times were carried to the corrected frame times
+after the time-base fix (same frames; at most 1.0 ms; `data/holdout/vid6_label_time_remap.csv`).
+
 One file per take: `take_N.csv` labels `vidN.mov` (confirmed mapping: vid1–3 clean, vid4 Fast,
 vid5 Hard case). Columns: `take, cycle, label, start_s, end_s, source`.
 

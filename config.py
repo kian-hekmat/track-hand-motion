@@ -32,3 +32,9 @@ BOUNDARY_TOLERANCE_S = 0.10
 TAKE_GROUPS = {"vid1": "clean", "vid2": "clean", "vid3": "clean", "vid4": "fast", "vid5": "hard"}
 TUNING_TAKES = ("vid1", "vid2")      # the ONLY takes thresholds/penalty may be tuned on
 LABELS = ["REST", "REACH", "GRASP", "HOLD", "RELEASE", "RETRACT"]
+
+# ---- New recordings: the hold-out test of the frozen model (never used for training, tuning or design) ----
+HOLDOUT_TAKES = {"vid6": "holdout_slow", "vid7": "holdout_fast"}   # vid6: 4 slow cycles, vid7: 3 fast cycles
+HOLDOUT_CYCLES = {"vid6": 4, "vid7": 3}
+HOLDOUT_DIR = ROOT / "data" / "holdout"
+ALL_GROUPS = {**TAKE_GROUPS, **HOLDOUT_TAKES}

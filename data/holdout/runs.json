@@ -1,0 +1,51 @@
+[
+  {
+    "scored_at": "2026-10-06T12:07:04",
+    "lock": {
+      "locked_at": "2026-10-06T12:07:00",
+      "model_sha256": "c1bbbe4fe90f95b4773b94acf8577b704ccac3f12c9a403893ffce11328abf8b",
+      "model_train_takes": [
+        "vid1",
+        "vid2",
+        "vid3",
+        "vid4",
+        "vid5"
+      ],
+      "ground_truth": {
+        "vid6": {
+          "file": "take_6.csv",
+          "sha256": "fb4c78d119d7faf3ec6d63957712d7022bf50f954b283944f6da8ea307f1fc3a",
+          "rows": 25
+        },
+        "vid7": {
+          "file": "take_7.csv",
+          "sha256": "41940471ef3589e43ff2f2f5647a3a81d306523873e0f110746b47bc70742711",
+          "rows": 19
+        }
+      }
+    },
+    "takes": [
+      "vid6",
+      "vid7"
+    ],
+    "boundary_tolerance_s": 0.1,
+    "summary": [
+      {
+        "take": "vid6",
+        "group": "holdout_slow",
+        "frame_accuracy": 0.8394675019577134,
+        "balanced_accuracy": 0.8246758681833309,
+        "recall": 0.5,
+        "precision": 0.4
+      },
+      {
+        "take": "vid7",
+        "group": "holdout_fast",
+        "frame_accuracy": 0.8616187989556136,
+        "balanced_accuracy": 0.8918625356125357,
+        "recall": 0.5555555555555556,
+        "precision": 0.5882352941176471
+      }
+    ]
+  }
+]

@@ -20,12 +20,23 @@ VF = (
 )
 
 
+def source_timescale(src: Path) -> int:
+    """The video stream's time base (ticks per second) as ffmpeg reports it ('600 tbn', '90k tbn')."""
+    err = subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(), "-hide_banner", "-i", str(src)], capture_output=True, text=True).stderr
+    line = next(l for l in err.splitlines() if "Video:" in l)
+    tok = line.split(" tbn")[0].split()[-1]
+    return int(float(tok[:-1]) * 1000) if tok.endswith("k") else int(tok)
+
+
 def convert(src: Path, dst: Path) -> None:
+    # Keep the source's own time base so the original (variable) frame times survive exactly. vid1-5 and vid7 use 600;
+    # vid6 uses 90000, and forcing 600 on it rounded its timestamps by up to 1.2 ms (caught by tests/test_extraction.py).
+    timescale = source_timescale(src)
     cmd = [
         imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-hide_banner", "-loglevel", "error",
         "-i", str(src), "-vf", VF, "-fps_mode", "passthrough", "-enc_time_base", "demux",
         "-c:v", "libx264", "-crf", "18", "-preset", "medium",
-        "-video_track_timescale", "600",  # iPhone source timescale; keeps exact VFR pts
+        "-video_track_timescale", str(timescale),  # source time base; keeps exact VFR pts
         "-c:a", "aac", "-b:a", "160k", str(dst),
     ]
     subprocess.run(cmd, check=True)

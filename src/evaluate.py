@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 
-from config import BOUNDARY_TOLERANCE_S, TAKE_GROUPS
+from config import ALL_GROUPS, BOUNDARY_TOLERANCE_S
 from src import ground_truth as G
 from src import score as S
 
@@ -21,7 +21,7 @@ def score_take(take: str, events: pd.DataFrame, frame_t: np.ndarray, tol: float 
     t0, t1 = float(gt["start_s"].iloc[0]), float(gt["end_s"].iloc[-1])
     tl, pl = G.labels_at(gt, frame_t), predicted_labels_at(events, frame_t)
     oof = G.in_intervals(frame_t, G.out_of_frame_intervals(take))
-    base = {"take": take, "group": TAKE_GROUPS[take], "tolerance_s": tol}
+    base = {"take": take, "group": ALL_GROUPS[take], "tolerance_s": tol}
 
     before = G.labels_at(gt, true_b - 1e-6)
     after = G.labels_at(gt, true_b + 1e-6)

@@ -1,0 +1,1700 @@
+take,take_label,take_group,t_s,speed,aperture,predicted_label,phase_name,phase_order,hand_not_visible
+vid6,Take 6 (holdout_slow),holdout_slow,0.0,2.4794372099004396,0.826553328664653,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.0333333333333333,1.7682756932705128,0.9239190364382468,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.0666666666666666,1.0670387183693932,0.9797734682264608,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.1,0.7281238309808067,0.9697872107681292,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.1333333333333333,1.0980583513167108,1.0012061554321685,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.1666666666666666,1.708141378350457,0.9903246624766304,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.2,2.886830495764833,0.9823408028187932,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.2333333333333333,4.363807491631784,0.9372602421066444,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.2666666666666666,6.084371205486072,0.9066775115873132,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.3,7.6552388748135645,0.8512989532145498,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.3333333333333333,8.540312935099472,0.8537425615159566,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.3666666666666666,9.135695068154083,0.873258984791111,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.4,9.443758018709175,0.8906313069722629,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.4333333333333333,9.73033543198997,0.8904240153287672,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.4666666666666667,9.423204789777676,0.9445926063706102,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.5,8.514062643574011,1.0732338839793965,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.5333333333333333,7.266771698196171,1.20528776310755,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.5666666666666667,5.656305983835068,1.2595902416349152,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.6,4.292544724900894,1.2676045157471043,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.6333333333333333,3.2552357249326875,1.3153358148049714,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.6666666666666666,2.592385460526871,1.3535423110639062,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.7,2.4185021088437977,1.3225914352960475,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.7333333333333333,2.1020976700226544,1.278775710072833,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.7666666666666666,1.7828165585104512,1.2728456488679698,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.8,1.4104883652572624,1.2630601501943042,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.8333333333333334,0.983123300566072,1.2463661136591753,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.8666666666666667,0.8084453183569855,1.2296354416315345,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.9,0.5946466194557652,1.21123177738055,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.9333333333333332,0.3755077660072061,1.2109208047732023,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,0.9666666666666668,0.1368320192212048,1.2370405756353695,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.0,0.1238204234094544,1.2442741528492025,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.0333333333333332,0.1939045684224893,1.218246625378527,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.0666666666666669,0.2283050005048734,1.216723737842896,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.1,0.1602010927858709,1.2335617750101977,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.1333333333333333,0.1206303666723438,1.2334195235499608,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.1666666666666667,0.2501181531982575,1.2027285905652858,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.2,0.3344960109637656,1.1950282053489245,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.2333333333333334,0.3257102178908416,1.224039318458202,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.2666666666666666,0.1604651614182652,1.243575341359637,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.3,0.204355463672422,1.2463988930958163,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.3333333333333333,0.3138728072365007,1.2545946596783768,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.3666666666666667,0.3797067223079626,1.2718054543141435,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.4,0.5552805057775777,1.2659414102196762,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.4333333333333331,0.5591536737218881,1.2439518798017222,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.4666666666666666,0.7292044986472406,1.238986816540946,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.5,1.061600717876413,1.240580730184485,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.5333333333333332,1.1887038791408466,1.2007947483859605,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.5666666666666669,1.4290307870198151,1.1760490187963395,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.6,1.6563095860074375,1.1985364661083782,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.6333333333333333,2.0778252237437327,1.2276439068955738,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.6666666666666667,2.5920664387313783,1.1913424539648594,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.7,2.713208187843756,1.167543678517499,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.7333333333333334,2.6445292877083677,1.1167851617182911,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.7666666666666666,2.280032249975347,1.0569411089452654,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.8,1.419489496522915,0.9743262333788985,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.8333333333333333,0.6428966795741943,0.9521820889116238,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.8666666666666667,0.0744103749817028,1.0346211398244072,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.9,0.1192130871904175,1.07449977109035,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.9333333333333331,0.2163833855979412,1.087286646386679,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,1.9666666666666663,0.3370258040369289,1.0200338268194469,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.0,0.3761615930827583,1.018641787084858,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.033333333333333,0.2105238986890982,0.9447480134204363,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.0666666666666664,0.2047852975081183,0.960022031841354,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.1,0.0983603378397819,0.9546371534901356,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.1333333333333333,0.1891387779829981,0.985336752172733,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.1666666666666665,0.0839275674493605,0.986469851830543,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.2,0.1542038517464722,0.9960850404605922,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.2333333333333334,0.0724910791907849,0.987493705089253,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.2666666666666666,0.1903566058575161,0.9987650646599838,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.3,0.4239091740515168,1.0354226793239871,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.3333333333333335,0.645657733353743,1.0673890921633324,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.3666666666666667,0.7208802180683765,1.1063390499122858,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.4,0.8352116916756366,1.082350784747005,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.433333333333333,1.1692973988529132,1.0611254151214922,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.466666666666667,1.3249519684882514,0.9150844024040096,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.5,1.1960001794438413,0.6885635359960718,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.533333333333333,1.224356845001149,0.3931521180256433,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.5666666666666664,0.9670646963481384,0.3316363535771733,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.6,1.0137025763850032,0.3833605869164089,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.6333333333333333,0.6022362771634584,0.47679156553297,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.6666666666666665,0.3982737527412222,0.5078453061642415,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.7,0.4395756163453426,0.5611942769706899,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.7333333333333334,0.4701615868910722,0.5877159298922211,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.7666666666666666,0.1050111152276202,0.6031066398219569,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.8,0.0650916063046567,0.6132282310444378,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.8333333333333335,0.0440435283430429,0.6066824799342988,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.8666666666666667,0.0205398996640022,0.5854728151705889,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.9,0.146794557694489,0.5628588211805795,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.933333333333333,0.0717553437957862,0.5935730892453973,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,2.966666666666667,0.1101121739858382,0.623404339932722,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.0,0.0701975071471032,0.6517349132508247,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.033333333333333,0.0162968303078907,0.6236868798429682,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.0666666666666664,0.0884502329229058,0.5968974956035948,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.1,0.2205440147691123,0.5867430133588002,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.1333333333333333,0.133504053512533,0.6271829628699065,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.1666666666666665,0.0872929905809823,0.6725201916460386,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.2,0.0373853527153847,0.6778028715278219,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.2333333333333334,0.1277393035158108,0.6724129585727445,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.2666666666666666,0.194954423869697,0.6983171897834116,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.3,0.327028397902886,0.7186676858697586,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.3333333333333335,0.4879964657470515,0.7144859304562381,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.3666666666666667,0.6248529327339327,0.7131686883799762,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.4,0.906578007615091,0.7515871997356444,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.433333333333333,1.4340737428062955,0.7661990054458775,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.466666666666667,2.182881938669787,0.774161526037412,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.5,3.215416549492468,0.7646070507956902,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.533333333333333,4.106654864933632,0.7409703272600537,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.5666666666666664,4.7964461268864325,0.6780020354153522,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.6,5.3323245131638375,0.640636627714141,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.6333333333333337,5.78652001058859,0.6210589492792072,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.6666666666666665,6.1715728445942455,0.5981831322856825,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.7,6.354682404913799,0.5779612430160839,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.7333333333333334,6.277629802654969,0.5772222768606667,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.7666666666666666,5.964877691691065,0.5669485751630184,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.8,5.544534744731822,0.5359881947194115,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.8333333333333335,4.9838789369474625,0.4929944973169572,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.8666666666666663,4.237905622398206,0.4671899100332092,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.9,3.38411434181606,0.4854352773516308,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.933333333333333,2.6314268954122615,0.542079944154684,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,3.966666666666667,1.958700955830076,0.6235037797281965,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.0,1.3576110631460467,0.6611529949731101,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.033333333333333,0.8615483912078518,0.601785746151998,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.066666666666666,0.5076936721084635,0.5415181141784392,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.1,0.3932970276551497,0.5655808073793374,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.133333333333333,0.3757634213775153,0.5908368678176639,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.166666666666667,0.3862150140212205,0.5919582035694486,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.2,0.421134778741924,0.5561444128191197,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.233333333333333,0.6256691436114958,0.5821441706780357,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.266666666666667,0.601603339779763,0.6087336859951755,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.3,0.5677621610953618,0.6696700129856051,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.333333333333333,0.4468935344325779,0.6550452864653067,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.366666666666666,0.3035344600266713,0.640268692611962,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.4,0.2018530711273034,0.6390802663554314,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.433333333333334,0.1555805682704829,0.6553055923002238,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.466666666666667,0.2800107419917489,0.6600274493018073,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.5,0.3064602295562813,0.657469389967894,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.533333333333333,0.3765928747504224,0.6427394129896921,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.566666666666666,0.3213497702618276,0.6390735944668117,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.6,0.2388069081272581,0.6376681412150671,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.633333333333333,0.2821610539090785,0.6326451846026819,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.666666666666667,0.3075141321378677,0.6023129028713584,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.7,0.3073923765092525,0.5868136211664136,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.733333333333333,0.2749879175958016,0.5999984619367374,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.766666666666667,0.1725420188097728,0.6317772729484651,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.8,0.1941240615527373,0.671887638835321,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.833333333333333,0.170345223741747,0.686486850020915,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.866666666666666,0.1125919547039783,0.6851296513797367,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.9,0.0891837755149815,0.6419538282237752,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.933333333333334,0.0585147434580951,0.6423262851392596,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,4.966666666666667,0.0595458875377581,0.6483983476729616,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.0,0.0394224199960867,0.6903132173666583,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.033333333333333,0.0451426145294389,0.6751184623636735,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.066666666666666,0.0876829222561118,0.6899730388785943,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.1,0.0452975317658735,0.6926291051833154,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.133333333333333,0.0317315479901435,0.6834296919446957,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.166666666666667,0.0958233294981743,0.6828740131332387,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.2,0.0430632898863879,0.7085069915343696,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.233333333333333,0.0664182445115417,0.7243890071707182,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.266666666666667,0.0567644497867733,0.6964391299562112,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.3,0.0626489605647202,0.7006308224633394,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.333333333333333,0.1183922621175186,0.6917079841687152,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.366666666666666,0.0902235660593807,0.6888311332068708,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.4,0.0855631121576653,0.6654955161266687,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.433333333333334,0.1062331506358693,0.68060783148854,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.466666666666667,0.103614984036956,0.6839127853004593,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.5,0.0691939938800535,0.6797586320549358,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.533333333333333,0.0777459789473325,0.6727655305569528,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.566666666666666,0.0515196273919195,0.6785597940625386,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.6,0.0293479739353975,0.689397062114293,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.633333333333333,0.0349796705741942,0.7025404040951698,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.666666666666667,0.0312281951448866,0.7048438081068106,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.7,0.0558697054681836,0.6994811676390397,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.733333333333333,0.060058705657575,0.6864333921521086,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.766666666666667,0.0472163413819572,0.6873856885644704,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.8,0.054042891925605,0.6864702173659022,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.833333333333333,0.0032812567042058,0.7005343907142914,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.866666666666666,0.044348442155667,0.6941448170282575,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.9,0.0557028910950328,0.6834281105066732,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.933333333333334,0.0517377971287253,0.6963187036076055,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,5.966666666666667,0.1172296688500234,0.710250455935154,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.0,0.0435046040093229,0.7031171647425999,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.033333333333333,0.0616431002938478,0.6971221445859022,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.066666666666666,0.101816291887167,0.7006830148354937,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.1,0.1346846409027685,0.719672707998617,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.133333333333333,0.2006344255510193,0.7082027610543075,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.166666666666667,0.1996359066771925,0.678834236717967,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.2,0.2290753928116851,0.646416484510815,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.233333333333333,0.2449546996872109,0.660804613556179,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.266666666666667,0.3907633929151647,0.6463651651715302,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.3,0.6160655784775592,0.6191544533185499,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.333333333333333,0.8034055776928083,0.5856803021691167,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.366666666666666,0.920608768152634,0.5970814028715808,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.4,0.9543415606582408,0.599710215808788,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.433333333333334,1.0603472610671163,0.6155939603809766,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.466666666666667,1.3035375358683765,0.6067736914191534,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.5,1.572817148856808,0.5871904377890653,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.533333333333333,1.95705404724278,0.602679842685577,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.566666666666666,2.376539097541477,0.6438731825401136,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.6,2.8559492052032125,0.6968963481651068,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.633333333333333,3.405962292017257,0.696829364647966,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.666666666666667,3.8890950538266273,0.6900704304875819,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.7,4.410773751736339,0.6874174227827409,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.733333333333333,4.789052736656421,0.7186826379691559,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.766666666666667,5.07928034089972,0.7360115944707208,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.8,5.038464965560499,0.7358397150452972,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.833333333333333,4.843658426321905,0.7603337734028163,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.866666666666666,4.449355290437564,0.7618824577808142,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.8999999999999995,3.885503356749536,0.7806177633532069,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.933333333333334,3.2681385859718057,0.7538496072075043,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,6.966666666666667,2.5919554220013588,0.7735354046748039,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.0,2.1459217615907193,0.7722745736360698,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.033333333333333,1.9204687518111745,0.7920000514236077,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.066666666666666,1.766507593421576,0.738778353369383,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.1,1.5222366322583425,0.7049729887272255,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.133333333333333,1.0659436838723564,0.7203990687264086,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.166666666666667,0.6090689591215329,0.7757857793574261,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.2,0.4064236639881252,0.783056872563408,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.233333333333333,0.2634292612949415,0.7781501300056648,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.266666666666667,0.2078222978907689,0.7617972613438676,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.3,0.1607932173829043,0.7686378753782299,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.333333333333333,0.092287658328346,0.7510606854629224,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.366666666666666,0.0918599331104203,0.753551487170773,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.4,0.0539477217257508,0.7691917173358056,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.433333333333334,0.0637890729018919,0.7864096318514234,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.466666666666667,0.0894676020332219,0.7841033789172039,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.5,0.1228394683689667,0.7643807905400613,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.533333333333333,0.0909595693451912,0.7627193111107858,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.566666666666666,0.0926533348035737,0.7475601455487695,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.6,0.081258319870297,0.7564063325231128,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.633333333333333,0.0646019833826342,0.7308581843848727,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.666666666666667,0.0631460398400514,0.7277282855509538,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.7,0.0145778037510633,0.7155189418758153,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.733333333333333,0.1079729763779659,0.7203186091974676,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.766666666666667,0.1481316437157114,0.6894542858608055,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.8,0.2360441107377813,0.6945160369925,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.833333333333333,0.4976543812391248,0.7109367324903603,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.866666666666666,0.6865598442767208,0.766112845465784,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.9,1.2344611510482166,0.8016723253660375,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.933333333333334,1.6067700884268008,0.7969493805684542,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,7.966666666666667,1.8350462194564976,0.8518256627842633,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.0,1.8569302646274128,0.976693213429262,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.033333333333333,1.6359489504317324,1.1104536764798194,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.066666666666666,1.6993405923569087,1.158267282083673,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.1,1.4067278793895448,1.1789735513169708,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.133333333333333,1.0714014410278054,1.1619586473878267,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.166666666666666,0.8260292799389976,1.1573179404260088,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.2,0.7556098758698393,1.1506327753821537,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.233333333333333,0.6948022188258195,1.1697849465570898,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.266666666666666,0.5849881372773228,1.230285177952567,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.3,0.3942945239736561,1.285603355303022,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.333333333333334,0.211884979021457,1.31289718914291,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.366666666666667,0.1016950947881969,1.3373463259091118,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.4,0.0880796155927915,1.3735283599364485,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.433333333333334,0.0176260308159586,1.3655764416340916,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.466666666666667,0.1359055456253493,1.3186092380723835,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.5,0.1185841587410636,1.2917534207069337,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.533333333333333,0.2124920118981561,1.2852298544225096,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.566666666666666,0.330744082438781,1.2822045545946938,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.6,0.3775699904027195,1.2479310461767616,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.633333333333333,0.3542133921309517,1.2353538947377365,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.666666666666666,0.1932822450652857,1.2362376091045502,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.7,0.064248093914231,1.2599702704675328,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.733333333333333,0.1760616961612996,1.275074345495222,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.766666666666666,0.1984712685406975,1.2779250381046108,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.8,0.176228177513241,1.2437070052213062,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.833333333333334,0.0994185459248889,1.2176181503790475,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.866666666666667,0.1730071792862515,1.2326255142108125,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.9,0.2817140685187519,1.279527319892239,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.933333333333334,0.4123196830583788,1.2620003560935364,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,8.966666666666667,0.5455589242908703,1.2175007941808156,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.0,0.4662507539563461,1.1802091079026886,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.033333333333331,0.283240315059739,1.176255304883615,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.066666666666666,0.6943394731182443,1.204467026939568,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.1,1.0666844666767292,1.2349435810608882,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.133333333333333,1.4925820628105215,1.2763298986186171,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.166666666666666,1.801802475748831,1.3174980600719142,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.2,2.236490004372791,1.4499934203712286,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.233333333333333,2.433999458044758,1.4711654618632355,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.266666666666666,2.767964240748877,1.469284760655379,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.3,3.107725675809605,1.4636972005836506,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.333333333333334,3.4827380127698953,1.5061769663575617,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.366666666666667,4.098251963261161,1.4304386886114375,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.4,4.160900755209472,1.3439015061629618,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.433333333333334,4.47172451296283,1.347618531083708,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.466666666666669,4.803552799805296,1.3758129393479233,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.5,5.164331724785359,1.4298509225959797,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.533333333333331,5.571829163004385,1.4361977771735317,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.566666666666666,5.82821818836172,1.4201357600049318,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.6,6.138571222399817,1.355303840006198,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.633333333333333,6.393632558051807,1.3202420882028654,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.666666666666666,6.401687044723813,1.2974685340165668,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.7,6.295587821577742,1.2809758940322158,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.733333333333333,6.12635748049577,1.2054011933000737,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.766666666666666,5.872690623221736,1.182839589052188,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.8,5.537248924032284,1.1573946961710282,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.833333333333334,5.179020254843024,1.1500364007824349,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.866666666666667,4.704739096843577,1.0594833431955477,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.9,4.375705399961042,1.0404328005508974,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.933333333333334,4.2495864022951,1.0580991938148985,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,9.966666666666669,4.576850606828054,1.0997157574542276,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.0,4.00501946845067,1.1078226535395976,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.033333333333331,2.573094588784085,1.1765932571604747,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.066666666666666,0.8748362607029395,1.1931242093937644,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.1,0.6162896748041087,1.215899362877608,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.133333333333333,0.2269373945034665,1.2021565021177387,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.166666666666666,0.0971169873255136,1.2595657398013007,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.2,0.0763648885837949,1.2336210297291612,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.233333333333333,0.4451561163762465,1.309376964577322,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.266666666666666,0.4104583853795143,1.2462449732876182,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.3,0.1780083897784048,1.160211151157079,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.333333333333334,0.2701146862869492,1.1044013705570226,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.366666666666667,0.5427949291094679,1.212958490149655,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.4,0.4777082346749305,1.2245792199995176,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.433333333333334,0.1401185431805331,1.2862190794954682,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.466666666666669,0.3789576536713966,1.258265014246818,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.5,0.1119534811137558,1.2176562251514904,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.533333333333331,0.1827262479462054,1.2245172392962722,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.566666666666666,0.0410687884239507,1.279246492593001,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.6,0.2775581580620648,1.2022956461747525,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.633333333333333,0.1341981016934003,1.205599684220115,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.666666666666666,0.2828154656380411,1.219706127540622,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.7,0.1964521734589162,1.2038078912317125,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.733333333333333,0.2694954150142375,1.1450928383272223,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.766666666666666,0.1441871563919609,1.1979161308234465,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.8,0.3424144440600619,1.1730215195938891,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.833333333333334,0.7893279133231811,1.073509348966133,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.866666666666667,0.8251380226574561,1.0065409693408336,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.9,0.6166362869297023,1.003560000526092,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.933333333333334,0.4400240860613611,1.0749243122484362,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,10.966666666666669,0.2343747001249071,1.0941135662482075,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.0,0.1713286406804563,1.107745435282441,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.033333333333331,0.6420045202792415,1.0651493313758709,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.066666666666666,0.7341005918998338,1.1262537989126005,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.1,0.6147898437437428,1.184343329162053,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.133333333333333,0.6766329380043962,1.2353312834698431,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.166666666666666,0.3553962748445138,1.245170035975218,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.2,0.4387070878641221,1.254970312628309,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.233333333333333,0.3935777556997623,1.1924435173740906,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.266666666666666,0.5340479942926811,1.1137059334581216,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.3,0.4452600184303673,1.1190699778025048,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.333333333333334,0.3696757016542082,1.1126051105190384,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.366666666666667,0.2251547759693739,1.099916949123412,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.4,0.3870207074408892,1.082024755774244,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.433333333333334,0.3492097893196744,1.149121191619694,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.466666666666669,0.1834207389894659,1.182207920308776,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.5,0.1217131640758544,1.1665187868440563,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.533333333333331,0.120584102847235,1.1220479034577813,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.566666666666666,0.0154085383731969,1.1308771926950612,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.6,0.0343434682687462,1.1387622471865255,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.633333333333333,0.1454450653157143,1.1200761689516714,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.666666666666666,0.0317783592873631,1.11459379928211,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.7,0.0309692537369328,1.1216852756697295,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.733333333333333,0.0397813239770018,1.121919351229691,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.766666666666666,0.11381043927876,1.105226280459797,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.8,0.1762637262446751,1.1000456086067,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.833333333333334,0.1731009721136335,1.090849079516995,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.866666666666667,0.1838291697869017,1.0955796109136478,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.9,0.2528945941701607,1.098068532354583,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.933333333333334,0.0995988485244436,1.108090402058278,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,11.966666666666669,0.1373610783701309,1.1013146296908758,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.0,0.0274624761909793,1.1037561940361815,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.033333333333331,0.0747825468157698,1.1049047059991457,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.066666666666666,0.1084432558021135,1.1095755551180766,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.1,0.0346115683427987,1.1199245499605233,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.133333333333333,0.1246848422680506,1.1064748646399267,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.166666666666666,0.062275725077758,1.1115569180020244,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.2,0.1865258678588745,1.126520061550021,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.233333333333333,0.0610849949382215,1.1474741349931186,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.266666666666666,0.0263798079228526,1.1384100187421269,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.3,0.0510978675511047,1.130081828073194,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.333333333333334,0.021443058351281,1.1179218093556684,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.366666666666667,0.0250869441690423,1.104589140074429,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.4,0.0486135541474177,1.09559044325945,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.433333333333334,0.0517616712289803,1.0963647327950103,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.466666666666669,0.011832263161668,1.0952357269196349,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.5,0.0428839616380224,1.102100056609367,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.533333333333331,0.0949391000559506,1.1077564768779609,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.566666666666666,0.0819253154104054,1.1114495270544305,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.6,0.0903481563033316,1.11203271338939,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.633333333333333,0.0512658686445025,1.1145758930393062,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.666666666666666,0.1570097142572041,1.1097853951966452,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.7,0.1908868623517642,1.1100981587404384,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.733333333333333,0.1424481466554087,1.125248975343116,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.766666666666666,0.0362670146439782,1.1347056806482452,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.8,0.3190898365015278,1.1235293031186566,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.833333333333334,0.1059173156698169,1.101915369289,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.866666666666667,0.066636999853144,1.124581790162908,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.9,0.1271719901850971,1.1563938051687717,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.933333333333334,0.1723402816281826,1.1593041108246904,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,12.966666666666669,0.0303253424602908,1.1405783027958274,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.0,0.2700736076441249,1.136567953796554,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.033333333333331,0.3333239062147412,1.129963922170428,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.066666666666666,0.2967749328514158,1.1093110930913472,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.1,0.1361413773607699,1.1210871654086438,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.133333333333333,0.1060912130214942,1.1247889523236605,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.166666666666666,0.0405935904422409,1.1124935789640282,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.2,0.1446965104868496,1.0982457807178063,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.233333333333333,0.3249909462091726,1.096193308334752,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.266666666666666,0.3484463874312227,1.0741165622854745,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.3,0.2858394730287273,1.0480171981785664,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.333333333333334,0.3659033558788304,1.1320954517644444,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.366666666666667,0.4809347365044435,1.1711634652606742,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.4,1.213285462182301,1.137340150410871,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.433333333333334,2.130813659804554,1.0192182651597834,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.466666666666669,3.288761202330738,1.0020383828980226,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.5,4.870130999569373,1.0265380270786515,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.533333333333331,6.413079594123433,1.027544630366172,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.566666666666666,7.803061920487197,0.9530974194474476,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.6,8.47948326090421,0.8868941529769854,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.633333333333333,8.79793943936006,0.8495865435661473,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.666666666666666,9.149112158280127,0.8338923430346699,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.7,9.412322553152151,0.8574969518628545,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.733333333333333,9.22457351530518,0.9247707479306566,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.766666666666666,8.840362725298121,1.021895470252553,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.8,8.147413328010215,1.1379821738139464,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.833333333333334,7.216863168848938,1.2674803794754386,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.866666666666667,6.1347300372696845,1.292752528909478,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.9,4.590199645114586,1.2668179957114156,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.933333333333334,3.145256671176548,1.2146029429709606,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,13.966666666666669,2.2333703306208497,1.1515402498216365,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.0,1.8303417350256743,1.0513095552007488,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.033333333333331,1.6691271359860047,0.9860767389709364,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.066666666666666,1.4271910101881553,1.0197520267783935,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.1,1.0813509761033195,1.0929375247618232,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.133333333333333,0.7529261977589925,1.1368089653924751,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.166666666666666,0.6393148044981816,1.1158211401076297,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.2,0.5442529662261283,1.0891593223344471,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.233333333333333,0.5131307658380975,1.0772097701604368,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.266666666666666,0.5309443025274124,1.1032073857986515,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.3,0.567149421904425,1.1612993862884329,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.333333333333334,0.7059122087938681,1.1697395371869452,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.366666666666667,0.8209724819963041,1.1552777784419208,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.4,0.9705146481695948,1.1644307905198017,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.433333333333334,1.0866151026698003,1.1782302853688194,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.466666666666669,1.12094329604669,1.1664471946919888,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.5,1.1641285106132897,1.1315601341527364,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.533333333333331,1.04748195325034,1.1289912601880292,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.566666666666666,1.2257670284913345,1.0856778747741702,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.6,1.3316910635364756,1.0255028307743037,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.633333333333333,1.3471477856513745,0.9350955991337644,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.666666666666666,0.98956540931665,0.9015072892609968,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.7,0.4327889309389936,0.911669382265956,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.733333333333333,0.1991792640808511,0.9356300849333704,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.766666666666666,0.2475942074190424,0.940727767888726,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.8,0.1323235630676494,0.9377042179091,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.833333333333334,0.0897719831476379,0.9221905011246494,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.866666666666667,0.080798962482746,0.931479550404162,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.9,0.0761134689049051,0.9425066740607924,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.933333333333334,0.1675842619742643,0.9490903780590604,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,14.966666666666669,0.216107056781196,0.9435594987862704,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.0,0.1569934499117515,0.9647766839347692,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.033333333333331,0.0816417758008288,0.9571234898104288,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.066666666666666,0.1869798512582029,0.939419378514717,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.1,0.4793483366991476,0.95220225472882,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.133333333333333,0.7198025570902682,1.0166135686283522,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.166666666666666,0.8606754457256401,1.079932527550714,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.2,0.7469420859738757,1.096063508142879,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.233333333333333,0.5730210853969417,1.0706137119869117,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.266666666666666,0.4860733632912076,0.9901561143649206,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.3,0.5681939819167692,0.8891955808927937,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.333333333333334,0.681567693100308,0.8405194072951456,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.366666666666667,0.7200528682716089,0.830791768987342,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.4,0.7330641204090549,0.8377987557713599,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.433333333333334,0.5477666906735876,0.8056273323594026,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.466666666666669,0.4819005339945655,0.7361846696638676,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.5,0.5467527495482526,0.6383068377869773,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.533333333333331,0.7527606668072001,0.5879325239727294,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.566666666666666,0.8690361452600741,0.6366797633209893,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.6,0.7960816628904553,0.7035381461788509,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.633333333333333,0.6430423404546235,0.7334746472652389,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.666666666666666,0.4927301536793194,0.729815535292124,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.7,0.4594836367744351,0.7335728351407607,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.733333333333333,0.3494909964408375,0.7623253965626511,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.766666666666666,0.1865677853805441,0.78602397550121,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.8,0.1043075535300305,0.8053298285561348,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.833333333333334,0.1546248953378102,0.7804308909181981,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.866666666666667,0.0216551722013458,0.7625586940070541,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.9,0.1261856755131805,0.7390867483588134,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.933333333333334,0.1663297045679452,0.7392582626708997,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,15.966666666666669,0.1474967673619008,0.734665597903931,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.0,0.037099892823486,0.728072049151908,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.03333333333333,0.1676429240669993,0.7348251507566333,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.066666666666666,0.078570922350215,0.7446338884216691,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.1,0.0604705502772045,0.7382965276841948,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.133333333333333,0.1424483687072374,0.7094663223796496,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.166666666666668,0.0621779632162628,0.7131492876355419,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.2,0.077165410728815,0.7180107809132473,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.233333333333334,0.0446201587795022,0.7170377052425089,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.266666666666666,0.0352406855201885,0.716834890601788,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.3,0.0774977681257825,0.7014606489599916,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.333333333333332,0.1661669097134228,0.6830787989575559,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.366666666666667,0.4981218106100978,0.7093668236620108,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.4,0.8722954563402477,0.7400323810728638,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.433333333333334,1.3612588605219769,0.7576773744583919,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.466666666666665,2.1978838938399283,0.7584585076815932,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.5,3.167848916986024,0.7518925753029573,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.53333333333333,4.314917057427037,0.7198110181144994,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.566666666666666,5.185091340020004,0.6837493606587899,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.6,5.807696164294324,0.7026756114484874,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.633333333333333,6.131252336650417,0.7212669751362764,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.666666666666668,6.142103192027815,0.7462364823796689,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.7,5.768579445450781,0.7156459154382625,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.733333333333334,4.946470816404612,0.7065844180369396,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.766666666666666,3.976629755677649,0.6903784755675246,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.8,3.0255636620825976,0.6855433075681341,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.833333333333332,2.2165094215721464,0.6673669299270503,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.866666666666667,1.590489165858975,0.6749890471620339,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.9,1.1592260763736777,0.6883871496213703,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.933333333333334,0.9750460936959576,0.701944260634805,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,16.966666666666665,0.883836895008627,0.700822436361565,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.0,0.730472196971368,0.720858379309999,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.03333333333333,0.6866330627991096,0.7256924500325105,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.066666666666666,0.5248668946527388,0.725093698134183,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.1,0.440354843275391,0.7016019481319326,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.133333333333333,0.3716235087384836,0.6915531191868628,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.166666666666668,0.2117921495038114,0.694137453781031,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.2,0.2011366648777348,0.7123552496832458,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.233333333333334,0.1633137280880564,0.7006736926660313,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.266666666666666,0.1222370448834681,0.6814714361726477,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.3,0.0992034896842463,0.6624057105155572,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.333333333333332,0.1509440801921341,0.6552980244227457,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.366666666666667,0.2190990060615937,0.6714594502715392,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.4,0.2438260403305431,0.6908780841290646,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.433333333333334,0.2413468731898541,0.7027054534086573,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.466666666666665,0.235835548488661,0.7141476505666274,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.5,0.2488996841780926,0.7733053614689667,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.53333333333333,0.277228808088983,0.7579146435359111,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.566666666666666,0.2277619476417692,0.7142325394488093,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.6,0.1455791547347495,0.7092709538774769,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.633333333333333,0.0772331680013157,0.754194675541333,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.666666666666668,0.0843786156742677,0.7502513688115037,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.7,0.1303379567607521,0.7400838693374074,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.733333333333334,0.1818117875006007,0.7333374849006868,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.766666666666666,0.2077817651969675,0.7250646672949252,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.8,0.1530282429308473,0.7056385205330589,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.833333333333332,0.186708200523012,0.7248628380493694,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.866666666666667,0.1474478857603877,0.7299146646816234,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.9,0.1418640521489895,0.7422081140618929,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.933333333333334,0.0637940098440339,0.7159013117925179,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,17.966666666666665,0.0216321354712484,0.7043204673893736,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.0,0.0319276821703713,0.6931803295327901,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.03333333333333,0.0218052594077066,0.7313978284594649,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.066666666666663,0.0180350483002969,0.7385071004323605,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.1,0.0247249644996764,0.7127189910497947,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.133333333333333,0.0720805469234565,0.6939821607416755,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.166666666666668,0.2059091241467153,0.7000691406059077,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.2,0.2217148365259965,0.7062617113090227,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.233333333333334,0.1823956237063596,0.7121091232167932,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.266666666666666,0.1411623213511498,0.733246563628758,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.3,0.1486465921404781,0.7368491581122674,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.333333333333332,0.1146655010274396,0.7244136903147821,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.366666666666667,0.082629483409765,0.7439254557336559,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.4,0.1108648445940301,0.7522899688155786,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.433333333333337,0.1246374416313717,0.7475855961085681,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.466666666666665,0.0964942658083073,0.725240169555809,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.5,0.0355988674073992,0.7454243438618449,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.53333333333333,0.0608717527400686,0.7590336369581973,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.566666666666663,0.120561851947562,0.7623786215467809,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.6,0.126505583334284,0.7447049201541898,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.633333333333333,0.1219178449020537,0.7435479021844275,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.666666666666668,0.0989896987424744,0.7416744494607966,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.7,0.0840943027641591,0.7292856791064154,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.733333333333334,0.0893694219371568,0.7134825035943173,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.766666666666666,0.1105107431958275,0.7173824249482655,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.8,0.1411620932923261,0.7238747909287295,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.833333333333332,0.1605029848490121,0.7249282236436827,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.866666666666667,0.1220117954691714,0.7184927135021262,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.9,0.1510700413848706,0.7215914951569468,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.933333333333337,0.2308880567667436,0.7130217618564577,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,18.966666666666665,0.3133274825015522,0.6903269573662394,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.0,0.2635060266919753,0.6954457097917534,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.03333333333333,0.1326864391487598,0.7008139721667684,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.066666666666663,0.0778416959648824,0.686031024989172,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.1,0.2366788530394722,0.6659951916648147,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.133333333333333,0.4386474157661029,0.6879491594408426,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.166666666666668,0.4989856705001058,0.7121906930953005,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.2,0.4140929836599525,0.7216700652820824,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.233333333333334,0.3610653136826483,0.720715888631046,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.266666666666666,0.4255117894798347,0.7214262938184622,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.3,0.4057336338799175,0.713269745679532,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.333333333333332,0.3920086505447656,0.7051508868511825,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.366666666666667,0.3217883184853778,0.7110608504513523,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.4,0.3416518287256426,0.7456952470679629,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.433333333333337,0.4326367737237512,0.7445776985854813,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.466666666666665,0.405760067343025,0.7260822554740602,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.5,0.3432187150333481,0.7084233614705743,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.53333333333333,0.3219744309436836,0.7145625230974452,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.566666666666663,0.338542316909653,0.7285722079213095,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.6,0.4281277145871819,0.7593131482141241,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.633333333333333,0.42963565094601,0.7536491624417955,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.666666666666668,0.3108541545484649,0.7225100628177288,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.7,0.1813072979686699,0.69770126752241,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.733333333333334,0.1156334985601339,0.7014840644520556,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.766666666666666,0.201461650993375,0.6990816578026579,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.8,0.2436389181560114,0.7006214883382027,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.833333333333332,0.1570786704608447,0.6894513143332013,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.866666666666667,0.1491211745664359,0.6832109539361938,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.9,0.1277427015476585,0.6821655455735173,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.933333333333337,0.0804498120469919,0.6924141128283164,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,19.966666666666665,0.1204948604694772,0.7039295087605512,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.0,0.1047831297717494,0.7031955584605172,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.03333333333333,0.2040247300838347,0.7231532485339581,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.066666666666663,0.3174012097053512,0.7337999168874086,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.1,0.5578207705418837,0.7397880178597577,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.133333333333333,0.700261879892099,0.7225162927281664,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.166666666666668,0.9574610485067088,0.7150858328760012,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.2,1.315618782685416,0.6999760196620953,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.233333333333334,1.7227552728336133,0.6939943286330071,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.266666666666666,2.305022907935148,0.6869813768182672,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.3,2.7898080389939026,0.6838569600503006,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.333333333333332,3.0970941258325992,0.6798224259995722,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.366666666666667,3.29375765775833,0.6769175426599539,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.4,3.383329476608397,0.6837754032497779,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.433333333333337,3.4991057586169725,0.6927412131054275,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.466666666666665,3.593803118342447,0.691613077653531,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.5,3.5250991172935557,0.6536788718211631,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.53333333333333,3.3212611975812916,0.6431340460023497,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.566666666666663,3.0269130372679576,0.6602429908649451,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.6,2.7372208890224856,0.7010445881969064,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.633333333333333,2.440462951087096,0.7263111084210092,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.666666666666668,2.1911786585909865,0.7337417015128368,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.7,1.7938570410352743,0.6852556980178599,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.733333333333334,1.2617936793492108,0.6681423786580646,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.766666666666666,0.7188646152566956,0.7008405170162212,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.8,0.3779901062330629,0.7601334863615781,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.833333333333332,0.378006715767967,0.7708135376833195,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.866666666666667,0.3687264697388642,0.7790722209339246,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.9,0.2298824645015994,0.7843228943066292,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.933333333333337,0.1011977843963857,0.7866947515571935,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,20.966666666666665,0.1000500164255411,0.7757850151207623,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.0,0.1370267340965071,0.7344418270044313,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.03333333333333,0.1847153695619985,0.6884173421543064,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.066666666666663,0.1346928297021636,0.6508919339473782,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.1,0.1355714104420701,0.6167590399634547,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.133333333333333,0.1489259155304827,0.6092132589597156,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.166666666666668,0.1848303434191605,0.6698664530475166,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.2,0.1335000273328872,0.7148532509031168,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.233333333333334,0.1729735451735066,0.7412094430723419,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.266666666666666,0.0694589108419145,0.7513207714844568,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.3,0.1642188457352672,0.7549304279497193,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.333333333333332,0.1026560491561336,0.7593365597466519,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.366666666666667,0.0152977109430393,0.7887221074833285,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.4,0.0473284271302877,0.7833800714381808,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.433333333333337,0.1601406742150332,0.7367447656647788,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.466666666666665,0.1454140277213416,0.6942708704961335,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.5,0.1773704779178403,0.6987051971584333,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.53333333333333,0.1228277186484327,0.7075489860594488,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.566666666666663,0.0558483640582927,0.746400059897805,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.6,0.0957494675944371,0.7344802626462498,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.633333333333333,0.1242887941386869,0.7358824513354773,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.666666666666668,0.1656404426896204,0.7205178011580278,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.7,0.1756017462353629,0.7031774904769386,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.733333333333334,0.1896142814947945,0.6587063224731377,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.766666666666666,0.305727346024102,0.6878858842511324,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.8,0.4195341904094319,0.7732082011732209,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.833333333333332,0.6366646845510738,0.7969787200889124,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.866666666666667,0.8196896609650259,0.7831077227038892,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.9,0.8896934305144962,0.7960451571859802,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.933333333333337,1.110950104882482,0.8793544012162371,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,21.966666666666665,1.187343692615307,0.9469814281924804,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.0,1.2764800079671916,0.9832868381948662,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.03333333333333,1.17051392057139,0.9559848414869304,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.066666666666663,0.8576039410966816,0.9664484968276302,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.1,0.6422051811249541,1.0340245220820632,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.133333333333333,0.5311053021773537,1.1480350199344755,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.166666666666668,0.571073521950591,1.2514106271539152,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.2,0.3479327545864457,1.2833400790965492,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.233333333333334,0.2696148738248426,1.2518469252269755,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.266666666666666,0.2272154340346955,1.2684176601483577,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.3,0.4629224256367704,1.36204423109019,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.333333333333332,0.3547625723665881,1.3853630505306274,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.366666666666667,0.1697433615275014,1.3566421881349815,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.4,0.1232965685143169,1.4209953227981234,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.433333333333337,0.1892158240981991,1.4633126137465031,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.466666666666665,0.1399107198067525,1.4219669859307218,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.5,0.0988541784811933,1.333638165563268,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.53333333333333,0.1940153126422645,1.4938323705746617,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.566666666666663,0.1990069173501958,1.6315481131256568,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.6,0.437929951986309,1.6658343076483948,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.633333333333333,0.4968614795294221,1.5612823768239448,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.666666666666668,0.2196534862439972,1.5428359494385813,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.7,0.2107020958408637,1.5064071616740924,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.733333333333334,0.2897049932974835,1.5111430849083474,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.766666666666666,0.2385033910452792,1.4347712951277662,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.8,0.2131166022947482,1.3651674399259552,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.833333333333332,0.4702209520851265,1.301208488344071,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.866666666666667,0.6280159246965059,1.359138071199277,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.9,1.030699070438364,1.4052612187318982,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.933333333333337,1.306486291850598,1.4358354688636352,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,22.966666666666665,1.4122388413967395,1.3605565367638242,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.0,1.3922750787003768,1.3742029976409753,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.03333333333333,1.126918087478992,1.4895699335901993,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.066666666666663,1.6979343261554294,2.2707887858502604,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.1,2.3719705585785387,2.8381688558008857,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.133333333333333,4.2777846543177205,3.0159332403422656,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.166666666666668,5.974677184932517,2.3330907840322666,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.2,6.6066067594467635,1.7413917144629043,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.233333333333334,7.018177740259683,1.1899424704881634,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.266666666666666,6.586924246621819,1.038249826473205,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.3,6.763590581354828,1.0195279363048546,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.333333333333332,6.790871610129304,1.039933924879066,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.366666666666667,6.8062827385755025,1.066642351465305,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.4,6.9158464313022545,1.0509884708840893,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.433333333333337,6.952474689170292,1.034007226961128,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.466666666666665,6.932228029495897,0.96565212168372,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.5,6.353551641896784,0.9224158019746131,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.53333333333333,5.5054541684797185,0.927245457563416,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.566666666666663,4.818864099003824,0.9857800995384006,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.6,3.977167857112645,1.0459189114376737,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.633333333333333,3.2036786120979746,1.0592156557058805,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.666666666666668,2.2175589470020616,1.0652120337287765,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.7,1.1776032538421917,1.0557021627818748,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.733333333333334,0.2303792059498833,1.064549896552282,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.766666666666666,0.2431844022454119,1.0805659461752983,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.8,0.4533156938324452,1.0922772447015208,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.833333333333332,0.506971837010948,1.1337801600566786,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.866666666666667,0.3607851326947183,1.1179703040010365,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.9,0.2413674910990961,1.08831905076885,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.933333333333337,0.0946227855774984,1.0446945753906336,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,23.966666666666665,0.0461004329071769,1.0633028831685605,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.0,0.0846882657789368,1.054117099865702,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.03333333333333,0.1267121741545047,1.0363035683619817,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.066666666666663,0.2131658390124528,1.0214438150865075,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.1,0.2334751962209585,1.0123502607292767,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.133333333333333,0.1456867871211309,1.0224036621122077,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.166666666666668,0.0250794726213453,1.0472486500653817,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.2,0.0576401037083439,1.0491738764914644,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.233333333333334,0.0786359913170004,1.0293485936766915,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.266666666666666,0.0602491504029273,1.032149936623699,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.3,0.0261062745514704,1.046697813739577,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.333333333333332,0.0543467977816138,1.0318551124185944,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.366666666666667,0.1469812990788907,1.0156537219765664,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.4,0.2106289445891498,1.0293972963651747,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.433333333333337,0.0922815928745798,1.0505527542160715,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.466666666666665,0.06775360027133,1.0534358885361073,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.5,0.1728302439415904,1.0470070251745438,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.53333333333333,0.1920542245887667,1.045296207400011,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.566666666666663,0.2156012097232435,1.0412748172515176,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.6,0.1434873831787297,1.055784793738472,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.633333333333333,0.0880193880113777,1.056254282451121,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.666666666666668,0.1015947447048009,1.0481801277793446,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.7,0.0118531951816287,1.028602630582696,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.733333333333334,0.0479150489932475,1.0221914815072743,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.766666666666666,0.0806612150176946,1.025216965091818,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.8,0.0685455316467333,1.0376268133261453,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.833333333333332,0.0644362711790028,1.0377198263690943,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.866666666666667,0.0275240447079813,1.0246613816378771,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.9,0.0089004024359779,1.0365370462846557,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.933333333333337,0.0936503466357057,1.039591556401298,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,24.966666666666665,0.1796396559929471,1.0250822866383884,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.0,0.0700219051021842,1.0095347815261186,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.03333333333333,0.028771409097492,1.0076923521671777,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.066666666666663,0.1373734186412391,1.000690652577862,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.1,0.081447109182607,1.0119245462993824,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.133333333333333,0.1276911321561843,1.0362688279188117,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.166666666666668,0.1069283482996082,1.0423884658825064,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.2,0.100906901706334,1.032828020824324,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.233333333333334,0.0282190436040239,1.0409002385223451,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.266666666666666,0.0254615508135087,1.0688910047780769,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.3,0.040229689526813,1.091918232008256,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.333333333333332,0.1182141574029464,1.086305232325448,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.366666666666667,0.2253587889338825,1.0714995189748768,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.4,0.2467678224577956,1.0572226209585356,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.433333333333337,0.1683322704839226,1.045698198179259,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.466666666666665,0.1010115269941021,1.0382582362842911,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.5,0.057050532312434,1.05317565398453,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.53333333333333,0.1369771423414854,1.0378881543497116,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.566666666666663,0.2350650916060982,0.989201010428486,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.6,0.1838940566348241,0.943369035382965,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.633333333333333,0.2135678216164626,0.9259477292183804,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.666666666666668,0.2722350086810751,0.9079053325096444,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.7,0.2790450176545563,0.9187335839107676,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.733333333333334,0.2373121747231202,0.9702962704171676,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.766666666666666,0.1068121797162187,1.016318940748791,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.8,0.1511393613697138,1.0111788485692224,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.833333333333332,0.0827027681587125,0.9989803322388152,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.866666666666667,0.019691750907151,1.004002499330913,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.9,0.1469417783045126,1.004044838225205,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.933333333333337,0.3880962188977251,0.9915740536448512,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,25.966666666666665,0.9031109842019056,0.9932483443692242,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.0,1.6602050673687083,1.0304822762911174,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.03333333333333,2.394563447290959,1.0180405091824891,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.066666666666663,3.2960325106879176,1.0104792443770698,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.1,4.508084372072864,0.990384712221772,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.133333333333333,5.7399845763077195,1.002539357107758,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.166666666666668,6.826999044408476,0.9512014243274052,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.2,7.40308185035796,0.8804147998784119,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.233333333333334,7.576113533735054,0.8701653345751249,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.266666666666666,7.596517084911177,0.9708722458595084,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.3,7.378326104403699,1.0730752706495092,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.333333333333332,6.973742384888028,1.0758840412991806,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.366666666666667,6.614681054326419,1.092030235903472,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.4,6.325849040196992,1.1704184979662196,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.433333333333337,5.960334134760214,1.2582553315826126,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.466666666666665,5.448096434636677,1.285770199531259,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.5,4.724681190998344,1.309092800981925,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.53333333333333,4.226236686736068,1.257131728403912,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.566666666666663,3.9508658475344567,1.181584134313799,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.6,3.73658791022883,1.0946447950219174,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.633333333333333,3.4873082540799403,1.0532015610017993,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.666666666666668,2.9934142831782977,0.9959298428998716,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.7,2.47267640733125,0.9507516606154016,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.733333333333334,1.9788008776002788,0.9483330263242256,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.766666666666666,1.5844536896740171,1.0244637595783015,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.8,1.3998338851439056,1.1212040781604231,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.833333333333332,1.1859571068479924,1.1367942484817286,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.866666666666667,1.0762299497392114,1.0879720550653822,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.9,0.9518577907139883,1.058766522179766,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.933333333333337,0.748678704484584,1.0671985145785954,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,26.966666666666665,0.6235548505128603,1.046932766526799,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.0,0.4662741552327624,1.0246003588832997,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.03333333333333,0.2896281753418916,1.012957383913378,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.066666666666663,0.0826083312935753,1.037238352983911,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.1,0.1011288597111689,1.0772950482625536,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.133333333333333,0.2365139216234962,1.0993629022649238,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.166666666666668,0.2686292507034445,1.1086344408861293,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.2,0.2430187309338048,1.1303374132132924,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.233333333333334,0.2026602820975055,1.169144027200951,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.266666666666666,0.0602579338836371,1.162879597925141,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.3,0.0355053710411197,1.1598388724620834,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.333333333333332,0.0372344588884898,1.1632560890655332,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.366666666666667,0.0811660446603177,1.1250358613842133,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.4,0.0868224418239964,1.079347602548197,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.433333333333337,0.2030340576994841,1.0646779338602053,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.466666666666665,0.2226673305113509,1.0768266013233458,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.5,0.3190666633672183,1.0784756550091292,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.53333333333333,0.6355596924201297,1.0866402128193444,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.566666666666663,0.952488948528892,0.9928908516409378,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.6,1.2868896817952322,0.8333893530973111,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.633333333333333,1.3702276877265571,0.7058068237803655,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.666666666666668,1.206845567772766,0.6918296858565421,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.7,1.2681518816262525,0.6739900460666423,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.733333333333334,1.1442164819610343,0.5736583528733786,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.766666666666666,1.114682872503691,0.4825714733739298,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.8,1.2417887355591497,0.5168694617287093,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.833333333333332,1.48216625041136,0.6042897509621463,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.866666666666667,1.6672380182882578,0.6075645708346615,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.9,1.4870750177971692,0.5809702260327758,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.933333333333337,1.093974800806929,0.5899364648934555,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,27.966666666666665,0.5790399527627088,0.6372024400019992,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.0,0.204823868249964,0.676861163948343,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.03333333333333,0.2819758431133183,0.707633166809123,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.066666666666663,0.2623822531247415,0.6902320030405676,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.1,0.1270743429662635,0.6606846242396855,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.133333333333333,0.0663194430081913,0.6471804464445935,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.166666666666668,0.1267517637434349,0.6541005386444172,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.2,0.1969836355952965,0.6638133105098218,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.233333333333334,0.135112809599131,0.668027548859005,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.266666666666666,0.1000755848232143,0.6790744213156371,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.3,0.1468562086079017,0.6834820917108655,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.333333333333332,0.1116344163869406,0.6722942000887417,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.366666666666667,0.1022831746014163,0.6438998922117272,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.4,0.119323937999779,0.6028071494149398,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.433333333333337,0.1135206965150743,0.5727455106891062,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.466666666666665,0.0094230468942747,0.5536235460742734,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.5,0.0791152668396226,0.551077158413918,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.53333333333333,0.0252662238384981,0.5507906619707501,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.566666666666663,0.0357531004109325,0.5667269353063544,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.6,0.0399680705603623,0.5681474926008614,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.633333333333333,0.1284687114859062,0.5598672397126712,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.666666666666668,0.0974997951318098,0.5496899273213851,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.7,0.0591487454126722,0.5624690986110013,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.733333333333334,0.0318896518545216,0.573124838676214,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.766666666666666,0.0628375261644334,0.5673186493926231,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.8,0.014111118377992,0.5432109132073177,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.833333333333332,0.0681384580330637,0.5415499768596743,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.866666666666667,0.008856832779617,0.5430198360606958,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.9,0.0310332402243147,0.5567265861260058,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.933333333333337,0.0397197899353366,0.5555893643055813,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,28.966666666666665,0.0480396858217303,0.5718191463931416,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.0,0.0122737144856118,0.5600521565462929,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.03333333333333,0.0246162505266178,0.5662396245857879,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.066666666666663,0.0285923425583333,0.5634956626328805,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.1,0.0727126365672156,0.5730156322618496,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.133333333333333,0.1761277644913193,0.5711412012611624,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.166666666666668,0.2367951583258848,0.5773474300599749,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.2,0.3361734767224856,0.5735771396422259,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.233333333333334,0.4636872641867745,0.5755175024902456,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.266666666666666,0.8566390950092625,0.552943756325683,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.3,1.5716855448844806,0.5516421654763128,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.333333333333332,2.5399372819384767,0.5683099715291896,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.366666666666667,3.684287846608112,0.542127086917769,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.4,4.706633317103907,0.4882607867149016,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.433333333333337,5.575543077372567,0.4787022562868028,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.466666666666665,6.346967241791329,0.4804659213957518,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.5,6.583653484726007,0.4329722621163097,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.53333333333333,7.1177768666494226,0.416680006288375,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.566666666666663,8.26635738166917,0.4917668501314142,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.6,8.337007316742408,0.6423906310355565,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.633333333333333,7.695202097041258,0.7003766551023577,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.666666666666668,5.701315252773032,0.700409595733362,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.7,3.601678239376554,0.6836712849968699,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.733333333333334,2.789600808823222,0.7877274794692376,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.766666666666666,2.049090259450084,0.932488243445093,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.8,1.383971371445328,1.043950575420494,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.833333333333332,0.9022009185180276,1.041418645153387,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.866666666666667,0.779661492445757,1.0472485945644463,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.9,0.8167157566961575,1.1426589497067356,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.933333333333337,0.9004512855898075,1.2537907829968973,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,29.966666666666665,0.8613298972697798,1.240652573966274,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.0,0.7607044178908133,1.155064777671857,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.03333333333333,0.4198555029435615,1.060423446039001,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.066666666666663,0.1228604261754004,1.043261767245126,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.1,0.2708278893393182,1.0911883395269046,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.133333333333333,0.1046816158874494,1.1346465208046337,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.166666666666668,0.0945240218827957,1.0712968607191096,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.2,0.3861469902000298,0.986472883324042,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.233333333333334,0.6837089863213313,1.0005565675184598,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.266666666666666,0.5434906632666664,1.06162534499554,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.3,0.2028685724693318,0.9910198425671668,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.333333333333332,0.0521152768647912,0.9193888340921508,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.366666666666667,0.189945411298184,0.8865498612225979,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.4,0.096249537003746,0.9105302846508132,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.433333333333337,0.1355585676408853,0.926414127149321,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.466666666666665,0.0869735507752988,0.9728729777999184,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.5,0.0973396277959038,0.9817759488240912,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.53333333333333,0.2237677854509644,0.9574032205393992,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.566666666666663,0.2777217785765056,0.9251926985302552,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.6,0.1083419661313175,0.9138663545907726,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.633333333333333,0.0314111506926437,0.9389500962165708,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.666666666666668,0.3399241388139178,0.9360365014216654,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.7,0.2430868681697525,0.8566635272455554,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.733333333333334,0.270571929013616,0.7999094174827491,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.766666666666666,0.2651054026947707,0.8712263624159218,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.8,0.2747777815503746,0.9276323801330342,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.833333333333332,0.297836675950474,0.9523859917413868,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.866666666666667,0.3435475167585571,0.930537881855852,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.9,0.291563268218628,0.9674028261004436,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.933333333333337,0.2094730507101183,0.924618234663348,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,30.966666666666665,0.1270571055088623,0.8807282990685339,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.0,0.0377664939934735,0.8614174137540468,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.03333333333333,0.2678114116847421,0.9514497857987512,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.066666666666663,0.8728281166611703,1.02615133216134,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.1,1.8056572263319528,0.9681843905147122,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.133333333333333,2.7085998747049436,0.8412440777377308,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.166666666666668,3.7149738268648225,0.7833192636141425,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.2,4.472643032583944,0.7848630910491055,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.233333333333334,5.05165634343602,0.7684304136527448,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.266666666666666,5.514416554733235,0.7528862489453033,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.3,5.814450712774168,0.7529199312417318,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.333333333333332,6.08902086154873,0.7454750647617772,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.366666666666667,6.282166246389962,0.7193398587983837,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.4,6.1434041820491885,0.7249437817459038,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.433333333333337,5.8047334412043785,0.6987960876419791,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.466666666666665,5.2857545663545675,0.6588211803552536,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.5,4.707704113927571,0.6151393055248962,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.53333333333333,4.041483714246955,0.5442321226271157,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.566666666666663,2.9613009607848415,0.4862634150249341,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.6,1.7898971712964515,0.4747854158151011,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.633333333333333,0.8189976401406387,0.5425670726223297,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.666666666666668,0.2617492717777653,0.575471651803234,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.7,0.324285862972026,0.5571374683146633,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.733333333333334,0.3619153767714102,0.5100417904536155,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.766666666666666,0.3043834338286328,0.5045665207460059,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.8,0.237307818201698,0.5426230228260398,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.833333333333332,0.0799803420419124,0.5927043238220289,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.866666666666667,0.0958145247290954,0.6292959902975815,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.9,0.1360931456390913,0.6465010606261501,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.933333333333337,0.0642294194622824,0.6324707078581191,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,31.966666666666665,0.087383771190265,0.6251934479640173,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.0,0.1098560202452909,0.6217084210736666,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.03333333333333,0.1904823376836367,0.6231341661031077,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.06666666666666,0.3140790504664169,0.6514434410845694,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.1,0.6696916761540399,0.6917338107014771,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.13333333333333,1.206007727684537,0.7280744847265989,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.166666666666664,1.694452208169397,0.7457745751638741,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.2,2.115161293853557,0.7963077907503332,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.233333333333334,2.305371962058993,0.803754853224609,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.266666666666666,2.4688972364898065,1.0945347090363629,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.3,2.5119588335855325,2.072779093126379,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.333333333333336,2.1492865330849824,3.1335651693388935,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.36666666666667,1.577738406196159,3.3145446705205592,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.4,1.4207529147311415,2.7661199322567045,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.43333333333333,1.5952374547596109,2.3732289517700376,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.46666666666667,1.507955153731341,2.3102095729656433,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.5,1.1630580925803469,2.1224557676137343,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.53333333333333,0.6596622326361902,1.7589047788513092,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.56666666666666,0.5170629009996007,1.3991199154123866,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.6,0.2671208877064851,1.2978842750050354,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.63333333333333,0.2861614064366952,1.2979076774544358,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.666666666666664,0.3752628729290288,1.3175404905367,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.7,0.3127650184351688,1.3159378229368217,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.733333333333334,0.5771041406201158,1.298758185143112,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.766666666666666,0.7482183299949915,1.2461688617191788,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.8,0.8339582918841331,1.1890022397289994,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.833333333333336,0.7683275676070924,1.1609484130458687,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.86666666666667,0.5907396081703373,1.1530029062069551,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.9,0.3677655569423967,1.1636174574958942,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.93333333333333,0.1606963047744795,1.158588534183757,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,32.96666666666667,0.1269082378729712,1.156492849874253,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.0,0.0576425998190836,1.1507552229120654,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.03333333333333,0.0496480506625224,1.1613248138189,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.06666666666666,0.2233398544641232,1.1559933502536175,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.1,0.182392942259298,1.144244640794077,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.13333333333333,0.0507272074770952,1.1285732137921962,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.166666666666664,0.2091382223428963,1.1211154991955472,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.2,0.2459618078265892,1.108400292650385,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.233333333333334,0.2752595290747397,1.1154599292195977,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.266666666666666,0.1716662756363028,1.142395165285062,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.3,0.2096947747162703,1.1377663687093449,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.333333333333336,0.0772724126887866,1.1099637147727748,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.36666666666667,0.0843890146504705,1.0975415997374145,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.4,0.2459253119023102,1.0992559379421754,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.43333333333333,0.3061168439708087,1.108120918396184,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.46666666666667,0.3496980295856576,1.1069568742845726,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.5,0.3231952106763117,1.0821207868660558,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.53333333333333,0.3891209703870323,1.0592959326397846,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.56666666666666,0.6162271682959267,1.0629768719710966,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.6,0.9985338007764764,1.057198845499003,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.63333333333333,1.4972524250950692,1.031701740545987,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.666666666666664,1.9491960392231769,1.0406906963383151,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.7,2.589234913961496,1.0805324032919763,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.733333333333334,3.205142233882797,1.1243802276717076,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.766666666666666,3.9204420322737823,1.1955305892956336,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.8,4.721957111251709,1.280225406154844,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.833333333333336,5.593598692247804,1.380938086949791,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.86666666666667,6.448741052358202,1.463905383026588,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.9,7.282669468897632,1.509125527650916,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.93333333333333,8.03934961594866,1.4572221689016591,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,33.96666666666667,8.550305291206568,1.3250565035365007,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.0,8.777625087705296,1.216163505772091,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.03333333333333,8.939850317541666,1.141602890472724,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.06666666666666,9.11990267936797,1.1508691175530352,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.1,9.20584060390786,1.1657128387838012,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.13333333333333,9.012132303215065,1.183872070267447,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.166666666666664,8.354005263763218,1.1597057535064157,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.2,7.250574521361103,1.14820277598512,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.233333333333334,5.976748708982302,1.0932403189952806,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.266666666666666,4.968798985781032,1.0232303969443386,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.3,4.333791100732146,0.9971146400170184,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.333333333333336,3.961653723884172,1.046178829128509,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.36666666666667,3.535125131722669,1.2091575678218356,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.4,2.562814372760066,1.2792557692221038,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.43333333333333,1.5778018115020709,1.2382714878933436,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.46666666666667,1.0164312850436747,1.1641771953988014,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.5,0.5896001393102669,1.2485807132116091,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.53333333333333,0.2365540236209541,1.3026927338738354,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.56666666666666,0.4519415295834129,1.2783733986621386,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.6,0.7194669631489898,1.1996791722023807,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.63333333333333,0.4901279716705778,1.1961066293134557,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.666666666666664,0.1703608501139764,1.2335681236858345,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.7,0.3688263402983226,1.320941841331813,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.733333333333334,0.3967268272307895,1.315782632909866,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.766666666666666,0.1686870164184413,1.276217475753507,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.8,0.1711001505027997,1.1708065489862314,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.833333333333336,0.3100308608439097,1.1081030764319857,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.86666666666667,0.5859668536210122,1.055805273759625,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.9,0.9264201321533584,1.0394775117786177,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.93333333333333,0.4937313640414844,1.0504044021614456,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,34.96666666666667,0.3173788885832458,1.0330588154410167,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.0,0.3590939146778251,1.0830607396357703,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.03333333333333,0.4962156503987495,1.1492315920704217,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.06666666666666,0.5088460904240685,1.1798199881974467,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.1,0.1692784814730761,1.1353365511055278,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.13333333333333,0.3349743906397233,1.0711242729415338,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.166666666666664,0.6216166679633144,1.0761916077050218,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.2,0.6663210695330615,1.105967416075465,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.233333333333334,1.001949362070324,1.1259643426084616,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.266666666666666,0.7057949831998054,1.1252859582083017,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.3,0.2011058738261489,1.2496497650280494,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.333333333333336,0.3998793946456515,1.312364573808846,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.36666666666667,0.4975990860215487,1.2158764056658362,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.4,0.5931857366970297,1.2041739455923492,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.43333333333333,0.365997958929566,1.271640132030329,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.46666666666667,0.3982558736768692,1.2504447897729434,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.5,1.0885894309088284,1.184130228035532,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.53333333333333,1.658859816633429,1.2289741991038596,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.56666666666666,1.4110641915129434,1.259152951742525,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.6,1.6287559111055607,1.1672753453690246,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.63333333333333,2.3205274706353096,1.0465959638402986,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.666666666666664,3.1318483379831874,0.9596508590087848,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.7,4.312422236123901,0.9505313776204934,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.733333333333334,5.412602587251326,0.9734043264326204,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.766666666666666,6.168009548870185,1.0208245485145355,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.8,6.516136035705929,1.049540370849679,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.833333333333336,6.583646357550823,1.0482460160645517,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.86666666666667,6.369043691655727,1.0404183113203738,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.9,5.978019218735464,1.0382702730302225,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.93333333333333,5.600460893086821,1.046220088737161,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,35.96666666666667,5.331997145821756,1.0637583686105705,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.0,4.923019397846362,1.0667623885249709,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.03333333333333,4.40993432200015,1.0673234680132495,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.06666666666666,3.935733708018741,1.0859435324185034,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.1,3.4799939666429944,1.1176573622556372,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.13333333333333,3.212128858861096,1.148037555044088,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.166666666666664,2.934556480677309,1.1786987581669055,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.2,2.659187011276751,1.1921357866496431,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.233333333333334,2.4967152217233144,1.1983036471726716,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.266666666666666,2.381232749132687,1.192739247384058,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.3,2.3524007529879585,1.166721938091953,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.333333333333336,2.324411102786777,1.148279923774876,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.36666666666667,2.37231780845845,1.16617374581579,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.4,2.5030910187665967,1.194674595893697,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.43333333333333,2.5348572171070005,1.2090164794070488,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.46666666666667,2.521587560845719,1.1976812828501902,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.5,2.526306891671066,1.1724133458411623,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.53333333333333,2.5770004184453916,1.1376581470839082,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.56666666666666,2.744300878397405,1.114359854817517,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.6,2.9354247210177262,1.1056200577581297,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.63333333333333,3.121769550809815,1.112019825758005,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.666666666666664,3.391730874396679,1.0984240992541274,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.7,3.761599098551468,1.0417150796252517,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.733333333333334,3.897157746997858,0.976592443093102,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.766666666666666,3.5010524580420173,0.8498130523085927,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.8,2.6219918087842324,0.6812984939580069,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.833333333333336,1.6344444488485916,0.5577132833253269,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.86666666666667,0.9579102769854386,0.5488428842482872,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.9,0.6965682317831174,0.5620918116350404,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.93333333333333,0.6263970100008787,0.5607234837304809,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,36.96666666666667,0.5472839030997927,0.5795885394233914,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.0,0.4947364437704599,0.6165110940035372,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.03333333333333,0.4653026346192558,0.6678334959754072,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.06666666666666,0.4694201547723287,0.7169690836980711,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.1,0.5089610136672459,0.7314020216052802,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.13333333333333,0.5337280679845653,0.715986593219148,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.166666666666664,0.5575994096590188,0.6935374918949812,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.2,0.4628157849174518,0.6581976456289277,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.233333333333334,0.3146391784229777,0.6315054866882096,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.266666666666666,0.0396088238105171,0.6562366508705064,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.3,0.1338529278086206,0.6761182850807932,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.333333333333336,0.1371946103954352,0.6360052285200362,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.36666666666667,0.0997572108467636,0.5772211866136717,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.4,0.1424039246184304,0.5528564634708835,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.43333333333333,0.1615490410382773,0.5433162671931177,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.46666666666667,0.108072548915776,0.5481824924626163,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.5,0.1155142856114687,0.5489705110792487,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.53333333333333,0.0910581381638972,0.5295589317889762,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.56666666666666,0.2420285387481466,0.5350982919599202,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.6,0.3685532510031443,0.5776877323393783,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.63333333333333,0.3929415350764333,0.6365836182098776,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.666666666666664,0.3698059531222535,0.6895778002795985,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.7,0.3265373078654171,0.7412667015734072,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.733333333333334,0.2903084466101167,0.7639082471534405,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.766666666666666,0.2112880623844929,0.7423009090780214,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.8,0.2053264976504917,0.7061754763875715,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.833333333333336,0.3178888198644847,0.6687346187127182,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.86666666666667,0.5626549661879823,0.6458996246572717,REACH,Reaching,2,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.9,0.8873336951703295,0.6420904327265959,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.93333333333333,1.3499513849046438,0.6345362425799268,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,37.96666666666667,2.0703798009759073,0.6554676510859416,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.0,2.9231976106708073,0.669967681155514,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.03333333333333,3.8231732854537466,0.6447790013625717,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.06666666666666,4.599346113755896,0.553430399943791,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.1,5.360043664534231,0.4660225170401388,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.13333333333333,6.033049900510638,0.4080917002058221,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.166666666666664,6.468904430401028,0.3919580716540279,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.2,6.754210909839003,0.4045502124808566,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.233333333333334,6.863652200258346,0.4232926487700298,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.266666666666666,6.8710302973013535,0.481742346393253,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.3,6.758961592200102,0.577265907006981,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.333333333333336,6.469703545982169,0.6472759039319377,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.36666666666667,6.022917540074784,0.747995215266083,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.4,5.33279579357051,0.8998569969519352,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.43333333333333,4.37988098152528,0.9484292846253732,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.46666666666667,2.940628288760065,0.8232283635329314,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.5,1.58847979584719,0.7047203663261139,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,38.53333333333333,,,GRASP,Grasping,3,True
+vid6,Take 6 (holdout_slow),holdout_slow,38.56666666666666,,,GRASP,Grasping,3,True
+vid6,Take 6 (holdout_slow),holdout_slow,38.6,,,GRASP,Grasping,3,True
+vid6,Take 6 (holdout_slow),holdout_slow,38.63333333333333,,,GRASP,Grasping,3,True
+vid6,Take 6 (holdout_slow),holdout_slow,38.666666666666664,,,GRASP,Grasping,3,True
+vid6,Take 6 (holdout_slow),holdout_slow,38.7,,,GRASP,Grasping,3,True
+vid6,Take 6 (holdout_slow),holdout_slow,38.733333333333334,,,HOLD,Holding,4,True
+vid6,Take 6 (holdout_slow),holdout_slow,38.766666666666666,,,HOLD,Holding,4,True
+vid6,Take 6 (holdout_slow),holdout_slow,38.8,,,HOLD,Holding,4,True
+vid6,Take 6 (holdout_slow),holdout_slow,38.833333333333336,,,HOLD,Holding,4,True
+vid6,Take 6 (holdout_slow),holdout_slow,38.86666666666667,,,HOLD,Holding,4,True
+vid6,Take 6 (holdout_slow),holdout_slow,38.9,,,HOLD,Holding,4,True
+vid6,Take 6 (holdout_slow),holdout_slow,38.93333333333333,,,HOLD,Holding,4,True
+vid6,Take 6 (holdout_slow),holdout_slow,38.96666666666667,,,HOLD,Holding,4,True
+vid6,Take 6 (holdout_slow),holdout_slow,39.0,,,HOLD,Holding,4,True
+vid6,Take 6 (holdout_slow),holdout_slow,39.03333333333333,0.939439108073488,0.9426853261112615,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.06666666666666,1.3224471349083298,0.9759401420069184,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.1,1.8260031158409091,1.0154936010488818,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.13333333333333,2.2847781271290897,1.0000452111621576,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.166666666666664,2.9463475939647124,0.8886266674773969,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.2,3.5173693666535337,0.775510844363081,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.233333333333334,3.8183495432950183,0.7052514050042701,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.266666666666666,4.002637066170067,0.6612337300326199,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.3,4.184277766282867,0.6155272457236555,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.333333333333336,4.326857439118084,0.5845348354745199,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.36666666666667,4.471424602592585,0.5460161943048655,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.4,4.59240442246957,0.4899535449934906,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.43333333333333,4.6636705559465295,0.4372222536514509,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.46666666666667,4.656314668532914,0.4276287959077797,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.5,4.582417889395091,0.453248732920492,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.53333333333333,4.5207862848435685,0.4921536078034046,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.56666666666666,4.340345536616507,0.5131358266052621,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.6,4.001620056736956,0.5227416477712311,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.63333333333333,3.640350513325081,0.5476812377044508,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.666666666666664,3.3118072361514934,0.5864633731079917,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.7,3.0169593269099506,0.6245149542296783,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.733333333333334,2.6193589361694047,0.6433862702198144,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.766666666666666,1.8748436961353072,0.671674814004862,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.8,1.0794992587905283,0.7106224490752235,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.833333333333336,0.4735195697254207,0.7363745127500082,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.86666666666667,0.1902707209851774,0.7431876171460017,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.9,0.1961783476826605,0.7389662951644734,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.93333333333333,0.1756339973669082,0.7459497382326138,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,39.96666666666667,0.270740991512535,0.7428075041843714,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.0,0.3689996575425748,0.7256455290166165,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.03333333333333,0.3985488435654433,0.6955861489135114,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.06666666666666,0.2849468088624397,0.6692766916300789,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.1,0.1009066590383321,0.6616140976945166,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.13333333333333,0.0328110351556948,0.6675099348067204,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.166666666666664,0.1045497662285278,0.6796982243425743,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.2,0.1314696726258116,0.6747559816086144,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.233333333333334,0.130489314782095,0.6611410757850563,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.266666666666666,0.1113882772558341,0.6409847741161375,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.3,0.0856302156179684,0.6251144446449696,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.333333333333336,0.0721227858989213,0.6139589561557446,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.36666666666667,0.0912600571050731,0.6124571640587289,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.4,0.1222346736189244,0.6130577445439981,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.43333333333333,0.1828180232765673,0.6128814548611565,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.46666666666667,0.1921575610467295,0.6232518094627395,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.5,0.1473221687577178,0.6393001844110866,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.53333333333333,0.1036191477579358,0.6555006208597549,HOLD,Holding,4,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.56666666666666,0.0353484143704118,0.6687583740642324,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.6,0.0354751100738974,0.6787152661518356,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.63333333333333,0.0669995708282229,0.6814401890730607,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.666666666666664,0.1184296948967926,0.6793367059852315,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.7,0.1771572454353212,0.6850781239703179,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.733333333333334,0.2858693458864335,0.7028274675031457,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.766666666666666,0.5577149981148491,0.708067546601035,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.8,0.9397842708104294,0.7050187986716892,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.833333333333336,1.303590012878144,0.7353017601556636,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.86666666666667,1.5047306830147609,0.7836057889070251,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.9,1.7731573193798769,0.7809459218709415,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.93333333333333,2.247011680153649,0.7374110815811407,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,40.96666666666667,2.8845270089831123,0.7082414476528505,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.0,3.4877815768699025,0.7726344579491455,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.03333333333333,3.6840341204476506,0.9150576327649848,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.06666666666666,3.634830620148841,1.0504740109383737,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.1,3.277073458359107,1.0962656380021851,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.13333333333333,2.7783908442041114,1.0386082301873414,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.166666666666664,2.4113161449890748,1.0727079575991731,GRASP,Grasping,3,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.2,1.8433222916140375,1.2725565269714598,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.233333333333334,1.3603002467131715,1.5305522227832902,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.266666666666666,1.3791613443580684,1.6760761985017398,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.3,1.1606283735864988,1.7214152987558606,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.333333333333336,0.7112496016998434,1.6855133083379634,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.36666666666667,0.3943233070655526,1.574711446963727,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.4,0.4682306827618596,1.474222515077276,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.43333333333333,0.5026317867307062,1.4252486836966487,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.46666666666667,0.5331060960635166,1.3986233212102248,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.5,0.4480752750178631,1.346679425449958,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.53333333333333,0.2741606519140643,1.2789219950195998,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.56666666666666,0.1175207658793227,1.23254594880642,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.6,0.1018474972390276,1.2246867662233207,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.63333333333333,0.0528321686571145,1.254208972757663,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.666666666666664,0.1504206503493799,1.2930095619639022,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.7,0.2538192244879629,1.2845736141122164,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.733333333333334,0.2565492297236987,1.2675275612864323,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.766666666666666,0.1475833986940576,1.274664001360167,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.8,0.0904191710812791,1.2681201808461675,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.833333333333336,0.1342758399544949,1.2629922068649733,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.86666666666667,0.1493125357589841,1.285723671907611,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.9,0.3475563232806543,1.2931347072509196,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.93333333333333,0.435746707590348,1.2947609176384849,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,41.96666666666667,0.4044877298207019,1.3223028259660978,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.0,0.227854632987852,1.3654658901697068,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.03333333333333,0.2544396189224103,1.4053894524543724,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.06666666666666,0.634908505184288,1.4221317242449565,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.1,1.0987155640346002,1.4149826564586336,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.13333333333333,1.634969242454386,1.401083906898389,RELEASE,Releasing,5,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.166666666666664,2.194173751571678,1.3961532183853191,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.2,2.7919857120945064,1.3541051720418578,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.233333333333334,3.531810642666468,1.3899743668745068,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.266666666666666,4.477474293045688,1.4555093945931712,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.3,5.440878199340005,1.4564562985806688,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.333333333333336,6.307187407354215,1.3909800234804122,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.36666666666667,6.778245136306877,1.3522226873438528,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.4,7.005264397052535,1.3310601812604277,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.43333333333333,7.326651197744561,1.2722188639871332,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.46666666666667,7.732623433424076,1.2040465334442876,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.5,8.116351961347787,1.1616735279825017,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.53333333333333,8.349814009210384,1.1716958484001772,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.56666666666666,8.251218644969535,1.1597074360135091,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.6,7.925039575199095,1.0781554220891936,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.63333333333333,7.651148681907051,0.98046105280783,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.666666666666664,6.970580956241909,0.97040706508879,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.7,7.004588126622449,0.9969422432900126,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.733333333333334,8.033845447103985,0.9552189125966368,RETRACT,Returning,6,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.766666666666666,8.010932574785452,0.8052776311289769,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.8,6.104985393733874,0.7444537939796715,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.833333333333336,2.6021964531643844,0.848083299756721,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.86666666666667,1.0533378005420453,1.0035229765762264,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.9,2.3982391693955076,1.0320214548522164,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.93333333333333,2.454968975343464,0.9940982325178286,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,42.96666666666667,2.26142055713554,0.951250701752971,REST,At rest,1,False
+vid6,Take 6 (holdout_slow),holdout_slow,43.0,2.393862094623071,0.8905148498832662,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.0,0.9213932931304452,0.9197272035625712,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.0333333333333333,0.571595559785469,0.992228797969702,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.0666666666666666,0.226537131614554,1.0303598753229248,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.1,0.1708056622482289,0.9957259464061364,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.1333333333333333,0.4145090510885822,1.0512477926661,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.1666666666666666,0.3510274466963641,1.067555816333124,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.2,0.4127476290174164,1.0697302897483336,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.2333333333333333,0.2157486799489182,1.0030597477997534,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.2666666666666666,0.360733220412373,0.923307267720194,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.3,0.1131373208225394,0.919999238352498,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.3333333333333333,0.2193219172463772,1.0401909762131234,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.3666666666666666,0.111103780032917,1.0795001380180187,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.4,0.2395805285158781,1.014677939681112,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.4333333333333333,0.3357501618195557,1.0234762845925178,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.4666666666666667,0.1990979269258232,1.0973601340534496,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.5,0.2498702431871181,1.1032154316643297,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.5333333333333333,0.1240785521357566,1.0067203616938043,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.5666666666666667,0.4043699542841828,1.0861733284335406,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.6,0.1240722419135018,1.0459474742978994,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.6333333333333333,0.1261066199564652,1.0282503210289402,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.6666666666666666,0.2659893591662387,0.962870870118364,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.7,0.6327040897797058,1.06676862840064,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.7333333333333333,0.3950902246240984,1.0404344684911055,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.7666666666666666,0.0896489109373062,1.0113234209233206,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.8,0.3857265112313,0.985575919935327,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.8333333333333334,0.1529856593385668,1.015857947220402,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.8666666666666667,0.0401905828822015,0.991714918303187,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.9,0.0650801883778699,1.0027905419895828,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.9333333333333332,0.1012381644466291,1.0188963855871838,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,0.9666666666666668,0.1669992638078851,1.0336446365032437,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.0,0.3438344027773123,0.9736777649572248,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.0333333333333332,0.4814003574287246,0.9780592287226066,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.0666666666666669,0.1290188873709253,0.9563938958864708,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.1,0.304757661041034,1.0105684887556363,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.1333333333333333,0.183188606877802,1.0785924505918691,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.1666666666666667,0.2098154818248483,1.073148392366512,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.2,0.3416554496726282,0.9873144925194808,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.2333333333333334,0.7024290967650865,0.90136309420177,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.2666666666666666,0.9242113464064065,0.8640319733744625,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.3,1.4915366081472243,0.825317593779558,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.3333333333333333,2.1279867836833204,0.9249436450673998,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.3666666666666667,2.9257532976238037,0.9427192556426912,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.4,3.890886401980226,0.9177462380425756,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.4333333333333331,4.86045863877992,0.9181323359232336,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.4666666666666666,6.137254506816943,1.0080263927637658,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.5,7.109700989021862,0.9748255770970748,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.5333333333333332,7.828016274842048,0.8870196960513962,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.5666666666666669,8.301429762088285,0.8420513107504751,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.6,8.312846534927367,0.9239249313403376,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.6333333333333333,8.154999033754672,1.0823568960670134,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.6666666666666667,7.645863240567694,1.178380277564492,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.7,6.898831813492406,1.1628415686675673,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.7333333333333334,6.099793760426524,1.1219040452887703,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.7666666666666666,5.295763616241556,1.074752483546133,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.8,4.631223834290677,1.0645144172725458,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.8333333333333333,4.154160629107949,1.0556466698718243,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.8666666666666667,3.795774943153672,1.0751360517175388,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.9,3.5712278171259637,1.0493976580527162,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.9333333333333331,3.3643250084319427,0.9884368492025482,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,1.9666666666666663,3.251090758986589,0.9621222496589096,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.0,3.1715771541501203,0.9912655977220284,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.033333333333333,2.905843839745508,1.0141292369944304,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.0666666666666664,2.4180718807793355,0.9833799472662572,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.1,1.647979331154093,0.9552993001874038,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.1333333333333333,0.7208031581370256,0.9091859161971538,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.1666666666666665,0.508106806015788,0.8840784176077835,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.2,0.6562211767339248,0.8595728051336291,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.2333333333333334,0.7584150937003025,0.8480884551093221,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.2666666666666666,0.7728462992068698,0.7981354891315521,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.3,0.9298750391552036,0.7814373219232509,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.3333333333333335,1.447534302503964,0.7648503691605777,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.3666666666666667,2.380328993159087,0.7953937461363316,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.4,3.5173394386977783,0.8222915747618343,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.433333333333333,4.714168219254985,0.8409443109537864,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.466666666666667,5.806987124263341,0.8007287407093652,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.5,6.4925875693078225,0.7874148801218608,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.533333333333333,6.795280718966773,0.7944115670160177,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.5666666666666664,6.741436700368398,0.825259142391181,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.6,6.486163230031029,0.8511692541929743,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.6333333333333333,6.10951105992833,0.8925548697134359,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.6666666666666665,5.4717312511808505,0.9454960600111086,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.7,4.362458175705556,0.9731157035196358,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.7333333333333334,3.186417704920652,1.0158596308832488,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.7666666666666666,2.215427281785918,0.9835226375336894,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.8,1.275785845177302,0.8255240900768391,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.8333333333333335,0.6712626709829898,0.6607789188425666,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,2.8666666666666667,,,GRASP,Grasping,3,True
+vid7,Take 7 (holdout_fast),holdout_fast,2.9,,,GRASP,Grasping,3,True
+vid7,Take 7 (holdout_fast),holdout_fast,2.933333333333333,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,2.966666666666667,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,3.0,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,3.033333333333333,2.081603480569394,1.0147064591423027,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.0666666666666664,3.4687826287649584,1.006485472092861,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.1,4.785215806056348,0.9451189961245302,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.1333333333333333,5.482965205478244,0.8588919343356268,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.1666666666666665,5.950305054144669,0.8149399499933179,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.2,5.975900597040537,0.7850486661808563,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.2333333333333334,5.765808688437494,0.7734635768930508,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.2666666666666666,5.381050986826744,0.7449346213802308,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.3,4.852255675619304,0.7027576813651223,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.3333333333333335,4.366470566276605,0.6345312454315111,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.3666666666666667,3.967398262692704,0.6153664926783798,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.4,3.5071753768217535,0.6493802094488326,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.433333333333333,3.0008660689478774,0.6961181438339029,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.466666666666667,2.255858576433029,0.7434929273882269,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.5,1.378268808162503,0.7628704554819051,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.533333333333333,0.6341101830936142,0.7131132112835492,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.5666666666666664,0.2232284617413847,0.6462092981919965,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.6,0.2139988755709821,0.6299024996695727,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.6333333333333337,0.2953257636067652,0.6604800938464394,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.6666666666666665,0.2788911042929254,0.6638846362217045,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.7,0.1870031795094193,0.6690490482775108,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.7333333333333334,0.2841175191701864,0.6748782952864308,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.7666666666666666,0.2881976408119578,0.6804787650113726,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.8,0.6342298576461151,0.6416747719453406,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.8333333333333335,1.086529345420693,0.702677669137472,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.8666666666666663,1.3323571318766247,0.8713445678315428,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.9,1.5356467079209133,1.014367703880917,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.933333333333333,1.3791749378971574,1.0488983095139557,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,3.966666666666667,1.125068820711385,1.0969204710221097,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.0,1.1725915199741066,1.1800182520090503,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.033333333333333,0.8518786955364379,1.2240304887584603,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.066666666666666,0.8546493014240728,1.2752216215303618,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.1,0.714261635995519,1.3203536953242858,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.133333333333333,0.6205409378552184,1.383318973412753,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.166666666666667,1.011128145767012,1.4063693291035535,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.2,1.3764316467080493,1.4053389486262942,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.233333333333333,1.8019553538237847,1.3769935927216044,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.266666666666667,2.307615146767137,1.3463633554885857,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.3,2.9653137853332017,1.316947046681565,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.333333333333333,3.621071989183601,1.2857146725017452,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.366666666666666,4.37048189688034,1.2698539570327363,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.4,5.047381765156777,1.2558288129860624,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.433333333333334,5.811868308815789,1.2564671858078706,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.466666666666667,6.8664026291617475,1.25317961871312,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.5,7.901550582105424,1.2418140098114705,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.533333333333333,8.659681560715438,1.210133612858386,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.566666666666666,9.163317386551457,1.1843441667311223,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.6,9.417733546301264,1.1506228434387602,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.633333333333333,9.5045352854308,1.1152054714803563,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.666666666666667,9.384036770043569,1.04206678628953,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.7,8.518035930006592,1.016743234005855,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.733333333333333,7.339522385086958,0.9952085611768896,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.766666666666667,6.40080959996327,0.9239719047230114,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.8,5.736549552201726,0.836410881675862,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.833333333333333,4.81783001934584,0.9360175818290516,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.866666666666666,4.09770449443086,1.0262768098624135,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.9,2.2613538141036127,1.014809219873002,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.933333333333334,1.1578079339820215,0.9844426124327108,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,4.966666666666667,0.2108685043134624,1.0587275013051332,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.0,0.1428968805620162,1.0704411572884875,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.033333333333333,0.5420048509370298,1.142011308879215,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.066666666666666,0.3210358386766902,1.190440879470505,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.1,0.1725472693259315,1.2582306390259872,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.133333333333333,0.1817362852118183,1.2178022579916747,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.166666666666667,0.0391354229083606,1.2437123275114723,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.2,0.3808163601077431,1.2515052271595366,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.233333333333333,0.4350100041244248,1.235938521133087,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.266666666666667,0.5470773751084984,1.21684401324456,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.3,0.0164864793051607,1.1738517206233463,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.333333333333333,0.0769194220953137,1.188111490285341,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.366666666666666,0.1452701446381726,1.1176602620855458,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.4,0.3069346389230216,1.11757757014367,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.433333333333334,0.0658728816064801,1.198844764636407,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.466666666666667,0.4191693393290366,1.295786066598579,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.5,0.4064800279989941,1.230450095658392,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.533333333333333,0.4376641764291632,1.120996211187015,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.566666666666666,0.4142893491243086,1.1262805887410403,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.6,0.1843199673303144,1.126217437798612,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.633333333333333,0.6209571540557502,1.1486361822454485,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.666666666666667,0.4260035975454083,1.1393030131391202,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.7,0.2285916391305837,1.1969287317247552,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.733333333333333,0.4903292041393749,1.18451311559415,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.766666666666667,0.6292581278741801,1.2027215965808835,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.8,1.0915411351025082,1.0898059922462282,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.833333333333333,1.3378276985285011,1.0077457548430104,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.866666666666666,1.4291889868148573,0.9084747539143596,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.9,2.0959583158650923,0.8981009412771551,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.933333333333334,3.572736476535838,0.914414108667627,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,5.966666666666667,5.4958725535590025,0.9787034975420952,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.0,7.1658121126928185,0.9668653662429842,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.033333333333333,7.984537870557393,0.9729615299708324,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.066666666666666,8.460689275521673,0.951462069973794,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.1,8.859670660062264,0.9442258402328652,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.133333333333333,9.196849746809118,0.9020953548308724,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.166666666666667,9.32660090564959,0.9566704562829268,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.2,9.10812319704844,1.012557834749288,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.233333333333333,8.498197797459643,1.1052258765041878,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.266666666666667,7.654746397365791,1.1434900176940153,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.3,6.634908867386013,1.1818617027988476,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.333333333333333,5.552619843862405,1.122717426109659,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.366666666666666,4.516304057821716,1.0865159572138705,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.4,3.7245510443954903,1.079357970631056,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.433333333333334,3.230356711539488,1.107200716431679,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.466666666666667,3.063298253105879,1.0445404991123055,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.5,3.127308574644947,0.9296876353163568,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.533333333333333,2.8881722046759197,0.8252574963952978,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.566666666666666,2.409102158090171,0.7980644744619325,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.6,1.6262871246357693,0.7984341033662506,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.633333333333333,1.0104906707477377,0.7785949763930385,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.666666666666667,0.8959509026733069,0.8116476640555533,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.7,0.6207500632449824,0.818094742899684,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.733333333333333,0.3972059273152126,0.7753830770886359,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.766666666666667,0.1872025583899892,0.7064331992455725,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.8,0.1700333863783976,0.7352447595134461,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.833333333333333,0.1360517267951463,0.7558905355163936,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.866666666666666,0.0556965837874319,0.7872047401598145,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.8999999999999995,0.1839466245723538,0.7447579904637742,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.933333333333334,0.484216288543164,0.7613790092593037,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,6.966666666666667,0.6872010011256321,0.758199226318906,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.0,1.0669322125558829,0.8090436593227833,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.033333333333333,1.552846779684741,0.7498731488920284,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.066666666666666,2.575280204655241,0.7272535360494108,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.1,3.9112254742288624,0.6830609480375242,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.133333333333333,5.395962347157839,0.6990748779970012,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.166666666666667,6.774882916490747,0.688083859543507,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.2,7.568036986463762,0.6988951774752444,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.233333333333333,8.008238358516046,0.7052192415296948,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.266666666666667,8.219003410157763,0.7262902780344969,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.3,7.628486838525608,0.754605491644884,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.333333333333333,5.608348146013693,0.8146825473087672,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.366666666666666,3.024243524027592,0.8549259616807463,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.4,,,GRASP,Grasping,3,True
+vid7,Take 7 (holdout_fast),holdout_fast,7.433333333333334,,,GRASP,Grasping,3,True
+vid7,Take 7 (holdout_fast),holdout_fast,7.466666666666667,,,GRASP,Grasping,3,True
+vid7,Take 7 (holdout_fast),holdout_fast,7.5,,,GRASP,Grasping,3,True
+vid7,Take 7 (holdout_fast),holdout_fast,7.533333333333333,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,7.566666666666666,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,7.6,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,7.633333333333333,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,7.666666666666667,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,7.7,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,7.733333333333333,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,7.766666666666667,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,7.8,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,7.833333333333333,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,7.866666666666666,3.9360408495621537,0.8194062637043931,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.9,6.184867329756445,0.7818883277813734,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.933333333333334,7.610067107921275,0.7268251759347637,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,7.966666666666667,7.42731431854,0.7074461840447034,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.0,6.975421890258998,0.730220457538834,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.033333333333333,6.2895753030493795,0.7217879547603506,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.066666666666666,5.62193171379466,0.698761669422923,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.1,4.785063387793211,0.6867041802386719,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.133333333333333,3.710942167226403,0.7206261214307885,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.166666666666666,2.312542674086185,0.7672408565609333,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.2,0.999896506587766,0.8371200360321336,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.233333333333333,0.4446718083155707,0.8732007652759525,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.266666666666666,0.5593896105495277,0.9116496574535096,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.3,0.5726939787928036,0.9157466980821926,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.333333333333334,0.6419720960673541,0.8932535834241119,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.366666666666667,0.6459926911712739,0.8457563785189841,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.4,0.7901326816033128,0.8041565301090304,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.433333333333334,1.009036124709613,0.857150983789824,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.466666666666667,1.2462103351062008,0.9169013508366386,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.5,1.2293490684296493,1.0072735446680676,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.533333333333333,1.2439369224064414,1.0724932804208085,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.566666666666666,1.0842992678736008,1.1581614752059284,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.6,0.8668481688547924,1.1828100407758488,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.633333333333333,0.8226050563468184,1.2011968537953446,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.666666666666666,0.5852298940695961,1.253424186248907,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.7,0.5065547060260752,1.3012084861905926,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.733333333333333,0.52427738921127,1.3340386104754152,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.766666666666666,0.373591051633625,1.32681206034967,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.8,0.4479840477618959,1.3304254689057975,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.833333333333334,0.415839932400371,1.3513501417417195,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.866666666666667,0.4198347092370676,1.382431736614395,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.9,0.4372804398148067,1.3812777958154456,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.933333333333334,0.4795883001767896,1.3939549304135348,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,8.966666666666667,0.7309456729609529,1.3909592874305057,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.0,1.045649849607805,1.3734475950608265,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.033333333333331,1.6897532280496177,1.316745224386408,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.066666666666666,2.4738641987106256,1.3100887289952508,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.1,3.304825040886379,1.2893431175511036,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.133333333333333,4.406646910658228,1.2410700732367446,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.166666666666666,5.593902791014974,1.222733222135684,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.2,6.806580346952991,1.2618897770826043,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.233333333333333,7.818668770408201,1.2663159402622108,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.266666666666666,8.500321307256428,1.2020978875840151,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.3,9.022968760801405,1.1424639106517418,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.333333333333334,9.351763765701168,1.0932750033101863,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.366666666666667,9.410035641558904,1.0875392972711142,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.4,9.083562621382749,1.063597354493284,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.433333333333334,8.421128926929143,1.0552309610874335,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.466666666666669,7.915531660837641,0.9634509621458336,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.5,7.753999795961222,0.9576604079531792,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.533333333333331,7.138899165806639,1.0700904449666695,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.566666666666666,4.475630433660399,1.1746471640389269,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.6,2.0188523092027775,1.1071131233124691,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.633333333333333,0.3006382906740416,0.9895426465710156,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.666666666666666,0.9163908876820042,0.9628593158105,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.7,0.3022345846752417,1.0084643985957134,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.733333333333333,0.7855320558734625,1.083135252123926,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.766666666666666,0.5628299760928499,1.1669646639052491,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.8,0.5939219415186603,1.1847093583290222,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.833333333333334,0.6479140479706371,1.312843624393873,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.866666666666667,0.2288859331661642,1.3685968954252836,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.9,0.4546857711717591,1.3785276905560926,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.933333333333334,0.2404476843979371,1.3269528553074197,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,9.966666666666669,0.4910903879614149,1.4142864300256943,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.0,0.6938956465853129,1.3866763222729497,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.033333333333331,0.8493703104614496,1.3113362469490153,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.066666666666666,0.3633974565917039,1.1996509242090772,REST,At rest,1,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.1,0.174177125013335,1.2135311135467892,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.133333333333333,0.2552233484562582,1.2239915913714396,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.166666666666666,0.5296406457324533,1.2936963514856137,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.2,0.1105339449349515,1.303701136401497,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.233333333333333,0.5306710592814525,1.2994821305572997,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.266666666666666,0.6096364615493373,1.1917332771695424,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.3,0.6416868695109298,1.1540082376206773,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.333333333333334,0.9405782008165066,1.115468831790822,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.366666666666667,1.8735924559038513,1.0021477727192658,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.4,3.7252356696552953,0.8477621586855002,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.433333333333334,5.5565356788846945,0.781467401965403,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.466666666666669,7.092479546125902,0.827350934060607,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.5,7.596745473665179,0.8551658596627165,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.533333333333331,8.09394592788046,0.8606676400849305,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.566666666666666,8.494008094799113,0.8075568703606552,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.6,8.772749486415163,0.7926960455935801,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.633333333333333,8.804330609287451,0.8054224579131759,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.666666666666666,8.723113343081305,0.9295182700055798,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.7,8.035359757668074,1.0923896465398646,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.733333333333333,6.9885899032574,1.2057546913371298,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.766666666666666,5.828999337499239,1.1810089222786504,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.8,4.771600451505873,1.12059576152432,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.833333333333334,4.079818390256246,1.0460090224285177,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.866666666666667,3.8267999226512246,0.9673750209038432,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.9,3.657455736889488,0.9294555955551091,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.933333333333334,3.0147465055075613,0.8893460363232317,REACH,Reaching,2,False
+vid7,Take 7 (holdout_fast),holdout_fast,10.966666666666669,2.2007877321438034,0.835968149117263,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.0,1.4716722290072664,0.7641803272675886,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.033333333333331,1.8230691123745648,0.6838362413181202,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.066666666666666,2.679273355254641,0.6163669043550732,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.1,3.719846330184885,0.5604681539920804,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.133333333333333,4.9274292004024645,0.5272187122989381,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.166666666666666,6.195520895556002,0.5593074847407673,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.2,7.396806055661228,0.6399677947606137,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.233333333333333,8.003758377479034,0.686663255548057,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.266666666666666,8.33051731631624,0.6599405818890886,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.3,8.299796938387974,0.6604432748316308,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.333333333333334,6.5258199285826235,0.7557905755695964,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.366666666666667,4.054665264678949,0.8686784001847552,GRASP,Grasping,3,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.4,,,GRASP,Grasping,3,True
+vid7,Take 7 (holdout_fast),holdout_fast,11.433333333333334,,,GRASP,Grasping,3,True
+vid7,Take 7 (holdout_fast),holdout_fast,11.466666666666669,,,GRASP,Grasping,3,True
+vid7,Take 7 (holdout_fast),holdout_fast,11.5,,,GRASP,Grasping,3,True
+vid7,Take 7 (holdout_fast),holdout_fast,11.533333333333331,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,11.566666666666666,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,11.6,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,11.633333333333333,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,11.666666666666666,,,HOLD,Holding,4,True
+vid7,Take 7 (holdout_fast),holdout_fast,11.7,3.555438115722886,0.7453920895771258,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.733333333333333,5.85751466727429,0.6954436618607299,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.766666666666666,7.411146457674514,0.6425297154928707,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.8,7.429514187163873,0.6108738688350217,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.833333333333334,7.090042200202423,0.5878702516749472,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.866666666666667,6.6186687459359375,0.5801845749630244,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.9,6.172421229916061,0.5693959273839286,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.933333333333334,5.637919737108937,0.5551318090668037,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,11.966666666666669,4.882262380678564,0.5744631326285083,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.0,3.621434637053743,0.638825733710035,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.033333333333331,2.122599006951456,0.6960097780301363,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.066666666666666,0.78178794386328,0.6852679993493404,HOLD,Holding,4,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.1,0.5348179369898153,0.6470083920845079,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.133333333333333,0.8514987777321538,0.6291284777320846,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.166666666666666,1.2136578574099703,0.6923794962353063,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.2,1.4510881606390338,0.8413808535570398,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.233333333333333,1.659642040393437,1.0534813832655638,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.266666666666666,1.6908218403142998,1.2391319887353562,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.3,1.57963196432835,1.3162702235016226,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.333333333333334,1.3351657206372014,1.3139011215263867,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.366666666666667,1.0942394382613552,1.2971262324639683,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.4,0.8907249223459869,1.3114182522706488,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.433333333333334,0.8317115390309906,1.3197974724749049,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.466666666666669,0.8236969151681703,1.318212334549935,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.5,0.8253749202850695,1.3064769006837222,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.533333333333331,0.8591889738885309,1.2873722999900497,RELEASE,Releasing,5,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.566666666666666,1.1049683221532345,1.265858399473283,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.6,1.7026225827275332,1.2300130802595235,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.633333333333333,2.572841994396292,1.1819094821422886,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.666666666666666,3.5956631877687615,1.1387451986634964,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.7,4.628795542014895,1.0994632490060017,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.733333333333333,5.596832286610012,1.0976172115386569,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.766666666666666,6.511004759402082,1.1659057622799691,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.8,7.500370540623195,1.2092325019644146,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.833333333333334,8.303131194558755,1.1712764888889935,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.866666666666667,8.831703756963941,1.0532977087439237,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.9,9.182021914150724,1.0030566671425976,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.933333333333334,9.477846590714533,0.9953649114950452,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,12.966666666666669,9.761034543933729,1.0555208942582546,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.0,9.84022252749601,1.0923953190200582,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.033333333333331,9.308267010343354,1.1218185067160988,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.066666666666666,8.551286545158609,0.9901672943940508,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.1,7.0617070355084355,0.8602270234596728,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.133333333333333,6.176998699853561,0.818524404339042,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.166666666666666,4.612625450575955,0.9096172949650794,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.2,2.863439484187458,0.9964074911126504,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.233333333333333,1.466444217718373,1.0214451485901634,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.266666666666666,1.6905055606159358,1.0121680607671724,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.3,1.5074491515860138,0.9789809469669332,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.333333333333334,1.558291129465902,0.9714836685043298,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.366666666666667,1.2598877187557906,0.9552962820698342,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.4,1.4049252603501152,0.99414899810522,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.433333333333334,1.2263195571032457,1.068297894849196,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.466666666666669,1.4142987780521263,1.08491787550797,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.5,1.6785779068438411,1.0607763980776883,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.533333333333331,1.941734860554534,1.0377800446981758,RETRACT,Returning,6,False
+vid7,Take 7 (holdout_fast),holdout_fast,13.566666666666666,2.205080026007354,1.0054744538117553,RETRACT,Returning,6,False
