@@ -1,0 +1,72 @@
+{
+  "job_id": 866964811525959,
+  "run_id": 121730247088002,
+  "run_name": "motion-intent cloud pipeline (M2 build tables -> M3 publish to Snowflake)",
+  "state": {
+    "life_cycle_state": "TERMINATED",
+    "result_state": "SUCCESS",
+    "state_message": "",
+    "user_cancelled_or_timedout": false
+  },
+  "start_time": 1791495121096,
+  "end_time": 1791495349800,
+  "git_source": null,
+  "trigger": "ONE_TIME",
+  "run_page_url": "https://dbc-85a06944-57a8.cloud.databricks.com/?o=7474659358200776#job/866964811525959/run/121730247088002",
+  "tasks": [
+    {
+      "task_key": "m3_publish_snowflake",
+      "run_id": 925045567165636,
+      "state": {
+        "life_cycle_state": "TERMINATED",
+        "result_state": "SUCCESS",
+        "state_message": "",
+        "user_cancelled_or_timedout": false
+      },
+      "depends_on": [
+        {
+          "task_key": "m2_build_tables"
+        }
+      ],
+      "notebook_task": {
+        "notebook_path": "databricks/cloud/m3_publish_snowflake",
+        "source": "GIT"
+      },
+      "git_source": {
+        "git_branch": "main",
+        "git_provider": "gitHub",
+        "git_snapshot": {
+          "used_commit": "7d9be28b47d4c866101cc65c98f1d0ab42408070"
+        },
+        "git_url": "https://github.com/kian-hekmat/track-hand-motion"
+      },
+      "start_time": 1791495262334,
+      "end_time": 1791495349385
+    },
+    {
+      "task_key": "m2_build_tables",
+      "run_id": 264447436999823,
+      "state": {
+        "life_cycle_state": "TERMINATED",
+        "result_state": "SUCCESS",
+        "state_message": "",
+        "user_cancelled_or_timedout": false
+      },
+      "depends_on": null,
+      "notebook_task": {
+        "notebook_path": "databricks/cloud/m2_build_tables",
+        "source": "GIT"
+      },
+      "git_source": {
+        "git_branch": "main",
+        "git_provider": "gitHub",
+        "git_snapshot": {
+          "used_commit": "7d9be28b47d4c866101cc65c98f1d0ab42408070"
+        },
+        "git_url": "https://github.com/kian-hekmat/track-hand-motion"
+      },
+      "start_time": 1791495121132,
+      "end_time": 1791495261863
+    }
+  ]
+}

@@ -129,7 +129,7 @@ databricks secrets put-secret motion snowflake_host --string-value "SKVYGXH-FD77
 
 ## M4: the whole cloud pipeline as one job (`databricks.yml` at the repo root)
 
-**Status: job deployed 2026-10-08 (job id 866964811525959); first run pending.**
+**Status: first job run passed 2026-10-08** (job 866964811525959, run 121730247088002, started with `databricks bundle run`). Both tasks ran commit `7d9be28` from a checkout Databricks made of that commit (not the Git folder). `m2_build_tables` passed 33 of 33 checks; `m3_publish_snowflake` started after it ended, gated on that same M2 run, and passed 31 of 31. Evidence: `evidence/cloud_m4_job_run.json` (run record with the commit per task) and `evidence/cloud_m4_m2_build_tables.html`, `evidence/cloud_m4_m3_publish_snowflake.html`, saved by `scripts/save_job_run_evidence.py` and checked by `tests/test_cloud_m4.py`.
 
 A Databricks Asset Bundle defines one job with two tasks on serverless compute: `m2_build_tables`, then `m3_publish_snowflake`
 (which runs only if M2 succeeded). The tasks read the notebooks from GitHub `main` (`git_source`), so each run records the commit
