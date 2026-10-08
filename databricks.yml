@@ -1,0 +1,46 @@
+# Cloud path M4: the whole cloud pipeline as one Databricks job, defined in the repo (Databricks Asset Bundle).
+#
+#   Volume files (bronze landing) -> m2_build_tables (bronze/silver/gold Delta + checks)
+#                                  -> m3_publish_snowflake (publish to MOTION_INTENT.CLOUD + checks inside Snowflake)
+#
+# The tasks run the notebooks from GitHub (git_source, branch main), not from a local upload, so every run records the
+# commit it used. Each notebook raises if any of its checks fails, which fails the task and stops the job before the next
+# task. Serverless compute (no cluster defined). Deploy and run from the repo root:
+#   databricks bundle validate
+#   databricks bundle deploy
+#   databricks bundle run motion_intent_cloud_pipeline
+# Steps and evidence: databricks/cloud/README.md (M4).
+
+bundle:
+  name: motion-intent-cloud
+
+sync:
+  exclude:            # the tasks read the notebooks from GitHub; upload nothing from the local folder
+    - "**"
+
+resources:
+  jobs:
+    motion_intent_cloud_pipeline:
+      name: motion-intent cloud pipeline (M2 build tables -> M3 publish to Snowflake)
+      max_concurrent_runs: 1        # M3's gate reads the latest M2 run; two overlapping runs could mix them up
+      git_source:
+        git_url: https://github.com/kian-hekmat/track-hand-motion
+        git_provider: gitHub
+        git_branch: main
+      tasks:
+        - task_key: m2_build_tables
+          notebook_task:
+            notebook_path: databricks/cloud/m2_build_tables
+            source: GIT
+        - task_key: m3_publish_snowflake
+          depends_on:
+            - task_key: m2_build_tables
+          notebook_task:
+            notebook_path: databricks/cloud/m3_publish_snowflake
+            source: GIT
+
+targets:
+  default:
+    default: true
+    workspace:
+      host: https://dbc-85a06944-57a8.cloud.databricks.com

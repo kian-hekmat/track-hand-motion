@@ -201,3 +201,6 @@ print()
 print("row counts: " + ", ".join(f"{name} {n}" for name, n in COUNTS.items()))
 print(f"run {RUN_ID}: {len(results)} checks logged to {CATALOG}.{SCHEMAS['gold']}.run_log")
 print(f"M2 CHECKS: {'ALL PASSED' if not failures else f'{len(failures)} FAILED: ' + '; '.join(failures)}")
+# A failed check fails the task, so a job run stops here and the next task does not run (M4).
+if failures:
+    raise RuntimeError(f"M2: {len(failures)} check(s) failed: {'; '.join(failures)}")

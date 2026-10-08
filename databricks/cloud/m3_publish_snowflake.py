@@ -199,3 +199,6 @@ for c, s, d in RESULTS:
 failures = [c for c, s, _ in RESULTS if s != "PASS"]
 print(f"\nrun {RUN_ID}: {len(RESULTS)} checks logged")
 print(f"M3 CHECKS: {'ALL PASSED' if not failures else f'{len(failures)} FAILED: ' + '; '.join(failures)}")
+# A failed check fails the task, so a job run stops here and the next task does not run (M4).
+if failures:
+    raise RuntimeError(f"M3: {len(failures)} check(s) failed: {'; '.join(failures)}")

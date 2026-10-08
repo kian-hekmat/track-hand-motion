@@ -126,3 +126,29 @@ databricks secrets put-secret motion snowflake_host --string-value "SKVYGXH-FD77
 4. Open `m3_publish_snowflake.py`, Run all. It stops before publishing if the latest M2 run did not pass or the serving tables
    differ from the verified exports. Expect `M3 CHECKS: ALL PASSED`. Export it as `evidence/cloud_m3_publish_snowflake.html`.
 5. Send me both exports.
+
+## M4: the whole cloud pipeline as one job (`databricks.yml` at the repo root)
+
+**Status: job deployed 2026-10-08 (job id 866964811525959); first run pending.**
+
+A Databricks Asset Bundle defines one job with two tasks on serverless compute: `m2_build_tables`, then `m3_publish_snowflake`
+(which runs only if M2 succeeded). The tasks read the notebooks from GitHub `main` (`git_source`), so each run records the commit
+it used, and nothing is uploaded from a local folder. Each notebook now raises at the end if any of its checks failed, after
+logging and printing them, so a failed check fails its task and stops the job before Snowflake is touched.
+`tests/test_cloud_m4.py` pins the task order, the source, serverless, and the fail-on-check behaviour.
+
+From the repo root (the Databricks CLI must be signed in):
+
+```bash
+databricks bundle validate
+```
+
+```bash
+databricks bundle deploy
+```
+
+```bash
+databricks bundle run motion_intent_cloud_pipeline
+```
+
+The only manual step left in the cloud path is uploading the input files to the Volume (M2 step 2).
