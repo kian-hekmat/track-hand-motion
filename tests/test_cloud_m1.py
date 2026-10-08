@@ -63,3 +63,50 @@ def test_notebook_code_passes_on_the_reference_machine(monkeypatch, capsys):
     out = capsys.readouterr().out
     assert "M1 CHECKS: ALL PASSED" in out, out[-3000:]
     assert f"events identical for {len(TAKES)} of {len(TAKES)} takes" in out
+
+
+# ---- the saved Databricks run (evidence/cloud_m1_environment_check.html) ----
+EVIDENCE = ROOT / "evidence" / "cloud_m1_environment_check.html"
+
+
+@pytest.fixture(scope="module")
+def run():
+    import base64
+    import urllib.parse
+
+    s = EVIDENCE.read_text(encoding="utf-8")
+    m = re.search(r'__DATABRICKS_NOTEBOOK_MODEL\s*=\s*[\'"]([A-Za-z0-9+/=]+)[\'"]', s)
+    assert m, "not a Databricks notebook HTML export"
+    return json.loads(urllib.parse.unquote(base64.b64decode(m.group(1)).decode()))
+
+
+def _run_text(nb):
+    out = []
+    for c in nb["commands"]:
+        data = (c.get("results") or {}).get("data")
+        if isinstance(data, str):
+            out.append(data)
+        for item in data if isinstance(data, list) else []:
+            if isinstance(item, dict) and item.get("type") == "ansi":
+                out.append(item["data"])
+    return "\n".join(out)
+
+
+def test_databricks_run_finished_and_ran_the_repo_notebook(run):
+    local = NOTEBOOK.read_text()
+    for c in run["commands"]:
+        assert c["state"] == "finished" and not c.get("error") and not c.get("errorSummary"), c["position"]
+        if not c["command"].startswith("%md"):
+            for line in c["command"].strip().splitlines():
+                assert line.replace("%pip", "# MAGIC %pip") in local or line in local, line
+
+
+def test_databricks_run_passed_with_identical_events_for_every_take(run):
+    text = _run_text(run)
+    assert "M1 CHECKS: ALL PASSED" in text and f"events identical for {len(TAKES)} of {len(TAKES)} takes" in text
+    summary = text[text.index("status check / detail"):]
+    assert not re.findall(r"^(FAIL|SKIP)\b", summary, flags=re.M)
+    for take in TAKES:
+        assert re.search(rf"^PASS\s+{take}: events$", summary, flags=re.M), take
+        assert re.search(rf"most-likely phase agrees on 1\.0000 of \d+ samples", summary)
+    assert "PASS   library scikit-learn" in summary and "PASS   library ruptures" in summary

@@ -16,7 +16,7 @@ If Free Edition does not offer Git folders, stop and tell me; the fallback is a 
 
 ## M1: does the frozen model give the same answers on Databricks? (`m1_environment_check.py`)
 
-**Status: written and passing locally (`tests/test_cloud_m1.py`); not yet run on Databricks.**
+**Status: passed on Databricks 2026-10-08** (serverless, Python 3.12.3). Events byte-identical to the local reference for all 7 takes. Serverless provides numpy 2.3.4, pandas 2.3.3 and scipy 1.16.3 (local reference: 1.26.4, 3.0.6, 1.17.1); with these, the signals differ from the reference by at most 1.1e-13 and the phase probabilities by at most 3.5e-18, with the most likely phase identical on every sample. So signal tables are **not** bit-identical across environments; later parity checks on signals use a stated tolerance, while events and labels must match exactly. Evidence: `evidence/cloud_m1_environment_check.html`, checked by `tests/test_cloud_m1.py`.
 
 1. In the Git folder open `databricks/cloud/m1_environment_check.py` (it opens as a notebook). Attach **serverless** compute.
 2. **Run all.** The first cell installs the pinned scikit-learn and ruptures (`requirements-cloud.txt`), the second restarts
