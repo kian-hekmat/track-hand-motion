@@ -305,3 +305,30 @@ def test_m3_run3_passed_every_check_with_the_repo_notebook():
     for table in ("takes", "events", "ground_truth", "signals", "frames", "scores", "raw_keypoints"):
         assert re.search(rf"^PASS\s+snowflake parity {table}$", summary, flags=re.M), table
     assert len(re.findall(r"^PASS\s+snowflake query q\d", summary, flags=re.M)) == 5
+
+
+# ---- M7: the check for the manual Snowflake -> Tableau export ----
+def test_tableau_export_check_accepts_a_snowsight_style_download_and_catches_a_change(tmp_path, monkeypatch):
+    """A download with shuffled rows and lower-case true/false must pass; one changed accuracy value must fail."""
+    import sys
+
+    import pandas as pd
+
+    from config import ROOT
+
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import check_cloud_tableau_exports as X
+
+    monkeypatch.setattr(X, "DOWNLOADS", tmp_path)
+    for n in X.TABLES:
+        d = pd.concat([pd.read_csv(ROOT / "data" / "tableau" / f"{n}.csv"),
+                       pd.read_csv(ROOT / "data" / "holdout" / "tableau" / f"{n}.csv")]).sample(frac=1, random_state=1)
+        for c in d.columns:
+            if d[c].dtype == bool:
+                d[c] = d[c].map({True: "true", False: "false"})
+        d.to_csv(tmp_path / f"{n}.csv", index=False)
+    assert X.main() == 0
+    acc = pd.read_csv(tmp_path / "tableau_accuracy.csv")
+    acc.loc[acc["take"] == "vid6", "percent_frames_matching_human_labels"] += 0.1
+    acc.to_csv(tmp_path / "tableau_accuracy.csv", index=False)
+    assert X.main() == 1

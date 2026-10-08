@@ -62,8 +62,10 @@ as `v2_frozen_holdout`, and draws `evidence/holdout/vid6_segmentation.png` and `
 ```
 python scripts/run_new_take.py export
 ```
-Builds the export tables and the Tableau-ready tables for the new takes with the same code as vid1-5:
-`data/holdout/export/` and `data/holdout/tableau/`. These can be added to the dashboard as a separate view if you want.
+Builds the export tables for the new takes with the same code as vid1-5 (`data/holdout/export/`), the reference the cloud
+checks compare against. Until the 2026-10-08 cloud cleanup this step also built Tableau tables locally with DuckDB; the
+`data/holdout/tableau/` files it made for vid6-7 are kept as the reference for the Snowflake export check. To bring a new take
+into the cloud path: upload its keypoint, meta and label files to the Volume and run the job (`databricks/cloud/README.md`).
 
 `python scripts/run_new_take.py status` shows how far each take has got at any point.
 

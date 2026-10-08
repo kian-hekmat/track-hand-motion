@@ -1,7 +1,9 @@
 # Phase 5: building the Tableau dashboard
 
 **Status: dashboard built, saved (`hand-motion-phases.twbx`) and published; data verified; first-time-viewer test still open.**
-Published: [https://public.tableau.com/app/profile/kian.hekmatnejad/viz/hand-motion-phases/Dashboard2](https://public.tableau.com/app/profile/kian.hekmatnejad/viz/hand-motion-phases/Dashboard2). Target picture used while building: `target_dashboard.png` (drawn with matplotlib from the same data).
+Published: [https://public.tableau.com/app/profile/kian.hekmatnejad/viz/hand-motion-phases/Dashboard2](https://public.tableau.com/app/profile/kian.hekmatnejad/viz/hand-motion-phases/Dashboard2).
+
+**Cloud data (M7): pending.** The published dashboard uses `data/tableau/` (vid1-5). The next version uses the Snowflake `CLOUD` views (vid1-7), downloaded by hand because Tableau Public cannot connect to Snowflake; see "Data from Snowflake" below.
 
 ![The exported Tableau dashboard](../evidence/tableau_dashboard.png)
 
@@ -34,11 +36,21 @@ axis titles with units on the scatter ("Wrist Speed (hand lengths/second)", "Han
 | `tableau_signals.csv` | 3,960 | one row per 30 Hz sample: `t_s`, `speed`, `aperture`, `phase_name`; `speed` is empty where the hand was out of view (Tableau shows a gap) |
 | `tableau_accuracy.csv` | 5 | `percent_frames_matching_human_labels` per take (optional third chart) |
 
-They are produced by the views in `snowflake/05_tableau_views.sql`. Tableau Public (the free edition) cannot connect to Snowflake, to
-the author's knowledge: check the **Connect** pane; if Snowflake is listed, you may connect live instead. Otherwise use the CSVs.
-**Optional, keeps Snowflake as the source:** run `05_tableau_views.sql` in Snowflake, run `SELECT * FROM v_tableau_phases ORDER BY take, source, start_s;` (same for `v_tableau_signals` ORDER BY take, t_s and `v_tableau_accuracy`),
-download each result as `snowflake/actual_results/tableau_phases.csv` etc., run `python scripts/compare_snowflake_results.py`, and use those downloads
-in Tableau.
+They were made from the views in `snowflake/05_tableau_views.sql` and verified against the published dashboard. They are now
+the reference for the Snowflake export check below (with `data/holdout/tableau/` for vid6-7).
+
+## Data from Snowflake (M7)
+
+Tableau Public cannot connect to Snowflake (only files and a few web sources such as Google Sheets), so this step is manual:
+1. In Snowsight, run the three queries from the guide and download each result as CSV into `data/tableau_cloud/`
+   (`tableau_phases.csv` 295 rows, `tableau_signals.csv` 5,659, `tableau_accuracy.csv` 7). The queries alias every column in
+   lower case so the headers match the workbook's field names.
+2. Run `python scripts/check_cloud_tableau_exports.py`. It must print `TABLEAU EXPORT CHECK: ALL PASSED`.
+3. In Tableau Public: add each CSV as a new data source, then Data → Replace Data Source for phases, signals and accuracy (twice).
+4. Check the accuracy bars: 94.9, 96.6, 96.6, 91.1, 84.1, 83.9, 86.2. Save as `hand-motion-phases-cloud.twbx`, publish, and
+   export the image as `evidence/tableau_dashboard_cloud.png` for verification.
+
+Full guide with copyable SQL: https://claude.ai/artifact/AELKsD2jhCWFWSB34sRs54 (private to the project owner).
 
 Two things to know about the data:
 - The first 0.1 s of takes 1 and 4 show a short speed spike (2.2 and 1.8 hand-lengths/s while the hand is labelled at rest). It could be the table tap that

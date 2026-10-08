@@ -1,11 +1,12 @@
--- Motion Intent Pipeline: analytical queries for Snowflake (Phase 4).
--- Run after 01_setup.sql, 02_load.sql, 03_verify.sql in snowflake/. Each query is marked with "-- name:" so the
--- repo can run the same text locally and compare results (see snowflake/README.md).
--- Tables: takes, events, ground_truth, signals, frames, scores, raw_keypoints (schema MOTION_INTENT.PIPELINE).
--- Columns renamed from the CSVs because they are reserved words: group -> take_group, false -> false_boundaries.
--- Takes are reported by kind (clean / fast / hard); averages are never pooled across kinds.
+-- Motion Intent Pipeline: analytical queries for Snowflake.
+-- Tables: takes, events, ground_truth, signals, frames, scores, raw_keypoints. Two schemas have this layout:
+--   MOTION_INTENT.CLOUD     published by the Databricks job (all seven takes, vid1-7)
+--   MOTION_INTENT.PIPELINE  the verified Phase 4 load of vid1-5, kept as the reference
+-- Each query is marked with "-- name:". The M3 notebook runs every query, unchanged, in both schemas and requires identical
+-- answers for vid1-5 (src/cloud/snowflake_sql.py). Columns renamed because they are reserved words: group -> take_group,
+-- false -> false_boundaries. Takes are reported by kind (clean / fast / hard / holdout_*); averages are never pooled across kinds.
 
-USE SCHEMA MOTION_INTENT.PIPELINE;
+USE SCHEMA MOTION_INTENT.CLOUD;
 
 -- name: q1_avg_duration_by_event_type
 -- Question: how long does each kind of event last, for clean, fast and hard takes?

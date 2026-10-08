@@ -316,6 +316,8 @@ RELEASE (known miss); vid5 yields 28 events vs 25 in the ground truth (includes 
 
 # Phase 3: Spark (Databricks)
 
+> **Retired 2026-10-08 (cloud cleanup).** The files and tests named in this section were removed from the working tree and are kept at the git tag `pre-cloud-cleanup` (commit `8dc35b5`). The results below were verified by those tests at the time; the cloud path (last section) now covers this stage and is checked on every job run.
+
 Status: **complete.** Verified on local Spark 3.5.5 (Java 11) and **run on Databricks** (Free Edition workspace, serverless
 compute, inputs in a Unity Catalog Volume): all 20 cells finished without error, all 12 checks passed. Evidence:
 `evidence/databricks_phase3.html`, parsed and asserted by `tests/test_databricks_evidence.py` (checks text, 101-row events table
@@ -352,6 +354,8 @@ gaps-and-islands (`lag` + cumulative-sum window + `groupBy/agg` + `lead`) for ev
 
 
 # Phase 4: Snowflake
+
+> **Retired 2026-10-08 (cloud cleanup).** The files and tests named in this section were removed from the working tree and are kept at the git tag `pre-cloud-cleanup` (commit `8dc35b5`). The results below were verified by those tests at the time; the cloud path (last section) now covers this stage and is checked on every job run.
 
 Status: **complete.** Run on Snowflake on 2026-10-05: 46 of 46 verification checks passed and all five query results match the expected
 results exactly. Evidence: `snowflake/actual_results/` (downloads), checked by `tests/test_snowflake_evidence.py`. Run steps and the
@@ -414,6 +418,8 @@ never detected, so the events table cannot show that ambiguity. The query measur
 
 
 # Phase 5: Tableau
+
+> **Partly retired 2026-10-08.** The DuckDB table generator (`scripts/make_tableau_tables.py`), the comparison script and the matplotlib target image named below were removed (kept at the tag `pre-cloud-cleanup`). `data/tableau/` itself, the workbook and its verification stay. The cloud dashboard data now comes from the Snowflake `CLOUD` views (last section).
 
 Status: **dashboard built by the project owner, saved (`tableau/hand-motion-phases.twbx`) and published on Tableau Public; workbook and export verified against the data; first-time-viewer test still open.** Steps and link: `tableau/README.md`. Export: `evidence/tableau_dashboard.png`.
 
@@ -521,3 +527,51 @@ the baselines (majority 0.29-0.31; random-boundary recall 0.13-0.22).
 results: `scripts/export_tables.py` now exports only the requested takes (it used to read every take in Postgres); `tests/test_export.py` counts only
 the exported takes; scoring and plotting use `ALL_GROUPS`. Framework tests: `tests/test_holdout_framework.py` (sandbox); run checks:
 `tests/test_holdout_results.py`.
+
+
+# Cloud path: Databricks -> Snowflake -> Tableau (2026-10-07 to 2026-10-08)
+
+Plan: `docs/cloud_pipeline_plan.md`. Run steps, results and evidence per milestone: `databricks/cloud/README.md`.
+
+## What it reproduces, and how closely
+
+Every comparison is with the verified local results, with tolerances fixed in `src/cloud/checks.py` before the runs.
+- **Exact:** per-frame and per-sample phase labels, every event's label, start, end, duration and sample count (150 events,
+  vid1-7), every count in the scores, every row of the Snowflake `CLOUD` tables against the verified `PIPELINE` tables (vid1-5),
+  and the answers of the five queries for vid1-5.
+- **Within floating-point noise:** motion signals differ from the local ones by at most 1.4e-13 (serverless has numpy 2.3.4,
+  pandas 2.3.3, scipy 1.16.3; local numpy 1.26.4, pandas 3.0.6, scipy 1.17.1), phase probabilities by at most 3.5e-18, frame
+  coordinates by one bit (2.2e-16: Spark and pandas parse CSV numbers differently), averaged event confidence by 5.6e-16.
+
+## Failures and findings during the migration (all recorded with evidence)
+
+1. **Serverless rejects the Spark connector's `sfURL` option** (`SERVERLESS_WRITE_OPTIONS_NOT_ALLOWED`); it accepts `host`.
+   Found by the write check on 2026-10-07.
+2. **Snowflake's Python connector disappeared after `%pip install` + restart** on serverless, although it was preinstalled
+   before. M3 run 1 published the tables, then failed at `import snowflake.connector`; no Snowflake-side check ran. Fixed by
+   installing it in the notebook's `%pip` cell (`evidence/cloud_m3_publish_snowflake_run1_failed.html`).
+3. **A bug in a check, not in the data:** M3 run 2 failed "snowflake parity scores" (30 of 31 checks passed). Snowflake reports
+   column names in lower case (`acc_rest`), the tolerance table said `acc_REST`, so those columns were compared exactly and
+   last-bit rounding in the CSV-loaded `PIPELINE` values counted as differences. A direct comparison in Snowflake found no
+   differing value. Fixed with case-insensitive lookups and a regression test (`evidence/cloud_m3_publish_snowflake_run2.html`).
+   DuckDB keeps the original case, which is why the local test had passed.
+4. **NaN versus NULL:** values the pandas code marks as NaN arrive in Spark as NaN, not NULL, so Spark averages became NaN where
+   pandas skips missing values. They are converted to NULL after every `applyInPandas` step. Found by the local tests before any
+   cloud run.
+5. **The verified export files carry last-bit rounding** (up to 3.6e-15 in event times) because they were written after a
+   default-precision CSV read. The cloud events match the original reference exactly; the comparison with the export files uses
+   the stated 1e-12 tolerance for those columns.
+6. **A check that could not fail its task:** the notebooks printed `N FAILED` but still finished successfully, which in a job
+   would have let M3 publish after a failed M2 check. Both now raise after logging (found while building M4).
+
+## Limits
+
+- **Extraction is still local.** Converting and extracting the videos with MediaPipe runs on a laptop (M5 not done), so the cloud
+  path starts from uploaded keypoint files, not from video.
+- **Tableau Public cannot connect to Snowflake.** The three views are downloaded by hand and checked
+  (`scripts/check_cloud_tableau_exports.py`); the dashboard is a copy, not a live connection.
+- **The in-Snowflake comparison needs `PIPELINE`.** It was built by the retired Phase 4 scripts (tag `pre-cloud-cleanup`). If the
+  trial account is replaced, those scripts are what rebuild it.
+- **Same scores, same caveats:** the cloud path reproduces the model's results; it does not change how optimistic they are.
+  vid1-5 are still scored by leave-one-take-out models, and vid6-7 remain the only unbiased figures (0.84 and 0.86 frame accuracy).
+

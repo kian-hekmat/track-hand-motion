@@ -13,7 +13,7 @@ gold    build_events()          per-sample labels -> events (gaps-and-islands wi
         frame_scores()          frame accuracy, per-label accuracy, balanced accuracy, majority baseline (groupBy/agg)
         boundary_scores()       M2b: the full scores (boundaries, timing, chance baselines, per cycle) with src.evaluate,
                                 one take per group; inputs gathered per take with nested aggregation (collect_list of structs)
-serving tables (M3)  serve_*()  the same columns as the verified Snowflake PIPELINE tables (snowflake/01_setup.sql), so the
+serving tables (M3)  serve_*()  the same columns as the verified Snowflake PIPELINE tables (MOTION_INTENT.PIPELINE), so the
                                 existing queries.sql and Tableau views run unchanged against the cloud schema
 
 Interval rules copy src.ground_truth.labels_at and in_intervals exactly, including the inclusive end of the last segment

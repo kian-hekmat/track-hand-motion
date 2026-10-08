@@ -173,8 +173,6 @@ def test_prepare_runs_the_stages_in_order_and_keeps_existing_labels(sandbox, mon
 def test_export_of_selected_takes_contains_only_those_takes(tmp_path):
     """The parametrised export used for the hold-out reproduces the same tables for one take and leaves the 5-take export alone."""
     import export_tables
-    import local_sql
-    import make_tableau_tables
     from config import SEGMENTS_DIR
     canon = (ROOT / "data" / "export" / "manifest.json").read_text()
     out = tmp_path / "export"
@@ -184,8 +182,6 @@ def test_export_of_selected_takes_contains_only_those_takes(tmp_path):
     assert set(raw["take"]) == {"vid3"} and len(raw) == 21 * 775
     ev = pd.read_csv(out / "events.csv")
     assert set(ev["take"]) == {"vid3"} and ev["n_frames"].sum() == 775
-    tabs = make_tableau_tables.build_tables(local_sql.connect(out))
-    assert len(tabs["tableau_signals"]) == 775 and set(tabs["tableau_phases"]["take"]) == {"vid3"}
     assert (ROOT / "data" / "export" / "manifest.json").read_text() == canon     # canonical export untouched
 
 

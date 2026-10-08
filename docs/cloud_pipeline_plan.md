@@ -1,7 +1,7 @@
 # Cloud pipeline: Databricks → Snowflake → Tableau
 
-**Status: plan decided 2026-10-07; scope change approved and written into `CLAUDE.md` 2026-10-08. M0 done (2026-10-08); M1 done on Databricks (2026-10-08); M2 and M2b passed on Databricks (2026-10-08); M3 passed on Databricks and Snowflake (2026-10-08, run 3); M4 done (2026-10-08, first job run passed); M5-M7 not started.** Prerequisite done: Databricks can write to Snowflake
-with the Spark connector (`databricks/snowflake_write_check.md`, evidence saved).
+**Status: plan decided 2026-10-07; scope change approved and written into `CLAUDE.md` 2026-10-08. M0 done (2026-10-08); M1 done on Databricks (2026-10-08); M2 and M2b passed on Databricks (2026-10-08); M3 passed on Databricks and Snowflake (2026-10-08, run 3); M4 done (2026-10-08, first job run passed); M7 changed to a manual export (2026-10-08), steps and check written, export not yet done; M5 and M6 not started. Superseded pre-migration code was removed on 2026-10-08 (kept at the git tag `pre-cloud-cleanup`).** Prerequisite done: Databricks can write to Snowflake
+with the Spark connector (the 2026-10-07 write check, retired in the cleanup and kept at the git tag `pre-cloud-cleanup`).
 
 ## Goal
 
@@ -92,12 +92,13 @@ created as a job in the UI from the same YAML.
   expected result is zero differing rows. This is the main proof that the cloud pipeline reproduces the verified one.
 - `queries.sql` and `05_tableau_views.sql` are pointed at `CLOUD`. Snowflake then produces the Tableau tables, not DuckDB.
 
-### 7. Tableau: a real Snowflake connection, published as an extract
+### 7. Tableau: manual export from the Snowflake views (revised 2026-10-08)
 
-Tableau Public cannot connect to Snowflake, and a Tableau Public workbook is always an extract. Decision: build in a Tableau
-Desktop trial (14 days) connected to the `CLOUD` views, then publish to Tableau Public. Whether the Desktop trial can save to
-Tableau Public is **not yet verified**; it is checked at the start of M7. Fallback: download the view results from Snowsight
-into Tableau Public, described as "data from Snowflake views" rather than a live connection.
+Originally: a Tableau Desktop trial connected to the `CLOUD` views. **Revised by the project owner:** Tableau Public stays,
+and since it cannot connect to Snowflake, the three views are downloaded from Snowsight as CSV, checked against the verified
+Tableau tables (`scripts/check_cloud_tableau_exports.py`) and loaded into the workbook. Described as "data from Snowflake views,
+exported by hand", not a live connection. An automated alternative (the job writes the views to a Google Sheet, which Tableau
+Public refreshes daily) was considered and not chosen.
 
 ### 8. Extraction (MediaPipe) moves last and may stay local
 
@@ -124,10 +125,10 @@ reference results.
 | M4 | One job end to end (bundle) | A single `databricks bundle run` goes from Volume files to verified Snowflake tables with no manual step in between **Done 2026-10-08:** job run 121730247088002 (`databricks bundle run`) went from the Volume files to checked Snowflake tables with no manual step; both tasks on commit `7d9be28`; M2 33/33, M3 31/31 (`evidence/cloud_m4_*`) |
 | M5 | MediaPipe extraction in Databricks | Keypoints compared with the local extraction (difference reported); labels re-scored and reported, never pooled with earlier numbers |
 | M6 | Optional: MLflow tracking and registry | Models registered with their hashes; retraining in Databricks compared with the frozen model and reported |
-| M7 | Tableau from Snowflake | Dashboard built on the `CLOUD` views and published; image re-verified with `scripts/verify_dashboard_image.py`; the first-time-viewer test |
+| M7 | Tableau from Snowflake | **Changed 2026-10-08 to a manual export** (Tableau Public cannot connect to Snowflake): the three `CLOUD` views downloaded from Snowsight, checked by `scripts/check_cloud_tableau_exports.py`, then the workbook repointed and republished; image re-verified with `scripts/verify_dashboard_image.py`; the first-time-viewer test. **Not yet done.** |
 
 Local pytest stays the safety net: the Spark parts keep running on local Spark, the SQL in DuckDB, and every evidence export
-gets a parsing test like `tests/test_databricks_evidence.py`.
+gets a parsing test (`tests/test_cloud_m1.py`, `tests/test_cloud_m2.py`, `tests/test_cloud_m4.py`).
 
 ## Risks
 

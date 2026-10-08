@@ -15,7 +15,7 @@ An end-to-end data pipeline that turns recorded human hand motion into discrete 
 - [Phase 1: Capture and keypoint extraction](#phase-1-capture-and-keypoint-extraction)
 - [Phase 2: Segmentation model](#phase-2-segmentation-model)
 - [Hold-out test on new recordings](#hold-out-test-on-new-recordings)
-- [Phase 3: Databricks (PySpark)](#phase-3-databricks-pyspark)
+- [Phase 3: Databricks](#phase-3-databricks)
 - [Phase 4: Snowflake](#phase-4-snowflake)
 - [Phase 5: Tableau dashboard](#phase-5-tableau-dashboard)
 - [Running it](#running-it)
@@ -29,11 +29,11 @@ An end-to-end data pipeline that turns recorded human hand motion into discrete 
 | 1 | Capture & keypoint extraction | **Complete.** 5 videos extracted, Postgres landing table loaded (row counts match), ground truth labelled for all 5 takes, overlays reviewed |
 | 2 | Segmentation | **Complete (v2).** Frame accuracy 0.84–0.97 under leave-one-take-out CV (v1 baseline: 0.45–0.78); plots in `evidence/phase2_v2/` reviewed |
 | — | Hold-out test | **Done.** Two new recordings scored once by the frozen model: frame accuracy **0.84** and **0.86**, the project's only unbiased figures |
-| 3 | Databricks processing | **Complete.** PySpark signal derivation + event construction; 12/12 checks passed locally and on Databricks; Spark events identical to pandas events (101/101) |
-| 4 | Snowflake | **Complete.** 7 tables loaded, 46/46 verification checks passed on Snowflake, 5 analytical queries (incl. `LAG`/`LEAD`) match an independent pandas recomputation |
-| 5 | Tableau dashboard | **Built and published**, workbook and picture verified against the data. **Open:** first-time-viewer test (spec requirement) |
+| 3 | Databricks | **Complete (cloud path).** One Databricks job builds bronze/silver/gold Delta tables from the uploaded files and reproduces the verified results: events, labels and scores exact, signals within 1.4e-13 |
+| 4 | Snowflake | **Complete (cloud path).** The job publishes 7 tables to `MOTION_INTENT.CLOUD`; inside Snowflake, every verified row matches and the 5 analytical queries (incl. `LAG`/`LEAD`) give identical answers. Last job run: 33/33 + 31/31 checks |
+| 5 | Tableau dashboard | **Built and published** from the verified local tables (vid1–5), workbook and picture verified against the data. **Open:** repointing it at the Snowflake views (manual export, vid1–7) and the first-time-viewer test (spec requirement) |
 
-Test suite: 305 pytest checks; on 2026-10-06, 304 passed and 1 optional check was skipped. The Postgres tests need the database running.
+Test suite: 299 pytest checks, all passing on 2026-10-08. The Postgres tests need the database running; the Spark tests need Java 11 or 17.
 
 **Headline numbers** (fraction of video frames given the same phase as a human labeller; tolerance 0.10 s; groups reported separately, never averaged):
 
@@ -47,20 +47,26 @@ Test suite: 305 pytest checks; on 2026-10-06, 304 passed and 1 optional check wa
 ## How the data flows
 
 ```
-iPhone video ─► MediaPipe Hands ─► Postgres (raw_keypoints) ─► signals + segmentation (Python) ─► data/export/
-                                                                                                    │
-                     ┌──────────────────────────────────────────────────────────────────────────────┤
-                     ▼                                    ▼                                          ▼
-     Tableau tables (DuckDB, running the        Databricks / PySpark                       Snowflake warehouse
-     same SQL views written for Snowflake)      (independent re-derivation of              (7 tables, row-count checks,
-                     │                           signals and events, cross-checked)          5 analytical queries)
-                     ▼
-              Tableau Public
+iPhone video ─► MediaPipe Hands ─► data/raw keypoints ─► Postgres (local landing, verified reference)
+   (local)          (local)               │
+                                          │ upload to a Unity Catalog Volume (the one manual input step)
+                                          ▼
+          ┌─────────────────── Databricks job (databricks.yml, serverless) ───────────────────┐
+          │ m2_build_tables: bronze → silver → gold Delta tables, frozen model per recording,  │
+          │                  every table checked against the verified local reference          │
+          │ m3_publish_snowflake (only if M2 passed): publish to MOTION_INTENT.CLOUD, then     │
+          │                  check inside Snowflake against the verified PIPELINE tables       │
+          └────────────────────────────────────────────────────────────────────────────────────┘
+                                          ▼
+                     Snowflake CLOUD: 7 tables, 5 analytical queries, 3 Tableau views
+                                          │ download the 3 views as CSV, check them (manual)
+                                          ▼
+                                    Tableau Public
 ```
 
-Databricks and Snowflake each load the exported tables and are verified against them. The dashboard's CSVs are produced by running the Snowflake view SQL (`snowflake/05_tableau_views.sql`) locally in DuckDB, because the free edition of Tableau does not connect to Snowflake (to the author's knowledge, not verified). Running those views in Snowflake and comparing the exports is supported (`scripts/compare_snowflake_results.py`) but has not been done yet.
+Video conversion and keypoint extraction still run locally (moving them to Databricks, milestone M5, is not done). Tableau Public cannot connect to Snowflake, so the last hop is a checked manual export. The local pipeline (Postgres, the model, the verified exports) stays as the reference the cloud results are compared against. Plan and milestones: [`docs/cloud_pipeline_plan.md`](docs/cloud_pipeline_plan.md); run steps and evidence: [`databricks/cloud/README.md`](databricks/cloud/README.md).
 
-**Tech stack:** Python 3.11+, pandas, NumPy · MediaPipe Hands · `ruptures` (changepoint detection) · scikit-learn (frame classifier) · PostgreSQL in Docker · Databricks (PySpark) · Snowflake · DuckDB (local SQL testing) · Tableau Public · pytest.
+**Tech stack:** Python 3.11+, pandas, NumPy · MediaPipe Hands · `ruptures` (changepoint detection) · scikit-learn (frame classifier) · PostgreSQL in Docker · Databricks (PySpark, Delta, Unity Catalog, Asset Bundles, serverless jobs) · Snowflake (Spark and Python connectors, key-pair auth) · Tableau Public · pytest, with local Spark and DuckDB to test the Spark and Snowflake code before it runs in the cloud.
 
 **Design choice to note:** the motion data comes from self-recorded video of a hand (keypoints extracted by computer vision), not from motion-sensor telemetry.
 
@@ -227,9 +233,9 @@ Plots for every take: `evidence/phase2/` (v1), `evidence/phase2_v2/` (v2).
 
 ### Frozen model and exported tables
 
-The v2 model is frozen in `models/segmenter_v2.joblib`. Its `.json` records the file hash, library versions, training takes, feature columns and the PELT penalty (1.0, chosen as the best mean objective over the leave-one-out predictions; the objective is flat from 0.5 to 2.0). `tests/test_frozen_model.py` fails if the file or features change. The canonical events are out-of-fold: each take is predicted by a model that never saw it. Scored as `v2_frozen_oof`, frame accuracy is 0.95 / 0.97 / 0.97 / 0.91 / 0.84 for vid1–5; these are the values on the dashboard. New takes are segmented with `src.final.segment_new_take(take)` without retraining.
+The v2 model is frozen in `models/segmenter_v2.joblib`. Its `.json` records the file hash, library versions, training takes, feature columns and the PELT penalty (1.0, chosen as the best mean objective over the leave-one-out predictions; the objective is flat from 0.5 to 2.0). `tests/test_frozen_model.py` fails if the file or features change. The canonical events are out-of-fold: each take is predicted by a model that never saw it. Scored as `v2_frozen_oof`, frame accuracy is 0.95 / 0.97 / 0.97 / 0.91 / 0.84 for vid1–5; these are the values on the dashboard. New takes are segmented with `src.final.segment_new_take(take)` without retraining. For the cloud path the five leave-one-take-out models are also saved (`models/folds/`, `scripts/save_fold_models.py`, only if they reproduce these events byte for byte), and `src.final.load_model_for_take` gives each recording the model that never saw it.
 
-`scripts/export_tables.py` writes `data/export/`, the tables for the later phases: `events` (101 rows), `signals` (3,960), `frames` (3,960), `ground_truth` (101), `takes` (5), `scores` (10), and `raw_keypoints.parquet` (83,160 rows, read straight from Postgres). It also writes a `manifest.json` of row counts and SHA-256 hashes. `tests/test_export.py` checks that events partition every frame exactly once and that counts and hashes match.
+`scripts/export_tables.py` writes `data/export/`, the verified tables the Snowflake `PIPELINE` schema was loaded from and the cloud results are compared against: `events` (101 rows), `signals` (3,960), `frames` (3,960), `ground_truth` (101), `takes` (5), `scores` (10), and `raw_keypoints.parquet` (83,160 rows, read straight from Postgres). It also writes a `manifest.json` of row counts and SHA-256 hashes. `tests/test_export.py` checks that events partition every frame exactly once and that counts and hashes match.
 
 ---
 
@@ -257,25 +263,27 @@ Full analysis and every fix: `NOTES.md`. Outputs: `data/holdout/`; plots: `evide
 
 ---
 
-## Phase 3: Databricks (PySpark)
+## Phase 3: Databricks
 
-**Goal:** reimplement a meaningful part of the pipeline on Spark DataFrames rather than relocating pandas code into a notebook.
+**Goal:** run the transformation on Spark, as Spark-flavoured data engineering rather than Python relocated into a notebook.
 
-**What runs in Spark** (`databricks/spark_transforms.py`, generated notebook `databricks/motion_pipeline_spark.py`):
+The whole cloud path is one Databricks job, defined in the repo as an Asset Bundle ([`databricks.yml`](databricks.yml)) and run on serverless compute. Its tasks read the notebooks from GitHub `main`, so every run records the commit it used.
 
-- **Signal derivation from raw keypoints:** a conditional aggregation pivots the 21 landmark rows into one row per frame. Window functions partitioned by take and ordered by frame compute a `lag`/`lead` central-difference velocity using the real, variable frame timestamps, and `avg` over `rowsBetween(-2, 2)` smooths it. A `groupBy/agg` with an exact `percentile` gives per-take hand size, joined back with a broadcast join.
-- **Event construction:** gaps-and-islands (`lag` + cumulative-sum window + `groupBy/agg` + `lead`) turns per-frame labels into events, and a range join computes per-event stats.
+**`m2_build_tables`** ([notebook](databricks/cloud/m2_build_tables.py), code in [`src/cloud/tables.py`](src/cloud/tables.py)) reads the uploaded files from a Unity Catalog Volume and writes Delta tables:
 
-**Scope decision (flagged):** the gradient-boosting classifier and `ruptures` have no sensible Spark equivalent, so the frozen model's per-frame labels are an input table. The events are *built* in Spark from labels produced in Python; the segmentation itself does not run in Spark.
+| Layer | Tables | How |
+|---|---|---|
+| bronze | `raw_keypoints` (118,839 rows), `take_meta`, `ground_truth`, `out_of_frame_intervals` | the uploaded files with fixed schemas; a file whose columns are out of order fails instead of loading wrong |
+| silver | `frames` (5,659) | conditional aggregation pivots the 21 landmark rows of each frame into one row |
+| silver | `signals` (5,659) | `groupBy().applyInPandas` runs the repo's own signal, feature, model and changepoint code once per recording on the workers, each with the model that may label it honestly |
+| gold | `events` (150), `frame_labels`, `frame_scores`, `scores` | gaps-and-islands with `lag`/running `sum`/`lead` windows builds events; range joins match every frame to its detected and hand-labelled phase; `collect_list` of structs gathers each recording's inputs for the full scoring |
+| gold | `run_log` | every check of every run |
 
-**Verification:** run locally (Spark 3.5.5, `tests/test_spark.py`) and on Databricks (Free Edition, serverless). All 20 cells finished and all 12 checks passed. The Databricks export is saved as `evidence/databricks_phase3.html` and asserted by `tests/test_databricks_evidence.py`.
+**Why the model runs as pandas code inside Spark:** the model was trained on 61 features computed in pandas. A Spark rewrite of those features is close but not identical (an earlier PySpark re-derivation of the signals correlated 0.87 to 0.996 with them), and a model fed slightly different features gives different labels. Running the same code per recording keeps every label comparable with the verified ones.
 
-- Row counts: raw 83,160 = 21 × 3,960 frames; Spark frames and signals = pandas frames for every take.
-- Spark events = pandas events, 101 of 101, with identical label, start, end and frame count.
-- Signals agree but are not identical, because the methods differ (central difference + 5-frame average vs. a 30 Hz grid + Savitzky–Golay). Pearson r for speed is 0.98–0.99 on every take. For aperture it is 0.99 on every take except the fast vid4 (0.87), where phases last only a few frames.
-- **A bug was caught by these checks:** central differences initially gave undetected frames a speed from their neighbours (silent interpolation). Fixed by masking undetected frames.
+**Checked against the verified local results on every run** ([`src/cloud/checks.py`](src/cloud/checks.py), tolerances fixed before the first run): every event's label, start, end and length identical for all 7 recordings; per-sample labels and every score count identical; signals within 1e-9 (measured: at most 1.4e-13, from serverless's newer numpy/pandas/scipy); frame coordinates within 1e-12 (measured: 2.2e-16, Spark and pandas parse CSV numbers differently). Each notebook fails its task if any check fails, so the job stops before Snowflake.
 
-Run steps: `databricks/README.md`.
+**Latest job run** (2026-10-08, run 121730247088002, commit `7d9be28`): M2 passed 33 of 33 checks, then M3 passed 31 of 31. Evidence: `evidence/cloud_m4_*`, checked by `tests/test_cloud_m4.py`. Earlier milestones and their runs, including the failures: [`databricks/cloud/README.md`](databricks/cloud/README.md).
 
 ---
 
@@ -283,7 +291,7 @@ Run steps: `databricks/README.md`.
 
 **Goal:** land the structured tables in Snowflake as the queryable layer.
 
-`scripts/build_snowflake_scripts.py` generates `snowflake/01_setup.sql` (database, schema, stage, 7 tables), `02_load.sql` (`COPY INTO` from the stage) and `03_verify.sql` (46 checks). The expected values come from `data/export/manifest.json`, not from the loaded tables. Loaded tables: `takes` (5), `events` (101), `ground_truth` (101), `signals` (3,960), `frames` (3,960; the per-frame aggregate of the raw keypoints), `scores` (10), and the full `raw_keypoints` (83,160).
+**`m3_publish_snowflake`** ([notebook](databricks/cloud/m3_publish_snowflake.py)) runs only after M2 passed. It reshapes the gold tables into the layout of the verified Phase 4 tables, checks them against the verified export files, and publishes them with the Spark connector (key-pair sign-in from a Databricks secret) to `MOTION_INTENT.CLOUD`: `takes` (7), `events` (150), `ground_truth` (145), `signals` (5,659), `frames` (5,659), `scores` (33, including per-cycle rows), `raw_keypoints` (118,839).
 
 **Analytical queries** ([`queries.sql`](queries.sql)):
 
@@ -293,11 +301,13 @@ Run steps: `databricks/README.md`.
 4. Phase transitions and whether they follow the protocol order (`LEAD`)
 5. Model agreement with the human labels, per phase
 
-**Verification (run on Snowflake, 2026-10-05):** 46 of 46 checks `PASS`, with row counts equal to the manifest. All five query results (downloads in `snowflake/actual_results/`) match the locally produced results exactly. They also match an independent pandas recomputation from the exported CSVs with no SQL (`tests/test_snowflake_evidence.py`). Locally, the SQL is tested in DuckDB, and six deliberate corruptions (a deleted row, a shifted start, a duplicated event…) are each caught.
+**Checked inside Snowflake on every run** (SQL from [`src/cloud/snowflake_sql.py`](src/cloud/snowflake_sql.py), tested first in DuckDB):
+- the row count of every `CLOUD` table equals what Databricks wrote in that run;
+- every row of the verified `PIPELINE` tables (vid1–5, loaded in Phase 4 on 2026-10-05, when 46 of 46 load checks passed) has a `CLOUD` row with equal values, column by column;
+- the three Tableau views build on `CLOUD` with the expected row counts;
+- each of the five queries, unchanged, returns identical rows for vid1–5 in both schemas.
 
-The results make sense against the videos: clean-take HOLD averages 2.65 s; the fast take has no RELEASE events (the known miss); every clean-take transition follows the protocol order; cycle time is about 10–12 s clean, 2.5 s fast, 6–9 s hard; vid5 ranks most ambiguous. The person who watched the videos confirmed these against `snowflake/sanity_check_checklist.md` (a verbal sign-off; the filled-in checklist was not saved).
-
-**Not proved:** values in `raw_keypoints` and `frames` are verified only by row counts and a NULL check. The optional value-level `04_fingerprint.sql` has not been run on Snowflake. Run steps and details: `snowflake/README.md`.
+The answers make sense against the videos: clean-take HOLD averages 2.65 s; the fast take has no RELEASE events (the known miss); every clean-take transition follows the protocol order; cycle time is about 10–12 s clean, 2.5 s fast, 6–9 s hard; vid5 ranks most ambiguous. The person who watched the videos confirmed these in Phase 4 (a verbal sign-off; the filled-in checklist was not saved). Details: [`snowflake/README.md`](snowflake/README.md).
 
 ---
 
@@ -317,7 +327,9 @@ The dashboard at the top of this page was built by the project owner in Tableau 
 - **Workbook:** it packages exactly the three tested CSVs (byte-identical to `data/tableau/`), and each sheet uses the expected fields.
 - **Picture:** the timeline bands decode to exactly the detected events for all 5 takes (19, 19, 19, 16, 28 segments, same phases in the same order, starts within 0.046 s). The accuracy bars decode to 94.9, 96.6, 96.6, 91.1 and 84.1, equal to the scored values. The speed lines correlate 0.961–0.985 with the real signal. The scatter's vertical order matches the data (rank correlation 0.94); its horizontal check is weak (0.77) because overlapping circles hide the dense low-speed region, so its data binding is verified from the workbook instead.
 - **Published copy:** on 2026-10-06 the Tableau Public page showed the same four charts and accuracy labels as the export (a visual check only).
-- **Data tables:** `tests/test_tableau_tables.py` checks that segments are contiguous, that counts match the sources, that accuracy equals the scored values, and that speed is empty exactly where the hand was out of view.
+- **Data tables:** `tests/test_tableau_tables.py` checks that segments are contiguous, that counts match the sources, that accuracy equals the scored values, and that speed is empty exactly where the hand was out of view. These tables are now the reference for the Snowflake export check.
+
+**Next: data from Snowflake (manual export).** The views in Snowflake `CLOUD` hold all seven recordings. Since Tableau Public cannot connect to Snowflake, they are downloaded from Snowsight as CSV, checked against the verified tables with `python scripts/check_cloud_tableau_exports.py`, and the workbook's data sources are replaced. The accuracy bars must then read 94.9, 96.6, 96.6, 91.1, 84.1, 83.9 and 86.2. Steps: `tableau/README.md`. **Not done yet.**
 
 **Open:** the first-time-viewer test (`tableau/user_test.md`). The spec says the dashboard is not done until someone new can describe it.
 
@@ -344,10 +356,26 @@ Build steps and data dictionary: `tableau/README.md`.
 
 ## Running it
 
+**Cloud pipeline** (Databricks CLI signed in; one-time setup in `databricks/cloud/README.md`: Git folder, schemas and Volume, uploaded files, the Snowflake key and host as Databricks secrets, `snowflake/11_cloud_setup.sql`):
+
+```bash
+databricks bundle deploy
+```
+
+```bash
+databricks bundle run motion_intent_cloud_pipeline
+```
+
+```bash
+python scripts/save_job_run_evidence.py <job_run_id>
+```
+
+**Local pipeline and tests:**
+
 ```bash
 docker-compose up -d db            # Postgres 16 on localhost:5433
 python scripts/load_postgres.py    # init schema, load all takes, verify row counts
-pytest                             # Postgres tests fail (not skip) if the DB is down
+pytest                             # Postgres tests fail (not skip) if the DB is down; Spark tests need Java 11/17
 ```
 
 | Step | Command |
@@ -356,10 +384,9 @@ pytest                             # Postgres tests fail (not skip) if the DB is
 | Score and plot v2 | `python scripts/score_segmentation.py --events-dir data/segments/v2_pelt --version v2_pelt` then `python scripts/plot_segmentation.py --events-dir data/segments/v2_pelt --out-subdir phase2_v2` |
 | v1 baseline | `python scripts/run_segmentation.py` |
 | Freeze model and export tables | `python scripts/freeze_model.py && python scripts/score_segmentation.py --events-dir data/segments/v2_frozen_oof --version v2_frozen_oof && python scripts/export_tables.py` |
-| New recordings, end to end | `python scripts/run_new_take.py` (see `docs/new_takes.md`) |
-| Tableau tables | `python scripts/make_tableau_tables.py` |
-| Databricks | `databricks/README.md` |
-| Snowflake | `snowflake/README.md` |
+| Fold models and the cloud reference | `python scripts/save_fold_models.py && python scripts/make_cloud_reference.py` |
+| New recordings (local: convert, extract, label, score, export) | `python scripts/run_new_take.py` (see `docs/new_takes.md`) |
+| Check the Tableau export from Snowflake | `python scripts/check_cloud_tableau_exports.py` |
 
 ## Repository layout
 
@@ -367,33 +394,39 @@ pytest                             # Postgres tests fail (not skip) if the DB is
 vids/             original iPhone recordings
 src/              extract, landmarks (MediaPipe), db (Postgres loader), signals, features, learned,
                   segment (v1), score, evaluate, ground_truth, final (frozen model), holdout
-scripts/          convert, extract, detection report, overlays, load_postgres, segmentation, CV,
-                  scoring, plotting, export, Snowflake/Databricks/Tableau builders
+src/cloud/        Spark transforms (tables.py), checks against the verified reference (checks.py),
+                  Snowflake check SQL (snowflake_sql.py)
+databricks.yml    the cloud job (Databricks Asset Bundle)
+databricks/cloud/ job notebooks (m2_build_tables, m3_publish_snowflake), M1 environment check, pinned libraries
+snowflake/        CLOUD schema setup (11_cloud_setup.sql), Tableau views (05_tableau_views.sql)
+queries.sql       the 5 analytical queries
+scripts/          convert, extract, detection report, overlays, load_postgres, segmentation, CV, scoring,
+                  plotting, export, fold models, cloud reference, job evidence, Tableau export check
 sql/              Postgres DDL
+models/           frozen segmenter + leave-one-take-out fold models (joblib + json metadata)
 data/raw/         per-take keypoint CSVs, meta JSON, detection_report.csv
 data/segments/    v1 events + params.json; v2_pelt / v2_grammar / v2_argmax / v2_frozen_oof;
                   history.csv (every scored version); cv_selection.json
-data/export/      tables for Databricks / Snowflake / Tableau + manifest.json
+data/export/      verified tables for vid1-5 (the source of Snowflake PIPELINE) + manifest.json
 data/holdout/     hold-out test for vid6 and vid7: lock, events, scores, run record, export, Tableau tables
-data/tableau/     Tableau-ready CSVs
-models/           frozen segmenter (joblib + json metadata)
-databricks/       PySpark transforms, generated notebook, run instructions
-snowflake/        generated setup / load / verify SQL, expected and actual results, run instructions
-tableau/          workbook (hand-motion-phases.twbx), build steps, first-time-viewer test, target image
-evidence/         overlay clips, contact sheets, segmentation plots, Databricks export, dashboard export
+data/tableau/     verified Tableau tables for vid1-5 (reference for the Snowflake export check)
+data/cloud_reference/  local outputs the Databricks runs must reproduce
+tableau/          workbook (hand-motion-phases.twbx), build steps, first-time-viewer test
+evidence/         overlay clips, contact sheets, segmentation plots, dashboard export, Databricks run exports
 ground_truth/     take_N.csv hand-labelled phase boundaries
-docs/             phase2_roadmap.md, new_takes.md
+docs/             cloud_pipeline_plan.md, new_takes.md, phase2_roadmap.md
 tests/            pytest suites
-queries.sql       the 5 Snowflake analytical queries
 NOTES.md          limitations, failure modes and disclosures
 ```
 
+Retired in the 2026-10-08 cleanup and kept at the git tag `pre-cloud-cleanup`: the Phase 3 local Spark demo, the Phase 4 manual Snowflake load and verification scripts (they built `PIPELINE`), the Snowflake connector test, and the local DuckDB Tableau-table generator.
+
 ## Final integration checklist
 
-- [x] Full pipeline runs end to end on at least one video, from raw footage to Tableau-ready export, without manual patching of intermediate files: vid6 and vid7 via `scripts/run_new_take.py` (2026-10-06). The run exposed one bug (time base), fixed in code before vid6 was re-run; the human inputs (label files, out-of-frame list) needed formatting fixes. See `NOTES.md`
+- [x] Full pipeline runs end to end on at least one video, from raw footage to Tableau-ready export, without manual patching of intermediate files: vid6 and vid7 via `scripts/run_new_take.py` (2026-10-06, local path; its DuckDB Tableau step has since been retired). The run exposed one bug (time base), fixed in code before vid6 was re-run; the human inputs (label files, out-of-frame list) needed formatting fixes. See `NOTES.md`. Cloud path: one job run goes from the uploaded keypoint files to checked Snowflake tables with no manual step (2026-10-08); extraction before it and the Tableau export after it are still manual
 - [ ] Every number reported about the project has a test or saved output that produced it
-- [x] `NOTES.md` documents real limitations and failure modes (tracking, segmentation, hold-out results)
-- [ ] This README matches what is actually built (no planned features described as done). Restructured and checked against the docs on 2026-10-06; leave unticked until the viewer test is done
+- [x] `NOTES.md` documents real limitations and failure modes (tracking, segmentation, hold-out results, cloud migration)
+- [ ] This README matches what is actually built (no planned features described as done). Updated for the cloud path and the cleanup on 2026-10-08; leave unticked until the viewer test is done
 
 ## Ground rules for AI assistants
 

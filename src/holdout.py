@@ -199,6 +199,6 @@ def status(takes: list[str]) -> dict:
             "ground_truth_problems": validate_ground_truth(t) if (RAW_DIR / f"{t}_meta.json").exists() else ["run prepare first"],
             "locked": _lock_file().exists() and t in json.loads(_lock_file().read_text()).get("ground_truth", {}),
             "scored": (HOLDOUT_DIR / f"{t}_events.csv").exists(),
-            "exported": (HOLDOUT_DIR / "tableau" / "tableau_phases.csv").exists(),
+            "exported": (HOLDOUT_DIR / "export" / "events.csv").exists(),
         }
     return out

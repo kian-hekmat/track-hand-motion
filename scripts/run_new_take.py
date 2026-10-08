@@ -6,7 +6,9 @@ Usage (in this order; see docs/new_takes.md):
   ... review evidence/vidN_overlay.mp4 and fill in ground_truth/take_6.csv and take_7.csv ...
   python scripts/run_new_take.py lock               # validate and hash the labels BEFORE any model output exists
   python scripts/run_new_take.py score              # frozen model, once; scores, plots, history
-  python scripts/run_new_take.py export             # Tableau-ready tables for the new takes (end-to-end run)
+  python scripts/run_new_take.py export             # verified export tables for the new takes (data/holdout/export), the
+                                                    # reference the cloud checks compare against; Tableau tables now come from
+                                                    # the Snowflake CLOUD views (see databricks/cloud/README.md, M7)
 Add take names to limit a step to some takes, e.g. `prepare vid6`.
 """
 import json
@@ -56,16 +58,9 @@ def _score(takes):
 
 def _export(takes):
     import export_tables
-    import local_sql
-    import make_tableau_tables
     out = HOLDOUT_DIR / "export"
     export_tables.build(takes_to_export=takes, src=HOLDOUT_DIR, out=out, model_version="v2_frozen_holdout",
                         scores_path=HOLDOUT_DIR / "scores.csv")
-    tab = HOLDOUT_DIR / "tableau"
-    tab.mkdir(exist_ok=True)
-    for name, df in make_tableau_tables.build_tables(local_sql.connect(out)).items():
-        df.to_csv(tab / f"{name}.csv", index=False)
-        print(f"{name}: {len(df)} rows -> {tab / (name + '.csv')}")
 
 
 def main(argv):
