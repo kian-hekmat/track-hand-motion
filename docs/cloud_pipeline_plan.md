@@ -1,6 +1,6 @@
 # Cloud pipeline: Databricks → Snowflake → Tableau
 
-**Status: plan, decided 2026-10-07. Nothing below is built yet.** Prerequisite done: Databricks can write to Snowflake
+**Status: plan decided 2026-10-07; scope change approved and written into `CLAUDE.md` 2026-10-08. M0 done (2026-10-08); M1 onward not started.** Prerequisite done: Databricks can write to Snowflake
 with the Spark connector (`databricks/snowflake_write_check.md`, evidence saved).
 
 ## Goal
@@ -106,18 +106,18 @@ Running MediaPipe on serverless is untested (install, uploading the model file t
 bronze is loaded from uploaded keypoint files, through the same table contract, so nothing downstream changes when extraction moves. MediaPipe on different
 hardware may not reproduce keypoints bit for bit. M5 measures how much they differ and how much the labels change, and reports both.
 
-## Spec change to approve
+## Spec change (approved 2026-10-08, now in `CLAUDE.md` under "Cloud path")
 
 `CLAUDE.md` makes Postgres the raw landing zone ("Do not skip this step") and defines Phase 3 as reading data exported from
 Postgres. The cloud path lands raw data in Delta instead. Proposed wording: Postgres remains the local dev/test landing table
 and the source of the verified reference results; the cloud path lands in Unity Catalog bronze tables and must reproduce those
-reference results. `CLAUDE.md` is not edited until this is approved.
+reference results.
 
 ## Milestones (each ends with a check that must pass and saved evidence)
 
 | # | Milestone | Done when |
 |---|---|---|
-| M0 | Save fold models locally | The five saved fold models reproduce `v2_frozen_oof` events exactly (pytest) |
+| M0 | Save fold models locally | **Done 2026-10-08.** `scripts/save_fold_models.py` saved `models/folds/` (5 models + `folds.json` with hashes); through `src.final.load_model_for_take`, each reproduces its take's `v2_frozen_oof` events byte for byte, and vid6/vid7 reproduce `data/holdout/` events with the full model (`tests/test_fold_models.py`, 9 tests) |
 | M1 | Git folder, pinned environment, models in the Volume | In Databricks, the vid1 fold model reproduces the local per-frame labels for vid1 (identical, or the difference measured and reported) |
 | M2 | Bronze → silver → gold in Databricks (from uploaded keypoints) | `gold.events` = 101/101 identical to `data/export/events.csv`; `gold.scores` equal to the scored values; vid6/vid7 equal to `data/holdout/` |
 | M3 | Publish to Snowflake `CLOUD`, verify procedure | Manifest checks all pass; `CLOUD` vs `PIPELINE` parity queries return zero differing rows |

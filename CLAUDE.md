@@ -16,7 +16,7 @@ An end-to-end data pipeline: record real motion video → extract pose keypoints
 - **MediaPipe Hands** for keypoint extraction from video (gives wrist position for speed and fingertip positions for hand opening; Pose alone cannot distinguish open from closed hand)
 - **pandas / NumPy** for time-series manipulation
 - **ruptures** (or a small HMM, pick one and commit — see Phase 2) for changepoint/segmentation
-- **PostgreSQL** (local, Docker) as the raw landing zone — reuse existing Docker Compose setup from the Research Digest Agent if compatible
+- **PostgreSQL** (local, Docker) as the raw landing zone for the local path — reuse existing Docker Compose setup from the Research Digest Agent if compatible. The cloud path lands raw data in Unity Catalog bronze tables instead (see "Cloud path" below)
 - **Databricks Community Edition** for the transformation/processing stage
 - **Snowflake** (trial account) for the structured, queryable output layer
 - **Tableau Public** for the final dashboard
@@ -77,7 +77,7 @@ An end-to-end data pipeline: record real motion video → extract pose keypoints
 1. Record the five takes per the protocol above.
 2. Run each video through MediaPipe Hands to extract per-frame keypoint coordinates (21 hand landmarks per frame).
 3. Write extraction output to a raw CSV/Parquet file per video: one row per (frame, keypoint), columns for timestamp, keypoint_id, x, y, z, visibility/confidence score.
-4. Load raw output into Postgres as a landing table (`raw_keypoints`). Do not skip this step even though Databricks/Snowflake come later — the local Postgres table is your dev/test source of truth and lets you iterate fast without cloud round-trips.
+4. Load raw output into Postgres as a landing table (`raw_keypoints`). Do not skip this step even though Databricks/Snowflake come later — the local Postgres table is your dev/test source of truth, the source of the verified reference results, and lets you iterate fast without cloud round-trips.
 
 **Testing & verification requirements (strict):**
 - Manually inspect at least one full video's keypoint overlay (draw keypoints back onto the video frames) to confirm MediaPipe is tracking correctly, not silently producing garbage. Save this as a short annotated clip or a few frame screenshots — this is your evidence, not just a claim.
@@ -111,7 +111,7 @@ An end-to-end data pipeline: record real motion video → extract pose keypoints
 **Goal:** Move the transformation logic (or a meaningful portion of it) into a Databricks notebook running on a Spark DataFrame, demonstrating the tool rather than just Python-on-a-laptop.
 
 **Steps:**
-1. Load the raw keypoint data (from Postgres, exported as CSV/Parquet) into a Databricks Community Edition notebook as a Spark DataFrame.
+1. Load the raw keypoint data (from Postgres, exported as CSV/Parquet) into a Databricks Community Edition notebook as a Spark DataFrame. (Cloud path: from the Unity Catalog bronze tables; see "Cloud path" below.)
 2. Reimplement the signal-derivation and/or segmentation step (or a meaningful chunk of the pipeline) using PySpark operations, not just calling the same pandas code inside a notebook cell. The point is demonstrating Spark-flavored data engineering (window functions over partitions, groupBy/agg), not just relocating Python.
 3. Write the segmented-events output to a table Databricks can export (CSV/Delta) for the next phase.
 
@@ -152,6 +152,18 @@ An end-to-end data pipeline: record real motion video → extract pose keypoints
 
 **Testing & verification requirements (strict):**
 - Show the dashboard to at least one person who hasn't seen the project before and ask them to describe what it shows, in their own words, without your explanation. If they can't, the dashboard isn't done — revise it. Visualization is a communication task, not just a chart-rendering task.
+
+---
+
+## Cloud path: Databricks → Snowflake → Tableau (scope change approved 2026-10-08)
+
+A second path runs the pipeline in the cloud so the only local actions are recording and uploading files. Plan and milestones: `docs/cloud_pipeline_plan.md`.
+
+- **Landing:** raw data lands in Unity Catalog bronze tables (Delta) instead of Postgres. Postgres remains the local dev/test landing table and the source of the verified reference results.
+- **Reproduction requirement:** the cloud path must reproduce the verified local results (events, scores, per-frame labels) for every take that has them. Differences are measured and reported, never tuned away or silently accepted.
+- **Honest scoring:** each development take (vid1–5) is labelled by the leave-one-take-out model that never saw it; only takes outside the training set use the full frozen model.
+- **Separation:** the cloud path writes to its own Snowflake schema (`MOTION_INTENT.CLOUD`) and never modifies the verified `MOTION_INTENT.PIPELINE` tables.
+- Each milestone in the plan counts as done only when its check passes and the evidence is saved, the same as the phases above.
 
 ---
 

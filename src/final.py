@@ -18,6 +18,8 @@ from src.signals import SignalParams, derive_signals, load_frames
 
 MODEL_PATH = ROOT / "models" / "segmenter_v2.joblib"
 META_PATH = ROOT / "models" / "segmenter_v2.json"
+FOLDS_DIR = ROOT / "models" / "folds"                 # leave-one-take-out models (scripts/save_fold_models.py)
+FOLDS_META_PATH = FOLDS_DIR / "folds.json"
 
 
 def sha256(path) -> str:
@@ -33,6 +35,25 @@ def load_model(verify: bool = True):
     if verify and sha256(MODEL_PATH) != meta["model_sha256"]:
         raise RuntimeError("segmenter_v2.joblib does not match the hash recorded in segmenter_v2.json")
     return joblib.load(MODEL_PATH), meta
+
+
+def fold_model_path(take: str):
+    return FOLDS_DIR / f"segmenter_v2_fold_{take}.joblib"
+
+
+def load_model_for_take(take: str, verify: bool = True):
+    """The model that may label `take` honestly: for a development take, its leave-one-take-out fold model (never
+    trained on it); for any other take, the full frozen model. Returns (model, meta, model_name)."""
+    model, meta = load_model(verify)
+    if take not in meta["train_takes"]:
+        return model, meta, MODEL_PATH.name
+    fold = json.loads(FOLDS_META_PATH.read_text())["folds"][take]
+    path = fold_model_path(take)
+    if verify and sha256(path) != fold["sha256"]:
+        raise RuntimeError(f"{path.name} does not match the hash recorded in folds.json")
+    clf = joblib.load(path)
+    assert take not in clf.train_takes_, f"fold model for {take} was trained on it"
+    return clf, meta, path.name
 
 
 def segment_frames(frames: pd.DataFrame, take: str, model=None, meta=None):

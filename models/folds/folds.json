@@ -1,0 +1,92 @@
+{
+  "name": "segmenter_v2 leave-one-take-out fold models",
+  "created": "2026-10-08",
+  "git_commit": "c2bf197",
+  "purpose": "Label each development take with the model that never saw it (cloud path). New takes use the full model models/segmenter_v2.joblib.",
+  "training": "src.learned.fit(other four takes, 'hgb', seed=0), same as scripts/freeze_model.py",
+  "decoding": {
+    "pelt_pen": 1.0,
+    "posterior_smooth": 5,
+    "min_size_s": 0.1
+  },
+  "check": "events decoded from each fold model are byte-identical (CSV) to data/segments/v2_frozen_oof/<take>_events.csv",
+  "libraries": {
+    "python": "3.12.14",
+    "scikit-learn": "1.9.1",
+    "ruptures": "v1.1.10",
+    "numpy": "1.26.4",
+    "pandas": "3.0.6"
+  },
+  "folds": {
+    "vid1": {
+      "file": "segmenter_v2_fold_vid1.joblib",
+      "sha256": "68d5beeba90c0bb76f17b195d8ccc04c4cb20bd2a02c1e52e450b4fe4f9e4c73",
+      "train_takes": [
+        "vid2",
+        "vid3",
+        "vid4",
+        "vid5"
+      ],
+      "labels_take": "vid1",
+      "events": 19,
+      "canonical_events": 19,
+      "identical_csv": true
+    },
+    "vid2": {
+      "file": "segmenter_v2_fold_vid2.joblib",
+      "sha256": "d2b009d7c52cec85e9205718d91a5da55d2c294833dff819a0933aae404a794a",
+      "train_takes": [
+        "vid1",
+        "vid3",
+        "vid4",
+        "vid5"
+      ],
+      "labels_take": "vid2",
+      "events": 19,
+      "canonical_events": 19,
+      "identical_csv": true
+    },
+    "vid3": {
+      "file": "segmenter_v2_fold_vid3.joblib",
+      "sha256": "c480cb6eed98dd12b68f5b9752e04f51262d93558bf9affa72b33ec840136d79",
+      "train_takes": [
+        "vid1",
+        "vid2",
+        "vid4",
+        "vid5"
+      ],
+      "labels_take": "vid3",
+      "events": 19,
+      "canonical_events": 19,
+      "identical_csv": true
+    },
+    "vid4": {
+      "file": "segmenter_v2_fold_vid4.joblib",
+      "sha256": "0d8752afbc1da3b2fa4a59867768097127b8507c6f0f719402d64500b5bc73ff",
+      "train_takes": [
+        "vid1",
+        "vid2",
+        "vid3",
+        "vid5"
+      ],
+      "labels_take": "vid4",
+      "events": 16,
+      "canonical_events": 16,
+      "identical_csv": true
+    },
+    "vid5": {
+      "file": "segmenter_v2_fold_vid5.joblib",
+      "sha256": "8eb24045a82814be92c7b7b381d923f4c31f8dedf3fea7d3e8ca669729594e19",
+      "train_takes": [
+        "vid1",
+        "vid2",
+        "vid3",
+        "vid4"
+      ],
+      "labels_take": "vid5",
+      "events": 28,
+      "canonical_events": 28,
+      "identical_csv": true
+    }
+  }
+}
