@@ -34,7 +34,7 @@ How to read it:
 
 ## M2: build the bronze, silver and gold tables (`m2_build_tables.py`)
 
-**Status: passing on local Spark (`tests/test_cloud_m2.py`); not yet run on Databricks.**
+**Status: run 1 passed on Databricks 2026-10-08** (32 of 32 checks; evidence `evidence/cloud_m2_build_tables_run1.html`, checked against the notebook at commit `b1d6b6d`). The workers imported the repo code directly, so the zip fallback was not needed. Since then M2b was added: the notebook also writes `gold.scores` (boundary recall, precision, timing error, chance baselines, per-cycle rows) and missing values are stored as NULL instead of NaN. **Re-run needed** (step 3 below); the new run has 33 checks and is saved as `evidence/cloud_m2_build_tables.html`.
 
 The code is in `src/cloud/tables.py` (Spark transforms) and `src/cloud/checks.py` (the comparison with the verified local reference).
 The notebook only orchestrates them and writes Delta tables. The only manual step is uploading the input files to a Volume; in
@@ -96,3 +96,32 @@ What the checks require (tolerances fixed in `src/cloud/checks.py` before the ru
 
 If the "code on workers" probe fails even after shipping the zip, stop and send the output: the workers then cannot run the
 model, and that changes the design.
+
+## M3: publish to Snowflake and check it there (`m3_publish_snowflake.py`)
+
+**Status: passing locally (serving tables vs the verified exports on local Spark; the Snowflake-side SQL, the Tableau views and
+the five queries in DuckDB: `tests/test_cloud_m2.py`); not yet run on Databricks/Snowflake.**
+
+The notebook reshapes the M2 tables into exactly the layout of the verified `MOTION_INTENT.PIPELINE` tables, checks them against
+the verified exports, publishes them to `MOTION_INTENT.CLOUD` with the Spark connector, then checks inside Snowflake:
+- row counts equal what Databricks wrote (`CLOUD.PUBLISH_RUNS` manifest);
+- every verified `PIPELINE` row (vid1-5) has an equal `CLOUD` row, per table and column (`src/cloud/snowflake_sql.py`);
+- the Tableau views from `snowflake/05_tableau_views.sql` are created in `CLOUD`, with the expected row counts;
+- the five queries in `queries.sql`, unchanged, return the same answers in both schemas for vid1-5.
+
+### What you do
+
+1. **Snowflake:** check how many trial days are left, then run `snowflake/11_cloud_setup.sql` in a worksheet as ACCOUNTADMIN.
+   It creates the `CLOUD` schema and a role that can write only there and read `PIPELINE`, and gives that role to the existing
+   key-pair user.
+2. **Databricks secret** for the host, so no notebook needs editing (your host is the one the connector test used):
+
+```bash
+databricks secrets put-secret motion snowflake_host --string-value "SKVYGXH-FD77388.snowflakecomputing.com"
+```
+
+3. In the Git folder **Pull**, then **re-run `m2_build_tables.py`** (Run all). Expect `M2 CHECKS: ALL PASSED` with 33 checks.
+   Export it as `evidence/cloud_m2_build_tables.html`.
+4. Open `m3_publish_snowflake.py`, Run all. It stops before publishing if the latest M2 run did not pass or the serving tables
+   differ from the verified exports. Expect `M3 CHECKS: ALL PASSED`. Export it as `evidence/cloud_m3_publish_snowflake.html`.
+5. Send me both exports.

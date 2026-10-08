@@ -1,6 +1,6 @@
 # Cloud pipeline: Databricks → Snowflake → Tableau
 
-**Status: plan decided 2026-10-07; scope change approved and written into `CLAUDE.md` 2026-10-08. M0 done (2026-10-08); M1 done on Databricks (2026-10-08); M2 built and passing on local Spark, not yet run on Databricks.** Prerequisite done: Databricks can write to Snowflake
+**Status: plan decided 2026-10-07; scope change approved and written into `CLAUDE.md` 2026-10-08. M0 done (2026-10-08); M1 done on Databricks (2026-10-08); M2 passed on Databricks (2026-10-08); M2b and M3 built and passing locally, not yet run on Databricks/Snowflake.** Prerequisite done: Databricks can write to Snowflake
 with the Spark connector (`databricks/snowflake_write_check.md`, evidence saved).
 
 ## Goal

@@ -5,6 +5,8 @@ pipeline makes (src.final.load_model_for_take + segment_frames) and writes, in d
   <take>_signals.csv      the derived signals (model input before feature building)
   <take>_posteriors.csv   per-sample phase probabilities from the model
   <take>_events.csv       the decoded events
+  scores_full.csv         all scores per take incl. boundaries, chance baselines and per-cycle rows (score_take with
+                          with_cycles=True), in the PIPELINE scores layout; the cloud gold.scores must reproduce them (M2b)
   scores_frame.csv        frame-level scores per take (src.evaluate.score_take on the native frame times; scopes
                           'all' and 'out_of_frame'), the numbers the cloud gold.frame_scores must reproduce
   manifest.json           model per take, row counts, library versions used to make the reference
@@ -38,6 +40,12 @@ def frame_scores(take, ev):
     return pd.DataFrame(rows)[SCORE_COLUMNS]
 
 
+def full_scores(take, ev):
+    from src.cloud.tables import SCORES_COLUMNS
+    rows = pd.DataFrame(score_take(take, ev, load_frames(take)["t"].to_numpy(), with_cycles=True))
+    return rows.rename(columns={"group": "take_group", "false": "false_boundaries"}).reindex(columns=SCORES_COLUMNS)
+
+
 def reference(take):
     model, meta, name = load_model_for_take(take)
     ev, sig, P = segment_frames(load_frames(take), take, model=model, meta=meta)
@@ -48,16 +56,18 @@ def reference(take):
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    takes, scores = {}, []
+    takes, scores, full = {}, [], []
     for take in TAKES:
         ev, sig, post, name = reference(take)
         sig.to_csv(OUT / f"{take}_signals.csv", index=False)
         post.to_csv(OUT / f"{take}_posteriors.csv", index=False)
         ev.to_csv(OUT / f"{take}_events.csv", index=False)
         scores.append(frame_scores(take, ev))
+        full.append(full_scores(take, ev))
         takes[take] = {"model": name, "samples": len(sig), "events": len(ev)}
         print(f"{take}: model {name}, {len(sig)} samples, {len(ev)} events")
     pd.concat(scores, ignore_index=True).to_csv(OUT / "scores_frame.csv", index=False)
+    pd.concat(full, ignore_index=True).to_csv(OUT / "scores_full.csv", index=False)
     (OUT / "manifest.json").write_text(json.dumps({
         "made_by": "scripts/make_cloud_reference.py",
         "libraries": {"python": platform.python_version(), "numpy": np.__version__, "pandas": pd.__version__,

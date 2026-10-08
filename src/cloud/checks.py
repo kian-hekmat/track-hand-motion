@@ -9,7 +9,7 @@ import json
 import numpy as np
 import pandas as pd
 
-from config import HOLDOUT_TAKES, LABELS, RAW_DIR, ROOT, TAKE_GROUPS
+from config import ALL_GROUPS, HOLDOUT_DIR, HOLDOUT_TAKES, LABELS, RAW_DIR, ROOT, TAKE_GROUPS
 from src import ground_truth as G
 from src.cloud import tables as C
 from src.final import load_model_for_take
@@ -35,7 +35,21 @@ def build(spark, landing: str, takes=TAKES) -> dict:
     events = C.build_events(signals, frames)
     frame_labels = C.label_frames(frames, events, bronze["ground_truth"], bronze["out_of_frame_intervals"])
     return {**{f"bronze.{k}": v for k, v in bronze.items()}, "silver.frames": frames, "silver.signals": signals,
-            "gold.events": events, "gold.frame_labels": frame_labels, "gold.frame_scores": C.frame_scores(frame_labels)}
+            "gold.events": events, "gold.frame_labels": frame_labels, "gold.frame_scores": C.frame_scores(frame_labels),
+            "gold.scores": C.boundary_scores(events, bronze["ground_truth"], frames, bronze["out_of_frame_intervals"])}
+
+
+def build_serving(t: dict) -> dict:
+    """The PIPELINE-layout tables for Snowflake, from the M2 tables (Spark DataFrames, keys as in build())."""
+    return {
+        "takes": C.serve_takes(t["bronze.take_meta"], t["bronze.ground_truth"], t["gold.events"], ALL_GROUPS),
+        "events": C.serve_events(t["gold.events"], t["silver.frames"], t["silver.signals"], ALL_GROUPS),
+        "ground_truth": C.serve_ground_truth(t["bronze.ground_truth"]),
+        "signals": C.serve_signals(t["silver.signals"], t["bronze.ground_truth"]),
+        "frames": C.serve_frames(t["silver.frames"]),
+        "scores": t["gold.scores"],
+        "raw_keypoints": C.serve_raw_keypoints(t["bronze.raw_keypoints"]),
+    }
 
 
 def _max_abs_diff(a: pd.Series, b: pd.Series):
@@ -122,4 +136,94 @@ def compare(t: dict, takes=TAKES) -> list:
     rec("gold: frame scores", counts and dr <= SCORE_TOL,
         f"{len(c_sc)} rows (take x scope) vs {len(ref_sc)}; counts {'identical' if counts else 'DIFFER'}; "
         f"accuracies max diff {dr:.3g} (tolerance {SCORE_TOL:g})")
+    return res
+
+
+# ---------------- M2b: full scores ----------------
+def compare_scores(cloud: pd.DataFrame, takes=TAKES) -> list:
+    ref = pd.read_csv(REF_DIR / "scores_full.csv", float_precision="round_trip")
+    ref = ref[ref["take"].isin(takes)].sort_values(["take", "scope"]).reset_index(drop=True)
+    c = cloud.sort_values(["take", "scope"]).reset_index(drop=True)
+    keys = c[["take", "scope"]].values.tolist() == ref[["take", "scope"]].values.tolist()
+    text = keys and c["take_group"].tolist() == ref["take_group"].tolist()
+    d = max(_max_abs_diff(c[col], ref[col]) for col in C.SCORES_COLUMNS if col not in ("take", "take_group", "scope")) if keys else float("inf")
+    return [("gold: scores (boundaries, timing, chance, per cycle)", "PASS" if text and d <= SCORE_TOL else "FAIL",
+             f"{len(c)} rows (take x scope incl. cycles) vs {len(ref)}; keys {'identical' if keys else 'DIFFER'}; "
+             f"max diff {d:.3g} (tolerance {SCORE_TOL:g}; NaN must match NaN)")]
+
+
+# ---------------- M3: serving tables vs the verified exports (the data behind Snowflake PIPELINE) ----------------
+SERVING_KEYS = {"takes": ["take"], "events": ["take", "event_idx"], "ground_truth": ["take", "_pos"],
+                "signals": ["take", "_pos"], "frames": ["take", "frame_idx"], "scores": ["take", "scope"],
+                "raw_keypoints": ["take", "frame_idx", "keypoint_id"]}
+# tables keyed by a time are matched by position in time order within the take (a time can differ in its last bit)
+POSITION_BY = {"ground_truth": "start_s", "signals": "t_s"}
+# tolerance per column; columns not listed must match exactly
+SERVING_TOL = {
+    "takes": {"duration_s": FRAME_TOL, "mean_fps": FRAME_TOL, "fraction_not_detected": FRAME_TOL},
+    # start/end/duration: the verified export was written after a default-precision CSV read, so it carries last-bit
+    # rounding (up to 3.6e-15); gold.events itself matches the reference exactly (checked in compare()).
+    "events": {"start_s": FRAME_TOL, "end_s": FRAME_TOL, "duration_s": FRAME_TOL, "mean_speed": SIGNAL_TOL, "mean_aperture": SIGNAL_TOL, "frac_missing": SCORE_TOL, "mean_confidence": EVENT_MEAN_TOL},
+    "ground_truth": {"start_s": FRAME_TOL, "end_s": FRAME_TOL},
+    "signals": {c: SIGNAL_TOL for c in ("t_s", "speed", "aperture", "aperture_slope", "progress", "progress_rate", "offaxis",
+                                        "offaxis_rate", "height", "vertical_velocity")},
+    "frames": {c: FRAME_TOL for c in ("wrist_x", "wrist_y", "thumb_tip_x", "thumb_tip_y", "index_tip_x", "index_tip_y",
+                                      "handedness_score")},
+    "scores": {c: SCORE_TOL for c in C.SCORES_COLUMNS if c not in ("take", "take_group", "scope")},
+    "raw_keypoints": {c: FRAME_TOL for c in ("x", "y", "z", "world_x", "world_y", "world_z", "handedness_score")},
+}
+SKIP = {"events": {"model_version"}}  # verified export says v2_frozen_oof / v2_frozen_holdout; cloud records the model file
+
+
+def verified_exports() -> dict:
+    """The verified tables behind Snowflake PIPELINE (vid1-5, data/export) plus the hold-out export (vid6-7)."""
+    out = {}
+    for name in SERVING_KEYS:
+        parts = []
+        for d in (ROOT / "data" / "export", HOLDOUT_DIR / "export"):
+            f = d / (f"{name}.parquet" if name == "raw_keypoints" else f"{name}.csv")
+            parts.append(pd.read_parquet(f) if f.suffix == ".parquet" else pd.read_csv(f, float_precision="round_trip"))
+        out[name] = pd.concat(parts, ignore_index=True).rename(columns={"group": "take_group", "false": "false_boundaries"})
+    return out
+
+
+def compare_serving(cloud: dict, exports: dict | None = None) -> list:
+    """Every verified row must exist in the cloud table with equal values (scores: the cloud also has per-cycle rows for
+    takes whose export had none; those extra rows are counted and checked against the reference in compare_scores)."""
+    exports = exports or verified_exports()
+    res = []
+    for name, keys in SERVING_KEYS.items():
+        ref, c = exports[name], cloud[name]
+        if name in POSITION_BY:
+            ref, c = (df.sort_values(["take", POSITION_BY[name]]).assign(_pos=lambda d: d.groupby("take").cumcount())
+                      for df in (ref, c))
+        cols = [col for col in ref.columns if col not in SKIP.get(name, set())]
+        missing_cols = [col for col in cols if col not in c.columns]
+        if missing_cols:
+            res.append((f"serving {name}", "FAIL", f"cloud table lacks columns {missing_cols}"))
+            continue
+        m = ref[cols].merge(c[cols], on=keys, how="left", suffixes=("_ref", "_cloud"), indicator=True)
+        not_found = int((m["_merge"] != "both").sum())
+        extra = len(c) - (len(m) - not_found)
+        worst, bad = 0.0, []
+        for col in cols:
+            if col in keys:
+                continue
+            a, b = m[f"{col}_ref"], m[f"{col}_cloud"]
+            tol = SERVING_TOL.get(name, {}).get(col)
+            if tol is None:
+                same = (a.isna() & b.isna()) | (a.astype(str) == b.astype(str))
+                if pd.api.types.is_numeric_dtype(a) and pd.api.types.is_numeric_dtype(b):
+                    same = (a.isna() & b.isna()) | (a.astype(float) == b.astype(float))
+                if not same.all():
+                    bad.append(f"{col} ({int((~same).sum())} rows)")
+            else:
+                d = _max_abs_diff(a.astype(float), b.astype(float))
+                worst = max(worst, d)
+                if d > tol:
+                    bad.append(f"{col} (max diff {d:.3g} > {tol:g})")
+        ok = not_found == 0 and not bad and (extra == 0 or name == "scores")
+        res.append((f"serving {name}", "PASS" if ok else "FAIL",
+                    f"{len(ref)} verified rows, {len(ref) - not_found} found in the cloud table ({len(c)} rows, {extra} extra); "
+                    f"{'all values equal' if not bad else 'DIFFER: ' + ', '.join(bad)} (largest within-tolerance diff {worst:.3g})"))
     return res

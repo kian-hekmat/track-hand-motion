@@ -12,15 +12,17 @@ def predicted_labels_at(events: pd.DataFrame, t: np.ndarray) -> np.ndarray:
 
 
 def score_take(take: str, events: pd.DataFrame, frame_t: np.ndarray, tol: float = BOUNDARY_TOLERANCE_S,
-               with_cycles: bool = False) -> list[dict]:
+               with_cycles: bool = False, gt: pd.DataFrame | None = None,
+               out_of_frame: list[tuple[float, float]] | None = None) -> list[dict]:
     """Rows of metrics: one 'all' row (and one per cycle if with_cycles). Frame metrics use the native
     frame timestamps; frames inside declared out-of-frame intervals are excluded from the primary
-    accuracy and reported on their own row ('out_of_frame')."""
-    gt = G.load_ground_truth(take)
+    accuracy and reported on their own row ('out_of_frame').
+    gt / out_of_frame default to the repo files; the cloud path passes the rows it read from its own tables."""
+    gt = G.load_ground_truth(take) if gt is None else gt.sort_values("start_s").reset_index(drop=True)
     true_b, pred_b = G.boundaries(gt), S.events_to_boundaries(events)
     t0, t1 = float(gt["start_s"].iloc[0]), float(gt["end_s"].iloc[-1])
     tl, pl = G.labels_at(gt, frame_t), predicted_labels_at(events, frame_t)
-    oof = G.in_intervals(frame_t, G.out_of_frame_intervals(take))
+    oof = G.in_intervals(frame_t, G.out_of_frame_intervals(take) if out_of_frame is None else out_of_frame)
     base = {"take": take, "group": ALL_GROUPS[take], "tolerance_s": tol}
 
     before = G.labels_at(gt, true_b - 1e-6)

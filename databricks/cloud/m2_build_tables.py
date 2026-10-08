@@ -11,6 +11,7 @@
 # MAGIC | silver | `workspace.motion_silver.signals` | per 30 Hz sample: motion signals, phase probabilities, predicted label (the repo's Python, one take per group via `applyInPandas`) |
 # MAGIC | gold | `workspace.motion_gold.events` | phase events (gaps-and-islands with window functions) |
 # MAGIC | gold | `workspace.motion_gold.frame_labels`, `frame_scores` | predicted vs hand-labelled phase per frame (range joins), accuracy per take (`groupBy`/`agg`) |
+# MAGIC | gold | `workspace.motion_gold.scores` | all scores incl. boundary recall/precision/timing, chance baselines, per cycle (inputs gathered per take with `collect_list`, then `src.evaluate` per take) |
 # MAGIC | gold | `workspace.motion_gold.run_log` | one row per check per run, appended |
 # MAGIC
 # MAGIC Every table is overwritten on each run (the run is repeatable), except `run_log`, which is appended. After writing, the tables
@@ -173,7 +174,11 @@ written["gold.frame_labels"] = write(
     C.label_frames(written["silver.frames"], written["gold.events"], written["bronze.ground_truth"],
                    written["bronze.out_of_frame_intervals"]), "gold", "frame_labels")
 written["gold.frame_scores"] = write(C.frame_scores(written["gold.frame_labels"]), "gold", "frame_scores")
-display(written["gold.frame_scores"].orderBy("take", "scope"))
+# M2b: all scores (boundary recall/precision/timing, chance baselines, per cycle), src.evaluate.score_take per take
+written["gold.scores"] = write(
+    C.boundary_scores(written["gold.events"], written["bronze.ground_truth"], written["silver.frames"],
+                      written["bronze.out_of_frame_intervals"]), "gold", "scores")
+display(written["gold.scores"].filter("scope = 'all'").orderBy("take"))
 
 # COMMAND ----------
 
@@ -182,7 +187,8 @@ display(written["gold.frame_scores"].orderBy("take", "scope"))
 
 # COMMAND ----------
 
-results = checks.compare({k: v.toPandas() for k, v in written.items()})
+tables_pd = {k: v.toPandas() for k, v in written.items()}
+results = checks.compare(tables_pd) + checks.compare_scores(tables_pd["gold.scores"])
 results.insert(0, ("code on workers", "PASS", f"{CODE_SHIPPING}: {result.detail}"))
 log = pd.DataFrame([{"run_id": RUN_ID, "run_at": RUN_AT, "check": c, "status": s, "detail": d} for c, s, d in results])
 spark.createDataFrame(log).write.mode("append").saveAsTable(f"{CATALOG}.{SCHEMAS['gold']}.run_log")

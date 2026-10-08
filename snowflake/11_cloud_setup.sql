@@ -1,0 +1,31 @@
+-- Cloud path M3 setup: the schema Databricks publishes into, and the role it publishes with.
+-- Run once in a Snowsight worksheet as ACCOUNTADMIN (Run all). Steps: databricks/cloud/README.md (M3).
+-- MOTION_INTENT.PIPELINE (the verified Phase 4 tables) is only READ by the new role, never written.
+
+USE ROLE ACCOUNTADMIN;
+CREATE SCHEMA IF NOT EXISTS MOTION_INTENT.CLOUD;
+
+CREATE ROLE IF NOT EXISTS DATABRICKS_PIPELINE_ROLE;
+GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE DATABRICKS_PIPELINE_ROLE;
+GRANT USAGE ON DATABASE MOTION_INTENT TO ROLE DATABRICKS_PIPELINE_ROLE;
+
+-- write access: the CLOUD schema only (tables, views for Tableau, and the stage/file format the connectors upload through)
+GRANT USAGE, CREATE TABLE, CREATE VIEW, CREATE STAGE, CREATE FILE FORMAT ON SCHEMA MOTION_INTENT.CLOUD
+    TO ROLE DATABRICKS_PIPELINE_ROLE;
+
+-- read access: the verified PIPELINE tables, for the parity checks
+GRANT USAGE ON SCHEMA MOTION_INTENT.PIPELINE TO ROLE DATABRICKS_PIPELINE_ROLE;
+GRANT SELECT ON ALL TABLES IN SCHEMA MOTION_INTENT.PIPELINE TO ROLE DATABRICKS_PIPELINE_ROLE;
+
+-- the existing key-pair service user from the connector test publishes with this role
+GRANT ROLE DATABRICKS_PIPELINE_ROLE TO USER DATABRICKS_SVC;
+ALTER USER DATABRICKS_SVC SET DEFAULT_ROLE = DATABRICKS_PIPELINE_ROLE DEFAULT_NAMESPACE = MOTION_INTENT.CLOUD;
+GRANT ROLE DATABRICKS_PIPELINE_ROLE TO ROLE ACCOUNTADMIN;  -- so you can look at the CLOUD tables in Snowsight
+
+-- Check: lists the grants above; expect SELECT on the 7 PIPELINE tables (TAKES, EVENTS, GROUND_TRUTH, SIGNALS, FRAMES, SCORES,
+-- RAW_KEYPOINTS) and USAGE / CREATE privileges on the CLOUD schema.
+SHOW GRANTS TO ROLE DATABRICKS_PIPELINE_ROLE;
+
+-- Cleanup of the earlier connector test (optional, once M3 has passed):
+-- DROP SCHEMA IF EXISTS MOTION_INTENT.CONNECTOR_TEST;
+-- DROP ROLE IF EXISTS DATABRICKS_TEST_ROLE;
