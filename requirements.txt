@@ -13,3 +13,4 @@ matplotlib==3.11.2
 joblib==1.6.0
 pyspark==3.5.5
 duckdb==1.5.6
+setuptools==80.10.2  # provides distutils, which local pyspark 3.5 pandas UDFs need on Python 3.12

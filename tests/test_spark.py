@@ -15,22 +15,6 @@ sys.path.insert(0, str(ROOT / "scripts"))
 NOTEBOOK = ROOT / "databricks" / "motion_pipeline_spark.py"
 
 
-@pytest.fixture(scope="session")
-def spark(tmp_path_factory):
-    if "JAVA_HOME" not in os.environ:
-        out = subprocess.run(["/usr/libexec/java_home", "-v", "11"], capture_output=True, text=True)
-        if out.returncode != 0:
-            pytest.fail("Java 11/17 needed for local Spark tests")
-        os.environ["JAVA_HOME"] = out.stdout.strip()
-    os.environ["PYSPARK_PYTHON"] = os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable  # workers = this venv
-    from pyspark.sql import SparkSession
-    s = (SparkSession.builder.master("local[2]").appName("tests").config("spark.ui.enabled", "false")
-         .config("spark.sql.shuffle.partitions", "4")
-         .config("spark.sql.warehouse.dir", str(tmp_path_factory.mktemp("warehouse"))).getOrCreate())
-    yield s
-    s.stop()
-
-
 def _raw_rows(take="t", n=60, vx_px=600.0, hand_px=150.0, gap=()):
     """Synthetic raw_keypoints: wrist moves at vx_px px/s (30 fps), middle MCP hand_px above it,
     thumb/index tips 0.045 m apart in world coordinates, hand length 0.09 m (aperture 0.5)."""

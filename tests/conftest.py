@@ -1,3 +1,4 @@
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -52,3 +53,19 @@ def source_pts():
             cache[take] = _source_pts_seconds(take)
         return cache[take]
     return load
+
+
+@pytest.fixture(scope="session")
+def spark(tmp_path_factory):
+    if "JAVA_HOME" not in os.environ:
+        out = subprocess.run(["/usr/libexec/java_home", "-v", "11"], capture_output=True, text=True)
+        if out.returncode != 0:
+            pytest.fail("Java 11/17 needed for local Spark tests")
+        os.environ["JAVA_HOME"] = out.stdout.strip()
+    os.environ["PYSPARK_PYTHON"] = os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable  # workers = this venv
+    from pyspark.sql import SparkSession
+    s = (SparkSession.builder.master("local[2]").appName("tests").config("spark.ui.enabled", "false")
+         .config("spark.sql.shuffle.partitions", "4")
+         .config("spark.sql.warehouse.dir", str(tmp_path_factory.mktemp("warehouse"))).getOrCreate())
+    yield s
+    s.stop()

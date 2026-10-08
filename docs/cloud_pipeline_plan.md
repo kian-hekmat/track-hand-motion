@@ -1,6 +1,6 @@
 # Cloud pipeline: Databricks → Snowflake → Tableau
 
-**Status: plan decided 2026-10-07; scope change approved and written into `CLAUDE.md` 2026-10-08. M0 done (2026-10-08); M1 done on Databricks (2026-10-08); M2 onward not started.** Prerequisite done: Databricks can write to Snowflake
+**Status: plan decided 2026-10-07; scope change approved and written into `CLAUDE.md` 2026-10-08. M0 done (2026-10-08); M1 done on Databricks (2026-10-08); M2 built and passing on local Spark, not yet run on Databricks.** Prerequisite done: Databricks can write to Snowflake
 with the Spark connector (`databricks/snowflake_write_check.md`, evidence saved).
 
 ## Goal
@@ -18,7 +18,7 @@ Unity Catalog Volume  (videos, ground-truth CSVs, frozen model files)   <- the o
   silver.frames               21 landmark rows -> 1 row per frame          (Spark: conditional aggregation)
   silver.frame_predictions    signals + 61 features + model + PELT, per take (applyInPandas, existing code)
   gold.events                 per-frame labels -> events                    (Spark: gaps-and-islands)
-  gold.scores                 frame metrics in Spark SQL; boundary metrics with src/score.py (applyInPandas)
+  gold.frame_scores           frame metrics in Spark (range joins + groupBy/agg); boundary metrics later (M2b, src/score.py)
   publish                     Spark Snowflake connector -> MOTION_INTENT.CLOUD
   verify                      row counts vs a run manifest; parity with the verified local results
         │
@@ -119,7 +119,7 @@ reference results.
 |---|---|---|
 | M0 | Save fold models locally | **Done 2026-10-08.** `scripts/save_fold_models.py` saved `models/folds/` (5 models + `folds.json` with hashes); through `src.final.load_model_for_take`, each reproduces its take's `v2_frozen_oof` events byte for byte, and vid6/vid7 reproduce `data/holdout/` events with the full model (`tests/test_fold_models.py`, 9 tests) |
 | M1 | Git folder, pinned environment, models from the Git folder (`databricks/cloud/m1_environment_check.py`) | **Done 2026-10-08.** On serverless (numpy 2.3.4, pandas 2.3.3, scipy 1.16.3 vs local 1.26.4, 3.0.6, 1.17.1) events are byte-identical for all 7 takes; signals differ by at most 1.1e-13, probabilities by at most 3.5e-18, most likely phase identical on every sample (`evidence/cloud_m1_environment_check.html`) |
-| M2 | Bronze → silver → gold in Databricks (from uploaded keypoints) | Signals within a stated tolerance of the reference (M1: floating-point differences up to ~1e-13 across environments); `gold.events` = 101/101 identical to `data/export/events.csv`; `gold.scores` equal to the scored values; vid6/vid7 equal to `data/holdout/` |
+| M2 | Bronze → silver → gold in Databricks (from uploaded keypoints) | Signals within a stated tolerance of the reference (M1: floating-point differences up to ~1e-13 across environments); `gold.events` = 101/101 identical to `data/export/events.csv`; `gold.frame_scores` equal to the scored frame metrics; vid6/vid7 equal to `data/holdout/`. **Scope note:** boundary metrics (recall, precision, timing error, chance baselines) are not in M2; they follow as M2b with `src/score.py` on the gold tables |
 | M3 | Publish to Snowflake `CLOUD`, verify procedure | Manifest checks all pass; `CLOUD` vs `PIPELINE` parity queries return zero differing rows |
 | M4 | One job end to end (bundle) | A single `databricks bundle run` goes from Volume files to verified Snowflake tables with no manual step in between |
 | M5 | MediaPipe extraction in Databricks | Keypoints compared with the local extraction (difference reported); labels re-scored and reported, never pooled with earlier numbers |

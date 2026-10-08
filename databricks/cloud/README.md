@@ -31,3 +31,68 @@ How to read it:
   scipy behave differently on serverless). Probabilities differing while signals match points at the model or scikit-learn. This is
   a real finding: send it to me and nothing gets adjusted until the cause is known.
 - **Library FAIL:** the pinned scikit-learn or ruptures did not install at the pinned version.
+
+## M2: build the bronze, silver and gold tables (`m2_build_tables.py`)
+
+**Status: passing on local Spark (`tests/test_cloud_m2.py`); not yet run on Databricks.**
+
+The code is in `src/cloud/tables.py` (Spark transforms) and `src/cloud/checks.py` (the comparison with the verified local reference).
+The notebook only orchestrates them and writes Delta tables. The only manual step is uploading the input files to a Volume; in
+M5 that upload becomes the videos themselves.
+
+### 1. Create the schemas and the landing Volume (CLI, from the repo root)
+
+```bash
+databricks schemas create motion_bronze workspace
+```
+
+```bash
+databricks schemas create motion_silver workspace
+```
+
+```bash
+databricks schemas create motion_gold workspace
+```
+
+```bash
+databricks volumes create workspace motion_bronze landing MANAGED
+```
+
+### 2. Upload the input files (keypoints, take metadata, out-of-frame intervals, hand labels)
+
+```bash
+databricks fs mkdir dbfs:/Volumes/workspace/motion_bronze/landing/raw && databricks fs mkdir dbfs:/Volumes/workspace/motion_bronze/landing/ground_truth
+```
+
+```bash
+for f in data/raw/vid*_keypoints.csv data/raw/vid*_meta.json data/raw/out_of_frame_intervals.csv; do databricks fs cp "$f" "dbfs:/Volumes/workspace/motion_bronze/landing/raw/$(basename "$f")" --overwrite; done
+```
+
+```bash
+for f in ground_truth/take_*.csv; do databricks fs cp "$f" "dbfs:/Volumes/workspace/motion_bronze/landing/ground_truth/$(basename "$f")" --overwrite; done
+```
+
+Check: `raw/` should list 15 files (7 keypoint CSVs, 7 meta JSONs, 1 interval CSV) and `ground_truth/` 7 files.
+
+```bash
+databricks fs ls dbfs:/Volumes/workspace/motion_bronze/landing/raw && databricks fs ls dbfs:/Volumes/workspace/motion_bronze/landing/ground_truth
+```
+
+### 3. Run the notebook
+
+1. In the Git folder, **Pull** so it has the latest commit.
+2. Open `databricks/cloud/m2_build_tables.py`, attach serverless compute, **Run all**. Nothing needs editing.
+3. The last cell prints `M2 CHECKS: ALL PASSED` or the failed checks; every check is also appended to
+   `workspace.motion_gold.run_log`. Export: File → Export → HTML as `evidence/cloud_m2_build_tables.html` and send me the summary.
+
+What the checks require (tolerances fixed in `src/cloud/checks.py` before the run):
+- **bronze:** 21 keypoint rows per frame for every take; ground-truth and interval rows equal the repo's files.
+- **silver.frames:** equal to `src.signals.load_frames` on the repo's copy, within 1e-12. Spark and pandas parse CSV numbers
+  slightly differently; locally the difference is at most 2.2e-16.
+- **silver.signals:** signals and probabilities within 1e-9 of the reference; flags, per-sample labels and the model used per
+  take identical.
+- **gold.events:** label, start, end, duration and sample count identical for every event; mean confidence within 1e-12.
+- **gold.frame_scores:** counts identical, accuracies within 1e-12 of `src.evaluate.score_take`.
+
+If the "code on workers" probe fails even after shipping the zip, stop and send the output: the workers then cannot run the
+model, and that changes the design.
