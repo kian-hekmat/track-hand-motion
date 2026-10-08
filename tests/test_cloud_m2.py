@@ -225,7 +225,8 @@ def test_m3_notebook_is_valid_and_uses_the_tested_checks():
     src = (ROOT / "databricks" / "cloud" / "m3_publish_snowflake.py").read_text()
     assert src.startswith("# Databricks notebook source\n")
     ast.parse(src)
-    assert re.search(r"^# MAGIC %pip install -q scikit-learn==1\.9\.1 ruptures==1\.1\.10$", src, re.M)
+    # model libraries pinned; the Snowflake connector is installed here too (run 1 failed without it after the restart)
+    assert re.search(r"^# MAGIC %pip install -q scikit-learn==1\.9\.1 ruptures==1\.1\.10 snowflake-connector-python$", src, re.M)
     for call in ("checks.build_serving(", "checks.compare_serving(", "Q.run_parity(", "Q.view_statements(",
                  "Q.compare_queries(", 'dbutils.secrets.get(SECRET_SCOPE, "snowflake_private_key")',
                  'dbutils.secrets.get(SECRET_SCOPE, "snowflake_host")'):
@@ -249,3 +250,15 @@ def test_tableau_views_build_on_the_cloud_tables(duck):
         assert n == {"v_tableau_phases": 150 + 145, "v_tableau_signals": 5659, "v_tableau_accuracy": 7}
     finally:
         duck.execute("USE memory.main")
+
+
+def test_m3_run1_failed_only_at_the_connector_import_after_publishing():
+    """Kept as a record: M3 run 1 (2026-10-08) passed the gate and all serving checks, published the 7 tables, then stopped
+    because snowflake.connector was missing after the %pip restart. No Snowflake-side check ran in that run."""
+    nb, text = _databricks_run("cloud_m3_publish_snowflake_run1_failed.html")
+    errors = [c for c in nb["commands"] if c.get("error") or c.get("errorSummary")]
+    first = errors[0]
+    assert "No module named 'snowflake.connector'" in str(first.get("error") or first.get("errorSummary"))
+    assert "import snowflake.connector" in first["command"]
+    assert "PASS  gate: latest M2 run" in text and text.count("PASS  serving ") == 7 and "FAIL" not in text
+    assert text.count("published MOTION_INTENT.CLOUD.") == 7 and "M3 CHECKS" not in text

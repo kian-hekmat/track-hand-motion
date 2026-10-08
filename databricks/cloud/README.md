@@ -34,7 +34,7 @@ How to read it:
 
 ## M2: build the bronze, silver and gold tables (`m2_build_tables.py`)
 
-**Status: run 1 passed on Databricks 2026-10-08** (32 of 32 checks; evidence `evidence/cloud_m2_build_tables_run1.html`, checked against the notebook at commit `b1d6b6d`). The workers imported the repo code directly, so the zip fallback was not needed. Since then M2b was added: the notebook also writes `gold.scores` (boundary recall, precision, timing error, chance baselines, per-cycle rows) and missing values are stored as NULL instead of NaN. **Re-run needed** (step 3 below); the new run has 33 checks and is saved as `evidence/cloud_m2_build_tables.html`.
+**Status: run 1 passed on Databricks 2026-10-08** (32 of 32 checks; evidence `evidence/cloud_m2_build_tables_run1.html`, checked against the notebook at commit `b1d6b6d`). The workers imported the repo code directly, so the zip fallback was not needed. Since then M2b was added: the notebook also writes `gold.scores` (boundary recall, precision, timing error, chance baselines, per-cycle rows) and missing values are stored as NULL instead of NaN. **Run 2 passed on Databricks 2026-10-08** with M2b: 33 of 33 checks (evidence `evidence/cloud_m2_build_tables.html`).
 
 The code is in `src/cloud/tables.py` (Spark transforms) and `src/cloud/checks.py` (the comparison with the verified local reference).
 The notebook only orchestrates them and writes Delta tables. The only manual step is uploading the input files to a Volume; in
@@ -99,8 +99,7 @@ model, and that changes the design.
 
 ## M3: publish to Snowflake and check it there (`m3_publish_snowflake.py`)
 
-**Status: passing locally (serving tables vs the verified exports on local Spark; the Snowflake-side SQL, the Tableau views and
-the five queries in DuckDB: `tests/test_cloud_m2.py`); not yet run on Databricks/Snowflake.**
+**Status: run 1 failed (2026-10-08), fix pushed, run 2 pending.** Run 1 passed the M2 gate and all 7 serving-table checks and published the 7 tables to `CLOUD`, then stopped at `import snowflake.connector` (`ModuleNotFoundError`): after the `%pip` install and Python restart, serverless no longer had the connector the write check had found preinstalled. No Snowflake-side check ran. Fix: the connector is installed in the `%pip` cell. Evidence: `evidence/cloud_m3_publish_snowflake_run1_failed.html`. Locally the Snowflake-side SQL, the Tableau views and the five queries pass in DuckDB (`tests/test_cloud_m2.py`).
 
 The notebook reshapes the M2 tables into exactly the layout of the verified `MOTION_INTENT.PIPELINE` tables, checks them against
 the verified exports, publishes them to `MOTION_INTENT.CLOUD` with the Spark connector, then checks inside Snowflake:

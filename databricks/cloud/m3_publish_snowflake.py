@@ -15,7 +15,7 @@
 
 # COMMAND ----------
 
-# MAGIC %pip install -q scikit-learn==1.9.1 ruptures==1.1.10
+# MAGIC %pip install -q scikit-learn==1.9.1 ruptures==1.1.10 snowflake-connector-python
 
 # COMMAND ----------
 
@@ -127,8 +127,12 @@ runs = pd.DataFrame([{"run_id": RUN_ID, "run_at": RUN_AT.isoformat(), "table_nam
 
 # COMMAND ----------
 
+# Run 1 (2026-10-08) failed here with ModuleNotFoundError: after %pip install + restart, serverless no longer had the
+# connector that the write check found preinstalled. It is now installed in the %pip cell (version recorded below).
 import snowflake.connector
 from cryptography.hazmat.primitives import serialization
+
+print(f"snowflake-connector-python {snowflake.connector.__version__}")
 
 key = serialization.load_pem_private_key(pem.encode(), password=None)
 conn = snowflake.connector.connect(
