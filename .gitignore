@@ -7,3 +7,7 @@ vids_original/
 spark-warehouse/
 metastore_db/
 derby.log
+
+# private keys (Snowflake key-pair auth); keep them in ~/.snowflake, never in the repo
+*.p8
+*.pem
