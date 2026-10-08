@@ -32,11 +32,15 @@ def _keyed(prefix: str, name: str, takes_from: str | None = None) -> str:
 
 
 def parity_sql(name: str, columns: list[str], ref_prefix: str, cloud_prefix: str) -> str:
-    keys = checks.SERVING_KEYS[name]
-    tol = checks.SERVING_TOL.get(name, {})
+    # Snowflake reports column names in upper case and SQL identifiers are case-insensitive, so every lookup here is too.
+    # (M3 run 2: Snowflake returned acc_rest where the tolerance table said acc_REST; the miss made those columns exact.)
+    columns = [c.lower() for c in columns]
+    keys = [k.lower() for k in checks.SERVING_KEYS[name]]
+    tol = {k.lower(): v for k, v in checks.SERVING_TOL.get(name, {}).items()}
+    skip = {k.lower() for k in checks.SKIP.get(name, set())}
     tests = []
     for col in columns:
-        if col in keys or col in checks.SKIP.get(name, set()):
+        if col in keys or col in skip:
             continue
         if col in tol:
             ok = (f"COALESCE((r.{col} IS NULL AND c.{col} IS NULL) OR ABS(r.{col} - c.{col}) <= {tol[col]!r}, FALSE)")

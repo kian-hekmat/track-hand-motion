@@ -262,3 +262,15 @@ def test_m3_run1_failed_only_at_the_connector_import_after_publishing():
     assert "import snowflake.connector" in first["command"]
     assert "PASS  gate: latest M2 run" in text and text.count("PASS  serving ") == 7 and "FAIL" not in text
     assert text.count("published MOTION_INTENT.CLOUD.") == 7 and "M3 CHECKS" not in text
+
+
+def test_parity_sql_tolerances_do_not_depend_on_column_name_case(duck):
+    """Regression (M3 run 2): Snowflake's INFORMATION_SCHEMA gave lower-case names (acc_rest); the tolerance table uses
+    acc_REST, the lookup missed, and acc_* were compared exactly. With lower-case names the result must be unchanged."""
+    from src.cloud import snowflake_sql as Q
+
+    cols = {n: [c.lower() for c in cs] for n, cs in _columns(duck).items()}
+    sql = Q.parity_sql("scores", cols["scores"], "pipeline.", "cloud.")
+    assert "ABS(r.acc_rest - c.acc_rest) <= 1e-12" in sql and "r.acc_rest IS NOT DISTINCT FROM" not in sql
+    res = Q.run_parity(lambda q: duck.execute(q).fetchdf(), cols, "pipeline.", "cloud.")
+    assert [s for _, s, _ in res] == ["PASS"] * 7, [r for r in res if r[1] != "PASS"]
