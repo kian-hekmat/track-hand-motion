@@ -1,0 +1,4 @@
+# Libraries the cloud path pins on Databricks serverless: the versions models/segmenter_v2.joblib and
+# models/folds/ were made with (see models/segmenter_v2.json). numpy, pandas and scipy come from serverless.
+scikit-learn==1.9.1
+ruptures==1.1.10

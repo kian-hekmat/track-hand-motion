@@ -1,0 +1,48 @@
+{
+  "made_by": "scripts/make_cloud_reference.py",
+  "libraries": {
+    "python": "3.12.14",
+    "numpy": "1.26.4",
+    "pandas": "3.0.6",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.1",
+    "ruptures": "v1.1.10"
+  },
+  "takes": {
+    "vid1": {
+      "model": "segmenter_v2_fold_vid1.joblib",
+      "samples": 976,
+      "events": 19
+    },
+    "vid2": {
+      "model": "segmenter_v2_fold_vid2.joblib",
+      "samples": 1015,
+      "events": 19
+    },
+    "vid3": {
+      "model": "segmenter_v2_fold_vid3.joblib",
+      "samples": 775,
+      "events": 19
+    },
+    "vid4": {
+      "model": "segmenter_v2_fold_vid4.joblib",
+      "samples": 281,
+      "events": 16
+    },
+    "vid5": {
+      "model": "segmenter_v2_fold_vid5.joblib",
+      "samples": 913,
+      "events": 28
+    },
+    "vid6": {
+      "model": "segmenter_v2.joblib",
+      "samples": 1291,
+      "events": 31
+    },
+    "vid7": {
+      "model": "segmenter_v2.joblib",
+      "samples": 408,
+      "events": 18
+    }
+  }
+}

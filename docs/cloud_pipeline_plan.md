@@ -1,6 +1,6 @@
 # Cloud pipeline: Databricks → Snowflake → Tableau
 
-**Status: plan decided 2026-10-07; scope change approved and written into `CLAUDE.md` 2026-10-08. M0 done (2026-10-08); M1 onward not started.** Prerequisite done: Databricks can write to Snowflake
+**Status: plan decided 2026-10-07; scope change approved and written into `CLAUDE.md` 2026-10-08. M0 done (2026-10-08); M1 written and passing locally, not yet run on Databricks.** Prerequisite done: Databricks can write to Snowflake
 with the Spark connector (`databricks/snowflake_write_check.md`, evidence saved).
 
 ## Goal
@@ -61,7 +61,7 @@ training data and inflate the results. The verified canonical events instead com
   `data/segments/v2_frozen_oof/` exactly before uploading anything.
 - In the cloud, a small `model_assignment` table maps each take to its model: vid1-5 → the fold model that excluded it;
   vid6, vid7 and any new take → the full frozen model.
-- Models are loaded from the Volume and their hashes are checked against the metadata before use, as `src/final.py` does now.
+- Models are loaded from the Git folder (versioned with the code, so the commit fixes which model ran) and their hashes are checked before use (`src.final.load_model_for_take`). The Volume holds only uploaded data.
   MLflow registration is optional and comes later (M6); the files plus hashes are the record of which model ran.
 
 ### 4. Code reaches Databricks through a Git folder, with pinned libraries
@@ -118,7 +118,7 @@ reference results.
 | # | Milestone | Done when |
 |---|---|---|
 | M0 | Save fold models locally | **Done 2026-10-08.** `scripts/save_fold_models.py` saved `models/folds/` (5 models + `folds.json` with hashes); through `src.final.load_model_for_take`, each reproduces its take's `v2_frozen_oof` events byte for byte, and vid6/vid7 reproduce `data/holdout/` events with the full model (`tests/test_fold_models.py`, 9 tests) |
-| M1 | Git folder, pinned environment, models in the Volume | In Databricks, the vid1 fold model reproduces the local per-frame labels for vid1 (identical, or the difference measured and reported) |
+| M1 | Git folder, pinned environment, models from the Git folder (`databricks/cloud/m1_environment_check.py`) | In Databricks, the vid1 fold model reproduces the local per-frame labels for vid1 (identical, or the difference measured and reported) |
 | M2 | Bronze → silver → gold in Databricks (from uploaded keypoints) | `gold.events` = 101/101 identical to `data/export/events.csv`; `gold.scores` equal to the scored values; vid6/vid7 equal to `data/holdout/` |
 | M3 | Publish to Snowflake `CLOUD`, verify procedure | Manifest checks all pass; `CLOUD` vs `PIPELINE` parity queries return zero differing rows |
 | M4 | One job end to end (bundle) | A single `databricks bundle run` goes from Volume files to verified Snowflake tables with no manual step in between |
