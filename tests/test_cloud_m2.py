@@ -274,3 +274,34 @@ def test_parity_sql_tolerances_do_not_depend_on_column_name_case(duck):
     assert "ABS(r.acc_rest - c.acc_rest) <= 1e-12" in sql and "r.acc_rest IS NOT DISTINCT FROM" not in sql
     res = Q.run_parity(lambda q: duck.execute(q).fetchdf(), cols, "pipeline.", "cloud.")
     assert [s for _, s, _ in res] == ["PASS"] * 7, [r for r in res if r[1] != "PASS"]
+
+
+def test_m3_run2_failed_only_the_scores_parity_check():
+    """Kept as a record: run 2 (2026-10-08) had 31 checks, 30 passed; the one failure was the case-sensitive tolerance lookup."""
+    import re
+
+    _, text = _databricks_run("cloud_m3_publish_snowflake_run2.html")
+    summary = text[text.index("status check / detail"):]
+    statuses = re.findall(r"^(PASS|FAIL)\s+(.+)$", summary, flags=re.M)
+    assert len(statuses) == 31 and [c for s, c in statuses if s == "FAIL"] == ["snowflake parity scores"]
+
+
+def test_m3_run3_passed_every_check_with_the_repo_notebook():
+    import re
+
+    from config import ROOT
+
+    nb, text = _databricks_run("cloud_m3_publish_snowflake.html")
+    local = (ROOT / "databricks" / "cloud" / "m3_publish_snowflake.py").read_text()
+    for c in nb["commands"]:
+        assert c["state"] == "finished" and not c.get("error") and not c.get("errorSummary"), c["position"]
+        if not c["command"].startswith("%md"):
+            for line in c["command"].strip().splitlines():
+                assert line in local or ("# MAGIC " + line) in local, line
+    assert "M3 CHECKS: ALL PASSED" in text and "31 checks logged" in text
+    summary = text[text.index("status check / detail"):]
+    statuses = re.findall(r"^(PASS|FAIL)\s+(.+)$", summary, flags=re.M)
+    assert len(statuses) == 31 and all(s == "PASS" for s, _ in statuses)
+    for table in ("takes", "events", "ground_truth", "signals", "frames", "scores", "raw_keypoints"):
+        assert re.search(rf"^PASS\s+snowflake parity {table}$", summary, flags=re.M), table
+    assert len(re.findall(r"^PASS\s+snowflake query q\d", summary, flags=re.M)) == 5
