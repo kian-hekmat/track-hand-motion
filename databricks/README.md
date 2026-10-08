@@ -41,6 +41,6 @@ start, end, frames per event; every frame lands in exactly one event).
 Only signal derivation and event construction/aggregation are reimplemented in Spark. The gradient-boosting classifier
 and `ruptures` are not; their per-frame labels (`signals.csv:predicted_label`) are an input.
 
-## Snowflake write check (not yet run)
+## Snowflake write check (passed 2026-10-07)
 
 `snowflake_write_check.py` is a separate notebook. It tests whether this workspace can write tables straight into Snowflake, the first step toward running the pipeline entirely in Databricks and Snowflake. It writes only to `MOTION_INTENT.CONNECTOR_TEST`. Steps and how to read the result: `snowflake_write_check.md`.

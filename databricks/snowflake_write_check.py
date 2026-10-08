@@ -18,34 +18,28 @@
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## 0. Settings (fill in the widgets at the top of the notebook)
+# MAGIC ## 0. Settings: edit SF_HOST below, then Run all
+# MAGIC Edit this in your Databricks copy only; the repo copy keeps the placeholder. The host is not a secret.
 
 # COMMAND ----------
 
-dbutils.widgets.text("sf_host", "", "1. Snowflake host (<account>.snowflakecomputing.com)")
-dbutils.widgets.text("sf_user", "DATABRICKS_SVC", "2. Snowflake user")
-dbutils.widgets.text("sf_role", "DATABRICKS_TEST_ROLE", "3. Snowflake role")
-dbutils.widgets.text("sf_warehouse", "COMPUTE_WH", "4. Snowflake warehouse")
-dbutils.widgets.text("secret_scope", "motion", "5. Databricks secret scope")
-dbutils.widgets.text("secret_key", "snowflake_private_key", "6. Secret key name")
-dbutils.widgets.text("inputs_path", "/Volumes/workspace/default/motion", "7. Folder with events.csv (optional)")
-dbutils.widgets.dropdown("drop_test_tables", "no", ["no", "yes"], "8. Drop test tables at the end")
+SF_HOST = "ORGNAME-ACCOUNTNAME.snowflakecomputing.com"  # EDIT: Snowsight > account > View account details > Server URL
+SF_USER = "DATABRICKS_SVC"
+SF_ROLE = "DATABRICKS_TEST_ROLE"
+SF_WAREHOUSE = "COMPUTE_WH"
+SECRET_SCOPE = "motion"
+SECRET_KEY = "snowflake_private_key"
+INPUTS_PATH = "/Volumes/workspace/default/motion"  # folder with events.csv (optional check)
+DROP_TEST_TABLES = False  # True drops the three test tables at the end
 
-SF_HOST = dbutils.widgets.get("sf_host").strip().removeprefix("https://").removeprefix("http://").rstrip("/")
-SF_USER = dbutils.widgets.get("sf_user").strip()
-SF_ROLE = dbutils.widgets.get("sf_role").strip()
-SF_WAREHOUSE = dbutils.widgets.get("sf_warehouse").strip()
-SECRET_SCOPE = dbutils.widgets.get("secret_scope").strip()
-SECRET_KEY = dbutils.widgets.get("secret_key").strip()
-INPUTS_PATH = dbutils.widgets.get("inputs_path").strip().rstrip("/")
-DROP_TEST_TABLES = dbutils.widgets.get("drop_test_tables") == "yes"
+SF_HOST = SF_HOST.strip().removeprefix("https://").removeprefix("http://").rstrip("/")
+INPUTS_PATH = INPUTS_PATH.rstrip("/")
 
 SF_DATABASE = "MOTION_INTENT"
 SF_SCHEMA = "CONNECTOR_TEST"  # fixed on purpose: this test must never write to the verified PIPELINE schema
 SUFFIX = ".snowflakecomputing.com"
-assert SF_HOST.endswith(SUFFIX), (
-    f"The '1. Snowflake host' widget (the input boxes at the TOP of the notebook, above the first cell) is {SF_HOST!r}. "
-    f"Type the host there (ends with {SUFFIX}) and re-run. Editing this cell's code does not change a widget that already exists.")
+assert SF_HOST.endswith(SUFFIX) and not SF_HOST.startswith("ORGNAME-"), (
+    f"Edit SF_HOST at the top of this cell to your Snowflake host (ends with {SUFFIX}); it is {SF_HOST!r}")
 SF_ACCOUNT = SF_HOST[: -len(SUFFIX)]  # account identifier for the Python connector, e.g. ORGNAME-ACCOUNTNAME
 print(f"Snowflake host {SF_HOST}, account {SF_ACCOUNT}, user {SF_USER}, role {SF_ROLE}, warehouse {SF_WAREHOUSE}")
 print(f"Target {SF_DATABASE}.{SF_SCHEMA}; secret {SECRET_SCOPE}/{SECRET_KEY}; inputs {INPUTS_PATH}")
@@ -160,7 +154,7 @@ except Exception as e:
     record("credentials: private key from secret", "FAIL", short_error(e))
 
 SF_OPTIONS = {
-    "sfURL": SF_HOST,
+    "host": SF_HOST,  # serverless rejects the classic "sfURL" option (first run, 2026-10-07); it accepts "host"
     "sfUser": SF_USER,
     "pem_private_key": PEM_BODY,
     "sfRole": SF_ROLE,
@@ -377,7 +371,7 @@ else:
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## 7. Optional cleanup (widget 8)
+# MAGIC ## 7. Optional cleanup (DROP_TEST_TABLES in the settings cell)
 
 # COMMAND ----------
 
@@ -388,7 +382,7 @@ if DROP_TEST_TABLES and conn is not None:
 elif DROP_TEST_TABLES:
     print("No Python connection, so nothing was dropped. Drop the tables in Snowsight if needed.")
 else:
-    print("Test tables kept (set widget 8 to 'yes' to drop them on the next run).")
+    print("Test tables kept (set DROP_TEST_TABLES = True in the settings cell to drop them on the next run).")
 if conn is not None:
     conn.close()
 

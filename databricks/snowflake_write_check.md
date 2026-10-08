@@ -1,6 +1,8 @@
 # Snowflake write test: can Databricks write straight to Snowflake?
 
-**Status: written, not yet run.** This is the first and riskiest test for moving the pipeline into the cloud (Databricks → Snowflake → Tableau with no local hop). Nothing in the verified Phase 3/4 results depends on it.
+**Status: passed on 2026-10-07** (Databricks Free Edition, serverless, Spark 4.2.0; Snowflake 10.36.101). All checks passed and the verdict is `PATH A WORKS`: the Spark connector wrote and read back the 5-row table with every value identical, and wrote the 101-row events table (counts and per-label counts identical; total duration differs by 2.8e-14 s, floating-point summation order). The Python connector path also works. Evidence: `evidence/databricks_snowflake_write_check.html`, checked by `tests/test_snowflake_write_check_evidence.py`.
+
+**Found on the first run:** serverless rejects the classic `sfURL` option (`SERVERLESS_WRITE_OPTIONS_NOT_ALLOWED`); the notebook now passes the host as `host`, which serverless accepts.
 
 Why it might fail:
 - Databricks Free Edition limits outbound internet access to a set of trusted domains.
@@ -82,7 +84,7 @@ If Free Edition refuses to create a secret scope, stop and tell me the error. Do
 
 1. Optional: make sure `events.csv` from `data/export/` is in the Volume used for Phase 3 (`/Volumes/workspace/default/motion`). It enables check 5, a real 101-row table.
 2. Workspace → Import → `databricks/snowflake_write_check.py`. Attach serverless compute.
-3. Run the first code cell once so the widgets appear as input boxes in a bar at the top of the notebook. Type the host from step 2.4 into box **1. Snowflake host** there, not into the code (`dbutils.widgets.text` only sets a default when the widget is first created, so editing the code later has no effect). The defaults fit everything else.
+3. In the first code cell (**0. Settings**), replace `ORGNAME-ACCOUNTNAME.snowflakecomputing.com` in `SF_HOST = ...` with the host from step 2.4. The other settings already match the setup SQL. Edit only the copy in Databricks; the repo copy keeps the placeholder.
 4. **Run all.** The last cell prints a verdict line and `SNOWFLAKE WRITE TEST: ALL PASSED` or the list of failed checks. Every check runs even after a failure.
 5. File → Export → HTML and save it as `evidence/databricks_snowflake_write_check.html`. Send me the summary cell's output and any error text.
 
@@ -103,4 +105,4 @@ What each check proves:
 
 ## Cleanup
 
-Set widget 8 to `yes` and re-run to drop the three test tables. To remove everything, run the commented `DROP` lines at the bottom of `snowflake/10_connector_test_setup.sql` and run `databricks secrets delete-scope motion`.
+Set `DROP_TEST_TABLES = True` in the settings cell and re-run to drop the three test tables. To remove everything, run the commented `DROP` lines at the bottom of `snowflake/10_connector_test_setup.sql` and run `databricks secrets delete-scope motion`.
