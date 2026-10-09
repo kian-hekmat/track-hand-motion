@@ -85,26 +85,9 @@ RUNS = {"cloud_m2_build_tables_run1.html": ("b1d6b6d", 32), "cloud_m2_build_tabl
 
 
 def _databricks_run(fname):
-    import base64
-    import json
-    import re
-    import urllib.parse
+    from tests.databricks_export import read_export
 
-    from config import ROOT
-
-    s = (ROOT / "evidence" / fname).read_text(encoding="utf-8")
-    m = re.search(r'__DATABRICKS_NOTEBOOK_MODEL\s*=\s*[\'"]([A-Za-z0-9+/=]+)[\'"]', s)
-    assert m, "not a Databricks notebook HTML export"
-    nb = json.loads(urllib.parse.unquote(base64.b64decode(m.group(1)).decode()))
-    text = []
-    for c in nb["commands"]:
-        data = (c.get("results") or {}).get("data")
-        if isinstance(data, str):
-            text.append(data)
-        for item in data if isinstance(data, list) else []:
-            if isinstance(item, dict) and item.get("type") == "ansi":
-                text.append(item["data"])
-    return nb, "\n".join(text)
+    return read_export(fname)
 
 
 @pytest.mark.parametrize("fname", sorted(RUNS))
@@ -332,3 +315,18 @@ def test_tableau_export_check_accepts_a_snowsight_style_download_and_catches_a_c
     acc.loc[acc["take"] == "vid6", "percent_frames_matching_human_labels"] += 0.1
     acc.to_csv(tmp_path / "tableau_accuracy.csv", index=False)
     assert X.main() == 1
+
+
+def test_the_saved_snowflake_download_passes_the_export_check():
+    """data/tableau_cloud/ holds the three views as downloaded from Snowsight on 2026-10-08 (M7)."""
+    import sys
+
+    from config import ROOT
+
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import check_cloud_tableau_exports as X
+
+    assert X.main() == 0
+    for name, n in {"tableau_phases": 295, "tableau_signals": 5659, "tableau_accuracy": 7}.items():
+        ok, detail = X.check(name, X.TABLES[name])
+        assert ok and detail.startswith(f"{n} rows"), detail

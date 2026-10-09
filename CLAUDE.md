@@ -17,9 +17,9 @@ An end-to-end data pipeline: record real motion video → extract pose keypoints
 - **pandas / NumPy** for time-series manipulation
 - **ruptures** (or a small HMM, pick one and commit — see Phase 2) for changepoint/segmentation
 - **PostgreSQL** (local, Docker) as the raw landing zone for the local path — reuse existing Docker Compose setup from the Research Digest Agent if compatible. The cloud path lands raw data in Unity Catalog bronze tables instead (see "Cloud path" below)
-- **Databricks Community Edition** for the transformation/processing stage
+- **Databricks Free Edition** (serverless; it replaced Community Edition) for the transformation/processing stage
 - **Snowflake** (trial account) for the structured, queryable output layer
-- **Tableau Public** for the final dashboard
+- **Tableau Public** for the final dashboard (it cannot connect to Snowflake; the cloud path exports the Snowflake views as CSV)
 - **pytest** for all testing
 
 ---
@@ -50,7 +50,7 @@ An end-to-end data pipeline: record real motion video → extract pose keypoints
 | 5 | RETRACT | Return to A, hand flat | ~1 s | Speed rises then falls |
 | 6 | REST | Still at A | 2 s | Near-zero speed |
 
-"Aperture" = distance between thumb tip and index fingertip keypoints. One cycle = phases 0–6. **Three cycles per take**, back to back (~20–25 s per take).
+"Aperture" = distance between thumb tip and index fingertip keypoints. One cycle = phases 0–6. **Three cycles per take**, back to back (~20–25 s per take). *As recorded:* vid5 and vid6 have four cycles; see `ground_truth/README.md`.
 
 **Execution rules**
 - Stop cleanly at every phase boundary in the clean takes (count "one-one-thousand" silently for holds and rests).
@@ -63,6 +63,8 @@ An end-to-end data pipeline: record real motion video → extract pose keypoints
    - Cycle 1 — **Hesitation:** pause ~0.5 s halfway through REACH, then continue. Correct label: one REACH, not two.
    - Cycle 2 — **Failed grasp:** close, open, re-grasp before lifting. Correct label decided in advance and written down (default: one long GRASP).
    - Cycle 3 — **Occlusion:** rotate the wrist during HOLD so the object hides the fingertips for ~1 s. Tests handling of low-confidence frames.
+   - *As recorded* (`ground_truth/README.md`): cycle 1 hesitation; cycle 2 a normal cycle; cycle 3 failed grasp, with the recorded rule that the label stays REACH during the failed attempt; cycle 4 occlusion during GRASP, with the label staying GRASP throughout.
+4. **Takes 6 and 7 — Hold-out** (recorded later): vid6 slow, four cycles; vid7 fast, three cycles. Labelled and locked before any model output existed, then scored once by the frozen model (`docs/new_takes.md`).
 
 **Ground-truth capture during recording**
 - Tap the table once, firmly, at the start of every take (visual sync point).
@@ -95,7 +97,7 @@ An end-to-end data pipeline: record real motion video → extract pose keypoints
    - **Changepoint detection** (`ruptures` library, e.g. PELT or Binary Segmentation on a derived signal like velocity or joint-angle magnitude), or
    - **A simple HMM/sequence model**, if leaning on RL/sequence-modeling background is preferred.
 2. Derive a two-channel signal from the raw keypoints: **wrist speed** (frame-to-frame displacement magnitude of the wrist landmark, smoothed) and **hand aperture** (thumb-tip to index-tip distance, normalized by hand size, e.g. wrist-to-middle-MCP distance). Speed separates moving vs. still phases; aperture separates GRASP/HOLD from REACH/RELEASE. Segmenting raw 21-landmark data directly is harder and less interpretable.
-3. Run segmentation on each take's derived signal to produce boundaries, then assign one of the six labels to each segment (rule-based on speed/aperture levels is acceptable and more explainable than a learned classifier at this data size).
+3. Run segmentation on each take's derived signal to produce boundaries, then assign one of the six labels to each segment (rule-based on speed/aperture levels is acceptable and more explainable than a learned classifier at this data size). *As built:* v2 labels frames with a learned classifier (gradient boosting) and runs PELT on its phase probabilities; the rule-based v1 is kept as the explainable baseline.
 4. Refine the ground truth captured during recording (`ground_truth/take_N.csv`) for at least Takes 1 and 2 by checking the labelled timestamps against the video frames. Takes 4 and 5 must also have ground truth, since they are the stress tests.
 
 **Testing & verification requirements (strict):**
@@ -111,7 +113,7 @@ An end-to-end data pipeline: record real motion video → extract pose keypoints
 **Goal:** Move the transformation logic (or a meaningful portion of it) into a Databricks notebook running on a Spark DataFrame, demonstrating the tool rather than just Python-on-a-laptop.
 
 **Steps:**
-1. Load the raw keypoint data (from Postgres, exported as CSV/Parquet) into a Databricks Community Edition notebook as a Spark DataFrame. (Cloud path: from the Unity Catalog bronze tables; see "Cloud path" below.)
+1. Load the raw keypoint data (from Postgres, exported as CSV/Parquet) into a Databricks notebook as a Spark DataFrame. (Cloud path: from the Unity Catalog bronze tables; see "Cloud path" below.)
 2. Reimplement the signal-derivation and/or segmentation step (or a meaningful chunk of the pipeline) using PySpark operations, not just calling the same pandas code inside a notebook cell. The point is demonstrating Spark-flavored data engineering (window functions over partitions, groupBy/agg), not just relocating Python.
 3. Write the segmented-events output to a table Databricks can export (CSV/Delta) for the next phase.
 
@@ -144,7 +146,7 @@ An end-to-end data pipeline: record real motion video → extract pose keypoints
 **Goal:** One dashboard, built from Snowflake (or exported CSV) data, that a non-technical viewer could read at a glance.
 
 **Steps:**
-1. Connect Tableau Public to the Snowflake tables (or exported CSVs if a live connection proves difficult on the free tier).
+1. Connect Tableau Public to the Snowflake tables (or exported CSVs if a live connection proves difficult on the free tier). *As built:* Tableau Public has no Snowflake connector, so the Snowflake `CLOUD` views are downloaded as CSV and checked (`scripts/check_cloud_tableau_exports.py`).
 2. Build minimum two views:
    - A timeline: time on x-axis, colored bands/marks showing the active intent-segment
    - The raw derived signal (e.g., velocity) overlaid or paired with the segment timeline, so a viewer can see raw signal vs. detected event side by side
@@ -164,6 +166,13 @@ A second path runs the pipeline in the cloud so the only local actions are recor
 - **Honest scoring:** each development take (vid1–5) is labelled by the leave-one-take-out model that never saw it; only takes outside the training set use the full frozen model.
 - **Separation:** the cloud path writes to its own Snowflake schema (`MOTION_INTENT.CLOUD`) and never modifies the verified `MOTION_INTENT.PIPELINE` tables.
 - Each milestone in the plan counts as done only when its check passes and the evidence is saved, the same as the phases above.
+- **Scope as decided by the project owner (2026-10-08):** video conversion and keypoint extraction stay local (M5 cancelled); MLflow (M6) not pursued; the Snowflake-to-Tableau hop is a checked manual export (M7).
+
+---
+
+## Definitions
+
+Terms used in every metric and table (take, cycle, phase, event, frame vs sample, the accuracy measures, the model variants, the local and cloud paths) are defined in `README.md`, section "Definitions". Use them consistently.
 
 ---
 

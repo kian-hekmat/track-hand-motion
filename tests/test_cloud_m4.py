@@ -64,22 +64,9 @@ def test_raise_triggers_only_on_failures():
 
 # ---- the first job run (2026-10-08, job run 121730247088002), saved by scripts/save_job_run_evidence.py ----
 def _export(name):
-    import base64
-    import json
-    import urllib.parse
+    from tests.databricks_export import read_export
 
-    s = (ROOT / "evidence" / f"cloud_m4_{name}.html").read_text(encoding="utf-8")
-    m = re.search(r'__DATABRICKS_NOTEBOOK_MODEL\s*=\s*[\'"]([A-Za-z0-9+/=]+)[\'"]', s)
-    nb = json.loads(urllib.parse.unquote(base64.b64decode(m.group(1)).decode()))
-    text = []
-    for c in nb["commands"]:
-        data = (c.get("results") or {}).get("data")
-        if isinstance(data, str):
-            text.append(data)
-        for item in data if isinstance(data, list) else []:
-            if isinstance(item, dict) and item.get("type") == "ansi":
-                text.append(item["data"])
-    return nb, "\n".join(text)
+    return read_export(f"cloud_m4_{name}.html")
 
 
 @pytest.fixture(scope="module")

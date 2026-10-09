@@ -1,6 +1,6 @@
 # Cloud pipeline: Databricks → Snowflake → Tableau
 
-**Status: plan decided 2026-10-07; scope change approved and written into `CLAUDE.md` 2026-10-08. M0 done (2026-10-08); M1 done on Databricks (2026-10-08); M2 and M2b passed on Databricks (2026-10-08); M3 passed on Databricks and Snowflake (2026-10-08, run 3); M4 done (2026-10-08, first job run passed); M7 changed to a manual export (2026-10-08), steps and check written, export not yet done; M5 and M6 not started. Superseded pre-migration code was removed on 2026-10-08 (kept at the git tag `pre-cloud-cleanup`).** Prerequisite done: Databricks can write to Snowflake
+**Status: plan decided 2026-10-07; scope change approved and written into `CLAUDE.md` 2026-10-08. M0 done (2026-10-08); M1 done on Databricks (2026-10-08); M2 and M2b passed on Databricks (2026-10-08); M3 passed on Databricks and Snowflake (2026-10-08, run 3); M4 done (2026-10-08, first job run passed); M7 changed to a manual export (2026-10-08): views downloaded and checked, workbook repoint pending; M5 cancelled and M6 not pursued (project owner, 2026-10-08). Superseded pre-migration code was removed on 2026-10-08 (kept at the git tag `pre-cloud-cleanup`).** Prerequisite done: Databricks can write to Snowflake
 with the Spark connector (the 2026-10-07 write check, retired in the cleanup and kept at the git tag `pre-cloud-cleanup`).
 
 ## Goal
@@ -13,7 +13,7 @@ pipeline stays as the verified reference, and every cloud result is checked agai
 Unity Catalog Volume  (videos, ground-truth CSVs, frozen model files)   <- the only manual upload
         │
         ▼  Databricks job (tasks run in order; any failed check stops the job)
-  bronze.raw_keypoints        MediaPipe extraction per video        [M5; until then: uploaded keypoint files]
+  bronze.raw_keypoints        uploaded keypoint files (extraction stays local; M5 cancelled)
   bronze.ground_truth         hand labels as uploaded
   silver.frames               21 landmark rows -> 1 row per frame          (Spark: conditional aggregation)
   silver.frame_predictions    signals + 61 features + model + PELT, per take (applyInPandas, existing code)
@@ -100,12 +100,12 @@ Tableau tables (`scripts/check_cloud_tableau_exports.py`) and loaded into the wo
 exported by hand", not a live connection. An automated alternative (the job writes the views to a Google Sheet, which Tableau
 Public refreshes daily) was considered and not chosen.
 
-### 8. Extraction (MediaPipe) moves last and may stay local
+### 8. Extraction (MediaPipe) stays local (decided 2026-10-08)
 
-Running MediaPipe on serverless is untested (install, uploading the model file to the Volume, decoding the iPhone's HEVC
-10-bit video without ffmpeg). It is the step least related to the tools being demonstrated, so it is done last. Until then
-bronze is loaded from uploaded keypoint files, through the same table contract, so nothing downstream changes when extraction moves. MediaPipe on different
-hardware may not reproduce keypoints bit for bit. M5 measures how much they differ and how much the labels change, and reports both.
+Planned last as the riskiest step. A feasibility probe found that MediaPipe 0.10.21 (which made the verified keypoints) has no
+build for serverless's ARM CPUs, that 0.10.18 runs only in an isolated subprocess, and that its keypoints and one frame accuracy
+differ from the verified ones (details in `NOTES.md`). The project owner then cancelled M5: bronze is loaded from the uploaded
+keypoint files, and video conversion and extraction stay on the local machine.
 
 ## Spec change (approved 2026-10-08, now in `CLAUDE.md` under "Cloud path")
 
@@ -123,9 +123,9 @@ reference results.
 | M2 | Bronze → silver → gold in Databricks (from uploaded keypoints) | Signals within a stated tolerance of the reference (M1: floating-point differences up to ~1e-13 across environments); `gold.events` = 101/101 identical to `data/export/events.csv`; `gold.frame_scores` equal to the scored frame metrics; vid6/vid7 equal to `data/holdout/`. **Scope note:** boundary metrics (recall, precision, timing error, chance baselines) are not in M2; they follow as M2b with `src/score.py` on the gold tables |
 | M3 | Publish to Snowflake `CLOUD`; checks run inside Snowflake as SQL sent from the notebook (no stored procedure was built) | Manifest checks all pass; `CLOUD` vs `PIPELINE` parity queries return zero differing rows **Done 2026-10-08 (run 3, all 31 checks; `evidence/cloud_m3_publish_snowflake.html`).** Run 2 failed one check from a bug in the check (case-sensitive column lookup), fixed in `32af63b` |
 | M4 | One job end to end (bundle) | A single `databricks bundle run` goes from Volume files to verified Snowflake tables with no manual step in between **Done 2026-10-08:** job run 121730247088002 (`databricks bundle run`) went from the Volume files to checked Snowflake tables with no manual step; both tasks on commit `7d9be28`; M2 33/33, M3 31/31 (`evidence/cloud_m4_*`) |
-| M5 | MediaPipe extraction in Databricks | Keypoints compared with the local extraction (difference reported); labels re-scored and reported, never pooled with earlier numbers |
-| M6 | Optional: MLflow tracking and registry | Models registered with their hashes; retraining in Databricks compared with the frozen model and reported |
-| M7 | Tableau from Snowflake | **Changed 2026-10-08 to a manual export** (Tableau Public cannot connect to Snowflake): the three `CLOUD` views downloaded from Snowsight, checked by `scripts/check_cloud_tableau_exports.py`, then the workbook repointed and republished; image re-verified with `scripts/verify_dashboard_image.py`; the first-time-viewer test. **Not yet done.** |
+| M5 | MediaPipe extraction in Databricks | **Cancelled 2026-10-08** by the project owner after a feasibility probe (findings in `NOTES.md`). Planned check was: keypoints compared with the local extraction (difference reported); labels re-scored and reported, never pooled with earlier numbers |
+| M6 | Optional: MLflow tracking and registry | **Not pursued.** Planned check was: models registered with their hashes; retraining in Databricks compared with the frozen model and reported |
+| M7 | Tableau from Snowflake | **Changed 2026-10-08 to a manual export** (Tableau Public cannot connect to Snowflake): the three `CLOUD` views downloaded from Snowsight, checked by `scripts/check_cloud_tableau_exports.py` (**done 2026-10-08, all passed**), then the workbook repointed and republished; image re-verified with `scripts/verify_dashboard_image.py`; the first-time-viewer test (**both still to do**). |
 
 Local pytest stays the safety net: the Spark parts keep running on local Spark, the SQL in DuckDB, and every evidence export
 gets a parsing test (`tests/test_cloud_m1.py`, `tests/test_cloud_m2.py`, `tests/test_cloud_m4.py`).

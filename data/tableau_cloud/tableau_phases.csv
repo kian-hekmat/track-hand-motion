@@ -1,0 +1,296 @@
+take,take_label,take_group,source,label,phase_name,phase_order,start_s,end_s,duration_s
+vid1,Take 1 (clean),clean,Detected,REST,At rest,1,0,2,2
+vid1,Take 1 (clean),clean,Detected,REACH,Reaching,2,2,4.066666667,2.066666667
+vid1,Take 1 (clean),clean,Detected,GRASP,Grasping,3,4.066666667,5.466666667,1.4
+vid1,Take 1 (clean),clean,Detected,HOLD,Holding,4,5.466666667,8.233333333,2.766666667
+vid1,Take 1 (clean),clean,Detected,RELEASE,Releasing,5,8.233333333,9.166666667,0.9333333333
+vid1,Take 1 (clean),clean,Detected,RETRACT,Returning,6,9.166666667,10.1,0.9333333333
+vid1,Take 1 (clean),clean,Detected,REST,At rest,1,10.1,12.7,2.6
+vid1,Take 1 (clean),clean,Detected,REACH,Reaching,2,12.7,14.133333333,1.433333333
+vid1,Take 1 (clean),clean,Detected,GRASP,Grasping,3,14.133333333,15.533333333,1.4
+vid1,Take 1 (clean),clean,Detected,HOLD,Holding,4,15.533333333,18.2,2.666666667
+vid1,Take 1 (clean),clean,Detected,RELEASE,Releasing,5,18.2,18.866666667,0.6666666667
+vid1,Take 1 (clean),clean,Detected,RETRACT,Returning,6,18.866666667,20.066666667,1.2
+vid1,Take 1 (clean),clean,Detected,REST,At rest,1,20.066666667,23.033333333,2.966666667
+vid1,Take 1 (clean),clean,Detected,REACH,Reaching,2,23.033333333,24.6,1.566666667
+vid1,Take 1 (clean),clean,Detected,GRASP,Grasping,3,24.6,26.4,1.8
+vid1,Take 1 (clean),clean,Detected,HOLD,Holding,4,26.4,29.7,3.3
+vid1,Take 1 (clean),clean,Detected,RELEASE,Releasing,5,29.7,30.433333333,0.7333333333
+vid1,Take 1 (clean),clean,Detected,RETRACT,Returning,6,30.433333333,31.2,0.7666666667
+vid1,Take 1 (clean),clean,Detected,REST,At rest,1,31.2,32.507,1.307
+vid1,Take 1 (clean),clean,Hand-labelled,REST,At rest,1,0,1.833,1.833
+vid1,Take 1 (clean),clean,Hand-labelled,REACH,Reaching,2,1.833,3.8,1.967
+vid1,Take 1 (clean),clean,Hand-labelled,GRASP,Grasping,3,3.8,5.5,1.7
+vid1,Take 1 (clean),clean,Hand-labelled,HOLD,Holding,4,5.5,8.202,2.702
+vid1,Take 1 (clean),clean,Hand-labelled,RELEASE,Releasing,5,8.202,8.968,0.766
+vid1,Take 1 (clean),clean,Hand-labelled,RETRACT,Returning,6,8.968,10.102,1.134
+vid1,Take 1 (clean),clean,Hand-labelled,REST,At rest,1,10.102,12.702,2.6
+vid1,Take 1 (clean),clean,Hand-labelled,REACH,Reaching,2,12.702,13.935,1.233
+vid1,Take 1 (clean),clean,Hand-labelled,GRASP,Grasping,3,13.935,15.47,1.535
+vid1,Take 1 (clean),clean,Hand-labelled,HOLD,Holding,4,15.47,18.203,2.733
+vid1,Take 1 (clean),clean,Hand-labelled,RELEASE,Releasing,5,18.203,18.737,0.534
+vid1,Take 1 (clean),clean,Hand-labelled,RETRACT,Returning,6,18.737,20.103,1.366
+vid1,Take 1 (clean),clean,Hand-labelled,REST,At rest,1,20.103,23.037,2.934
+vid1,Take 1 (clean),clean,Hand-labelled,REACH,Reaching,2,23.037,24.372,1.335
+vid1,Take 1 (clean),clean,Hand-labelled,GRASP,Grasping,3,24.372,26.472,2.1
+vid1,Take 1 (clean),clean,Hand-labelled,HOLD,Holding,4,26.472,29.705,3.233
+vid1,Take 1 (clean),clean,Hand-labelled,RELEASE,Releasing,5,29.705,30.505,0.8
+vid1,Take 1 (clean),clean,Hand-labelled,RETRACT,Returning,6,30.505,31.372,0.867
+vid1,Take 1 (clean),clean,Hand-labelled,REST,At rest,1,31.372,32.507,1.135
+vid2,Take 2 (clean),clean,Detected,REST,At rest,1,0,1.933333333,1.933333333
+vid2,Take 2 (clean),clean,Detected,REACH,Reaching,2,1.933333333,3.6,1.666666667
+vid2,Take 2 (clean),clean,Detected,GRASP,Grasping,3,3.6,5.366666667,1.766666667
+vid2,Take 2 (clean),clean,Detected,HOLD,Holding,4,5.366666667,7.933333333,2.566666667
+vid2,Take 2 (clean),clean,Detected,RELEASE,Releasing,5,7.933333333,9,1.066666667
+vid2,Take 2 (clean),clean,Detected,RETRACT,Returning,6,9,9.966666667,0.9666666667
+vid2,Take 2 (clean),clean,Detected,REST,At rest,1,9.966666667,13.833333333,3.866666667
+vid2,Take 2 (clean),clean,Detected,REACH,Reaching,2,13.833333333,15.3,1.466666667
+vid2,Take 2 (clean),clean,Detected,GRASP,Grasping,3,15.3,17.4,2.1
+vid2,Take 2 (clean),clean,Detected,HOLD,Holding,4,17.4,20.533333333,3.133333333
+vid2,Take 2 (clean),clean,Detected,RELEASE,Releasing,5,20.533333333,21.566666667,1.033333333
+vid2,Take 2 (clean),clean,Detected,RETRACT,Returning,6,21.566666667,22.966666667,1.4
+vid2,Take 2 (clean),clean,Detected,REST,At rest,1,22.966666667,26.066666667,3.1
+vid2,Take 2 (clean),clean,Detected,REACH,Reaching,2,26.066666667,27.066666667,1
+vid2,Take 2 (clean),clean,Detected,GRASP,Grasping,3,27.066666667,28.6,1.533333333
+vid2,Take 2 (clean),clean,Detected,HOLD,Holding,4,28.6,31.666666667,3.066666667
+vid2,Take 2 (clean),clean,Detected,RELEASE,Releasing,5,31.666666667,31.866666667,0.2
+vid2,Take 2 (clean),clean,Detected,RETRACT,Returning,6,31.866666667,32.5,0.6333333333
+vid2,Take 2 (clean),clean,Detected,REST,At rest,1,32.5,33.807,1.307
+vid2,Take 2 (clean),clean,Hand-labelled,REST,At rest,1,0,1.935,1.935
+vid2,Take 2 (clean),clean,Hand-labelled,REACH,Reaching,2,1.935,3.635,1.7
+vid2,Take 2 (clean),clean,Hand-labelled,GRASP,Grasping,3,3.635,5.435,1.8
+vid2,Take 2 (clean),clean,Hand-labelled,HOLD,Holding,4,5.435,7.835,2.4
+vid2,Take 2 (clean),clean,Hand-labelled,RELEASE,Releasing,5,7.835,8.902,1.067
+vid2,Take 2 (clean),clean,Hand-labelled,RETRACT,Returning,6,8.902,9.935,1.033
+vid2,Take 2 (clean),clean,Hand-labelled,REST,At rest,1,9.935,13.803,3.868
+vid2,Take 2 (clean),clean,Hand-labelled,REACH,Reaching,2,13.803,15.47,1.667
+vid2,Take 2 (clean),clean,Hand-labelled,GRASP,Grasping,3,15.47,17.37,1.9
+vid2,Take 2 (clean),clean,Hand-labelled,HOLD,Holding,4,17.37,20.438,3.068
+vid2,Take 2 (clean),clean,Hand-labelled,RELEASE,Releasing,5,20.438,21.672,1.234
+vid2,Take 2 (clean),clean,Hand-labelled,RETRACT,Returning,6,21.672,22.872,1.2
+vid2,Take 2 (clean),clean,Hand-labelled,REST,At rest,1,22.872,26.005,3.133
+vid2,Take 2 (clean),clean,Hand-labelled,REACH,Reaching,2,26.005,27.138,1.133
+vid2,Take 2 (clean),clean,Hand-labelled,GRASP,Grasping,3,27.138,28.573,1.435
+vid2,Take 2 (clean),clean,Hand-labelled,HOLD,Holding,4,28.573,31.607,3.034
+vid2,Take 2 (clean),clean,Hand-labelled,RELEASE,Releasing,5,31.607,31.873,0.266
+vid2,Take 2 (clean),clean,Hand-labelled,RETRACT,Returning,6,31.873,32.44,0.567
+vid2,Take 2 (clean),clean,Hand-labelled,REST,At rest,1,32.44,33.807,1.367
+vid3,Take 3 (clean),clean,Detected,REST,At rest,1,0,0.9,0.9
+vid3,Take 3 (clean),clean,Detected,REACH,Reaching,2,0.9,2.266666667,1.366666667
+vid3,Take 3 (clean),clean,Detected,GRASP,Grasping,3,2.266666667,3.933333333,1.666666667
+vid3,Take 3 (clean),clean,Detected,HOLD,Holding,4,3.933333333,5.7,1.766666667
+vid3,Take 3 (clean),clean,Detected,RELEASE,Releasing,5,5.7,6.533333333,0.8333333333
+vid3,Take 3 (clean),clean,Detected,RETRACT,Returning,6,6.533333333,7.533333333,1
+vid3,Take 3 (clean),clean,Detected,REST,At rest,1,7.533333333,9.166666667,1.633333333
+vid3,Take 3 (clean),clean,Detected,REACH,Reaching,2,9.166666667,10.1,0.9333333333
+vid3,Take 3 (clean),clean,Detected,GRASP,Grasping,3,10.1,12.033333333,1.933333333
+vid3,Take 3 (clean),clean,Detected,HOLD,Holding,4,12.033333333,13.8,1.766666667
+vid3,Take 3 (clean),clean,Detected,RELEASE,Releasing,5,13.8,14.833333333,1.033333333
+vid3,Take 3 (clean),clean,Detected,RETRACT,Returning,6,14.833333333,15.7,0.8666666667
+vid3,Take 3 (clean),clean,Detected,REST,At rest,1,15.7,18,2.3
+vid3,Take 3 (clean),clean,Detected,REACH,Reaching,2,18,19.233333333,1.233333333
+vid3,Take 3 (clean),clean,Detected,GRASP,Grasping,3,19.233333333,20.866666667,1.633333333
+vid3,Take 3 (clean),clean,Detected,HOLD,Holding,4,20.866666667,23.7,2.833333333
+vid3,Take 3 (clean),clean,Detected,RELEASE,Releasing,5,23.7,24.1,0.4
+vid3,Take 3 (clean),clean,Detected,RETRACT,Returning,6,24.1,24.833333333,0.7333333333
+vid3,Take 3 (clean),clean,Detected,REST,At rest,1,24.833333333,25.805,0.9716666667
+vid3,Take 3 (clean),clean,Hand-labelled,REST,At rest,1,0,0.9,0.9
+vid3,Take 3 (clean),clean,Hand-labelled,REACH,Reaching,2,0.9,2.233,1.333
+vid3,Take 3 (clean),clean,Hand-labelled,GRASP,Grasping,3,2.233,3.9,1.667
+vid3,Take 3 (clean),clean,Hand-labelled,HOLD,Holding,4,3.9,5.668,1.768
+vid3,Take 3 (clean),clean,Hand-labelled,RELEASE,Releasing,5,5.668,6.535,0.867
+vid3,Take 3 (clean),clean,Hand-labelled,RETRACT,Returning,6,6.535,7.535,1
+vid3,Take 3 (clean),clean,Hand-labelled,REST,At rest,1,7.535,9.168,1.633
+vid3,Take 3 (clean),clean,Hand-labelled,REACH,Reaching,2,9.168,9.968,0.8
+vid3,Take 3 (clean),clean,Hand-labelled,GRASP,Grasping,3,9.968,12.035,2.067
+vid3,Take 3 (clean),clean,Hand-labelled,HOLD,Holding,4,12.035,13.835,1.8
+vid3,Take 3 (clean),clean,Hand-labelled,RELEASE,Releasing,5,13.835,14.67,0.835
+vid3,Take 3 (clean),clean,Hand-labelled,RETRACT,Returning,6,14.67,15.67,1
+vid3,Take 3 (clean),clean,Hand-labelled,REST,At rest,1,15.67,18.003,2.333
+vid3,Take 3 (clean),clean,Hand-labelled,REACH,Reaching,2,18.003,19.137,1.134
+vid3,Take 3 (clean),clean,Hand-labelled,GRASP,Grasping,3,19.137,20.803,1.666
+vid3,Take 3 (clean),clean,Hand-labelled,HOLD,Holding,4,20.803,23.772,2.969
+vid3,Take 3 (clean),clean,Hand-labelled,RELEASE,Releasing,5,23.772,24.038,0.266
+vid3,Take 3 (clean),clean,Hand-labelled,RETRACT,Returning,6,24.038,24.772,0.734
+vid3,Take 3 (clean),clean,Hand-labelled,REST,At rest,1,24.772,25.805,1.033
+vid4,Take 4 (fast),fast,Detected,REST,At rest,1,0,0.9,0.9
+vid4,Take 4 (fast),fast,Detected,REACH,Reaching,2,0.9,1.266666667,0.3666666667
+vid4,Take 4 (fast),fast,Detected,GRASP,Grasping,3,1.266666667,1.633333333,0.3666666667
+vid4,Take 4 (fast),fast,Detected,HOLD,Holding,4,1.633333333,2.3,0.6666666667
+vid4,Take 4 (fast),fast,Detected,RETRACT,Returning,6,2.3,2.666666667,0.3666666667
+vid4,Take 4 (fast),fast,Detected,REST,At rest,1,2.666666667,3.3,0.6333333333
+vid4,Take 4 (fast),fast,Detected,REACH,Reaching,2,3.3,3.733333333,0.4333333333
+vid4,Take 4 (fast),fast,Detected,GRASP,Grasping,3,3.733333333,4.166666667,0.4333333333
+vid4,Take 4 (fast),fast,Detected,HOLD,Holding,4,4.166666667,4.966666667,0.8
+vid4,Take 4 (fast),fast,Detected,RETRACT,Returning,6,4.966666667,5.3,0.3333333333
+vid4,Take 4 (fast),fast,Detected,REST,At rest,1,5.3,5.966666667,0.6666666667
+vid4,Take 4 (fast),fast,Detected,REACH,Reaching,2,5.966666667,6.5,0.5333333333
+vid4,Take 4 (fast),fast,Detected,GRASP,Grasping,3,6.5,6.866666667,0.3666666667
+vid4,Take 4 (fast),fast,Detected,HOLD,Holding,4,6.866666667,7.6,0.7333333333
+vid4,Take 4 (fast),fast,Detected,RETRACT,Returning,6,7.6,8.066666667,0.4666666667
+vid4,Take 4 (fast),fast,Detected,REST,At rest,1,8.066666667,9.335,1.268333333
+vid4,Take 4 (fast),fast,Hand-labelled,REST,At rest,1,0,0.867,0.867
+vid4,Take 4 (fast),fast,Hand-labelled,REACH,Reaching,2,0.867,1.233,0.366
+vid4,Take 4 (fast),fast,Hand-labelled,GRASP,Grasping,3,1.233,1.667,0.434
+vid4,Take 4 (fast),fast,Hand-labelled,HOLD,Holding,4,1.667,2.2,0.533
+vid4,Take 4 (fast),fast,Hand-labelled,RELEASE,Releasing,5,2.2,2.333,0.133
+vid4,Take 4 (fast),fast,Hand-labelled,RETRACT,Returning,6,2.333,2.7,0.367
+vid4,Take 4 (fast),fast,Hand-labelled,REST,At rest,1,2.7,3.267,0.567
+vid4,Take 4 (fast),fast,Hand-labelled,REACH,Reaching,2,3.267,3.733,0.466
+vid4,Take 4 (fast),fast,Hand-labelled,GRASP,Grasping,3,3.733,4.2,0.467
+vid4,Take 4 (fast),fast,Hand-labelled,HOLD,Holding,4,4.2,4.9,0.7
+vid4,Take 4 (fast),fast,Hand-labelled,RELEASE,Releasing,5,4.9,5.033,0.133
+vid4,Take 4 (fast),fast,Hand-labelled,RETRACT,Returning,6,5.033,5.3,0.267
+vid4,Take 4 (fast),fast,Hand-labelled,REST,At rest,1,5.3,5.935,0.635
+vid4,Take 4 (fast),fast,Hand-labelled,REACH,Reaching,2,5.935,6.368,0.433
+vid4,Take 4 (fast),fast,Hand-labelled,GRASP,Grasping,3,6.368,6.868,0.5
+vid4,Take 4 (fast),fast,Hand-labelled,HOLD,Holding,4,6.868,7.535,0.667
+vid4,Take 4 (fast),fast,Hand-labelled,RELEASE,Releasing,5,7.535,7.702,0.167
+vid4,Take 4 (fast),fast,Hand-labelled,RETRACT,Returning,6,7.702,8.035,0.333
+vid4,Take 4 (fast),fast,Hand-labelled,REST,At rest,1,8.035,9.335,1.3
+vid5,Take 5 (hard),hard,Detected,REST,At rest,1,0,1.066666667,1.066666667
+vid5,Take 5 (hard),hard,Detected,REACH,Reaching,2,1.066666667,2.433333333,1.366666667
+vid5,Take 5 (hard),hard,Detected,GRASP,Grasping,3,2.433333333,3.466666667,1.033333333
+vid5,Take 5 (hard),hard,Detected,HOLD,Holding,4,3.466666667,5.066666667,1.6
+vid5,Take 5 (hard),hard,Detected,RELEASE,Releasing,5,5.066666667,5.233333333,0.1666666667
+vid5,Take 5 (hard),hard,Detected,RETRACT,Returning,6,5.233333333,5.533333333,0.3
+vid5,Take 5 (hard),hard,Detected,REST,At rest,1,5.533333333,6.733333333,1.2
+vid5,Take 5 (hard),hard,Detected,REACH,Reaching,2,6.733333333,8.333333333,1.6
+vid5,Take 5 (hard),hard,Detected,GRASP,Grasping,3,8.333333333,9.633333333,1.3
+vid5,Take 5 (hard),hard,Detected,HOLD,Holding,4,9.633333333,11.133333333,1.5
+vid5,Take 5 (hard),hard,Detected,RELEASE,Releasing,5,11.133333333,11.3,0.1666666667
+vid5,Take 5 (hard),hard,Detected,RETRACT,Returning,6,11.3,11.733333333,0.4333333333
+vid5,Take 5 (hard),hard,Detected,REST,At rest,1,11.733333333,13.7,1.966666667
+vid5,Take 5 (hard),hard,Detected,REACH,Reaching,2,13.7,14.233333333,0.5333333333
+vid5,Take 5 (hard),hard,Detected,GRASP,Grasping,3,14.233333333,17.133333333,2.9
+vid5,Take 5 (hard),hard,Detected,HOLD,Holding,4,17.133333333,19.266666667,2.133333333
+vid5,Take 5 (hard),hard,Detected,RELEASE,Releasing,5,19.266666667,19.466666667,0.2
+vid5,Take 5 (hard),hard,Detected,RETRACT,Returning,6,19.466666667,20,0.5333333333
+vid5,Take 5 (hard),hard,Detected,REST,At rest,1,20,22.766666667,2.766666667
+vid5,Take 5 (hard),hard,Detected,REACH,Reaching,2,22.766666667,23.3,0.5333333333
+vid5,Take 5 (hard),hard,Detected,GRASP,Grasping,3,23.3,24.366666667,1.066666667
+vid5,Take 5 (hard),hard,Detected,REST,At rest,1,24.366666667,24.733333333,0.3666666667
+vid5,Take 5 (hard),hard,Detected,HOLD,Holding,4,24.733333333,25.533333333,0.8
+vid5,Take 5 (hard),hard,Detected,GRASP,Grasping,3,25.533333333,27.166666667,1.633333333
+vid5,Take 5 (hard),hard,Detected,HOLD,Holding,4,27.166666667,29.233333333,2.066666667
+vid5,Take 5 (hard),hard,Detected,RELEASE,Releasing,5,29.233333333,29.433333333,0.2
+vid5,Take 5 (hard),hard,Detected,RETRACT,Returning,6,29.433333333,29.733333333,0.3
+vid5,Take 5 (hard),hard,Detected,REST,At rest,1,29.733333333,30.405,0.6716666667
+vid5,Take 5 (hard),hard,Hand-labelled,REST,At rest,1,0,1.067,1.067
+vid5,Take 5 (hard),hard,Hand-labelled,REACH,Reaching,2,1.067,2.467,1.4
+vid5,Take 5 (hard),hard,Hand-labelled,GRASP,Grasping,3,2.467,3.4,0.933
+vid5,Take 5 (hard),hard,Hand-labelled,HOLD,Holding,4,3.4,5.067,1.667
+vid5,Take 5 (hard),hard,Hand-labelled,RELEASE,Releasing,5,5.067,5.133,0.066
+vid5,Take 5 (hard),hard,Hand-labelled,RETRACT,Returning,6,5.133,5.533,0.4
+vid5,Take 5 (hard),hard,Hand-labelled,REST,At rest,1,5.533,6.735,1.202
+vid5,Take 5 (hard),hard,Hand-labelled,REACH,Reaching,2,6.735,9.035,2.3
+vid5,Take 5 (hard),hard,Hand-labelled,GRASP,Grasping,3,9.035,9.835,0.8
+vid5,Take 5 (hard),hard,Hand-labelled,HOLD,Holding,4,9.835,11.102,1.267
+vid5,Take 5 (hard),hard,Hand-labelled,RELEASE,Releasing,5,11.102,11.235,0.133
+vid5,Take 5 (hard),hard,Hand-labelled,RETRACT,Returning,6,11.235,11.768,0.533
+vid5,Take 5 (hard),hard,Hand-labelled,REST,At rest,1,11.768,13.668,1.9
+vid5,Take 5 (hard),hard,Hand-labelled,REACH,Reaching,2,13.668,16.037,2.369
+vid5,Take 5 (hard),hard,Hand-labelled,GRASP,Grasping,3,16.037,17.27,1.233
+vid5,Take 5 (hard),hard,Hand-labelled,HOLD,Holding,4,17.27,19.203,1.933
+vid5,Take 5 (hard),hard,Hand-labelled,RELEASE,Releasing,5,19.203,19.437,0.234
+vid5,Take 5 (hard),hard,Hand-labelled,RETRACT,Returning,6,19.437,20.037,0.6
+vid5,Take 5 (hard),hard,Hand-labelled,REST,At rest,1,20.037,22.803,2.766
+vid5,Take 5 (hard),hard,Hand-labelled,REACH,Reaching,2,22.803,23.605,0.802
+vid5,Take 5 (hard),hard,Hand-labelled,GRASP,Grasping,3,23.605,27.072,3.467
+vid5,Take 5 (hard),hard,Hand-labelled,HOLD,Holding,4,27.072,29.272,2.2
+vid5,Take 5 (hard),hard,Hand-labelled,RELEASE,Releasing,5,29.272,29.405,0.133
+vid5,Take 5 (hard),hard,Hand-labelled,RETRACT,Returning,6,29.405,29.705,0.3
+vid5,Take 5 (hard),hard,Hand-labelled,REST,At rest,1,29.705,30.405,0.7
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,REST,At rest,1,0,0.2666666667,0.2666666667
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,REACH,Reaching,2,0.2666666667,1.5,1.233333333
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,GRASP,Grasping,3,1.5,2.366666667,0.8666666667
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,REACH,Reaching,2,2.366666667,3.133333333,0.7666666667
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,GRASP,Grasping,3,3.133333333,4.133333333,1
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,HOLD,Holding,4,4.133333333,7.9,3.766666667
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,RELEASE,Releasing,5,7.9,9.4,1.5
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,RETRACT,Returning,6,9.4,10.066666667,0.6666666667
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,REST,At rest,1,10.066666667,13.533333333,3.466666667
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,REACH,Reaching,2,13.533333333,14.633333333,1.1
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,GRASP,Grasping,3,14.633333333,17.1,2.466666667
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,HOLD,Holding,4,17.1,21.366666667,4.266666667
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,GRASP,Grasping,3,21.366666667,22.033333333,0.6666666667
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,RELEASE,Releasing,5,22.033333333,22.966666667,0.9333333333
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,RETRACT,Returning,6,22.966666667,23.733333333,0.7666666667
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,REST,At rest,1,23.733333333,26.1,2.366666667
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,REACH,Reaching,2,26.1,26.6,0.5
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,GRASP,Grasping,3,26.6,26.833333333,0.2333333333
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,REACH,Reaching,2,26.833333333,27.666666667,0.8333333333
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,GRASP,Grasping,3,27.666666667,29.833333333,2.166666667
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,HOLD,Holding,4,29.833333333,32.166666667,2.333333333
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,RELEASE,Releasing,5,32.166666667,33.766666667,1.6
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,RETRACT,Returning,6,33.766666667,34.433333333,0.6666666667
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,REST,At rest,1,34.433333333,35.733333333,1.3
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,REACH,Reaching,2,35.733333333,37.9,2.166666667
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,GRASP,Grasping,3,37.9,38.733333333,0.8333333333
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,HOLD,Holding,4,38.733333333,40.566666667,1.833333333
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,GRASP,Grasping,3,40.566666667,41.2,0.6333333333
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,RELEASE,Releasing,5,41.2,42.166666667,0.9666666667
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,RETRACT,Returning,6,42.166666667,42.766666667,0.6
+vid6,Take 6 (holdout_slow),holdout_slow,Detected,REST,At rest,1,42.766666667,43.014,0.2473333333
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,REST,At rest,1,0,0.233,0.233
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,REACH,Reaching,2,0.233,2.467,2.234
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,GRASP,Grasping,3,2.467,4.001,1.534
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,HOLD,Holding,4,4.001,8.003,4.002
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,RELEASE,Releasing,5,8.003,9.336,1.333
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,RETRACT,Returning,6,9.336,10.07,0.734
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,REST,At rest,1,10.07,13.471,3.401
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,REACH,Reaching,2,13.471,15.372,1.901
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,GRASP,Grasping,3,15.372,16.939,1.567
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,HOLD,Holding,4,16.939,21.941,5.002
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,RELEASE,Releasing,5,21.941,23.141,1.2
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,RETRACT,Returning,6,23.141,23.708,0.567
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,REST,At rest,1,23.708,26.075,2.367
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,REACH,Reaching,2,26.075,27.876,1.801
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,GRASP,Grasping,3,27.876,29.777,1.901
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,HOLD,Holding,4,29.777,32.144,2.367
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,RELEASE,Releasing,5,32.144,33.178,1.034
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,RETRACT,Returning,6,33.178,34.411,1.233
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,REST,At rest,1,34.411,35.679,1.268
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,REACH,Reaching,2,35.679,37.079,1.4
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,GRASP,Grasping,3,37.079,39.246,2.167
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,HOLD,Holding,4,39.246,40.947,1.701
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,RELEASE,Releasing,5,40.947,42.314,1.367
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,RETRACT,Returning,6,42.314,42.814,0.5
+vid6,Take 6 (holdout_slow),holdout_slow,Hand-labelled,REST,At rest,1,42.814,43.014,0.2
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,REST,At rest,1,0,1.4,1.4
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,REACH,Reaching,2,1.4,1.933333333,0.5333333333
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,GRASP,Grasping,3,1.933333333,2.933333333,1
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,HOLD,Holding,4,2.933333333,3.833333333,0.9
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,RELEASE,Releasing,5,3.833333333,4.4,0.5666666667
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,RETRACT,Returning,6,4.4,4.966666667,0.5666666667
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,REST,At rest,1,4.966666667,5.866666667,0.9
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,REACH,Reaching,2,5.866666667,6.533333333,0.6666666667
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,GRASP,Grasping,3,6.533333333,7.533333333,1
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,HOLD,Holding,4,7.533333333,8.4,0.8666666667
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,RELEASE,Releasing,5,8.4,9.1,0.7
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,RETRACT,Returning,6,9.1,9.833333333,0.7333333333
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,REST,At rest,1,9.833333333,10.1,0.2666666667
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,REACH,Reaching,2,10.1,10.966666667,0.8666666667
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,GRASP,Grasping,3,10.966666667,11.533333333,0.5666666667
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,HOLD,Holding,4,11.533333333,12.1,0.5666666667
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,RELEASE,Releasing,5,12.1,12.566666667,0.4666666667
+vid7,Take 7 (holdout_fast),holdout_fast,Detected,RETRACT,Returning,6,12.566666667,13.57,1.003333333
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,REST,At rest,1,0,1.433,1.433
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,REACH,Reaching,2,1.433,1.967,0.534
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,GRASP,Grasping,3,1.967,2.835,0.868
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,HOLD,Holding,4,2.835,3.868,1.033
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,RELEASE,Releasing,5,3.868,4.302,0.434
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,RETRACT,Returning,6,4.302,4.902,0.6
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,REST,At rest,1,4.902,5.935,1.033
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,REACH,Reaching,2,5.935,6.502,0.567
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,GRASP,Grasping,3,6.502,7.368,0.866
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,HOLD,Holding,4,7.368,8.502,1.134
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,RELEASE,Releasing,5,8.502,9.102,0.6
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,RETRACT,Returning,6,9.102,9.602,0.5
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,REST,At rest,1,9.602,10.402,0.8
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,REACH,Reaching,2,10.402,10.935,0.533
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,GRASP,Grasping,3,10.935,11.368,0.433
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,HOLD,Holding,4,11.368,12.237,0.869
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,RELEASE,Releasing,5,12.237,12.703,0.466
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,RETRACT,Returning,6,12.703,13.203,0.5
+vid7,Take 7 (holdout_fast),holdout_fast,Hand-labelled,REST,At rest,1,13.203,13.57,0.367

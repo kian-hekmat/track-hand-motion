@@ -37,8 +37,8 @@ How to read it:
 **Status: run 1 passed on Databricks 2026-10-08** (32 of 32 checks; evidence `evidence/cloud_m2_build_tables_run1.html`, checked against the notebook at commit `b1d6b6d`). The workers imported the repo code directly, so the zip fallback was not needed. Since then M2b was added: the notebook also writes `gold.scores` (boundary recall, precision, timing error, chance baselines, per-cycle rows) and missing values are stored as NULL instead of NaN. **Run 2 passed on Databricks 2026-10-08** with M2b: 33 of 33 checks (evidence `evidence/cloud_m2_build_tables.html`).
 
 The code is in `src/cloud/tables.py` (Spark transforms) and `src/cloud/checks.py` (the comparison with the verified local reference).
-The notebook only orchestrates them and writes Delta tables. The only manual step is uploading the input files to a Volume; in
-M5 that upload becomes the videos themselves.
+The notebook only orchestrates them and writes Delta tables. The only manual step is uploading the input files to a Volume
+(extraction from the videos stays local; M5 was cancelled).
 
 ### 1. Create the schemas and the landing Volume (CLI, from the repo root)
 

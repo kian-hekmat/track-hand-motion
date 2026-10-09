@@ -11,6 +11,7 @@ An end-to-end data pipeline that turns recorded human hand motion into discrete 
 ## Contents
 
 - [At a glance](#at-a-glance)
+- [Definitions](#definitions)
 - [How the data flows](#how-the-data-flows)
 - [Phase 1: Capture and keypoint extraction](#phase-1-capture-and-keypoint-extraction)
 - [Phase 2: Segmentation model](#phase-2-segmentation-model)
@@ -26,14 +27,14 @@ An end-to-end data pipeline that turns recorded human hand motion into discrete 
 
 | Phase | Stage | Status |
 |---|---|---|
-| 1 | Capture & keypoint extraction | **Complete.** 5 videos extracted, Postgres landing table loaded (row counts match), ground truth labelled for all 5 takes, overlays reviewed |
+| 1 | Capture & keypoint extraction | **Complete.** 7 videos extracted (5 development takes + 2 hold-out takes), Postgres landing table loaded (row counts match), ground truth labelled for all 7, overlays reviewed |
 | 2 | Segmentation | **Complete (v2).** Frame accuracy 0.84–0.97 under leave-one-take-out CV (v1 baseline: 0.45–0.78); plots in `evidence/phase2_v2/` reviewed |
 | — | Hold-out test | **Done.** Two new recordings scored once by the frozen model: frame accuracy **0.84** and **0.86**, the project's only unbiased figures |
 | 3 | Databricks | **Complete (cloud path).** One Databricks job builds bronze/silver/gold Delta tables from the uploaded files and reproduces the verified results: events, labels and scores exact, signals within 1.4e-13 |
 | 4 | Snowflake | **Complete (cloud path).** The job publishes 7 tables to `MOTION_INTENT.CLOUD`; inside Snowflake, every verified row matches and the 5 analytical queries (incl. `LAG`/`LEAD`) give identical answers. Last job run: 33/33 + 31/31 checks |
-| 5 | Tableau dashboard | **Built and published** from the verified local tables (vid1–5), workbook and picture verified against the data. **Open:** repointing it at the Snowflake views (manual export, vid1–7) and the first-time-viewer test (spec requirement) |
+| 5 | Tableau dashboard | **Built and published** from the verified local tables (vid1–5), workbook and picture verified against the data. The Snowflake views (vid1–7) have been downloaded and pass the export check. **Open:** repointing the workbook at them, and the first-time-viewer test (spec requirement) |
 
-Test suite: 299 pytest checks, all passing on 2026-10-08. The Postgres tests need the database running; the Spark tests need Java 11 or 17.
+Test suite: 300 pytest checks, all passing on 2026-10-08. The Postgres tests need the database running; the Spark tests need Java 11 or 17.
 
 **Headline numbers** (fraction of video frames given the same phase as a human labeller; tolerance 0.10 s; groups reported separately, never averaged):
 
@@ -43,6 +44,33 @@ Test suite: 299 pytest checks, all passing on 2026-10-08. The Postgres tests nee
 | v2 model, leave-one-take-out | 0.95–0.97 | 0.91 | 0.84 | — | — |
 | v2 frozen model, unseen data | — | — | — | **0.84** | **0.86** |
 | majority-label baseline | 0.25–0.31 | 0.36 | 0.26 | 0.31 | 0.29 |
+
+## Definitions
+
+| Term | Meaning in this project |
+|---|---|
+| **Take** (recording) | One video, `vids/vidN.mov`. vid1–3 clean, vid4 fast, vid5 hard case (the five **development takes**); vid6 slow and vid7 fast, recorded later (the two **hold-out takes**) |
+| **Cycle** | One pass through the task: REST, REACH, GRASP, HOLD, RELEASE, RETRACT, REST. Three per take, except vid5 and vid6 (four) |
+| **Phase** | One of the six labels: REST, REACH, GRASP, HOLD, RELEASE, RETRACT |
+| **Hand-labelled segment** (ground truth) | A phase with start and end times, read off the video frames by a person (`ground_truth/take_N.csv`) |
+| **Event** (detected segment) | A phase with start and end times produced by the model |
+| **Boundary** | The time where one phase ends and the next begins |
+| **Frame** | One native video frame, with its real (variable) timestamp, about 30 per second. Frame accuracy is measured on frames |
+| **Sample** | One point on the uniform 30 Hz grid the signals are computed on. The model labels samples; events are built from them |
+| **Wrist speed** | Wrist movement per second in **hand lengths**: one hand length is the median wrist-to-middle-knuckle distance in that take, in pixels |
+| **Aperture** | Thumb-tip to index-tip distance divided by the wrist-to-middle-knuckle distance (MediaPipe world coordinates), per frame |
+| **Tolerance** | 0.10 s (3 frames), fixed before any segmentation ran. A detected boundary matches a true one if it is within 0.10 s |
+| **Frame accuracy** | Share of frames whose detected phase equals the hand-labelled phase. Frames where the hand is out of view are excluded and reported separately |
+| **Balanced accuracy** | The mean of the per-phase accuracies, so frequent easy phases (REST, REACH) do not dominate |
+| **Tolerant accuracy** | Frame accuracy that also counts a frame within 0.10 s of a true boundary as correct if it matches the phase on either side; it separates timing jitter from wrong phases |
+| **Boundary recall / precision / MAE** | Share of true boundaries matched / share of detected boundaries that match / mean timing error of the matched ones, in seconds |
+| **Majority baseline** | The frame accuracy of always guessing a take's most common phase |
+| **Chance baseline** | The boundary recall of the same number of boundaries placed evenly, or at random (mean of 1,000 draws) |
+| **Leave-one-take-out (out-of-fold)** | Each development take is labelled by a model trained on the other four only. Every vid1–5 number is out-of-fold |
+| **Frozen model / fold models** | `models/segmenter_v2.joblib` (trained on all five development takes, used for vid6–7) and the five leave-one-take-out models in `models/folds/` (used for vid1–5) |
+| **Verified reference** | The local results checked by the test suite: `data/export/`, `data/holdout/export/`, `data/cloud_reference/`, and the Snowflake `PIPELINE` schema loaded from `data/export/` |
+| **Local path / cloud path** | The pipeline on this machine (Postgres, Python) / the Databricks job that rebuilds the same results from uploaded files and publishes them to Snowflake `CLOUD` |
+| **Bronze / silver / gold** | The cloud path's Delta table layers: files as uploaded / per-frame and per-sample data / events and scores |
 
 ## How the data flows
 
@@ -64,7 +92,7 @@ iPhone video ─► MediaPipe Hands ─► data/raw keypoints ─► Postgres (l
                                     Tableau Public
 ```
 
-Video conversion and keypoint extraction still run locally (moving them to Databricks, milestone M5, is not done). Tableau Public cannot connect to Snowflake, so the last hop is a checked manual export. The local pipeline (Postgres, the model, the verified exports) stays as the reference the cloud results are compared against. Plan and milestones: [`docs/cloud_pipeline_plan.md`](docs/cloud_pipeline_plan.md); run steps and evidence: [`databricks/cloud/README.md`](databricks/cloud/README.md).
+Video conversion and keypoint extraction run locally (moving them to Databricks, milestone M5, was cancelled by the project owner). Tableau Public cannot connect to Snowflake, so the last hop is a checked manual export. The local pipeline (Postgres, the model, the verified exports) stays as the reference the cloud results are compared against. Plan and milestones: [`docs/cloud_pipeline_plan.md`](docs/cloud_pipeline_plan.md); run steps and evidence: [`databricks/cloud/README.md`](databricks/cloud/README.md).
 
 **Tech stack:** Python 3.11+, pandas, NumPy · MediaPipe Hands · `ruptures` (changepoint detection) · scikit-learn (frame classifier) · PostgreSQL in Docker · Databricks (PySpark, Delta, Unity Catalog, Asset Bundles, serverless jobs) · Snowflake (Spark and Python connectors, key-pair auth) · Tableau Public · pytest, with local Spark and DuckDB to test the Spark and Snowflake code before it runs in the cloud.
 
@@ -92,13 +120,14 @@ Seated at a table, one hand moves a tennis ball between two tape marks: **Home (
 
 Aperture = distance between thumb-tip and index-fingertip keypoints, normalized by hand size.
 
-**The five takes**
+**The takes**
 
 | Take | Kind | What it tests |
 |---|---|---|
 | vid1–3 | Clean | The protocol exactly, with a clean stop at every phase boundary. Primary data |
 | vid4 | Fast | Same phases, no deliberate stops, about half the time per phase. Boundaries exist only as aperture/direction changes |
-| vid5 | Hard case (4 cycles) | Cycle 1 **hesitation** (pause mid-REACH, correct label: one REACH); cycle 2 normal; cycle 3 **failed grasp** (close, open, re-grasp; correct label decided in advance: one long GRASP); cycle 4 **occlusion** (hand rotated so the ball hides the fingertips) |
+| vid5 | Hard case (4 cycles) | Cycle 1 **hesitation** (pause mid-REACH; labelled as one REACH); cycle 2 normal; cycle 3 **failed grasp** (grasp, release without lifting, re-grasp; the recorded rule keeps the label REACH during the failed attempt); cycle 4 **occlusion** (hand rotated during the grasp so the ball is hidden; labelled GRASP throughout) |
+| vid6, vid7 | Hold-out (recorded later) | vid6 slow, 4 cycles; vid7 fast, 3 cycles. Labelled and locked before any model output existed; see [Hold-out test](#hold-out-test-on-new-recordings) |
 
 <details>
 <summary>Full recording protocol</summary>
@@ -116,11 +145,11 @@ Aperture = distance between thumb-tip and index-fingertip keypoints, normalized 
 
 ### Extraction
 
-Each recording (`vids/vid1–5.mov`) is converted to H.264 (`scripts/convert_videos.py`) and run through the MediaPipe Hand Landmarker (`src/extract.py`, `scripts/extract_take.py`), which returns 21 landmarks per frame. Output: `data/raw/vidN_keypoints.csv` (one row per frame × landmark) and `vidN_meta.json`. Real per-frame timestamps are used, since iPhone video is variable frame rate. Frames with no hand detected are kept as explicit NaN rows rather than dropped.
+Each recording (`vids/vid1–7.mov`) is converted to H.264 (`scripts/convert_videos.py`) and run through the MediaPipe Hand Landmarker (`src/extract.py`, `scripts/extract_take.py`), which returns 21 landmarks per frame. Output: `data/raw/vidN_keypoints.csv` (one row per frame × landmark) and `vidN_meta.json`. Real per-frame timestamps are used, since iPhone video is variable frame rate. Frames with no hand detected are kept as explicit NaN rows rather than dropped.
 
 ![MediaPipe's 21 hand landmarks drawn on a vid1 frame during the grasp](evidence/vid1_single_frame_5.0s.jpg)
 
-*vid1 at 5.0 s: the 21 landmarks (0 = wrist, 4 = thumb tip, 8 = index tip) tracked while the hand closes on the ball.*
+*vid1 at 5.0 s: the 21 landmarks (0 = wrist, 4 = thumb tip, 8 = index tip) tracked while the hand closes on the ball (`scripts/check_single_frame.py`).*
 
 **Human review of the overlays** (clips: `evidence/vid1_overlay.mp4` … `vid7_overlay.mp4`): vid1, vid2 and vid4 track well throughout. vid3 loses the hand on and off in the opening REST position. vid5 loses the hand at 9.335–9.835 s and 17.103–17.270 s because the hand is raised above the frame (physical absence, declared in `data/raw/out_of_frame_intervals.csv`, verified by `tests/test_data_gaps.py`).
 
@@ -129,7 +158,7 @@ Each recording (`vids/vid1–5.mov`) is converted to H.264 (`scripts/convert_vid
 
 ![Contact sheet of 24 vid1 frames with the landmark overlay and handedness score](evidence/vid1_contact_sheet.jpg)
 
-Also: `evidence/vid5_contact_sheet.jpg` for the hard take.
+Also: `evidence/vid5_contact_sheet.jpg` for the hard take. Made with `scripts/contact_sheet.py`.
 
 </details>
 
@@ -144,6 +173,8 @@ Fraction of frames with no hand detected (`data/raw/detection_report.csv`). This
 | vid3 | 775 | 2.7% | none |
 | vid4 | 281 | 5.7% | none |
 | vid5 | 913 | 6.4% | 9.34–9.80, 17.10–17.24 |
+| vid6 | 1291 | 1.8% | 38.55–38.98 |
+| vid7 | 408 | 6.4% | 2.87–2.97, 7.40–7.80, 11.40–11.63 |
 
 ![vid1 frames where MediaPipe reported a left hand or no hand](evidence/vid1_anomalies.jpg)
 
@@ -154,11 +185,11 @@ Fraction of frames with no hand detected (`data/raw/detection_report.csv`). This
 
 ### Postgres landing table
 
-A local Postgres table `raw_keypoints` (`docker-compose.yml`, `sql/001_raw_keypoints.sql`, `src/db.py`, `scripts/load_postgres.py`) is the dev/test source of truth. Row counts match the CSVs exactly for all five takes (20496 / 21315 / 16275 / 5901 / 19173). The loader is idempotent (it replaces a take in one transaction), and the table's CHECK constraint enforces that detected frames have coordinates and undetected frames have none.
+A local Postgres table `raw_keypoints` (`docker-compose.yml`, `sql/001_raw_keypoints.sql`, `src/db.py`, `scripts/load_postgres.py`) is the dev/test source of truth. Row counts match the CSVs exactly for all seven takes (20496 / 21315 / 16275 / 5901 / 19173 / 27111 / 8568; `tests/test_postgres.py`). The loader is idempotent (it replaces a take in one transaction), and the table's CHECK constraint enforces that detected frames have coordinates and undetected frames have none.
 
 ### Ground truth
 
-`ground_truth/take_1–5.csv` (columns `take, cycle, label, start_s, end_s, source`) were hand-labelled from the video frames using the overlay's `t=` stamp, with no audio cues. The scoring tolerance is **0.10 s** (3 frames), fixed before any segmentation was run. It was originally 0.2 s and was lowered because 0.2 s exceeds the shortest ground-truth segments.
+`ground_truth/take_1–7.csv` (columns `take, cycle, label, start_s, end_s, source`) were hand-labelled from the video frames using the overlay's `t=` stamp, with no audio cues. The scoring tolerance is **0.10 s** (3 frames), fixed before any segmentation was run. It was originally 0.2 s and was lowered because 0.2 s exceeds the shortest ground-truth segments.
 
 ---
 
@@ -329,7 +360,7 @@ The dashboard at the top of this page was built by the project owner in Tableau 
 - **Published copy:** on 2026-10-06 the Tableau Public page showed the same four charts and accuracy labels as the export (a visual check only).
 - **Data tables:** `tests/test_tableau_tables.py` checks that segments are contiguous, that counts match the sources, that accuracy equals the scored values, and that speed is empty exactly where the hand was out of view. These tables are now the reference for the Snowflake export check.
 
-**Next: data from Snowflake (manual export).** The views in Snowflake `CLOUD` hold all seven recordings. Since Tableau Public cannot connect to Snowflake, they are downloaded from Snowsight as CSV, checked against the verified tables with `python scripts/check_cloud_tableau_exports.py`, and the workbook's data sources are replaced. The accuracy bars must then read 94.9, 96.6, 96.6, 91.1, 84.1, 83.9 and 86.2. Steps: `tableau/README.md`. **Not done yet.**
+**Data from Snowflake (manual export).** The views in Snowflake `CLOUD` hold all seven recordings. Since Tableau Public cannot connect to Snowflake, they are downloaded from Snowsight as CSV and checked against the verified tables with `python scripts/check_cloud_tableau_exports.py`. **Downloaded and checked on 2026-10-08** (`data/tableau_cloud/`: 295, 5,659 and 7 rows, all values equal; the download rounds decimals to about 10 significant digits, so differences are up to 5e-10). **Still to do:** replace the workbook's data sources; the accuracy bars must then read 94.9, 96.6, 96.6, 91.1, 84.1, 83.9 and 86.2. Steps: `tableau/README.md`.
 
 **Open:** the first-time-viewer test (`tableau/user_test.md`). The spec says the dashboard is not done until someone new can describe it.
 
@@ -410,6 +441,7 @@ data/segments/    v1 events + params.json; v2_pelt / v2_grammar / v2_argmax / v2
 data/export/      verified tables for vid1-5 (the source of Snowflake PIPELINE) + manifest.json
 data/holdout/     hold-out test for vid6 and vid7: lock, events, scores, run record, export, Tableau tables
 data/tableau/     verified Tableau tables for vid1-5 (reference for the Snowflake export check)
+data/tableau_cloud/  the Snowflake CLOUD views as downloaded from Snowsight (vid1-7), checked
 data/cloud_reference/  local outputs the Databricks runs must reproduce
 tableau/          workbook (hand-motion-phases.twbx), build steps, first-time-viewer test
 evidence/         overlay clips, contact sheets, segmentation plots, dashboard export, Databricks run exports
@@ -426,7 +458,7 @@ Retired in the 2026-10-08 cleanup and kept at the git tag `pre-cloud-cleanup`: t
 - [x] Full pipeline runs end to end on at least one video, from raw footage to Tableau-ready export, without manual patching of intermediate files: vid6 and vid7 via `scripts/run_new_take.py` (2026-10-06, local path; its DuckDB Tableau step has since been retired). The run exposed one bug (time base), fixed in code before vid6 was re-run; the human inputs (label files, out-of-frame list) needed formatting fixes. See `NOTES.md`. Cloud path: one job run goes from the uploaded keypoint files to checked Snowflake tables with no manual step (2026-10-08); extraction before it and the Tableau export after it are still manual
 - [ ] Every number reported about the project has a test or saved output that produced it
 - [x] `NOTES.md` documents real limitations and failure modes (tracking, segmentation, hold-out results, cloud migration)
-- [ ] This README matches what is actually built (no planned features described as done). Updated for the cloud path and the cleanup on 2026-10-08; leave unticked until the viewer test is done
+- [ ] This README matches what is actually built (no planned features described as done). Audited on 2026-10-08 (cloud path, cleanup, definitions); leave unticked until the viewer test is done
 
 ## Ground rules for AI assistants
 

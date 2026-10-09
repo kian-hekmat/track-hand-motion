@@ -148,7 +148,7 @@ only modestly (frame accuracy 0.45 vs 0.36 majority baseline).
 |---|---|---|---|---|---|
 | 1 hesitation | stopped halfway through the reach | one REACH 1.07-2.47 | **one** REACH 1.03-3.07 (hesitation handled; ends 0.6 s late because GRASP is missed), RELEASE (0.07 s) not found | 6 / 6 / 3 | 0.73 |
 | 2 normal | normal cycle; hand left the frame 9.335-9.835 (inside GRASP) | REACH, GRASP, HOLD, RELEASE, RETRACT | REACH runs through the GRASP start, GRASP labelled RETRACT, then HOLD; RELEASE not found | 6 / 5 / 2 | 0.86 |
-| 3 failed grasp | grasped, released without lifting, re-grasped and lifted | one GRASP 16.04-17.27 (hand out of frame 17.103-17.270) | HOLD, then a spurious REACH (16.70-17.03), then GRASP | 6 / 6 / 2 | 0.46 |
+| 3 failed grasp | grasped, released without lifting, re-grasped and lifted | GRASP 16.04-17.27 (hand out of frame 17.103-17.270); the recorded rule keeps the failed attempt as REACH (see "Open question" at the end) | HOLD, then a spurious REACH (16.70-17.03), then GRASP | 6 / 6 / 2 | 0.46 |
 | 4 occlusion | ball hidden by turning the hand during the grasp | one long GRASP 23.61-27.07 | HOLD (23.37-26.63), spurious REACH (26.63-27.00), GRASP | 6 / 5 / 3 | 0.21 |
 
 Cycle 2's high frame accuracy (0.86) mostly reflects REACH, REST and RETRACT frames being easy; it says
@@ -566,12 +566,37 @@ Every comparison is with the verified local results, with tolerances fixed in `s
 
 ## Limits
 
-- **Extraction is still local.** Converting and extracting the videos with MediaPipe runs on a laptop (M5 not done), so the cloud
-  path starts from uploaded keypoint files, not from video.
+- **Extraction is local by decision.** Converting and extracting the videos with MediaPipe runs on a laptop; moving it to
+  Databricks (M5) was cancelled by the project owner. The cloud path starts from uploaded keypoint files, not from video.
 - **Tableau Public cannot connect to Snowflake.** The three views are downloaded by hand and checked
   (`scripts/check_cloud_tableau_exports.py`); the dashboard is a copy, not a live connection.
 - **The in-Snowflake comparison needs `PIPELINE`.** It was built by the retired Phase 4 scripts (tag `pre-cloud-cleanup`). If the
   trial account is replaced, those scripts are what rebuild it.
 - **Same scores, same caveats:** the cloud path reproduces the model's results; it does not change how optimistic they are.
   vid1-5 are still scored by leave-one-take-out models, and vid6-7 remain the only unbiased figures (0.84 and 0.86 frame accuracy).
+- **The serverless environment is not pinned.** The job's notebooks carry no `environment_version`, so jobs run in Databricks'
+  default serverless environment. A diagnostic job without a pin ran on Python 3.11 with numpy 1.23, while the M1 check (run from
+  the UI, pinned to environment 6) ran on Python 3.12 with numpy 2.3. Which one the recorded job runs used was not logged; their
+  checks passed either way. Adding `environment_version = "6"` to the notebooks would fix the environment.
+- **The Snowsight download rounds decimals** to about 10 significant digits (differences up to 5e-10 against the verified tables,
+  2026-10-08), inside the export check's 1e-9 tolerance.
+
+## M5 feasibility probe (2026-10-08, cancelled afterwards; nothing from it was kept in the pipeline)
+
+Before M5 was cancelled, a scratch probe ran MediaPipe on serverless for vid4 and vid7. Recorded here because the findings explain
+why cloud extraction would not reproduce the verified keypoints:
+- Serverless runs on ARM (aarch64). MediaPipe 0.10.21, which made the verified keypoints, has no ARM build there; 0.10.18 does.
+- Installing MediaPipe 0.10.18 into the notebook downgrades protobuf and numpy, and the notebook kernel then fails to start. It ran
+  in an isolated subprocess instead (`pip install --target`).
+- Conversion (tone mapping) worked, with every frame timestamp identical. Keypoints moved by a median of about 2 px (worst cases
+  88-133 px), 12 of vid4's 281 frames switched between hand and no hand, and the phase sequence stayed identical. Frame accuracy:
+  vid4 0.911 (unchanged), vid7 0.851 against the verified 0.862. On a Mac, MediaPipe 0.10.18 alone gave vid4 0.918, so both the
+  version and the hardware change results.
+
+# Open question: the vid5 failed-grasp label (cycle 3)
+
+`CLAUDE.md` (the plan) and earlier versions of these notes describe the failed grasp as labelled "one long GRASP". The note written
+by the person who performed it (`ground_truth/README.md`) says the label should stay REACH during the failed attempt. The labels file
+has REACH until 16.037 s and GRASP from 16.037 to 17.270 s, which fits the recorded rule if the failed attempt happens before
+16.037 s; that has not been checked against the video. The scores use the labels file as it is.
 

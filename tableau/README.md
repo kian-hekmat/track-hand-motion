@@ -3,7 +3,7 @@
 **Status: dashboard built, saved (`hand-motion-phases.twbx`) and published; data verified; first-time-viewer test still open.**
 Published: [https://public.tableau.com/app/profile/kian.hekmatnejad/viz/hand-motion-phases/Dashboard2](https://public.tableau.com/app/profile/kian.hekmatnejad/viz/hand-motion-phases/Dashboard2).
 
-**Cloud data (M7): pending.** The published dashboard uses `data/tableau/` (vid1-5). The next version uses the Snowflake `CLOUD` views (vid1-7), downloaded by hand because Tableau Public cannot connect to Snowflake; see "Data from Snowflake" below.
+**Cloud data (M7): views downloaded and checked 2026-10-08 (`data/tableau_cloud/`, `TABLEAU EXPORT CHECK: ALL PASSED`); repointing the workbook is still to do.** The published dashboard uses `data/tableau/` (vid1-5). The next version uses the Snowflake `CLOUD` views (vid1-7), downloaded by hand because Tableau Public cannot connect to Snowflake; see "Data from Snowflake" below.
 
 ![The exported Tableau dashboard](../evidence/tableau_dashboard.png)
 
